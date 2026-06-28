@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/context-menu";
 import { ClipboardList, Plus, GripVertical, Trash2, Star, StarOff, Copy, ClipboardPaste, Check } from "lucide-react";
 import { DragDropContext, Droppable, Draggable, type DropResult } from "@hello-pangea/dnd";
-import { apiRequest, queryClient } from "@/lib/queryClient";
+import { apiRequest, queryClient, optimisticUpdateItems } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import type { PrescriptionItem, FavoriteItem } from "@shared/schema";
 import { prescriptionTypeOptions, unitOptions, mixGroupOptions, routeOptions, frequencyOptions } from "@shared/schema";
@@ -235,8 +235,15 @@ function EditableCell({
     setEditing(false);
     const newVal = localVal.trimEnd() || null;
     if (newVal !== (value || null)) {
-      await apiRequest("PATCH", `/api/prescription-items/${itemId}`, { [field]: newVal });
-      queryClient.invalidateQueries({ queryKey: ["/api/prescriptions", prescriptionId, "items"] });
+      const itemsKey = ["/api/prescriptions", prescriptionId, "items"] as const;
+      const previous = optimisticUpdateItems(itemsKey, items =>
+        items.map(item => item.id === itemId ? { ...item, [field]: newVal } : item)
+      );
+      try {
+        await apiRequest("PATCH", `/api/prescription-items/${itemId}`, { [field]: newVal });
+      } catch {
+        if (previous) queryClient.setQueryData(itemsKey, previous);
+      }
     }
   };
 
@@ -397,8 +404,15 @@ function TypeSelect({ value, itemId, prescriptionId, hideLabel = false }: { valu
   const handleChange = async (newVal: string) => {
     setOpen(false);
     if (newVal !== value) {
-      await apiRequest("PATCH", `/api/prescription-items/${itemId}`, { type: newVal });
-      queryClient.invalidateQueries({ queryKey: ["/api/prescriptions", prescriptionId, "items"] });
+      const itemsKey = ["/api/prescriptions", prescriptionId, "items"] as const;
+      const previous = optimisticUpdateItems(itemsKey, items =>
+        items.map(item => item.id === itemId ? { ...item, type: newVal } : item)
+      );
+      try {
+        await apiRequest("PATCH", `/api/prescription-items/${itemId}`, { type: newVal });
+      } catch {
+        if (previous) queryClient.setQueryData(itemsKey, previous);
+      }
     }
   };
 
@@ -474,8 +488,15 @@ function UnitSelect({ value, itemId, prescriptionId }: { value: string | null; i
     setOpen(false);
     setCustomInput(false);
     if (newVal !== value) {
-      await apiRequest("PATCH", `/api/prescription-items/${itemId}`, { unit: newVal });
-      queryClient.invalidateQueries({ queryKey: ["/api/prescriptions", prescriptionId, "items"] });
+      const itemsKey = ["/api/prescriptions", prescriptionId, "items"] as const;
+      const previous = optimisticUpdateItems(itemsKey, items =>
+        items.map(item => item.id === itemId ? { ...item, unit: newVal } : item)
+      );
+      try {
+        await apiRequest("PATCH", `/api/prescription-items/${itemId}`, { unit: newVal });
+      } catch {
+        if (previous) queryClient.setQueryData(itemsKey, previous);
+      }
     }
   };
 
@@ -542,8 +563,15 @@ function MixSelect({ value, itemId, prescriptionId }: { value: string | null; it
   const handleChange = async (newVal: string | null) => {
     setOpen(false);
     if (newVal !== value) {
-      await apiRequest("PATCH", `/api/prescription-items/${itemId}`, { mixGroup: newVal });
-      queryClient.invalidateQueries({ queryKey: ["/api/prescriptions", prescriptionId, "items"] });
+      const itemsKey = ["/api/prescriptions", prescriptionId, "items"] as const;
+      const previous = optimisticUpdateItems(itemsKey, items =>
+        items.map(item => item.id === itemId ? { ...item, mixGroup: newVal } : item)
+      );
+      try {
+        await apiRequest("PATCH", `/api/prescription-items/${itemId}`, { mixGroup: newVal });
+      } catch {
+        if (previous) queryClient.setQueryData(itemsKey, previous);
+      }
     }
   };
 
@@ -662,10 +690,12 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
 
   const handleDeleteItem = async (itemId: number) => {
     if (!window.confirm("이 항목을 삭제하시겠습니까?")) return;
+    const itemsKey = ["/api/prescriptions", prescriptionId, "items"] as const;
+    const previous = optimisticUpdateItems(itemsKey, items => items.filter(i => i.id !== itemId));
     try {
       await apiRequest("DELETE", `/api/prescription-items/${itemId}`);
-      queryClient.invalidateQueries({ queryKey: ["/api/prescriptions", prescriptionId, "items"] });
     } catch {
+      if (previous) queryClient.setQueryData(itemsKey, previous);
       toast({ title: "삭제 중 오류가 발생했습니다", variant: "destructive" });
     }
   };
@@ -675,16 +705,18 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
     if (ids.length === 0) return;
     if (!window.confirm(`선택한 ${ids.length}개 항목을 삭제하시겠습니까?`)) return;
     setBulkDeleting(true);
+    const itemsKey = ["/api/prescriptions", prescriptionId, "items"] as const;
+    const previous = optimisticUpdateItems(itemsKey, items => items.filter(i => !ids.includes(i.id)));
     try {
       const res = await apiRequest("POST", "/api/prescription-items/batch-delete", { ids });
       const data = await res.json();
       toast({ title: `${data.deleted}개 항목이 삭제되었습니다` });
     } catch {
+      if (previous) queryClient.setQueryData(itemsKey, previous);
       toast({ title: "삭제 중 오류가 발생했습니다", variant: "destructive" });
     } finally {
       setSelectedIds(new Set());
       setBulkDeleting(false);
-      queryClient.invalidateQueries({ queryKey: ["/api/prescriptions", prescriptionId, "items"] });
     }
   };
 
@@ -695,19 +727,45 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
     const reordered = Array.from(items);
     const [moved] = reordered.splice(result.source.index, 1);
     reordered.splice(result.destination.index, 0, moved);
-    const orderItems = reordered.map((item, i) => ({ id: item.id, sortOrder: i }));
-    await apiRequest("POST", "/api/prescription-items/reorder", { items: orderItems });
-    queryClient.invalidateQueries({ queryKey: ["/api/prescriptions", prescriptionId, "items"] });
+    const reorderedWithSort = reordered.map((item, i) => ({ ...item, sortOrder: i }));
+    const orderItems = reorderedWithSort.map((item, i) => ({ id: item.id, sortOrder: i }));
+
+    const itemsKey = ["/api/prescriptions", prescriptionId, "items"] as const;
+    const previous = optimisticUpdateItems(itemsKey, () => reorderedWithSort);
+    try {
+      await apiRequest("POST", "/api/prescription-items/reorder", { items: orderItems });
+    } catch {
+      if (previous) queryClient.setQueryData(itemsKey, previous);
+    }
   }, [items, prescriptionId]);
 
   const handleAddItem = async () => {
     const maxOrder = items.length > 0 ? Math.max(...items.map(i => i.sortOrder)) + 1 : 0;
-    await apiRequest("POST", `/api/prescriptions/${prescriptionId}/items`, {
+    const newItem: PrescriptionItem = {
+      id: Math.max(...items.map(i => i.id), 0) + 1,
+      prescriptionId,
       type: "약",
       productName: "새 처방",
+      ingredientName: undefined,
+      dosage: undefined,
+      unit: undefined,
+      frequency: undefined,
+      route: undefined,
+      note: undefined,
+      mixGroup: undefined,
       sortOrder: maxOrder,
-    });
-    queryClient.invalidateQueries({ queryKey: ["/api/prescriptions", prescriptionId, "items"] });
+    };
+    const itemsKey = ["/api/prescriptions", prescriptionId, "items"] as const;
+    const previous = optimisticUpdateItems(itemsKey, items => [...items, newItem]);
+    try {
+      await apiRequest("POST", `/api/prescriptions/${prescriptionId}/items`, {
+        type: "약",
+        productName: "새 처방",
+        sortOrder: maxOrder,
+      });
+    } catch {
+      if (previous) queryClient.setQueryData(itemsKey, previous);
+    }
   };
 
   const handleInsertBelow = async (afterIndex: number) => {
@@ -716,22 +774,45 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
     for (let i = afterIndex + 1; i < newItems.length; i++) {
       newItems[i] = { ...newItems[i], sortOrder: newItems[i].sortOrder + 1 };
     }
-    const reorderIds = newItems.slice(afterIndex + 1).map(i => i.id);
-    if (reorderIds.length > 0) {
-      await apiRequest("POST", "/api/prescription-items/reorder", {
-        items: newItems.slice(afterIndex + 1).map((i, idx) => ({ id: i.id, sortOrder: items[afterIndex].sortOrder + 2 + idx })),
-      });
-    }
-    await apiRequest("POST", `/api/prescriptions/${prescriptionId}/items`, {
+    const newItem: PrescriptionItem = {
+      id: Math.max(...items.map(i => i.id), 0) + 1,
+      prescriptionId,
       type: "약",
       productName: "새 처방",
+      ingredientName: undefined,
+      dosage: undefined,
+      unit: undefined,
+      frequency: undefined,
+      route: undefined,
+      note: undefined,
+      mixGroup: undefined,
       sortOrder: insertOrder,
-    });
-    queryClient.invalidateQueries({ queryKey: ["/api/prescriptions", prescriptionId, "items"] });
+    };
+    newItems.splice(afterIndex + 1, 0, newItem);
+
+    const itemsKey = ["/api/prescriptions", prescriptionId, "items"] as const;
+    const previous = optimisticUpdateItems(itemsKey, () => newItems);
+    try {
+      const reorderIds = newItems.slice(afterIndex + 2).map(i => i.id);
+      if (reorderIds.length > 0) {
+        await apiRequest("POST", "/api/prescription-items/reorder", {
+          items: newItems.slice(afterIndex + 2).map((i, idx) => ({ id: i.id, sortOrder: insertOrder + 1 + idx })),
+        });
+      }
+      await apiRequest("POST", `/api/prescriptions/${prescriptionId}/items`, {
+        type: "약",
+        productName: "새 처방",
+        sortOrder: insertOrder,
+      });
+    } catch {
+      if (previous) queryClient.setQueryData(itemsKey, previous);
+    }
   };
 
   const handleAddToFavorites = async (item: PrescriptionItem) => {
-    await apiRequest("POST", "/api/favorites", {
+    const favoritesKey = ["/api/favorites"] as const;
+    const newFav: FavoriteItem = {
+      id: Math.max(...(queryClient.getQueryData<FavoriteItem[]>(favoritesKey) || []).map(f => f.id), 0) + 1,
       type: item.type,
       productName: item.productName,
       ingredientName: item.ingredientName,
@@ -741,9 +822,24 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
       route: item.route,
       note: item.note,
       sortOrder: 0,
-    });
-    queryClient.invalidateQueries({ queryKey: ["/api/favorites"] });
-    toast({ title: "즐겨찾기에 추가되었습니다", description: item.productName });
+    };
+    const previous = optimisticUpdateItems(favoritesKey, favs => [...favs, newFav]);
+    try {
+      await apiRequest("POST", "/api/favorites", {
+        type: item.type,
+        productName: item.productName,
+        ingredientName: item.ingredientName,
+        dosage: item.dosage,
+        unit: item.unit,
+        frequency: item.frequency,
+        route: item.route,
+        note: item.note,
+        sortOrder: 0,
+      });
+      toast({ title: "즐겨찾기에 추가되었습니다", description: item.productName });
+    } catch {
+      if (previous) queryClient.setQueryData(favoritesKey, previous);
+    }
   };
 
   const handleRowClick = useCallback((e: React.MouseEvent, index: number, itemId: number) => {

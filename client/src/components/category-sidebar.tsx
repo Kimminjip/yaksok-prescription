@@ -10,8 +10,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Pill, FolderOpen, Layers, GripVertical, Plus, X, Search } from "lucide-react";
 import { DragDropContext, Droppable, Draggable, type DropResult } from "@hello-pangea/dnd";
-import { apiRequest } from "@/lib/queryClient";
-import { queryClient } from "@/lib/queryClient";
+import { apiRequest, queryClient, optimisticUpdateItems } from "@/lib/queryClient";
 import type { Category, Prescription } from "@shared/schema";
 
 interface CategorySidebarProps {
@@ -204,8 +203,14 @@ export function CategorySidebar({
   const handleAddCategory = async (name: string) => {
     setAddingCategory(false);
     const maxOrder = majorCategories.length > 0 ? Math.max(...majorCategories.map(c => c.sortOrder)) + 1 : 0;
-    await apiRequest("POST", "/api/categories", { name, sortOrder: maxOrder });
-    queryClient.invalidateQueries({ queryKey: ["/api/categories"] });
+    const newCat: Category = { id: Math.max(...categories.map(c => c.id), 0) + 1, name, parentId: null, sortOrder: maxOrder };
+    const catsKey = ["/api/categories"] as const;
+    const previous = optimisticUpdateItems(catsKey, cats => [...cats, newCat]);
+    try {
+      await apiRequest("POST", "/api/categories", { name, sortOrder: maxOrder });
+    } catch {
+      if (previous) queryClient.setQueryData(catsKey, previous);
+    }
   };
 
   const handleAddSubCategory = async (majorId: number, name: string) => {
@@ -220,10 +225,15 @@ export function CategorySidebar({
   const handleDeleteCategory = async (id: number) => {
     const cat = categories.find(c => c.id === id);
     if (!window.confirm(`"${cat?.name || ""}" 분류와 하위 항목을 모두 삭제하시겠습니까?`)) return;
+    const catsKey = ["/api/categories"] as const;
+    const rxKey = ["/api/prescriptions"] as const;
+    const prevCats = optimisticUpdateItems(catsKey, cats => cats.filter(c => c.id !== id && c.parentId !== id));
+    const prevRx = optimisticUpdateItems(rxKey, rxs => rxs.filter(r => {
+      const cat = categories.find(c => c.id === r.categoryId);
+      return cat && cat.id !== id && cat.parentId !== id;
+    }));
     try {
       await apiRequest("DELETE", `/api/categories/${id}`);
-      queryClient.invalidateQueries({ queryKey: ["/api/categories"] });
-      queryClient.invalidateQueries({ queryKey: ["/api/prescriptions"] });
       if (selectedPrescriptionId) {
         const rx = prescriptions.find(p => p.id === selectedPrescriptionId);
         if (rx) {
@@ -231,35 +241,61 @@ export function CategorySidebar({
           if (sub && (sub.id === id || sub.parentId === id)) onSelectPrescription(null);
         }
       }
-    } catch {}
+    } catch {
+      if (prevCats) queryClient.setQueryData(catsKey, prevCats);
+      if (prevRx) queryClient.setQueryData(rxKey, prevRx);
+    }
   };
 
   const handleAddPrescription = async (subCategoryId: number, name: string) => {
     setAddingPrescriptionFor(null);
     const catRxs = getPrescriptions(subCategoryId);
     const maxOrder = catRxs.length > 0 ? Math.max(...catRxs.map(p => p.sortOrder)) + 1 : 0;
-    await apiRequest("POST", "/api/prescriptions", { name, categoryId: subCategoryId, sortOrder: maxOrder });
-    queryClient.invalidateQueries({ queryKey: ["/api/prescriptions"] });
+    const newRx: Prescription = { id: Math.max(...prescriptions.map(p => p.id), 0) + 1, name, categoryId: subCategoryId, sortOrder: maxOrder };
+    const rxKey = ["/api/prescriptions"] as const;
+    const previous = optimisticUpdateItems(rxKey, rxs => [...rxs, newRx]);
+    try {
+      await apiRequest("POST", "/api/prescriptions", { name, categoryId: subCategoryId, sortOrder: maxOrder });
+    } catch {
+      if (previous) queryClient.setQueryData(rxKey, previous);
+    }
   };
 
   const handleDeletePrescription = async (id: number) => {
     const rx = prescriptions.find(p => p.id === id);
     if (!window.confirm(`"${rx?.name || ""}" 처방 세트를 삭제하시겠습니까?`)) return;
+    const rxKey = ["/api/prescriptions"] as const;
+    const previous = optimisticUpdateItems(rxKey, rxs => rxs.filter(p => p.id !== id));
     try {
       if (selectedPrescriptionId === id) onSelectPrescription(null);
       await apiRequest("DELETE", `/api/prescriptions/${id}`);
-      queryClient.invalidateQueries({ queryKey: ["/api/prescriptions"] });
-    } catch {}
+    } catch {
+      if (previous) queryClient.setQueryData(rxKey, previous);
+    }
   };
 
   const handleRenameCategory = async (id: number, name: string) => {
-    await apiRequest("PATCH", `/api/categories/${id}`, { name });
-    queryClient.invalidateQueries({ queryKey: ["/api/categories"] });
+    const catsKey = ["/api/categories"] as const;
+    const previous = optimisticUpdateItems(catsKey, cats =>
+      cats.map(cat => cat.id === id ? { ...cat, name } : cat)
+    );
+    try {
+      await apiRequest("PATCH", `/api/categories/${id}`, { name });
+    } catch {
+      if (previous) queryClient.setQueryData(catsKey, previous);
+    }
   };
 
   const handleRenamePrescription = async (id: number, name: string) => {
-    await apiRequest("PATCH", `/api/prescriptions/${id}`, { name });
-    queryClient.invalidateQueries({ queryKey: ["/api/prescriptions"] });
+    const rxKey = ["/api/prescriptions"] as const;
+    const previous = optimisticUpdateItems(rxKey, rxs =>
+      rxs.map(rx => rx.id === id ? { ...rx, name } : rx)
+    );
+    try {
+      await apiRequest("PATCH", `/api/prescriptions/${id}`, { name });
+    } catch {
+      if (previous) queryClient.setQueryData(rxKey, previous);
+    }
   };
 
   const handleDragEnd = useCallback(async (result: DropResult) => {
@@ -267,22 +303,47 @@ export function CategorySidebar({
     const { source, destination, type } = result;
     if (source.droppableId === destination.droppableId && source.index === destination.index) return;
 
+    const catsKey = ["/api/categories"] as const;
+    const rxKey = ["/api/prescriptions"] as const;
+
     if (type === "MAJOR") {
       const reordered = Array.from(majorCategories);
       const [moved] = reordered.splice(source.index, 1);
       reordered.splice(destination.index, 0, moved);
-      const items = reordered.map((c, i) => ({ id: c.id, sortOrder: i }));
-      await apiRequest("POST", "/api/categories/reorder", { items });
-      queryClient.invalidateQueries({ queryKey: ["/api/categories"] });
+      const reorderedWithSort = reordered.map((c, i) => ({ ...c, sortOrder: i }));
+      const items = reorderedWithSort.map((c, i) => ({ id: c.id, sortOrder: i }));
+
+      const prevCats = optimisticUpdateItems(catsKey, cats =>
+        cats.map(cat => {
+          const reord = reorderedWithSort.find(r => r.id === cat.id);
+          return reord ? { ...cat, sortOrder: reord.sortOrder } : cat;
+        })
+      );
+      try {
+        await apiRequest("POST", "/api/categories/reorder", { items });
+      } catch {
+        if (prevCats) queryClient.setQueryData(catsKey, prevCats);
+      }
     } else if (type === "SUB") {
       const majorId = parseInt(source.droppableId.replace("sub-", ""), 10);
       const subs = getSubCategories(majorId);
       const reordered = Array.from(subs);
       const [moved] = reordered.splice(source.index, 1);
       reordered.splice(destination.index, 0, moved);
-      const items = reordered.map((c, i) => ({ id: c.id, sortOrder: i, parentId: majorId }));
-      await apiRequest("POST", "/api/categories/reorder", { items });
-      queryClient.invalidateQueries({ queryKey: ["/api/categories"] });
+      const reorderedWithSort = reordered.map((c, i) => ({ ...c, sortOrder: i }));
+      const items = reorderedWithSort.map((c, i) => ({ id: c.id, sortOrder: i, parentId: majorId }));
+
+      const prevCats = optimisticUpdateItems(catsKey, cats =>
+        cats.map(cat => {
+          const reord = reorderedWithSort.find(r => r.id === cat.id);
+          return reord ? { ...cat, sortOrder: reord.sortOrder } : cat;
+        })
+      );
+      try {
+        await apiRequest("POST", "/api/categories/reorder", { items });
+      } catch {
+        if (prevCats) queryClient.setQueryData(catsKey, prevCats);
+      }
     } else if (type === "PRESCRIPTION") {
       const subId = parseInt(source.droppableId.replace("rx-", ""), 10);
       const destSubId = parseInt(destination.droppableId.replace("rx-", ""), 10);
@@ -292,8 +353,20 @@ export function CategorySidebar({
         const reordered = Array.from(rxs);
         const [moved] = reordered.splice(source.index, 1);
         reordered.splice(destination.index, 0, moved);
-        const items = reordered.map((p, i) => ({ id: p.id, sortOrder: i, categoryId: subId }));
-        await apiRequest("POST", "/api/prescriptions/reorder", { items });
+        const reorderedWithSort = reordered.map((p, i) => ({ ...p, sortOrder: i }));
+        const items = reorderedWithSort.map((p, i) => ({ id: p.id, sortOrder: i, categoryId: subId }));
+
+        const prevRx = optimisticUpdateItems(rxKey, rxs =>
+          rxs.map(rx => {
+            const reord = reorderedWithSort.find(r => r.id === rx.id);
+            return reord ? { ...rx, sortOrder: reord.sortOrder } : rx;
+          })
+        );
+        try {
+          await apiRequest("POST", "/api/prescriptions/reorder", { items });
+        } catch {
+          if (prevRx) queryClient.setQueryData(rxKey, prevRx);
+        }
       } else {
         const sourceRxs = getPrescriptions(subId);
         const destRxs = getPrescriptions(destSubId);
@@ -301,13 +374,25 @@ export function CategorySidebar({
         const [moved] = sourceReordered.splice(source.index, 1);
         const destReordered = Array.from(destRxs);
         destReordered.splice(destination.index, 0, moved);
+        const sourceWithSort = sourceReordered.map((p, i) => ({ ...p, sortOrder: i }));
+        const destWithSort = destReordered.map((p, i) => ({ ...p, sortOrder: i, categoryId: destSubId }));
         const items = [
-          ...sourceReordered.map((p, i) => ({ id: p.id, sortOrder: i, categoryId: subId })),
-          ...destReordered.map((p, i) => ({ id: p.id, sortOrder: i, categoryId: destSubId })),
+          ...sourceWithSort.map((p, i) => ({ id: p.id, sortOrder: i, categoryId: subId })),
+          ...destWithSort.map((p, i) => ({ id: p.id, sortOrder: i, categoryId: destSubId })),
         ];
-        await apiRequest("POST", "/api/prescriptions/reorder", { items });
+
+        const prevRx = optimisticUpdateItems(rxKey, rxs =>
+          rxs.map(rx => {
+            const reord = [...sourceWithSort, ...destWithSort].find(r => r.id === rx.id);
+            return reord ? { ...rx, sortOrder: reord.sortOrder, categoryId: reord.categoryId } : rx;
+          })
+        );
+        try {
+          await apiRequest("POST", "/api/prescriptions/reorder", { items });
+        } catch {
+          if (prevRx) queryClient.setQueryData(rxKey, prevRx);
+        }
       }
-      queryClient.invalidateQueries({ queryKey: ["/api/prescriptions"] });
     }
   }, [majorCategories, categories, prescriptions]);
 

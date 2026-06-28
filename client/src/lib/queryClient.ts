@@ -55,3 +55,15 @@ export const queryClient = new QueryClient({
     },
   },
 });
+
+// Optimistic Update helpers
+export function optimisticUpdateItems<T>(
+  key: unknown[],
+  updater: (prev: T[]) => T[]
+): T[] | undefined {
+  const previous = queryClient.getQueryData<T[]>(key);
+  if (previous) {
+    queryClient.setQueryData(key, updater(previous));
+  }
+  return previous;
+}
