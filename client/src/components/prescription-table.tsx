@@ -21,7 +21,8 @@ import {
 } from "@/components/ui/context-menu";
 import { ClipboardList, Plus, GripVertical, Trash2, Star, StarOff, Copy, ClipboardPaste, Check } from "lucide-react";
 import { DragDropContext, Droppable, Draggable, type DropResult } from "@hello-pangea/dnd";
-import { apiRequest, queryClient, optimisticUpdateItems } from "@/lib/queryClient";
+import { apiRequest, queryClient, optimisticUpdateItems, getErrorMessage } from "@/lib/queryClient";
+import { validateInput, prescriptionItemValidation } from "@/lib/validation";
 import { useToast } from "@/hooks/use-toast";
 import type { PrescriptionItem, FavoriteItem } from "@shared/schema";
 import { prescriptionTypeOptions, unitOptions, mixGroupOptions, routeOptions, frequencyOptions } from "@shared/schema";
@@ -235,6 +236,18 @@ function EditableCell({
     setEditing(false);
     const newVal = localVal.trimEnd() || null;
     if (newVal !== (value || null)) {
+      // 간단한 검증: 길이 체크
+      const maxLengths: Record<string, number> = {
+        productName: 100,
+        ingredientName: 100,
+        dosage: 50,
+        note: 500,
+      };
+      const maxLen = maxLengths[field];
+      if (maxLen && newVal && newVal.length > maxLen) {
+        return; // 검증 실패, 저장 안 함
+      }
+
       const itemsKey = ["/api/prescriptions", prescriptionId, "items"] as const;
       const previous = optimisticUpdateItems(itemsKey, items =>
         items.map(item => item.id === itemId ? { ...item, [field]: newVal } : item)
@@ -694,9 +707,9 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
     const previous = optimisticUpdateItems(itemsKey, items => items.filter(i => i.id !== itemId));
     try {
       await apiRequest("DELETE", `/api/prescription-items/${itemId}`);
-    } catch {
+    } catch (error) {
       if (previous) queryClient.setQueryData(itemsKey, previous);
-      toast({ title: "삭제 중 오류가 발생했습니다", variant: "destructive" });
+      toast({ title: getErrorMessage(error), variant: "destructive" });
     }
   };
 
@@ -963,6 +976,22 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
   }
 
   const colCount = 10;
+
+  if (items.length === 0) {
+    return (
+      <Card className="overflow-hidden">
+        <div className="p-8 text-center">
+          <ClipboardList className="h-12 w-12 text-muted-foreground/30 mx-auto mb-3" />
+          <p className="text-sm text-muted-foreground">처방 항목이 없습니다</p>
+          <p className="text-xs text-muted-foreground mt-1">항목을 추가하여 처방을 작성하세요</p>
+          <Button size="sm" className="mt-4" onClick={handleAddItem}>
+            <Plus className="h-4 w-4 mr-1" />
+            첫 항목 추가
+          </Button>
+        </div>
+      </Card>
+    );
+  }
 
   return (
     <>

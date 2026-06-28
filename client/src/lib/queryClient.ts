@@ -2,8 +2,15 @@ import { QueryClient, QueryFunction } from "@tanstack/react-query";
 
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
-    const text = (await res.text()) || res.statusText;
-    throw new Error(`${res.status}: ${text}`);
+    let errorMessage = res.statusText;
+    try {
+      const json = await res.json();
+      errorMessage = json.message || errorMessage;
+    } catch {
+      const text = await res.text();
+      errorMessage = text || errorMessage;
+    }
+    throw new ApiError(res.status, errorMessage);
   }
 }
 
@@ -12,15 +19,20 @@ export async function apiRequest(
   url: string,
   data?: unknown | undefined,
 ): Promise<Response> {
-  const res = await fetch(url, {
-    method,
-    headers: data ? { "Content-Type": "application/json" } : {},
-    body: data ? JSON.stringify(data) : undefined,
-    credentials: "include",
-  });
+  try {
+    const res = await fetch(url, {
+      method,
+      headers: data ? { "Content-Type": "application/json" } : {},
+      body: data ? JSON.stringify(data) : undefined,
+      credentials: "include",
+    });
 
-  await throwIfResNotOk(res);
-  return res;
+    await throwIfResNotOk(res);
+    return res;
+  } catch (error) {
+    if (error instanceof ApiError) throw error;
+    throw new ApiError(0, "네트워크 요청 실패", error instanceof Error ? error : undefined);
+  }
 }
 
 type UnauthorizedBehavior = "returnNull" | "throw";
@@ -66,4 +78,33 @@ export function optimisticUpdateItems<T>(
     queryClient.setQueryData(key, updater(previous));
   }
   return previous;
+}
+
+// Error handling helpers
+export class ApiError extends Error {
+  constructor(
+    public status: number,
+    public message: string,
+    public originalError?: Error
+  ) {
+    super(message);
+    this.name = "ApiError";
+  }
+}
+
+export function getErrorMessage(error: unknown): string {
+  if (error instanceof ApiError) {
+    if (error.status === 400) return "요청이 올바르지 않습니다";
+    if (error.status === 401) return "인증이 필요합니다";
+    if (error.status === 403) return "권한이 없습니다";
+    if (error.status === 404) return "찾을 수 없습니다";
+    if (error.status === 409) return "충돌이 발생했습니다. 다시 시도해주세요";
+    if (error.status >= 500) return "서버 오류가 발생했습니다";
+    return error.message;
+  }
+  if (error instanceof Error) {
+    if (error.message.includes("fetch")) return "네트워크 연결을 확인해주세요";
+    return error.message;
+  }
+  return "알 수 없는 오류가 발생했습니다";
 }
