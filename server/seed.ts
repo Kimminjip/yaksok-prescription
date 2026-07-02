@@ -95,8 +95,8 @@ export async function seedDatabase() {
     const [외상트라넥삼산] = await db.insert(categories).values({ name: "Traum Transamic acid", parentId: 건국대학교병원.id, sortOrder: 0 }).returning();
     const [급성심근경색] = await db.insert(categories).values({ name: "MI medications", parentId: 건국대학교병원.id, sortOrder: 1 }).returning();
 
-    const [외상트라넥삼산처방] = await db.insert(prescriptions).values({ name: "외상 환자 트라넥삼산 처방", categoryId: 외상트라넥삼산.id, sortOrder: 0 }).returning();
-    const [급성심근경색처방] = await db.insert(prescriptions).values({ name: "급성 심근경색 처방", categoryId: 급성심근경색.id, sortOrder: 0 }).returning();
+    const [외상트라넥삼산처방] = await db.insert(prescriptions).values({ name: "Traum Transamic acid", categoryId: 외상트라넥삼산.id, sortOrder: 0 }).returning();
+    const [급성심근경색처방] = await db.insert(prescriptions).values({ name: "MI medications", categoryId: 급성심근경색.id, sortOrder: 0 }).returning();
 
     await db.insert(prescriptionItems).values([
       { prescriptionId: 외상트라넥삼산처방.id, type: "지시", productName: "16세이상, hemodynamically unstable pt, 3시간이내에 발생한 수혈이 필요한 major trauma에게 투약", ingredientName: null, frequency: null, route: null, sortOrder: 0 },
