@@ -101,7 +101,7 @@ export async function seedDatabase() {
     await db.insert(prescriptionItems).values([
       { prescriptionId: 외상트라넥삼산처방.id, type: "지시처방", productName: "16세이상, hemodynamically unstable pt, 3시간이내에 발생한 수혈이 필요한 major trauma에게 투약", ingredientName: null, frequency: null, route: null, sortOrder: 0 },
       { prescriptionId: 외상트라넥삼산처방.id, type: "약", productName: "Tranexamic acid 500mg/5ml", ingredientName: "tranexamic acid", dosage: "2", unit: "A", frequency: "1", route: "IV", note: "125mg/hr", sortOrder: 1, mixGroup: "My" },
-      { prescriptionId: 외상트라넥삼산처방.id, type: "약", productName: "NS 500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: ".ml/hr, heparin IV mix", sortOrder: 2, mixGroup: "M0" },
+      { prescriptionId: 외상트라넥삼산처방.id, type: "약", productName: "NS 500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: ".ml/hr, heparin IV mix", sortOrder: 2, mixGroup: "My" },
       { prescriptionId: 외상트라넥삼산처방.id, type: "약", productName: "Tranexamic acid 500mg/5ml", ingredientName: "tranexamic acid", dosage: "2", unit: "A", frequency: "1", route: "IV", note: null, sortOrder: 3, mixGroup: "Mz" },
       { prescriptionId: 외상트라넥삼산처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "10분동안 들어가게 주세요", sortOrder: 4, mixGroup: "Mz" },
 
