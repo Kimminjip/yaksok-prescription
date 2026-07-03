@@ -33,7 +33,17 @@ export async function insertKkuData() {
   const [연조직염] = await db.insert(categories).values({ name: "연조직염 혹은 Dirty wd.", parentId: 건국대학교병원.id, sortOrder: 26 }).returning();
   const [편도염] = await db.insert(categories).values({ name: "감기(심한 편도염)", parentId: 건국대학교병원.id, sortOrder: 27 }).returning();
   const [PID] = await db.insert(categories).values({ name: "PID", parentId: 건국대학교병원.id, sortOrder: 28 }).returning();
-  const [급성심근경색] = await db.insert(categories).values({ name: "MI medications", parentId: 건국대학교병원.id, sortOrder: 29 }).returning();
+  const [셀룰라이티스] = await db.insert(categories).values({ name: "cellulitis", parentId: 건국대학교병원.id, sortOrder: 29 }).returning();
+  const [페치딘] = await db.insert(categories).values({ name: "pethidine", parentId: 건국대학교병원.id, sortOrder: 30 }).returning();
+  const [모르핀] = await db.insert(categories).values({ name: "Morphine", parentId: 건국대학교병원.id, sortOrder: 31 }).returning();
+  const [펜타닐] = await db.insert(categories).values({ name: "fentanyl", parentId: 건국대학교병원.id, sortOrder: 32 }).returning();
+  const [디아제팜진통] = await db.insert(categories).values({ name: "Diazepam", parentId: 건국대학교병원.id, sortOrder: 33 }).returning();
+  const [미다졸람] = await db.insert(categories).values({ name: "Midazolam", parentId: 건국대학교병원.id, sortOrder: 34 }).returning();
+  const [레미바] = await db.insert(categories).values({ name: "Remiva", parentId: 건국대학교병원.id, sortOrder: 35 }).returning();
+  const [디아제팜진정] = await db.insert(categories).values({ name: "Diazepam(sedation)", parentId: 건국대학교병원.id, sortOrder: 36 }).returning();
+  const [아티반] = await db.insert(categories).values({ name: "Ativan", parentId: 건국대학교병원.id, sortOrder: 37 }).returning();
+  const [AGE정맥약] = await db.insert(categories).values({ name: "AGE IV medication", parentId: 건국대학교병원.id, sortOrder: 38 }).returning();
+  const [급성심근경색] = await db.insert(categories).values({ name: "MI medications", parentId: 건국대학교병원.id, sortOrder: 39 }).returning();
 
   const [철분제제처방] = await db.insert(prescriptions).values({ name: "철분제제", categoryId: 철분제제.id, sortOrder: 0 }).returning();
   const [트라넥삼산처방] = await db.insert(prescriptions).values({ name: "Trauma Tranexamic acid", categoryId: 트라넥삼산.id, sortOrder: 0 }).returning();
@@ -64,6 +74,16 @@ export async function insertKkuData() {
   const [연조직염처방] = await db.insert(prescriptions).values({ name: "연조직염 혹은 Dirty wd.", categoryId: 연조직염.id, sortOrder: 0 }).returning();
   const [편도염처방] = await db.insert(prescriptions).values({ name: "감기(심한 편도염)", categoryId: 편도염.id, sortOrder: 0 }).returning();
   const [PID처방] = await db.insert(prescriptions).values({ name: "PID", categoryId: PID.id, sortOrder: 0 }).returning();
+  const [셀룰라이티스처방] = await db.insert(prescriptions).values({ name: "cellulitis", categoryId: 셀룰라이티스.id, sortOrder: 0 }).returning();
+  const [페치딘처방] = await db.insert(prescriptions).values({ name: "pethidine", categoryId: 페치딘.id, sortOrder: 0 }).returning();
+  const [모르핀처방] = await db.insert(prescriptions).values({ name: "Morphine", categoryId: 모르핀.id, sortOrder: 0 }).returning();
+  const [펜타닐처방] = await db.insert(prescriptions).values({ name: "fentanyl", categoryId: 펜타닐.id, sortOrder: 0 }).returning();
+  const [디아제팜진통처방] = await db.insert(prescriptions).values({ name: "Diazepam", categoryId: 디아제팜진통.id, sortOrder: 0 }).returning();
+  const [미다졸람처방] = await db.insert(prescriptions).values({ name: "Midazolam", categoryId: 미다졸람.id, sortOrder: 0 }).returning();
+  const [레미바처방] = await db.insert(prescriptions).values({ name: "Remiva", categoryId: 레미바.id, sortOrder: 0 }).returning();
+  const [디아제팜진정처방] = await db.insert(prescriptions).values({ name: "Diazepam(sedation)", categoryId: 디아제팜진정.id, sortOrder: 0 }).returning();
+  const [아티반처방] = await db.insert(prescriptions).values({ name: "Ativan", categoryId: 아티반.id, sortOrder: 0 }).returning();
+  const [AGE정맥약처방] = await db.insert(prescriptions).values({ name: "AGE IV medication", categoryId: AGE정맥약.id, sortOrder: 0 }).returning();
   const [급성심근경색처방] = await db.insert(prescriptions).values({ name: "MI medications", categoryId: 급성심근경색.id, sortOrder: 0 }).returning();
 
   await db.insert(prescriptionItems).values([
@@ -274,6 +294,55 @@ export async function insertKkuData() {
     { prescriptionId: PID처방.id, type: "퇴원약", productName: "Sinil Monodoxy-M cap 100mg", ingredientName: "doxycycline", dosage: "1", unit: "C", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 7 },
     { prescriptionId: PID처방.id, type: "지시처방", productName: "PO anti 14일 복용필요, 산부인과 외래 F/U 잡아주세요", sortOrder: 8 },
     { prescriptionId: PID처방.id, type: "지시처방", productName: "Cefa는 IV만 투여, PO 필요없음", sortOrder: 9 },
+
+    // cellulitis
+    { prescriptionId: 셀룰라이티스처방.id, type: "약", productName: "Cefazolin 1g (중근당)", ingredientName: "Cefazolin", dosage: "1", unit: "V", frequency: "1", route: "IV", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: 셀룰라이티스처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+
+    // pethidine
+    { prescriptionId: 페치딘처방.id, type: "약", productName: "Pethidine 25mg/0.5ml", ingredientName: "pethidine", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: 페치딘처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+
+    // Morphine
+    { prescriptionId: 모르핀처방.id, type: "약", productName: "Morphine sulfate 5mg/5ml", ingredientName: "morphine", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: 모르핀처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+
+    // fentanyl
+    { prescriptionId: 펜타닐처방.id, type: "약", productName: "Fentanyl 50mcg/1ml", ingredientName: "fentanyl", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: 펜타닐처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+
+    // Diazepam (IV 진통제)
+    { prescriptionId: 디아제팜진통처방.id, type: "약", productName: "Diazepam inj 10mg/2mL (삼진)", ingredientName: "diazepam", dosage: "0.5", unit: "A", frequency: "1", route: "IV", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: 디아제팜진통처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+
+    // Midazolam
+    { prescriptionId: 미다졸람처방.id, type: "약", productName: "Midazolam 5mg/5ml (부광)", ingredientName: "midazolam", dosage: "10", unit: "A", frequency: "1", route: "IV", note: "5mg/hr->10ml/hr", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: 미다졸람처방.id, type: "약", productName: "NS 50mL/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "5mg/hr->10ml/hr", sortOrder: 1, mixGroup: "M1" },
+
+    // Remiva
+    { prescriptionId: 레미바처방.id, type: "지시처방", productName: "0.1mcg/kg/min", sortOrder: 0 },
+    { prescriptionId: 레미바처방.id, type: "약", productName: "Remiva 5mg", ingredientName: "remifentanil", dosage: "1", unit: "V", frequency: "1", route: "IV", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: 레미바처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
+
+    // Diazepam(sedation)
+    { prescriptionId: 디아제팜진정처방.id, type: "약", productName: "Diazepam inj 10mg/2mL (삼진)", ingredientName: "diazepam", dosage: "0.5", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: 디아제팜진정처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+
+    // Ativan
+    { prescriptionId: 아티반처방.id, type: "약", productName: "Ativan inj 2mg/0.5ml", ingredientName: "lorazepam", dosage: "0.5", unit: "A", frequency: "1", route: "IV", sortOrder: 0 },
+    { prescriptionId: 아티반처방.id, type: "약", productName: "Ativan inj 2mg/0.5ml", ingredientName: "lorazepam", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: 아티반처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
+
+    // AGE IV medication
+    { prescriptionId: AGE정맥약처방.id, type: "약", productName: "Prosea PFS 0.3mg/2mL", ingredientName: "ramosetron", dosage: "1", unit: "PFS", frequency: "1", route: "IV side push", note: "IV side, 항암환자 처방x", sortOrder: 0 },
+    { prescriptionId: AGE정맥약처방.id, type: "약", productName: "Macperan 10mg/2ml", ingredientName: "metoclopramide", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 1, mixGroup: "M3" },
+    { prescriptionId: AGE정맥약처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M3" },
+    { prescriptionId: AGE정맥약처방.id, type: "약", productName: "Aloxi 0.075mg/1.5ml", ingredientName: "palonosetron", dosage: "1", unit: "V", frequency: "1", route: "IV", sortOrder: 3, mixGroup: "M4" },
+    { prescriptionId: AGE정맥약처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M4" },
+    { prescriptionId: AGE정맥약처방.id, type: "약", productName: "DongA pantoline IV 40mg", ingredientName: "pantoprazole", dosage: "1", unit: "V", frequency: "1", route: "IV", sortOrder: 5, mixGroup: "M2" },
+    { prescriptionId: AGE정맥약처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M2" },
+    { prescriptionId: AGE정맥약처방.id, type: "약", productName: "Freepan 20mg/ml", ingredientName: "scopolamine", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: AGE정맥약처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 8, mixGroup: "M1" },
 
     // MI medications
     { prescriptionId: 급성심근경색처방.id, type: "약", productName: "NS 500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "heparin IV mix", sortOrder: 0, mixGroup: "M1" },
