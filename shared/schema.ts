@@ -35,6 +35,7 @@ export const prescriptionItems = pgTable("prescription_items", {
   unit: text("unit"),
   frequency: text("frequency"),
   route: text("route"),
+  duration: text("duration"),
   note: text("note"),
   mixGroup: text("mix_group"),
   sortOrder: integer("sort_order").notNull().default(0),

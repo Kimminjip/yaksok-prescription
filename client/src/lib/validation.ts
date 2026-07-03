@@ -25,6 +25,7 @@ export const prescriptionItemValidation = z.object({
   unit: z.enum(unitOptions).nullable(),
   frequency: z.string().max(30).nullable(),
   route: z.string().max(30).nullable(),
+  duration: z.string().max(30).nullable(),
   note: z.string().max(500, "비고는 500자 이하여야 합니다").nullable(),
   type: z.enum(prescriptionTypeOptions),
   mixGroup: z.string().max(10).nullable(),

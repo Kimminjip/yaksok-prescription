@@ -241,6 +241,7 @@ function EditableCell({
         productName: 100,
         ingredientName: 100,
         dosage: 50,
+        duration: 30,
         note: 500,
       };
       const maxLen = maxLengths[field];
@@ -764,6 +765,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
       unit: undefined,
       frequency: undefined,
       route: undefined,
+      duration: undefined,
       note: undefined,
       mixGroup: undefined,
       sortOrder: maxOrder,
@@ -797,6 +799,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
       unit: undefined,
       frequency: undefined,
       route: undefined,
+      duration: undefined,
       note: undefined,
       mixGroup: undefined,
       sortOrder: insertOrder,
@@ -902,6 +905,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
       unit: item.unit,
       frequency: item.frequency,
       route: item.route,
+      duration: item.duration,
       note: item.note,
       mixGroup: item.mixGroup,
       sortOrder: maxOrder + idx,
@@ -975,7 +979,8 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
     );
   }
 
-  const colCount = 10;
+  const hasDuration = items.some(i => i.type === "퇴원약");
+  const colCount = hasDuration ? 11 : 10;
 
   if (items.length === 0) {
     return (
@@ -1067,6 +1072,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
                   <TableHead className="w-[56px] font-semibold text-xs text-right">용량</TableHead>
                   <TableHead className="w-[50px] font-semibold text-xs text-center">단위</TableHead>
                   <TableHead className="w-[60px] font-semibold text-xs">횟수</TableHead>
+                  {hasDuration && <TableHead className="w-[56px] font-semibold text-xs">일수</TableHead>}
                   <TableHead className="w-[64px] font-semibold text-xs">투약경로</TableHead>
                   <TableHead className="font-semibold text-xs min-w-[180px]">비고</TableHead>
                 </TableRow>
@@ -1118,7 +1124,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
                                     <TableCell className="px-1 text-center">
                                       <span className="text-xs text-muted-foreground">{"\u00A0"}</span>
                                     </TableCell>
-                                    <TableCell colSpan={6} className="px-2" data-tab-row={index} data-tab-col={1}>
+                                    <TableCell colSpan={hasDuration ? 7 : 6} className="px-2" data-tab-row={index} data-tab-col={1}>
                                       <EditableCell value={item.productName} itemId={item.id} field="productName" prescriptionId={prescriptionId} className="font-medium" />
                                     </TableCell>
                                     <TableCell className="px-2" data-tab-row={index} data-tab-col={2}>
@@ -1149,10 +1155,19 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
                                     <TableCell className="px-2" data-tab-row={index} data-tab-col={6}>
                                       <SelectableCell value={item.frequency} itemId={item.id} field="frequency" prescriptionId={prescriptionId} options={frequencyOptions} />
                                     </TableCell>
-                                    <TableCell className="px-2" data-tab-row={index} data-tab-col={7}>
+                                    {hasDuration && (
+                                      <TableCell className="px-2" data-tab-row={index} data-tab-col={7}>
+                                        {item.type === "퇴원약" ? (
+                                          <EditableCell value={item.duration} itemId={item.id} field="duration" prescriptionId={prescriptionId} />
+                                        ) : (
+                                          <span className="text-xs text-muted-foreground">{" "}</span>
+                                        )}
+                                      </TableCell>
+                                    )}
+                                    <TableCell className="px-2" data-tab-row={index} data-tab-col={hasDuration ? 8 : 7}>
                                       <SelectableCell value={item.route} itemId={item.id} field="route" prescriptionId={prescriptionId} options={routeOptions} />
                                     </TableCell>
-                                    <TableCell className="px-2" data-tab-row={index} data-tab-col={8}>
+                                    <TableCell className="px-2" data-tab-row={index} data-tab-col={hasDuration ? 9 : 8}>
                                       <EditableCell value={item.note} itemId={item.id} field="note" prescriptionId={prescriptionId} className="text-muted-foreground" />
                                     </TableCell>
                                   </>
