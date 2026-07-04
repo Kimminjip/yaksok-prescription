@@ -65,7 +65,19 @@ export async function insertKkuData() {
   const [통풍] = await db.insert(categories).values({ name: "Gout", parentId: 건국대학교병원.id, sortOrder: 58 }).returning();
   const [두통] = await db.insert(categories).values({ name: "Headache", parentId: 건국대학교병원.id, sortOrder: 59 }).returning();
   const [중증두통] = await db.insert(categories).values({ name: "Headache (Severe)", parentId: 건국대학교병원.id, sortOrder: 60 }).returning();
-  const [급성심근경색] = await db.insert(categories).values({ name: "MI medications", parentId: 건국대학교병원.id, sortOrder: 61 }).returning();
+  const [NR과BPPV] = await db.insert(categories).values({ name: "NR-BPPV or VN", parentId: 건국대학교병원.id, sortOrder: 61 }).returning();
+  const [요로감염퇴원약] = await db.insert(categories).values({ name: "UTI", parentId: 건국대학교병원.id, sortOrder: 62 }).returning();
+  const [요관결석] = await db.insert(categories).values({ name: "Ureter stone", parentId: 건국대학교병원.id, sortOrder: 63 }).returning();
+  const [감기] = await db.insert(categories).values({ name: "감기", parentId: 건국대학교병원.id, sortOrder: 64 }).returning();
+  const [사후피임약] = await db.insert(categories).values({ name: "사후피임약", parentId: 건국대학교병원.id, sortOrder: 65 }).returning();
+  const [인플루엔자성인] = await db.insert(categories).values({ name: "인플루엔자 성인", parentId: 건국대학교병원.id, sortOrder: 66 }).returning();
+  const [인플루엔자소아] = await db.insert(categories).values({ name: "인플루엔자 소아", parentId: 건국대학교병원.id, sortOrder: 67 }).returning();
+  const [폐렴퇴원약] = await db.insert(categories).values({ name: "폐렴", parentId: 건국대학교병원.id, sortOrder: 68 }).returning();
+  const [안면마비] = await db.insert(categories).values({ name: "Facial palsy", parentId: 건국대학교병원.id, sortOrder: 69 }).returning();
+  const [지타코주] = await db.insert(categories).values({ name: "지타코주", parentId: 건국대학교병원.id, sortOrder: 70 }).returning();
+  const [고칼륨혈증치료] = await db.insert(categories).values({ name: "Hyperkalemia 치료", parentId: 건국대학교병원.id, sortOrder: 71 }).returning();
+  const [저칼륨혈증치료] = await db.insert(categories).values({ name: "Hypokalemia 치료", parentId: 건국대학교병원.id, sortOrder: 72 }).returning();
+  const [급성심근경색] = await db.insert(categories).values({ name: "MI medications", parentId: 건국대학교병원.id, sortOrder: 73 }).returning();
 
   const [철분제제처방] = await db.insert(prescriptions).values({ name: "철분제제", categoryId: 철분제제.id, sortOrder: 0 }).returning();
   const [트라넥삼산처방] = await db.insert(prescriptions).values({ name: "Trauma Tranexamic acid", categoryId: 트라넥삼산.id, sortOrder: 0 }).returning();
@@ -128,6 +140,18 @@ export async function insertKkuData() {
   const [통풍처방] = await db.insert(prescriptions).values({ name: "Gout", categoryId: 통풍.id, sortOrder: 0 }).returning();
   const [두통처방] = await db.insert(prescriptions).values({ name: "Headache", categoryId: 두통.id, sortOrder: 0 }).returning();
   const [중증두통처방] = await db.insert(prescriptions).values({ name: "Headache (Severe)", categoryId: 중증두통.id, sortOrder: 0 }).returning();
+  const [NR과BPPV처방] = await db.insert(prescriptions).values({ name: "NR-BPPV or VN", categoryId: NR과BPPV.id, sortOrder: 0 }).returning();
+  const [요로감염퇴원약처방] = await db.insert(prescriptions).values({ name: "UTI", categoryId: 요로감염퇴원약.id, sortOrder: 0 }).returning();
+  const [요관결석처방] = await db.insert(prescriptions).values({ name: "Ureter stone", categoryId: 요관결석.id, sortOrder: 0 }).returning();
+  const [감기처방] = await db.insert(prescriptions).values({ name: "감기", categoryId: 감기.id, sortOrder: 0 }).returning();
+  const [사후피임약처방] = await db.insert(prescriptions).values({ name: "사후피임약", categoryId: 사후피임약.id, sortOrder: 0 }).returning();
+  const [인플루엔자성인처방] = await db.insert(prescriptions).values({ name: "인플루엔자 성인", categoryId: 인플루엔자성인.id, sortOrder: 0 }).returning();
+  const [인플루엔자소아처방] = await db.insert(prescriptions).values({ name: "인플루엔자 소아", categoryId: 인플루엔자소아.id, sortOrder: 0 }).returning();
+  const [폐렴퇴원약처방] = await db.insert(prescriptions).values({ name: "폐렴", categoryId: 폐렴퇴원약.id, sortOrder: 0 }).returning();
+  const [안면마비처방] = await db.insert(prescriptions).values({ name: "Facial palsy", categoryId: 안면마비.id, sortOrder: 0 }).returning();
+  const [지타코주처방] = await db.insert(prescriptions).values({ name: "지타코주", categoryId: 지타코주.id, sortOrder: 0 }).returning();
+  const [고칼륨혈증치료처방] = await db.insert(prescriptions).values({ name: "Hyperkalemia 치료", categoryId: 고칼륨혈증치료.id, sortOrder: 0 }).returning();
+  const [저칼륨혈증치료처방] = await db.insert(prescriptions).values({ name: "Hypokalemia 치료", categoryId: 저칼륨혈증치료.id, sortOrder: 0 }).returning();
   const [급성심근경색처방] = await db.insert(prescriptions).values({ name: "MI medications", categoryId: 급성심근경색.id, sortOrder: 0 }).returning();
 
   await db.insert(prescriptionItems).values([
@@ -515,6 +539,88 @@ export async function insertKkuData() {
     { prescriptionId: 중증두통처방.id, type: "퇴원약", productName: "Soleton 80mg", ingredientName: "zaltoprofen", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 2 },
     { prescriptionId: 중증두통처방.id, type: "퇴원약", productName: "Macperan 5mg", ingredientName: "metoclopramide", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 3 },
     { prescriptionId: 중증두통처방.id, type: "퇴원약", productName: "Imigran 50mg", ingredientName: "sumatriptan", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "통증시 복용", note: "심혈관 질환시 금기", sortOrder: 4 },
+
+    // NR-BPPV or VN
+    { prescriptionId: NR과BPPV처방.id, type: "약", productName: "Macperan 10mg/2ml", ingredientName: "metoclopramide", dosage: "1", unit: "A", frequency: "2", route: "IV", sortOrder: 0 },
+    { prescriptionId: NR과BPPV처방.id, type: "약", productName: "Beecom hexa 2ml", ingredientName: "Vitamin B complex", dosage: "1", unit: "A", frequency: "3", route: "IV", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: NR과BPPV처방.id, type: "약", productName: "Macperan 10mg/2ml", ingredientName: "metoclopramide", dosage: "1", unit: "A", frequency: "3", route: "IV", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: NR과BPPV처방.id, type: "퇴원약", productName: "Tanamin 80mg", ingredientName: "ginkgo biloba", dosage: "1", unit: "T", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 3 },
+    { prescriptionId: NR과BPPV처방.id, type: "퇴원약", productName: "Dulcolax-S", ingredientName: "bisacodyl 5mg정", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD HS", sortOrder: 4 },
+    { prescriptionId: NR과BPPV처방.id, type: "퇴원약", productName: "Bonaling-A 50mg", ingredientName: "dimenhydrinate", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 5 },
+    { prescriptionId: NR과BPPV처방.id, type: "퇴원약", productName: "Diazepam tab 2mg", ingredientName: "diazepam", dosage: "0.5", unit: "T", frequency: "BID", duration: "1일", route: "BID PC", sortOrder: 6 },
+    { prescriptionId: NR과BPPV처방.id, type: "퇴원약", productName: "Macperan 5mg", ingredientName: "metoclopramide", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 7 },
+    { prescriptionId: NR과BPPV처방.id, type: "퇴원약", productName: "K-cab 50mg", ingredientName: "tegoprazan", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD PC", sortOrder: 8 },
+
+    // UTI
+    { prescriptionId: 요로감염퇴원약처방.id, type: "퇴원약", productName: "Vesicare tab 5mg", ingredientName: "solifenacin succinate", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD PC", note: "urgency 시에만 처방", sortOrder: 0 },
+    { prescriptionId: 요로감염퇴원약처방.id, type: "퇴원약", productName: "K-cab 50mg", ingredientName: "tegoprazan", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD PC", sortOrder: 1 },
+    { prescriptionId: 요로감염퇴원약처방.id, type: "퇴원약", productName: "Cycin 250mg", ingredientName: "ciprofloxacin", dosage: "1", unit: "T", frequency: "BID", duration: "3일", route: "BID PC", note: "cystitis 1T, APN 2T", sortOrder: 2 },
+    { prescriptionId: 요로감염퇴원약처방.id, type: "퇴원약", productName: "Banan 100mg", ingredientName: "cefpodoxime", dosage: "1", unit: "T", frequency: "BID", duration: "3일", route: "BID PC", note: "cystitis 1T, APN 2T", sortOrder: 3 },
+    { prescriptionId: 요로감염퇴원약처방.id, type: "퇴원약", productName: "Monurol pow 1pk", ingredientName: "fosfomycin", dosage: "1", unit: "PK", frequency: "QD", duration: "1일", route: "QD HS", note: "in single dose", sortOrder: 4 },
+    { prescriptionId: 요로감염퇴원약처방.id, type: "퇴원약", productName: "Brufen 200mg", ingredientName: "ibuprofen", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 5 },
+
+    // Ureter stone
+    { prescriptionId: 요관결석처방.id, type: "퇴원약", productName: "K-cab 50mg", ingredientName: "tegoprazan", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD PC", sortOrder: 0 },
+    { prescriptionId: 요관결석처방.id, type: "퇴원약", productName: "Harnal D 0.2mg", ingredientName: "tamsulosin", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD HS", note: "distal ureter 5mm 이하 stone, 따로 포장해주세요", sortOrder: 1 },
+    { prescriptionId: 요관결석처방.id, type: "퇴원약", productName: "Mypol", ingredientName: "AAP, ibuprofen, codein", dosage: "1", unit: "C", frequency: "PRN", duration: "3일", route: "PRN", sortOrder: 2 },
+    { prescriptionId: 요관결석처방.id, type: "퇴원약", productName: "Soleton 80mg", ingredientName: "zaltoprofen", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 3 },
+
+    // 감기
+    { prescriptionId: 감기처방.id, type: "퇴원약", productName: "K-cab 50mg", ingredientName: "tegoprazan", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD PC", sortOrder: 0 },
+    { prescriptionId: 감기처방.id, type: "퇴원약", productName: "Tantum gargle 100ml/BT", ingredientName: "benzydamine 1.5mg/ml", dosage: "1", unit: "BT", frequency: "QD", duration: "1일", route: "Gargle", note: "가글", sortOrder: 1 },
+    { prescriptionId: 감기처방.id, type: "퇴원약", productName: "Augmentin 625mg", ingredientName: "amoxicillin 500, clavulanate 125", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", note: "페니실린 allergy 확인후 처방", sortOrder: 2 },
+    { prescriptionId: 감기처방.id, type: "퇴원약", productName: "Codawenon forte syr 20ml/pk", dosage: "1", unit: "PK", frequency: "TID", duration: "3일", route: "TID PC", note: "기침 심할시 추가 처방", sortOrder: 3 },
+    { prescriptionId: 감기처방.id, type: "퇴원약", productName: "Mucosol 8mg", ingredientName: "bromhexine", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", note: "기침 가래약", sortOrder: 4 },
+    { prescriptionId: 감기처방.id, type: "퇴원약", productName: "Tacenol 8hours ER 650mg", ingredientName: "acetaminophen", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID Q8", sortOrder: 5 },
+    { prescriptionId: 감기처방.id, type: "퇴원약", productName: "Ebapherin SC", ingredientName: "ebastine 10mg, pseudoephedrine 120mg", dosage: "1", unit: "C", frequency: "QD", duration: "3일", route: "QD", sortOrder: 6 },
+    { prescriptionId: 감기처방.id, type: "퇴원약", productName: "Brufen 200mg", ingredientName: "ibuprofen", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 7 },
+
+    // 사후피임약
+    { prescriptionId: 사후피임약처방.id, type: "약", productName: "Norlevo 1 tab 1.5mg", ingredientName: "levonorgestrel", dosage: "1", unit: "T", frequency: "1", route: "UT DICT (내복 1회)", sortOrder: 0 },
+
+    // 인플루엔자 성인
+    { prescriptionId: 인플루엔자성인처방.id, type: "퇴원약", productName: "K-cab 50mg", ingredientName: "tegoprazan", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD PC", sortOrder: 0 },
+    { prescriptionId: 인플루엔자성인처방.id, type: "퇴원약", productName: "Tamiflu 75mg", ingredientName: "oseltamivir", dosage: "1", unit: "C", frequency: "BID", duration: "5일", route: "BID PC", note: "10세 이상의 소아환자에 있어서", sortOrder: 1 },
+    { prescriptionId: 인플루엔자성인처방.id, type: "퇴원약", productName: "Lebrocol tab 60mg", ingredientName: "Levodropropizine", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 2 },
+    { prescriptionId: 인플루엔자성인처방.id, type: "퇴원약", productName: "Tacenol 8hours ER 650mg", ingredientName: "acetaminophen", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID Q8", note: "따로 포장, 발열 심하면 추가복용", sortOrder: 3 },
+    { prescriptionId: 인플루엔자성인처방.id, type: "퇴원약", productName: "Brufen 200mg", ingredientName: "ibuprofen", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 4 },
+
+    // 인플루엔자 소아
+    { prescriptionId: 인플루엔자소아처방.id, type: "퇴원약", productName: "Tamiflu 30mg", ingredientName: "oseltamivir", dosage: "1", unit: "C", frequency: "BID", duration: "5일", route: "BID PC", sortOrder: 0 },
+    { prescriptionId: 인플루엔자소아처방.id, type: "지시처방", productName: "13세 이상: 75mg을 1일 2회, 5일간 복용", sortOrder: 1 },
+
+    // 폐렴
+    { prescriptionId: 폐렴퇴원약처방.id, type: "퇴원약", productName: "Zithromax 250mg", ingredientName: "azithromycin", dosage: "2", unit: "T", frequency: "QD", duration: "3일", route: "QD PC", note: "항생제", sortOrder: 0 },
+    { prescriptionId: 폐렴퇴원약처방.id, type: "퇴원약", productName: "K-cab 50mg", ingredientName: "tegoprazan", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD PC", sortOrder: 1 },
+    { prescriptionId: 폐렴퇴원약처방.id, type: "퇴원약", productName: "Muten 200mg", ingredientName: "acetylcysteine", dosage: "1", unit: "C", frequency: "TID", duration: "3일", route: "TID PC", note: "기침 가래약", sortOrder: 2 },
+    { prescriptionId: 폐렴퇴원약처방.id, type: "퇴원약", productName: "Banan 100mg", ingredientName: "cefpodoxime", dosage: "1", unit: "T", frequency: "BID", duration: "3일", route: "BID PC", note: "항생제", sortOrder: 3 },
+    { prescriptionId: 폐렴퇴원약처방.id, type: "퇴원약", productName: "Tacenol 8hours ER 650mg", ingredientName: "acetaminophen", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID Q8", sortOrder: 4 },
+
+    // Facial palsy
+    { prescriptionId: 안면마비처방.id, type: "퇴원약", productName: "Methylon 4mg", ingredientName: "methylprednisolone", dosage: "10", unit: "T", frequency: "QD", duration: "1일", route: "QD PC", note: "5일째 먹는 약", sortOrder: 0 },
+    { prescriptionId: 안면마비처방.id, type: "퇴원약", productName: "Methylon 4mg", ingredientName: "methylprednisolone", dosage: "12", unit: "T", frequency: "QD", duration: "4일", route: "QD PC", note: "첫 4일 동안 먹을 약", sortOrder: 1 },
+    { prescriptionId: 안면마비처방.id, type: "퇴원약", productName: "Almagel susp 15ml/pk", ingredientName: "aluminum hydroxide 등", dosage: "1", unit: "PK", frequency: "TID", duration: "5일", route: "TID PC2", sortOrder: 2 },
+
+    // 지타코주
+    { prescriptionId: 지타코주처방.id, type: "약", productName: "Gitako 17.5mg/5mL", ingredientName: "ginkgo leaf dried ex", dosage: "2", unit: "A", frequency: "1", route: "IV", note: "급성이명,난청,어지럼증 15분간", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: 지타코주처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "급성이명,난청,어지럼증 15분간", sortOrder: 1, mixGroup: "M1" },
+
+    // Hyperkalemia 치료
+    { prescriptionId: 고칼륨혈증치료처방.id, type: "지시처방", productName: "ESRD or CKD : RI 5 unit 으로 바꾸기", sortOrder: 0 },
+    { prescriptionId: 고칼륨혈증치료처방.id, type: "약", productName: "Calcium gluconate 2g/20ml (대한)", ingredientName: "Calcium gluconate", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: 고칼륨혈증치료처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: 고칼륨혈증치료처방.id, type: "약", productName: "Humulin R vial 1000unit/10ml", ingredientName: "insulin regular", dosage: "10", unit: "Unit", frequency: "1", route: "IV", sortOrder: 3, mixGroup: "M2" },
+    { prescriptionId: 고칼륨혈증치료처방.id, type: "약", productName: "50% DW 100ml/Plastic", ingredientName: "Dextrose", dosage: "0.5", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M2" },
+    { prescriptionId: 고칼륨혈증치료처방.id, type: "지시처방", productName: "Calcium Gluconate 투여 먼저해주세요", sortOrder: 5 },
+    { prescriptionId: 고칼륨혈증치료처방.id, type: "약", productName: "Kalimate pow 5g", ingredientName: "Ca polystyrene Sulfonate", dosage: "10", unit: "PK", frequency: "1", route: "Rectal", note: "enema", sortOrder: 6 },
+    { prescriptionId: 고칼륨혈증치료처방.id, type: "약", productName: "5% DW 200ml/Bag (JW중외)", ingredientName: "Dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "Rectal", note: "enema", sortOrder: 7 },
+    { prescriptionId: 고칼륨혈증치료처방.id, type: "지시처방", productName: "Drug Retention Enema", sortOrder: 8 },
+
+    // Hypokalemia 치료
+    { prescriptionId: 저칼륨혈증치료처방.id, type: "약", productName: "K-Contin 600mg", ingredientName: "KCl", dosage: "3", unit: "T", frequency: "1", route: "UT DICT (내복 1회)", note: "오렌지 주스에 섞어주세요", sortOrder: 0 },
+    { prescriptionId: 저칼륨혈증치료처방.id, type: "약", productName: "Na K 200 100ml/PP", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "25ml/hr", sortOrder: 1 },
+    { prescriptionId: 저칼륨혈증치료처방.id, type: "지시처방", productName: "PO 먹을수 있는 환자는 KCL powder/K-contin", sortOrder: 2 },
+    { prescriptionId: 저칼륨혈증치료처방.id, type: "약", productName: "Na K 40 1000mL/Bag", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "100ml/hr", sortOrder: 3 },
 
     // MI medications
     { prescriptionId: 급성심근경색처방.id, type: "약", productName: "NS 500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "heparin IV mix", sortOrder: 0, mixGroup: "M1" },
