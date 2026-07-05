@@ -117,6 +117,17 @@ export async function insertKkuData() {
   const [소아Asthma] = await db.insert(categories).values({ name: "Asthma", parentId: 건국대학교병원.id, sortOrder: 110 }).returning();
   const [소아Urticaria] = await db.insert(categories).values({ name: "Urticaria", parentId: 건국대학교병원.id, sortOrder: 111 }).returning();
   const [소아Constipation] = await db.insert(categories).values({ name: "Constipation", parentId: 건국대학교병원.id, sortOrder: 112 }).returning();
+  const [소아Seizure경련] = await db.insert(categories).values({ name: "Seizure", parentId: 건국대학교병원.id, sortOrder: 113 }).returning();
+  const [심장OP환아랩] = await db.insert(categories).values({ name: "심장OP 환아 추가 Lab", parentId: 건국대학교병원.id, sortOrder: 114 }).returning();
+  const [소아네뷸라이저] = await db.insert(categories).values({ name: "네뷸라이저", parentId: 건국대학교병원.id, sortOrder: 115 }).returning();
+  const [스파이널탭검사] = await db.insert(categories).values({ name: "spinal tap 검사", parentId: 건국대학교병원.id, sortOrder: 116 }).returning();
+  const [소아진정케타민] = await db.insert(categories).values({ name: "ketamine", parentId: 건국대학교병원.id, sortOrder: 117 }).returning();
+  const [소아진정미다졸람] = await db.insert(categories).values({ name: "midazolam", parentId: 건국대학교병원.id, sortOrder: 118 }).returning();
+  const [소아진정치오펜탈] = await db.insert(categories).values({ name: "thiopental", parentId: 건국대학교병원.id, sortOrder: 119 }).returning();
+  const [소아진정로라제팜] = await db.insert(categories).values({ name: "lorazepam", parentId: 건국대학교병원.id, sortOrder: 120 }).returning();
+  const [영양제OMAP] = await db.insert(categories).values({ name: "OMAP", parentId: 건국대학교병원.id, sortOrder: 121 }).returning();
+  const [GI출혈] = await db.insert(categories).values({ name: "GI bleeding", parentId: 건국대학교병원.id, sortOrder: 122 }).returning();
+  const [바이본지속주입] = await db.insert(categories).values({ name: "bivon continuous", parentId: 건국대학교병원.id, sortOrder: 123 }).returning();
 
   const [철분제제처방] = await db.insert(prescriptions).values({ name: "철분제제", categoryId: 철분제제.id, sortOrder: 0 }).returning();
   const [트라넥삼산처방] = await db.insert(prescriptions).values({ name: "Trauma Tranexamic acid", categoryId: 트라넥삼산.id, sortOrder: 0 }).returning();
@@ -231,6 +242,17 @@ export async function insertKkuData() {
   const [소아Asthma처방] = await db.insert(prescriptions).values({ name: "Asthma", categoryId: 소아Asthma.id, sortOrder: 0 }).returning();
   const [소아Urticaria처방] = await db.insert(prescriptions).values({ name: "Urticaria", categoryId: 소아Urticaria.id, sortOrder: 0 }).returning();
   const [소아Constipation처방] = await db.insert(prescriptions).values({ name: "Constipation", categoryId: 소아Constipation.id, sortOrder: 0 }).returning();
+  const [소아Seizure경련처방] = await db.insert(prescriptions).values({ name: "Seizure", categoryId: 소아Seizure경련.id, sortOrder: 0 }).returning();
+  const [심장OP환아랩처방] = await db.insert(prescriptions).values({ name: "심장OP 환아 추가 Lab", categoryId: 심장OP환아랩.id, sortOrder: 0 }).returning();
+  const [소아네뷸라이저처방] = await db.insert(prescriptions).values({ name: "네뷸라이저", categoryId: 소아네뷸라이저.id, sortOrder: 0 }).returning();
+  const [스파이널탭검사처방] = await db.insert(prescriptions).values({ name: "spinal tap 검사", categoryId: 스파이널탭검사.id, sortOrder: 0 }).returning();
+  const [소아진정케타민처방] = await db.insert(prescriptions).values({ name: "ketamine", categoryId: 소아진정케타민.id, sortOrder: 0 }).returning();
+  const [소아진정미다졸람처방] = await db.insert(prescriptions).values({ name: "midazolam", categoryId: 소아진정미다졸람.id, sortOrder: 0 }).returning();
+  const [소아진정치오펜탈처방] = await db.insert(prescriptions).values({ name: "thiopental", categoryId: 소아진정치오펜탈.id, sortOrder: 0 }).returning();
+  const [소아진정로라제팜처방] = await db.insert(prescriptions).values({ name: "lorazepam", categoryId: 소아진정로라제팜.id, sortOrder: 0 }).returning();
+  const [영양제OMAP처방] = await db.insert(prescriptions).values({ name: "OMAP", categoryId: 영양제OMAP.id, sortOrder: 0 }).returning();
+  const [GI출혈처방] = await db.insert(prescriptions).values({ name: "GI bleeding", categoryId: GI출혈.id, sortOrder: 0 }).returning();
+  const [바이본지속주입처방] = await db.insert(prescriptions).values({ name: "bivon continuous", categoryId: 바이본지속주입.id, sortOrder: 0 }).returning();
 
   await db.insert(prescriptionItems).values([
     // 철분제제
@@ -991,6 +1013,70 @@ export async function insertKkuData() {
     { prescriptionId: 소아Constipation처방.id, type: "약", productName: "Biofor 250 pow", ingredientName: "Saccharomyces cerebiciae Hanssen CBS5926균", dosage: "1", unit: "PK", frequency: "TID", route: "TID Q8", note: "2일", sortOrder: 4 },
     { prescriptionId: 소아Constipation처방.id, type: "영상검사", productName: "Abdomen 2P [Erect, Supine]", sortOrder: 5 },
     { prescriptionId: 소아Constipation처방.id, type: "지시처방", productName: "Glycerin Enema", sortOrder: 6 },
+
+    // Seizure (소아과)
+    { prescriptionId: 소아Seizure경련처방.id, type: "약", productName: "Ativan inj 2mg/0.5ml", ingredientName: "lorazepam", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "0.1mg/kg : do not exceed 4mg", sortOrder: 0 },
+
+    // 심장OP 환아 추가 Lab
+    { prescriptionId: 심장OP환아랩처방.id, type: "혈액검사", productName: "ABGA 4(응급실전용)", note: "Heparinized WB, Artery / VBGA", sortOrder: 0 },
+    { prescriptionId: 심장OP환아랩처방.id, type: "혈액검사", productName: "BNP", note: "WB, EDTA", sortOrder: 1 },
+    { prescriptionId: 심장OP환아랩처방.id, type: "혈액검사", productName: "Cardiac Marker", note: "Plasma, PST", sortOrder: 2 },
+
+    // 네뷸라이저 (소아과)
+    { prescriptionId: 소아네뷸라이저처방.id, type: "약", productName: "Ventolin nebul 2.5mg/2.5ml", ingredientName: "salbutamol", dosage: "1", unit: "A", frequency: "1", route: "Aerosol", note: "0.12mg/kg", sortOrder: 0 },
+    { prescriptionId: 소아네뷸라이저처방.id, type: "약", productName: "Pulmicort Respule 500mcg/2ml", ingredientName: "Budesonide", dosage: "1", unit: "A", frequency: "1", route: "Aerosol", note: "1세 미만 0.5A, 1세 이상 1A", sortOrder: 1 },
+
+    // spinal tap 검사
+    { prescriptionId: 스파이널탭검사처방.id, type: "지시처방", productName: "뇌척수액 검사 동의서 받아주세요.", sortOrder: 0 },
+    { prescriptionId: 스파이널탭검사처방.id, type: "지시처방", productName: "spinal tap 후 BST 해주세요.", sortOrder: 1 },
+    { prescriptionId: 스파이널탭검사처방.id, type: "혈액검사", productName: "Routine body fluid", note: "CSF", sortOrder: 2 },
+    { prescriptionId: 스파이널탭검사처방.id, type: "혈액검사", productName: "Glucose", note: "CSF", sortOrder: 3 },
+    { prescriptionId: 스파이널탭검사처방.id, type: "혈액검사", productName: "Glucose", note: "Plasma, PST", sortOrder: 4 },
+    { prescriptionId: 스파이널탭검사처방.id, type: "지시처방", productName: "Lumbar Puncture", sortOrder: 5 },
+    { prescriptionId: 스파이널탭검사처방.id, type: "혈액검사", productName: "Gram stain & culture & sensitivity", note: "CSF", sortOrder: 6 },
+    { prescriptionId: 스파이널탭검사처방.id, type: "혈액검사", productName: "CSF protein", note: "CSF", sortOrder: 7 },
+    { prescriptionId: 스파이널탭검사처방.id, type: "혈액검사", productName: "Meningitis/Encephalitis(ME) panel(14종)", note: "CSF", sortOrder: 8 },
+
+    // ketamine (소아 진정 약물)
+    { prescriptionId: 소아진정케타민처방.id, type: "약", productName: "Ketamine HCl 250mg/5ml", dosage: "1", unit: "mg", frequency: "1", route: "IM", note: "5mg*kg -> 10분뒤 절반용량 추가 가능", sortOrder: 0 },
+    { prescriptionId: 소아진정케타민처방.id, type: "약", productName: "Ketamine HCl 250mg/5ml", dosage: "15", unit: "mg", frequency: "1", route: "IV", note: "2mg*kg -> 10분뒤 절반용량 추가 가능", sortOrder: 1 },
+    { prescriptionId: 소아진정케타민처방.id, type: "지시처방", productName: "Ketamine infusion therapy", sortOrder: 2 },
+
+    // midazolam (소아 진정 약물)
+    { prescriptionId: 소아진정미다졸람처방.id, type: "지시처방", productName: "소아 진정관리료", sortOrder: 0 },
+    { prescriptionId: 소아진정미다졸람처방.id, type: "약", productName: "Midazolam 5mg/5ml (부광)", dosage: "0.2", unit: "A", frequency: "1", route: "IV", note: "IV_push 0.1mg/kg 5-15분 간격", sortOrder: 1 },
+
+    // thiopental (소아 진정 약물)
+    { prescriptionId: 소아진정치오펜탈처방.id, type: "지시처방", productName: "소아 진정관리료", sortOrder: 0 },
+    { prescriptionId: 소아진정치오펜탈처방.id, type: "지시처방", productName: "pentotal 1 vial을 NS 10cc에 MIX -> Rectaltube(8Fr) 6cm 길이로 잘라 항문에 투여", sortOrder: 1 },
+    { prescriptionId: 소아진정치오펜탈처방.id, type: "약", productName: "Pentotal Sod.(thiopental 500mg의)", dosage: "1", unit: "A", frequency: "1", route: "Rectal", note: "1세이상: kg*0.05 vial/1", sortOrder: 2 },
+
+    // lorazepam (소아 진정 약물)
+    { prescriptionId: 소아진정로라제팜처방.id, type: "지시처방", productName: "소아 진정관리료", sortOrder: 0 },
+    { prescriptionId: 소아진정로라제팜처방.id, type: "약", productName: "Ativan inj 2mg/0.5ml", ingredientName: "lorazepam", dosage: "0.25", unit: "A", frequency: "1", route: "IV", note: "0.05mg/kg", sortOrder: 1 },
+
+    // OMAP (영양제)
+    { prescriptionId: 영양제OMAP처방.id, type: "약", productName: "Omap plus one peri 500mL", ingredientName: "amino acid, glucose, oil, electrolyte", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 0 },
+
+    // GI bleeding
+    { prescriptionId: GI출혈처방.id, type: "약", productName: "Ceftriaxone 1g (HK이노엔)", ingredientName: "Ceftriaxone", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "LC", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: GI출혈처방.id, type: "약", productName: "NS (110mL/Bag, KIT일체형)", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "triaxone mix 용", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: GI출혈처방.id, type: "약", productName: "Glypressin inj 1mg", ingredientName: "terlipressin", dosage: "2", unit: "A", frequency: "1", route: "IV", sortOrder: 2 },
+    { prescriptionId: GI출혈처방.id, type: "약", productName: "DongA pantoprazole IV 40mg", ingredientName: "pantoprazole", dosage: "2", unit: "A", frequency: "1", route: "IV", sortOrder: 3 },
+    { prescriptionId: GI출혈처방.id, type: "약", productName: "NS (100ml/PP)", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M2" },
+    { prescriptionId: GI출혈처방.id, type: "약", productName: "NS (500ml/Bag)", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "20ml/hr", sortOrder: 5, mixGroup: "M3" },
+    { prescriptionId: GI출혈처방.id, type: "약", productName: "DongA pantoprazole IV 40mg", ingredientName: "pantoprazole", dosage: "5", unit: "A", frequency: "1", route: "IV", sortOrder: 6, mixGroup: "M3" },
+    { prescriptionId: GI출혈처방.id, type: "약", productName: "Instillagel 11mL", ingredientName: "lidocaine 외", dosage: "1", unit: "PFS", frequency: "1", route: "UT DICT (외용)", sortOrder: 7 },
+    { prescriptionId: GI출혈처방.id, type: "혈액검사", productName: "ABGA 5(응급실전용)", note: "Heparinized WB, Artery", sortOrder: 8 },
+    { prescriptionId: GI출혈처방.id, type: "지시처방", productName: "위세척(비위관삽입,위세척)(1일당)", sortOrder: 9 },
+    { prescriptionId: GI출혈처방.id, type: "지시처방", productName: "Rectal Digital Examination", sortOrder: 10 },
+    { prescriptionId: GI출혈처방.id, type: "혈액검사", productName: "혈전탄성도사법(Thromboelastography) [Plasma, Sodium Citrate]", note: "GI bleeding 의심시", sortOrder: 11 },
+
+    // bivon continuous
+    { prescriptionId: 바이본지속주입처방.id, type: "지시처방", productName: "bivon 투여 원칙: (Normal HCO3(24) - 환자 HCO3) × 0.5 × BW(kg)", sortOrder: 0 },
+    { prescriptionId: 바이본지속주입처방.id, type: "지시처방", productName: "초기 투여량은 필요량의 1/2 mEq를 먼저 투여하며, 그 이후 나머지를 6-8시간에 걸쳐 투여함.", sortOrder: 1 },
+    { prescriptionId: 바이본지속주입처방.id, type: "약", productName: "5% DW 500mL/Bag (JW중외)", ingredientName: "Dextrose", dosage: "0.8", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: 바이본지속주입처방.id, type: "약", productName: "Sodium bicarbonate (20meq/20ml)", ingredientName: "Sodium bicarbonate", dosage: "5", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 3, mixGroup: "M1" },
   ]);
 
 }
