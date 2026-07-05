@@ -107,6 +107,16 @@ export async function insertKkuData() {
   const [소아콧물] = await db.insert(categories).values({ name: "소아과 퇴원약 콧물", parentId: 건국대학교병원.id, sortOrder: 100 }).returning();
   const [소아구토변비] = await db.insert(categories).values({ name: "소아과 퇴원약 구토/변비", parentId: 건국대학교병원.id, sortOrder: 101 }).returning();
   const [급성심근경색] = await db.insert(categories).values({ name: "MI medications", parentId: 건국대학교병원.id, sortOrder: 102 }).returning();
+  const [소아항생제] = await db.insert(categories).values({ name: "소아과 퇴원약 항생제", parentId: 건국대학교병원.id, sortOrder: 103 }).returning();
+  const [소아설사] = await db.insert(categories).values({ name: "소아과 퇴원약 설사", parentId: 건국대학교병원.id, sortOrder: 104 }).returning();
+  const [소아루틴랩] = await db.insert(categories).values({ name: "소아과 Routine Lab", parentId: 건국대학교병원.id, sortOrder: 105 }).returning();
+  const [소아씨저랩] = await db.insert(categories).values({ name: "소아과 Seizure Lab", parentId: 건국대학교병원.id, sortOrder: 106 }).returning();
+  const [소아Fever] = await db.insert(categories).values({ name: "Fever", parentId: 건국대학교병원.id, sortOrder: 107 }).returning();
+  const [소아APT] = await db.insert(categories).values({ name: "APT", parentId: 건국대학교병원.id, sortOrder: 108 }).returning();
+  const [소아Croup] = await db.insert(categories).values({ name: "Croup", parentId: 건국대학교병원.id, sortOrder: 109 }).returning();
+  const [소아Asthma] = await db.insert(categories).values({ name: "Asthma", parentId: 건국대학교병원.id, sortOrder: 110 }).returning();
+  const [소아Urticaria] = await db.insert(categories).values({ name: "Urticaria", parentId: 건국대학교병원.id, sortOrder: 111 }).returning();
+  const [소아Constipation] = await db.insert(categories).values({ name: "Constipation", parentId: 건국대학교병원.id, sortOrder: 112 }).returning();
 
   const [철분제제처방] = await db.insert(prescriptions).values({ name: "철분제제", categoryId: 철분제제.id, sortOrder: 0 }).returning();
   const [트라넥삼산처방] = await db.insert(prescriptions).values({ name: "Trauma Tranexamic acid", categoryId: 트라넥삼산.id, sortOrder: 0 }).returning();
@@ -211,6 +221,16 @@ export async function insertKkuData() {
   const [소아콧물처방] = await db.insert(prescriptions).values({ name: "소아과 퇴원약 콧물", categoryId: 소아콧물.id, sortOrder: 0 }).returning();
   const [소아구토변비처방] = await db.insert(prescriptions).values({ name: "소아과 퇴원약 구토/변비", categoryId: 소아구토변비.id, sortOrder: 0 }).returning();
   const [급성심근경색처방] = await db.insert(prescriptions).values({ name: "MI medications", categoryId: 급성심근경색.id, sortOrder: 0 }).returning();
+  const [소아항생제처방] = await db.insert(prescriptions).values({ name: "소아과 퇴원약 항생제", categoryId: 소아항생제.id, sortOrder: 0 }).returning();
+  const [소아설사처방] = await db.insert(prescriptions).values({ name: "소아과 퇴원약 설사", categoryId: 소아설사.id, sortOrder: 0 }).returning();
+  const [소아루틴랩처방] = await db.insert(prescriptions).values({ name: "소아과 Routine Lab", categoryId: 소아루틴랩.id, sortOrder: 0 }).returning();
+  const [소아씨저랩처방] = await db.insert(prescriptions).values({ name: "소아과 Seizure Lab", categoryId: 소아씨저랩.id, sortOrder: 0 }).returning();
+  const [소아Fever처방] = await db.insert(prescriptions).values({ name: "Fever", categoryId: 소아Fever.id, sortOrder: 0 }).returning();
+  const [소아APT처방] = await db.insert(prescriptions).values({ name: "APT", categoryId: 소아APT.id, sortOrder: 0 }).returning();
+  const [소아Croup처방] = await db.insert(prescriptions).values({ name: "Croup", categoryId: 소아Croup.id, sortOrder: 0 }).returning();
+  const [소아Asthma처방] = await db.insert(prescriptions).values({ name: "Asthma", categoryId: 소아Asthma.id, sortOrder: 0 }).returning();
+  const [소아Urticaria처방] = await db.insert(prescriptions).values({ name: "Urticaria", categoryId: 소아Urticaria.id, sortOrder: 0 }).returning();
+  const [소아Constipation처방] = await db.insert(prescriptions).values({ name: "Constipation", categoryId: 소아Constipation.id, sortOrder: 0 }).returning();
 
   await db.insert(prescriptionItems).values([
     // 철분제제
@@ -895,6 +915,82 @@ export async function insertKkuData() {
     { prescriptionId: 급성심근경색처방.id, type: "약", productName: "Lipitor 80mg", ingredientName: "Atorvastatin", dosage: "1", unit: "T", frequency: "1", route: "OD PC", note: "따로 포장해주세요", sortOrder: 6 },
     { prescriptionId: 급성심근경색처방.id, type: "약", productName: "Bayer aspirin 500mg", ingredientName: "Aspirin", dosage: "0.5", unit: "T", frequency: "1", route: "OD PC", sortOrder: 7 },
     { prescriptionId: 급성심근경색처방.id, type: "약", productName: "Brilinta 90mg", ingredientName: "Ticagrelor", dosage: "2", unit: "T", frequency: "1", route: "UT DICT", note: "따로 포장해주세요. STEMI, NSTEMI", sortOrder: 8 },
+
+    // 소아과 퇴원약 항생제
+    { prescriptionId: 소아항생제처방.id, type: "퇴원약", productName: "Banan dry syr", ingredientName: "cefpodoxime 10mg/ml", dosage: "3", unit: "ml", frequency: "TID", duration: "3일", route: "TID Q8", note: "1일량 0.9ml/kg", sortOrder: 0 },
+    { prescriptionId: 소아항생제처방.id, type: "퇴원약", productName: "Amocla neo syr", ingredientName: "amoxicillin, clavulanate 14:1", dosage: "4", unit: "ml", frequency: "BID", duration: "3일", route: "BID Q12", note: "약품팁 참고", sortOrder: 1 },
+    { prescriptionId: 소아항생제처방.id, type: "지시처방", productName: "Rulid: 6-11kg 1회 25mg BID, 12-23kg 50mg, 24-40kg 100mg, 40kg 초과 150mg", sortOrder: 2 },
+    { prescriptionId: 소아항생제처방.id, type: "퇴원약", productName: "Rulid 150mg", ingredientName: "roxithromycin", dosage: "1", unit: "T", frequency: "BID", duration: "5일", route: "BID PC", sortOrder: 3 },
+
+    // 소아과 퇴원약 설사
+    { prescriptionId: 소아설사처방.id, type: "퇴원약", productName: "Bioflor 250 pow", ingredientName: "Saccharomyces cerebiciae Hanssen CBS5926균", dosage: "1", unit: "PK", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 0 },
+    { prescriptionId: 소아설사처방.id, type: "퇴원약", productName: "Medilac-S pow", dosage: "1", unit: "G", frequency: "BID", duration: "3일", route: "BID PC", note: "3개월-3세: 1회 1g씩 1-2회", sortOrder: 1 },
+    { prescriptionId: 소아설사처방.id, type: "퇴원약", productName: "Medilac-DS cap 250mg", dosage: "1", unit: "C", frequency: "TID", duration: "3일", route: "TID PC", note: "알약", sortOrder: 2 },
+
+    // 소아과 Routine Lab
+    { prescriptionId: 소아루틴랩처방.id, type: "지시처방", productName: "urination 확인해 주세요", sortOrder: 0 },
+    { prescriptionId: 소아루틴랩처방.id, type: "지시처방", productName: "BST 60미만 -> 소아과 바로 noti", sortOrder: 1 },
+    { prescriptionId: 소아루틴랩처방.id, type: "약", productName: "NS(500ml/Bag)", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "200ml/hr 속도 -> 20cc/kg urination 후 수액유지속도", sortOrder: 2 },
+    { prescriptionId: 소아루틴랩처방.id, type: "지시처방", productName: "10kg 미만 30cc/hr, 10-15kg 45cc/hr, 15-20kg 55cc/hr, 20-25kg 65cc/hr, 25-30kg 70cc/hr, 30-40kg 80cc/hr, 40kg 이상 100cc/hr", sortOrder: 3 },
+    { prescriptionId: 소아루틴랩처방.id, type: "혈액검사", productName: "CBC with diff count & ESR", note: "WB, EDTA", sortOrder: 4 },
+    { prescriptionId: 소아루틴랩처방.id, type: "혈액검사", productName: "CRP(정량)", note: "Plasma, PST", sortOrder: 5 },
+    { prescriptionId: 소아루틴랩처방.id, type: "혈액검사", productName: "Routine U/A with microscope", note: "Urine, Random", sortOrder: 6 },
+    { prescriptionId: 소아루틴랩처방.id, type: "혈액검사", productName: "Renal Battery(11종-TCO 2포함)(ER,IMN전용)", note: "Plasma, PST", sortOrder: 7 },
+    { prescriptionId: 소아루틴랩처방.id, type: "혈액검사", productName: "Lipase", note: "Plasma, PST", sortOrder: 8 },
+    { prescriptionId: 소아루틴랩처방.id, type: "혈액검사", productName: "γ-GT", note: "Plasma, PST", sortOrder: 9 },
+    { prescriptionId: 소아루틴랩처방.id, type: "영상검사", productName: "Chest 1P [PA]", sortOrder: 10 },
+    { prescriptionId: 소아루틴랩처방.id, type: "영상검사", productName: "Abdomen 2P [Erect, Supine]", sortOrder: 11 },
+    { prescriptionId: 소아루틴랩처방.id, type: "혈액검사", productName: "Liver & Lipid Battery", note: "Plasma, PST", sortOrder: 12 },
+
+    // 소아과 Seizure Lab
+    { prescriptionId: 소아씨저랩처방.id, type: "지시처방", productName: "BST 확인 부탁드립니다", sortOrder: 0 },
+    { prescriptionId: 소아씨저랩처방.id, type: "약", productName: "NS(500ml/Bag)", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "200ml/hr 속도 -> 20cc/kg urination 후 수액유지속도", sortOrder: 1 },
+    { prescriptionId: 소아씨저랩처방.id, type: "지시처방", productName: "10kg 미만 30cc/hr, 10-15kg 45cc/hr, 15-20kg 55cc/hr, 20-25kg 65cc/hr, 25-30kg 70cc/hr, 30-40kg 80cc/hr, 40kg 이상 100cc/hr", sortOrder: 2 },
+    { prescriptionId: 소아씨저랩처방.id, type: "혈액검사", productName: "Ammonia", note: "Heparinized WB, Vein", sortOrder: 3 },
+    { prescriptionId: 소아씨저랩처방.id, type: "혈액검사", productName: "CBC with diff count & ESR", note: "WB, EDTA", sortOrder: 4 },
+    { prescriptionId: 소아씨저랩처방.id, type: "혈액검사", productName: "Lactic acid(Lactate)", note: "Heparinized WB, Vein", sortOrder: 5 },
+    { prescriptionId: 소아씨저랩처방.id, type: "혈액검사", productName: "CRP(정량)", note: "Plasma, PST", sortOrder: 6 },
+    { prescriptionId: 소아씨저랩처방.id, type: "혈액검사", productName: "Mg", note: "Plasma, PST", sortOrder: 7 },
+    { prescriptionId: 소아씨저랩처방.id, type: "혈액검사", productName: "Uric Acid", note: "Plasma, PST", sortOrder: 8 },
+    { prescriptionId: 소아씨저랩처방.id, type: "혈액검사", productName: "Routine U/A with microscope", note: "Urine, Random", sortOrder: 9 },
+    { prescriptionId: 소아씨저랩처방.id, type: "혈액검사", productName: "Renal Battery(11종-TCO 2포함)(ER,IMN전용)", note: "Plasma, PST", sortOrder: 10 },
+    { prescriptionId: 소아씨저랩처방.id, type: "혈액검사", productName: "ABGA 5(응급실전용)", note: "Heparinized WB, Artery", sortOrder: 11 },
+    { prescriptionId: 소아씨저랩처방.id, type: "영상검사", productName: "Chest 1P [PA]", sortOrder: 12 },
+    { prescriptionId: 소아씨저랩처방.id, type: "혈액검사", productName: "Liver & Lipid Battery", note: "Plasma, PST", sortOrder: 13 },
+
+    // Fever
+    { prescriptionId: 소아Fever처방.id, type: "지시처방", productName: "Setopen 4-11mo(7-9.9kg): 2.5ml/80mg, 12-23mo(10-11.9kg): 3.5ml/120mg", sortOrder: 0 },
+    { prescriptionId: 소아Fever처방.id, type: "약", productName: "Setopen susp", ingredientName: "acetaminophen 32mg/ml", dosage: "1", unit: "ml", frequency: "1", route: "UT DICT (내복 1회)", note: "해열제 두 종류 이상 처방시 4시간 간격으로 투여", sortOrder: 1 },
+    { prescriptionId: 소아Fever처방.id, type: "약", productName: "Brufen syr", ingredientName: "ibuprofen 20mg/ml", dosage: "1", unit: "ml", frequency: "1", route: "UT DICT (내복 1회)", note: "해열제 두 종류 이상 처방시 4시간 간격으로 투여", sortOrder: 2 },
+
+    // APT
+    { prescriptionId: 소아APT처방.id, type: "퇴원약", productName: "Augmentin syr", ingredientName: "amoxicillin, clavulanate 4:1", dosage: "1", unit: "ml", frequency: "TID", duration: "3일", route: "TID Q8", note: "1ml/kg TID", sortOrder: 0 },
+    { prescriptionId: 소아APT처방.id, type: "퇴원약", productName: "Maxibupen syr", ingredientName: "Dexibuprofen 12mg/ml", dosage: "1", unit: "ml", frequency: "1", duration: "3일", route: "UT DICT (내복 1회)", note: "0.375cc/kg", sortOrder: 1 },
+
+    // Croup
+    { prescriptionId: 소아Croup처방.id, type: "영상검사", productName: "Neck 2P [AP, Lat]", note: "hyper-extention", sortOrder: 0 },
+    { prescriptionId: 소아Croup처방.id, type: "약", productName: "Dexamethasone inj 5mg/mL", dosage: "1", unit: "A", frequency: "1", route: "IM", note: "0.3-0.6mg/kg", sortOrder: 1 },
+    { prescriptionId: 소아Croup처방.id, type: "지시처방", productName: "덱사메타손 PO, IM, IV 가능, 보통 10kg 기준 1A", sortOrder: 2 },
+    { prescriptionId: 소아Croup처방.id, type: "약", productName: "Bosmin Soln 100mL/BT", ingredientName: "epinephrine 1mg/ml", dosage: "2.5", unit: "ml", frequency: "1", route: "Aerosol", note: "kg당 기준 확인 필요", sortOrder: 3 },
+    { prescriptionId: 소아Croup처방.id, type: "약", productName: "Pulmicort Respule 500mcg/2ml", ingredientName: "Budesonide", dosage: "1", unit: "A", frequency: "1", route: "Aerosol", note: "1세 미만 0.5A, 1세 이상 1A", sortOrder: 4 },
+    { prescriptionId: 소아Croup처방.id, type: "약", productName: "Dexamethasone inj 5mg/mL", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "0.3-0.6mg/kg", sortOrder: 5 },
+
+    // Asthma (소아과)
+    { prescriptionId: 소아Asthma처방.id, type: "약", productName: "Ventolin nebul 2.5mg/2.5ml", ingredientName: "salbutamol", dosage: "1", unit: "A", frequency: "1", route: "Aerosol", note: "0.12mg/kg", sortOrder: 0 },
+    { prescriptionId: 소아Asthma처방.id, type: "약", productName: "Pulmicort Respule 500mcg/2ml", ingredientName: "Budesonide", dosage: "1", unit: "A", frequency: "1", route: "Aerosol", note: "1세 미만 0.5A, 1세 이상 1A", sortOrder: 1 },
+
+    // Urticaria (소아과)
+    { prescriptionId: 소아Urticaria처방.id, type: "약", productName: "Peniramin 4mg/2ml", ingredientName: "chlorpheniramine", dosage: "1", unit: "A", frequency: "1", route: "IM", note: "0.035ml/kg", sortOrder: 0 },
+    { prescriptionId: 소아Urticaria처방.id, type: "퇴원약", productName: "Doodrizine syr", ingredientName: "hydroxyzine 2mg/ml", dosage: "1", unit: "ml", frequency: "TID", duration: "3일", route: "TID PC", note: "0.33ml/kg*3", sortOrder: 1 },
+
+    // Constipation
+    { prescriptionId: 소아Constipation처방.id, type: "지시처방", productName: "성인: 처음 2-3일간 1일 15-30mL 아침식전에 경구투여. 그 후 계속 1일 10-15mL 투여. 심할 경우 45mL까지 투여.", sortOrder: 0 },
+    { prescriptionId: 소아Constipation처방.id, type: "지시처방", productName: "영아(1-6개월): 1일 5-10mL 투여.", sortOrder: 1 },
+    { prescriptionId: 소아Constipation처방.id, type: "지시처방", productName: "소아(7-14세): 처음 2-3일 1일 15mL 투여. 그 후 계속 1일 10mL 투여.", sortOrder: 2 },
+    { prescriptionId: 소아Constipation처방.id, type: "약", productName: "Duphalac-Easy syr 1ml", ingredientName: "lactulose", dosage: "1", unit: "ml", frequency: "1", route: "QD AC", sortOrder: 3 },
+    { prescriptionId: 소아Constipation처방.id, type: "약", productName: "Biofor 250 pow", ingredientName: "Saccharomyces cerebiciae Hanssen CBS5926균", dosage: "1", unit: "PK", frequency: "TID", route: "TID Q8", note: "2일", sortOrder: 4 },
+    { prescriptionId: 소아Constipation처방.id, type: "영상검사", productName: "Abdomen 2P [Erect, Supine]", sortOrder: 5 },
+    { prescriptionId: 소아Constipation처방.id, type: "지시처방", productName: "Glycerin Enema", sortOrder: 6 },
   ]);
 
 }
