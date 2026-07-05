@@ -128,6 +128,50 @@ export async function insertKkuData() {
   const [영양제OMAP] = await db.insert(categories).values({ name: "OMAP", parentId: 건국대학교병원.id, sortOrder: 121 }).returning();
   const [GI출혈] = await db.insert(categories).values({ name: "GI bleeding", parentId: 건국대학교병원.id, sortOrder: 122 }).returning();
   const [바이본지속주입] = await db.insert(categories).values({ name: "bivon continuous", parentId: 건국대학교병원.id, sortOrder: 123 }).returning();
+  const [수혈처방] = await db.insert(categories).values({ name: "수혈처방", parentId: 건국대학교병원.id, sortOrder: 124 }).returning();
+  const [빈혈검사] = await db.insert(categories).values({ name: "Anemia Study", parentId: 건국대학교병원.id, sortOrder: 125 }).returning();
+  const [postROSC] = await db.insert(categories).values({ name: "Post ROSC", parentId: 건국대학교병원.id, sortOrder: 126 }).returning();
+  const [xray_ankle] = await db.insert(categories).values({ name: "X-ray_ankle", parentId: 건국대학교병원.id, sortOrder: 127 }).returning();
+  const [xray_chest] = await db.insert(categories).values({ name: "X-ray_chest", parentId: 건국대학교병원.id, sortOrder: 128 }).returning();
+  const [xray_clavicle] = await db.insert(categories).values({ name: "X-ray_clavicle", parentId: 건국대학교병원.id, sortOrder: 129 }).returning();
+  const [xray_elbow] = await db.insert(categories).values({ name: "X-ray_elbow", parentId: 건국대학교병원.id, sortOrder: 130 }).returning();
+  const [xray_femur] = await db.insert(categories).values({ name: "X-ray_femur", parentId: 건국대학교병원.id, sortOrder: 131 }).returning();
+  const [xray_foot] = await db.insert(categories).values({ name: "X-ray_foot", parentId: 건국대학교병원.id, sortOrder: 132 }).returning();
+  const [xray_finger] = await db.insert(categories).values({ name: "X-ray_finger", parentId: 건국대학교병원.id, sortOrder: 133 }).returning();
+  const [xray_forearm] = await db.insert(categories).values({ name: "X-ray_forearm", parentId: 건국대학교병원.id, sortOrder: 134 }).returning();
+  const [xray_hand] = await db.insert(categories).values({ name: "X-ray_hand", parentId: 건국대학교병원.id, sortOrder: 135 }).returning();
+  const [xray_head] = await db.insert(categories).values({ name: "X-ray_head", parentId: 건국대학교병원.id, sortOrder: 136 }).returning();
+  const [xray_hip] = await db.insert(categories).values({ name: "X-ray_hip", parentId: 건국대학교병원.id, sortOrder: 137 }).returning();
+  const [xray_humerus] = await db.insert(categories).values({ name: "X-ray_humerus", parentId: 건국대학교병원.id, sortOrder: 138 }).returning();
+  const [xray_knee] = await db.insert(categories).values({ name: "X-ray_knee", parentId: 건국대학교병원.id, sortOrder: 139 }).returning();
+  const [xray_lowerleg] = await db.insert(categories).values({ name: "X-ray_lower leg", parentId: 건국대학교병원.id, sortOrder: 140 }).returning();
+  const [xray_neck] = await db.insert(categories).values({ name: "X-ray_neck", parentId: 건국대학교병원.id, sortOrder: 141 }).returning();
+  const [xray_pelvis] = await db.insert(categories).values({ name: "X-ray_pelvis", parentId: 건국대학교병원.id, sortOrder: 142 }).returning();
+  const [xray_sacrumcoccyx] = await db.insert(categories).values({ name: "X-ray_sacrum & coccyx", parentId: 건국대학교병원.id, sortOrder: 143 }).returning();
+  const [가려움로션] = await db.insert(categories).values({ name: "가려움 로션", parentId: 건국대학교병원.id, sortOrder: 144 }).returning();
+  const [안약] = await db.insert(categories).values({ name: "안약", parentId: 건국대학교병원.id, sortOrder: 145 }).returning();
+  const [떨림] = await db.insert(categories).values({ name: "떨림", parentId: 건국대학교병원.id, sortOrder: 146 }).returning();
+  const [저칼륨혈증개별] = await db.insert(categories).values({ name: "Hypokalemia", parentId: 건국대학교병원.id, sortOrder: 147 }).returning();
+  const [요로결석] = await db.insert(categories).values({ name: "ureter stone", parentId: 건국대학교병원.id, sortOrder: 148 }).returning();
+  const [삼차신경통] = await db.insert(categories).values({ name: "삼차신경통", parentId: 건국대학교병원.id, sortOrder: 149 }).returning();
+  const [BBPV] = await db.insert(categories).values({ name: "BBPV", parentId: 건국대학교병원.id, sortOrder: 150 }).returning();
+  const [Labesin개별] = await db.insert(categories).values({ name: "Labesin", parentId: 건국대학교병원.id, sortOrder: 151 }).returning();
+  const [Allergy두드러기] = await db.insert(categories).values({ name: "Allergy 두드러기", parentId: 건국대학교병원.id, sortOrder: 152 }).returning();
+  const [continuousLasix] = await db.insert(categories).values({ name: "continuous lasix", parentId: 건국대학교병원.id, sortOrder: 153 }).returning();
+  const [IVPOVerapamil] = await db.insert(categories).values({ name: "IV+PO Verapamil(rate)", parentId: 건국대학교병원.id, sortOrder: 154 }).returning();
+  const [통풍Gout] = await db.insert(categories).values({ name: "통풍 Gout", parentId: 건국대학교병원.id, sortOrder: 155 }).returning();
+  const [IVPOHerben] = await db.insert(categories).values({ name: "IV+PO Herben(rate)", parentId: 건국대학교병원.id, sortOrder: 156 }).returning();
+  const [IVPOAmiodarone] = await db.insert(categories).values({ name: "IV+PO Amiodarone", parentId: 건국대학교병원.id, sortOrder: 157 }).returning();
+  const [IVPODigoxin] = await db.insert(categories).values({ name: "IV+PO digoxin", parentId: 건국대학교병원.id, sortOrder: 158 }).returning();
+  const [일반병실입원폐렴] = await db.insert(categories).values({ name: "일반병실 입원 (폐렴)", parentId: 건국대학교병원.id, sortOrder: 159 }).returning();
+  const [Hemorrhageangio] = await db.insert(categories).values({ name: "Hemorrhage angio", parentId: 건국대학교병원.id, sortOrder: 160 }).returning();
+  const [OPD치료폐렴] = await db.insert(categories).values({ name: "OPD 치료 (폐렴)", parentId: 건국대학교병원.id, sortOrder: 161 }).returning();
+  const [BellsPalsy] = await db.insert(categories).values({ name: "Bell's palsy", parentId: 건국대학교병원.id, sortOrder: 162 }).returning();
+  const [IVNTG] = await db.insert(categories).values({ name: "IV NTG", parentId: 건국대학교병원.id, sortOrder: 163 }).returning();
+  const [DKA] = await db.insert(categories).values({ name: "DKA", parentId: 건국대학교병원.id, sortOrder: 164 }).returning();
+  const [anaphylaxis] = await db.insert(categories).values({ name: "anaphylaxis", parentId: 건국대학교병원.id, sortOrder: 165 }).returning();
+  const [GI출혈김대용] = await db.insert(categories).values({ name: "GI bleeding (김대용선생님)", parentId: 건국대학교병원.id, sortOrder: 166 }).returning();
+  const [Hypoglycemia개별] = await db.insert(categories).values({ name: "Hypoglycemia", parentId: 건국대학교병원.id, sortOrder: 167 }).returning();
 
   const [철분제제처방] = await db.insert(prescriptions).values({ name: "철분제제", categoryId: 철분제제.id, sortOrder: 0 }).returning();
   const [트라넥삼산처방] = await db.insert(prescriptions).values({ name: "Trauma Tranexamic acid", categoryId: 트라넥삼산.id, sortOrder: 0 }).returning();
@@ -253,6 +297,50 @@ export async function insertKkuData() {
   const [영양제OMAP처방] = await db.insert(prescriptions).values({ name: "OMAP", categoryId: 영양제OMAP.id, sortOrder: 0 }).returning();
   const [GI출혈처방] = await db.insert(prescriptions).values({ name: "GI bleeding", categoryId: GI출혈.id, sortOrder: 0 }).returning();
   const [바이본지속주입처방] = await db.insert(prescriptions).values({ name: "bivon continuous", categoryId: 바이본지속주입.id, sortOrder: 0 }).returning();
+  const [수혈처방처방] = await db.insert(prescriptions).values({ name: "수혈처방", categoryId: 수혈처방.id, sortOrder: 0 }).returning();
+  const [빈혈검사처방] = await db.insert(prescriptions).values({ name: "Anemia Study", categoryId: 빈혈검사.id, sortOrder: 0 }).returning();
+  const [postROSC처방] = await db.insert(prescriptions).values({ name: "Post ROSC", categoryId: postROSC.id, sortOrder: 0 }).returning();
+  const [xray_ankle처방] = await db.insert(prescriptions).values({ name: "X-ray_ankle", categoryId: xray_ankle.id, sortOrder: 0 }).returning();
+  const [xray_chest처방] = await db.insert(prescriptions).values({ name: "X-ray_chest", categoryId: xray_chest.id, sortOrder: 0 }).returning();
+  const [xray_clavicle처방] = await db.insert(prescriptions).values({ name: "X-ray_clavicle", categoryId: xray_clavicle.id, sortOrder: 0 }).returning();
+  const [xray_elbow처방] = await db.insert(prescriptions).values({ name: "X-ray_elbow", categoryId: xray_elbow.id, sortOrder: 0 }).returning();
+  const [xray_femur처방] = await db.insert(prescriptions).values({ name: "X-ray_femur", categoryId: xray_femur.id, sortOrder: 0 }).returning();
+  const [xray_foot처방] = await db.insert(prescriptions).values({ name: "X-ray_foot", categoryId: xray_foot.id, sortOrder: 0 }).returning();
+  const [xray_finger처방] = await db.insert(prescriptions).values({ name: "X-ray_finger", categoryId: xray_finger.id, sortOrder: 0 }).returning();
+  const [xray_forearm처방] = await db.insert(prescriptions).values({ name: "X-ray_forearm", categoryId: xray_forearm.id, sortOrder: 0 }).returning();
+  const [xray_hand처방] = await db.insert(prescriptions).values({ name: "X-ray_hand", categoryId: xray_hand.id, sortOrder: 0 }).returning();
+  const [xray_head처방] = await db.insert(prescriptions).values({ name: "X-ray_head", categoryId: xray_head.id, sortOrder: 0 }).returning();
+  const [xray_hip처방] = await db.insert(prescriptions).values({ name: "X-ray_hip", categoryId: xray_hip.id, sortOrder: 0 }).returning();
+  const [xray_humerus처방] = await db.insert(prescriptions).values({ name: "X-ray_humerus", categoryId: xray_humerus.id, sortOrder: 0 }).returning();
+  const [xray_knee처방] = await db.insert(prescriptions).values({ name: "X-ray_knee", categoryId: xray_knee.id, sortOrder: 0 }).returning();
+  const [xray_lowerleg처방] = await db.insert(prescriptions).values({ name: "X-ray_lower leg", categoryId: xray_lowerleg.id, sortOrder: 0 }).returning();
+  const [xray_neck처방] = await db.insert(prescriptions).values({ name: "X-ray_neck", categoryId: xray_neck.id, sortOrder: 0 }).returning();
+  const [xray_pelvis처방] = await db.insert(prescriptions).values({ name: "X-ray_pelvis", categoryId: xray_pelvis.id, sortOrder: 0 }).returning();
+  const [xray_sacrumcoccyx처방] = await db.insert(prescriptions).values({ name: "X-ray_sacrum & coccyx", categoryId: xray_sacrumcoccyx.id, sortOrder: 0 }).returning();
+  const [가려움로션처방] = await db.insert(prescriptions).values({ name: "가려움 로션", categoryId: 가려움로션.id, sortOrder: 0 }).returning();
+  const [안약처방] = await db.insert(prescriptions).values({ name: "안약", categoryId: 안약.id, sortOrder: 0 }).returning();
+  const [떨림처방] = await db.insert(prescriptions).values({ name: "떨림", categoryId: 떨림.id, sortOrder: 0 }).returning();
+  const [저칼륨혈증개별처방] = await db.insert(prescriptions).values({ name: "Hypokalemia", categoryId: 저칼륨혈증개별.id, sortOrder: 0 }).returning();
+  const [요로결석처방] = await db.insert(prescriptions).values({ name: "ureter stone", categoryId: 요로결석.id, sortOrder: 0 }).returning();
+  const [삼차신경통처방] = await db.insert(prescriptions).values({ name: "삼차신경통", categoryId: 삼차신경통.id, sortOrder: 0 }).returning();
+  const [BBPV처방] = await db.insert(prescriptions).values({ name: "BBPV", categoryId: BBPV.id, sortOrder: 0 }).returning();
+  const [Labesin개별처방] = await db.insert(prescriptions).values({ name: "Labesin", categoryId: Labesin개별.id, sortOrder: 0 }).returning();
+  const [Allergy두드러기처방] = await db.insert(prescriptions).values({ name: "Allergy 두드러기", categoryId: Allergy두드러기.id, sortOrder: 0 }).returning();
+  const [continuousLasix처방] = await db.insert(prescriptions).values({ name: "continuous lasix", categoryId: continuousLasix.id, sortOrder: 0 }).returning();
+  const [IVPOVerapamil처방] = await db.insert(prescriptions).values({ name: "IV+PO Verapamil(rate)", categoryId: IVPOVerapamil.id, sortOrder: 0 }).returning();
+  const [통풍Gout처방] = await db.insert(prescriptions).values({ name: "통풍 Gout", categoryId: 통풍Gout.id, sortOrder: 0 }).returning();
+  const [IVPOHerben처방] = await db.insert(prescriptions).values({ name: "IV+PO Herben(rate)", categoryId: IVPOHerben.id, sortOrder: 0 }).returning();
+  const [IVPOAmiodarone처방] = await db.insert(prescriptions).values({ name: "IV+PO Amiodarone", categoryId: IVPOAmiodarone.id, sortOrder: 0 }).returning();
+  const [IVPODigoxin처방] = await db.insert(prescriptions).values({ name: "IV+PO digoxin", categoryId: IVPODigoxin.id, sortOrder: 0 }).returning();
+  const [일반병실입원폐렴처방] = await db.insert(prescriptions).values({ name: "일반병실 입원 (폐렴)", categoryId: 일반병실입원폐렴.id, sortOrder: 0 }).returning();
+  const [Hemorrhageangio처방] = await db.insert(prescriptions).values({ name: "Hemorrhage angio", categoryId: Hemorrhageangio.id, sortOrder: 0 }).returning();
+  const [OPD치료폐렴처방] = await db.insert(prescriptions).values({ name: "OPD 치료 (폐렴)", categoryId: OPD치료폐렴.id, sortOrder: 0 }).returning();
+  const [BellsPalsy처방] = await db.insert(prescriptions).values({ name: "Bell's palsy", categoryId: BellsPalsy.id, sortOrder: 0 }).returning();
+  const [IVNTG처방] = await db.insert(prescriptions).values({ name: "IV NTG", categoryId: IVNTG.id, sortOrder: 0 }).returning();
+  const [DKA처방] = await db.insert(prescriptions).values({ name: "DKA", categoryId: DKA.id, sortOrder: 0 }).returning();
+  const [anaphylaxis처방] = await db.insert(prescriptions).values({ name: "anaphylaxis", categoryId: anaphylaxis.id, sortOrder: 0 }).returning();
+  const [GI출혈김대용처방] = await db.insert(prescriptions).values({ name: "GI bleeding (김대용선생님)", categoryId: GI출혈김대용.id, sortOrder: 0 }).returning();
+  const [Hypoglycemia개별처방] = await db.insert(prescriptions).values({ name: "Hypoglycemia", categoryId: Hypoglycemia개별.id, sortOrder: 0 }).returning();
 
   await db.insert(prescriptionItems).values([
     // 철분제제
@@ -1077,6 +1165,328 @@ export async function insertKkuData() {
     { prescriptionId: 바이본지속주입처방.id, type: "지시처방", productName: "초기 투여량은 필요량의 1/2 mEq를 먼저 투여하며, 그 이후 나머지를 6-8시간에 걸쳐 투여함.", sortOrder: 1 },
     { prescriptionId: 바이본지속주입처방.id, type: "약", productName: "5% DW 500mL/Bag (JW중외)", ingredientName: "Dextrose", dosage: "0.8", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
     { prescriptionId: 바이본지속주입처방.id, type: "약", productName: "Sodium bicarbonate (20meq/20ml)", ingredientName: "Sodium bicarbonate", dosage: "5", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 3, mixGroup: "M1" },
+
+    // 수혈처방
+    { prescriptionId: 수혈처방처방.id, type: "혈액검사", productName: "Crossmatching 검체", note: "Serum, Plain Tube", sortOrder: 0 },
+    { prescriptionId: 수혈처방처방.id, type: "혈액검사", productName: "T&S (ABO/Rh type & Unexpected Ab Screening)", note: "WB, EDTA", sortOrder: 1 },
+    { prescriptionId: 수혈처방처방.id, type: "약", productName: "Peniramin 4mg/2ml", ingredientName: "chlorpheniramine", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "수혈전", sortOrder: 2 },
+
+    // Anemia Study
+    { prescriptionId: 빈혈검사처방.id, type: "혈액검사", productName: "Fe", note: "Serum, SST", sortOrder: 0 },
+    { prescriptionId: 빈혈검사처방.id, type: "혈액검사", productName: "Ferritin", note: "Serum, SST", sortOrder: 1 },
+    { prescriptionId: 빈혈검사처방.id, type: "혈액검사", productName: "TIBC", note: "Serum, SST", sortOrder: 2 },
+    { prescriptionId: 빈혈검사처방.id, type: "혈액검사", productName: "PB Morphology", note: "WB, EDTA", sortOrder: 3 },
+    { prescriptionId: 빈혈검사처방.id, type: "혈액검사", productName: "Vitamin B12", ingredientName: "Cyanocobalamin", note: "Serum, SST", sortOrder: 4 },
+    { prescriptionId: 빈혈검사처방.id, type: "혈액검사", productName: "Folate", note: "Serum, SST", sortOrder: 5 },
+    { prescriptionId: 빈혈검사처방.id, type: "혈액검사", productName: "Reticulocyte panel", note: "WB, EDTA", sortOrder: 6 },
+
+    // Post ROSC
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "Liver & Lipid Battery", note: "Plasma, PST", sortOrder: 0 },
+    { prescriptionId: postROSC처방.id, type: "지시처방", productName: "Rectal 체온, ETCO2 모니터링 해주세요", sortOrder: 1 },
+    { prescriptionId: postROSC처방.id, type: "지시처방", productName: "I/O check", sortOrder: 2 },
+    { prescriptionId: postROSC처방.id, type: "지시처방", productName: "TTM(target 32-36도), SpO2 92-98%, sBP>90mmHg(MAP>65mmHg), PaCO2 35-45mmHg", sortOrder: 3 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "aPTT", note: "Plasma, Sodium Citrate", sortOrder: 4 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "Prothrombin time", note: "Plasma, Sodium Citrate", sortOrder: 5 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "CBC with diff count & ESR", note: "WB, EDTA", sortOrder: 6 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "CRP(정량)", note: "Plasma, PST", sortOrder: 7 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "CK(CPK)", note: "Plasma, PST", sortOrder: 8 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "Amylase", note: "Plasma, PST", sortOrder: 9 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "Renal Battery(11종-TCO 2포함)(ER,IMN전용)", note: "Plasma, PST", sortOrder: 10 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "D-Dimer(Quantitative)", note: "Plasma, Sodium Citrate", sortOrder: 11 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "Lactic acid(Lactate)", note: "Heparinized WB, Vein", sortOrder: 12 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "Ammonia", note: "Heparinized WB, Vein", sortOrder: 13 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "Urine Microscopy", note: "Urine, Random", sortOrder: 14 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "Routine urinalysis(10종까지)", note: "Urine, Random", sortOrder: 15 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "Cardio Profil ER(3종)", note: "WB, EDTA / BNP, CK-MB, TnI(3종)", sortOrder: 16 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "hs-TnI", note: "Plasma, PST", sortOrder: 17 },
+    { prescriptionId: postROSC처방.id, type: "영상검사", productName: "Chest 1P [Port.]", sortOrder: 18 },
+    { prescriptionId: postROSC처방.id, type: "지시처방", productName: "ECG(심전도-병동자체검사)", sortOrder: 19 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "Osmolarity", note: "Plasma, PST", sortOrder: 20 },
+    { prescriptionId: postROSC처방.id, type: "지시처방", productName: "치료적 저체온요법(1일당)-심장마비, 고열로인한 뇌손상등의 경우", sortOrder: 21 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "pNGAL", note: "Plasma, PST", sortOrder: 22 },
+    { prescriptionId: postROSC처방.id, type: "혈액검사", productName: "Procalcitonin 정량", note: "Serum, SST", sortOrder: 23 },
+    { prescriptionId: postROSC처방.id, type: "약", productName: "Midazolam 5mg/5ml (부광)", dosage: "10", unit: "A", frequency: "1", route: "IV", note: "#1. post ROSC 후 myoclonus, seizure 시 1mg/hr->2ml/hr", sortOrder: 24, mixGroup: "M1" },
+    { prescriptionId: postROSC처방.id, type: "약", productName: "NS (50mL/PP)", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "15분에 걸쳐서", sortOrder: 25, mixGroup: "M1" },
+    { prescriptionId: postROSC처방.id, type: "약", productName: "Q-pam inj 500mg", ingredientName: "levetiracetam", dosage: "3", unit: "A", frequency: "1", route: "IV", note: "#2. post ROSC seizure 시, 20분에 걸쳐서", sortOrder: 26, mixGroup: "M2" },
+    { prescriptionId: postROSC처방.id, type: "약", productName: "NS (100ml/PP)", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 27, mixGroup: "M2" },
+    { prescriptionId: postROSC처방.id, type: "약", productName: "Vimsk Inj 200mg/20ml", ingredientName: "lacosamide", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "ns 100 mix, 20분에 걸쳐서", sortOrder: 28, mixGroup: "M3" },
+    { prescriptionId: postROSC처방.id, type: "약", productName: "NS (100ml/PP)", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 29, mixGroup: "M3" },
+    { prescriptionId: postROSC처방.id, type: "지시처방", productName: "post ROSC myoclonus, seizure 시 mida -> Q-pam -> Vimsk", sortOrder: 30 },
+    { prescriptionId: postROSC처방.id, type: "지시처방", productName: "maintain a blood glucose level of 144 mg/dL to 180 mg/dL", sortOrder: 31 },
+
+    // X-ray_ankle
+    { prescriptionId: xray_ankle처방.id, type: "영상검사", productName: "Ankle 3P [R.] [AP, Lat, Mortise]", sortOrder: 0 },
+    { prescriptionId: xray_ankle처방.id, type: "영상검사", productName: "Ankle 3P [L.] [AP, Lat, Mortise]", sortOrder: 1 },
+    { prescriptionId: xray_ankle처방.id, type: "영상검사", productName: "Ankle 3P [B.] [AP, Lat, Mortise]", note: "소아", sortOrder: 2 },
+
+    // X-ray_chest
+    { prescriptionId: xray_chest처방.id, type: "영상검사", productName: "Chest 1P [PA]", sortOrder: 0 },
+    { prescriptionId: xray_chest처방.id, type: "영상검사", productName: "Sternum 2P [Lat, RAO]", sortOrder: 1 },
+    { prescriptionId: xray_chest처방.id, type: "영상검사", productName: "Rib Cage 3P [AP, Rt Obl, Lt Obl]", sortOrder: 2 },
+
+    // X-ray_clavicle
+    { prescriptionId: xray_clavicle처방.id, type: "영상검사", productName: "Clavicle 2P [AP, Cephalic Tilt]", sortOrder: 0 },
+
+    // X-ray_elbow
+    { prescriptionId: xray_elbow처방.id, type: "영상검사", productName: "Elbow 4P [L.] [AP, Lat, Internal Oblique, External Oblique]", sortOrder: 0 },
+    { prescriptionId: xray_elbow처방.id, type: "영상검사", productName: "Elbow 4P [R.] [AP, Lat, Internal Oblique, External Oblique]", sortOrder: 1 },
+    { prescriptionId: xray_elbow처방.id, type: "영상검사", productName: "Elbow 4P [B.] [AP, Lat, Internal Oblique, External Oblique]", note: "소아", sortOrder: 2 },
+
+    // X-ray_femur
+    { prescriptionId: xray_femur처방.id, type: "영상검사", productName: "Femur 2P [L.] [AP, Lat]", sortOrder: 0 },
+    { prescriptionId: xray_femur처방.id, type: "영상검사", productName: "Femur 2P [R.] [AP, Lat]", sortOrder: 1 },
+    { prescriptionId: xray_femur처방.id, type: "영상검사", productName: "Femur 2P [B.] [AP, Lat]", note: "소아", sortOrder: 2 },
+
+    // X-ray_foot
+    { prescriptionId: xray_foot처방.id, type: "영상검사", productName: "Calcaneus 2P [B.] [Lat, Axial]", sortOrder: 0 },
+    { prescriptionId: xray_foot처방.id, type: "영상검사", productName: "Foot 3P [L.] [AP, Lat, Medial Oblique]", sortOrder: 1 },
+    { prescriptionId: xray_foot처방.id, type: "영상검사", productName: "Foot 3P [R.] [AP, Lat, Medial Oblique]", sortOrder: 2 },
+    { prescriptionId: xray_foot처방.id, type: "영상검사", productName: "Foot 3P [B.] [AP, Lat, Medial Oblique]", note: "소아", sortOrder: 3 },
+
+    // X-ray_finger
+    { prescriptionId: xray_finger처방.id, type: "영상검사", productName: "Finger 3P [L.] [AP, Lat, Obl]", note: "손가락 번호를 적어주세요", sortOrder: 0 },
+    { prescriptionId: xray_finger처방.id, type: "영상검사", productName: "Finger 3P [R.] [AP, Lat, Obl]", note: "손가락 번호를 적어주세요", sortOrder: 1 },
+
+    // X-ray_forearm
+    { prescriptionId: xray_forearm처방.id, type: "영상검사", productName: "Forearm 2P [L.] [AP, Lat]", sortOrder: 0 },
+    { prescriptionId: xray_forearm처방.id, type: "영상검사", productName: "Forearm 2P [R.] [AP, Lat]", sortOrder: 1 },
+    { prescriptionId: xray_forearm처방.id, type: "영상검사", productName: "Forearm 2P [B.] [AP, Lat]", note: "소아", sortOrder: 2 },
+
+    // X-ray_hand
+    { prescriptionId: xray_hand처방.id, type: "영상검사", productName: "Hand 3P [L.] [AP, Oblique, Lat]", sortOrder: 0 },
+    { prescriptionId: xray_hand처방.id, type: "영상검사", productName: "Hand 3P [R.] [AP, Oblique, Lat]", sortOrder: 1 },
+    { prescriptionId: xray_hand처방.id, type: "영상검사", productName: "Hand 3P [B.] [AP, Oblique, Lat]", note: "소아", sortOrder: 2 },
+
+    // X-ray_head
+    { prescriptionId: xray_head처방.id, type: "영상검사", productName: "Skull 5P [AP, Towns, Rt Lat, Lt Lat, Water's]", sortOrder: 0 },
+    { prescriptionId: xray_head처방.id, type: "영상검사", productName: "Nasal Bone 2P [Rt Lat, Lt Lat]", sortOrder: 1 },
+    { prescriptionId: xray_head처방.id, type: "영상검사", productName: "Skull 4P [AP, Towns, Rt Lat, Lt Lat]", sortOrder: 2 },
+    { prescriptionId: xray_head처방.id, type: "영상검사", productName: "Zygomatic Arch 1P [Axial]", sortOrder: 3 },
+    { prescriptionId: xray_head처방.id, type: "영상검사", productName: "Mandible 3P [PA, Rt Oblique, Lt Oblique]", sortOrder: 4 },
+
+    // X-ray_hip
+    { prescriptionId: xray_hip처방.id, type: "영상검사", productName: "Hip Joint 1P [B.] [AP]", sortOrder: 0 },
+    { prescriptionId: xray_hip처방.id, type: "영상검사", productName: "Hip Joint 1P [L.] [Trans Lat]", sortOrder: 1 },
+    { prescriptionId: xray_hip처방.id, type: "영상검사", productName: "Hip Joint 1P [R.] [Trans Lat]", sortOrder: 2 },
+
+    // X-ray_humerus
+    { prescriptionId: xray_humerus처방.id, type: "영상검사", productName: "Humerus 2P [L.] [AP, Lat]", sortOrder: 0 },
+    { prescriptionId: xray_humerus처방.id, type: "영상검사", productName: "Humerus 2P [R.] [AP, Lat]", sortOrder: 1 },
+    { prescriptionId: xray_humerus처방.id, type: "영상검사", productName: "Humerus 2P [B.] [AP, Lat]", note: "소아", sortOrder: 2 },
+
+    // X-ray_knee
+    { prescriptionId: xray_knee처방.id, type: "영상검사", productName: "Knee Joint 2P [L.] [AP, Lat]", sortOrder: 0 },
+    { prescriptionId: xray_knee처방.id, type: "영상검사", productName: "Knee Joint 2P [R.] [AP, Lat]", sortOrder: 1 },
+    { prescriptionId: xray_knee처방.id, type: "영상검사", productName: "Knee Joint 2P [B.] [AP, Lat]", sortOrder: 2 },
+    { prescriptionId: xray_knee처방.id, type: "영상검사", productName: "Patella 1P [B.] [Merchant]", sortOrder: 3 },
+    { prescriptionId: xray_knee처방.id, type: "영상검사", productName: "Knee Joint 1P [L.] [Tunnel]", sortOrder: 4 },
+    { prescriptionId: xray_knee처방.id, type: "영상검사", productName: "Knee Joint 1P [R.] [Tunnel]", sortOrder: 5 },
+
+    // X-ray_lower leg
+    { prescriptionId: xray_lowerleg처방.id, type: "영상검사", productName: "Lower Leg 2P [L.] [AP, Lat]", sortOrder: 0 },
+    { prescriptionId: xray_lowerleg처방.id, type: "영상검사", productName: "Lower Leg 2P [R.] [AP, Lat]", sortOrder: 1 },
+    { prescriptionId: xray_lowerleg처방.id, type: "영상검사", productName: "Lower Leg 2P [B.] [AP, Lat]", note: "소아", sortOrder: 2 },
+
+    // X-ray_neck
+    { prescriptionId: xray_neck처방.id, type: "영상검사", productName: "Neck 2P [AP, Lat]", sortOrder: 0 },
+
+    // X-ray_pelvis
+    { prescriptionId: xray_pelvis처방.id, type: "영상검사", productName: "Pelvis 5P [AP, Rt Oblique, Lt Oblique, Inlet, Outlet]", sortOrder: 0 },
+
+    // X-ray_sacrum & coccyx
+    { prescriptionId: xray_sacrumcoccyx처방.id, type: "영상검사", productName: "Sacral & Coccyx 3P [Sacral AP, Coccyx AP, Sacral & Coccyx Lat]", sortOrder: 0 },
+
+    // 가려움 로션
+    { prescriptionId: 가려움로션처방.id, type: "약", productName: "Bosomi oint 20g", ingredientName: "zinc oxide 400mg/g", dosage: "1", unit: "TU", frequency: "1", route: "외용", note: "경로 표기 OCR 불확실(원본 0in)", sortOrder: 0 },
+
+    // 안약
+    { prescriptionId: 안약처방.id, type: "약", productName: "Paradin eye drop 0.7%", ingredientName: "olopatadine", dosage: "1", unit: "BT", frequency: "1", route: "Oph.", note: "1일1회", sortOrder: 0 },
+    { prescriptionId: 안약처방.id, type: "약", productName: "Vigamox eye drop 0.5% 5ml", ingredientName: "moxifloxacin 5.45mg", dosage: "1", unit: "BT", frequency: "1", route: "Oph.", note: "anti, 성인다래끼", sortOrder: 1 },
+    { prescriptionId: 안약처방.id, type: "약", productName: "Kynex 2 eye drop 0.5ml", ingredientName: "sodium hyaluronate", dosage: "1", unit: "E", frequency: "1", route: "Oph.", note: "불편시 수시로", sortOrder: 2 },
+
+    // 떨림
+    { prescriptionId: 떨림처방.id, type: "약", productName: "Clonazepam 0.5mg (환인)", dosage: "0.5", unit: "T", frequency: "TID", route: "TID PC", sortOrder: 0 },
+    { prescriptionId: 떨림처방.id, type: "약", productName: "Indenol 10mg", ingredientName: "propranolol", dosage: "1", unit: "T", frequency: "TID", route: "TID PC", sortOrder: 1 },
+
+    // Hypokalemia (개별)
+    { prescriptionId: 저칼륨혈증개별처방.id, type: "약", productName: "KCl 40mEq/20ml", ingredientName: "potassium chloride", dosage: "1", unit: "A", frequency: "1", route: "UT DICT (IV infusion 1회)", sortOrder: 0 },
+    { prescriptionId: 저칼륨혈증개별처방.id, type: "약", productName: "K-Contin 600mg", ingredientName: "KCl", dosage: "1", unit: "T", frequency: "1", route: "UT DICT (내복 1회)", sortOrder: 1 },
+
+    // ureter stone
+    { prescriptionId: 요로결석처방.id, type: "약", productName: "K-cab 50mg", ingredientName: "tegoprazan", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD PC", sortOrder: 0 },
+    { prescriptionId: 요로결석처방.id, type: "약", productName: "Harnal D 0.2mg", ingredientName: "tamsulosin", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD HS", note: "distal ureter 5mm 이하 stone", sortOrder: 1 },
+    { prescriptionId: 요로결석처방.id, type: "약", productName: "Mypol", ingredientName: "AAP, ibuprofen, codein", dosage: "1", unit: "C", frequency: "1", duration: "3일", route: "UT DICT", note: "따로 포장해주세요 (※경로 표기 OCR 불확실)", sortOrder: 2 },
+    { prescriptionId: 요로결석처방.id, type: "약", productName: "Soleton 80mg", ingredientName: "zaltoprofen", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 3 },
+
+    // 삼차신경통
+    { prescriptionId: 삼차신경통처방.id, type: "약", productName: "Tegretol 200mg", ingredientName: "carbamazepine", dosage: "1", unit: "T", frequency: "1", duration: "3일", route: "QD PC", sortOrder: 0 },
+    { prescriptionId: 삼차신경통처방.id, type: "약", productName: "Lyrica 150mg", ingredientName: "pregabalin", dosage: "1", unit: "C", frequency: "QD", duration: "3일", route: "QD HS", sortOrder: 1 },
+
+    // BBPV
+    { prescriptionId: BBPV처방.id, type: "약", productName: "Macperan 5mg", ingredientName: "metoclopramide", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 0 },
+    { prescriptionId: BBPV처방.id, type: "약", productName: "Diazepam tab 2mg", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 1 },
+
+    // Labesin (개별)
+    { prescriptionId: Labesin개별처방.id, type: "지시처방", productName: "Labesin bolus 20-80mg repeat 가능", sortOrder: 0 },
+    { prescriptionId: Labesin개별처방.id, type: "지시처방", productName: "IV continuous 30분마다 double dose up 최대 120mg/hr", sortOrder: 1 },
+    { prescriptionId: Labesin개별처방.id, type: "약", productName: "NS (500ml/Bag) 대한", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: Labesin개별처방.id, type: "약", productName: "Labesin 20mg/4ml", ingredientName: "labetalol", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "2분간 주세요", sortOrder: 3, mixGroup: "M1" },
+
+    // Allergy 두드러기
+    { prescriptionId: Allergy두드러기처방.id, type: "약", productName: "Methylon 4mg", ingredientName: "methylprednisolone", dosage: "1", unit: "T", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 0 },
+    { prescriptionId: Allergy두드러기처방.id, type: "약", productName: "Gaster D 20mg", ingredientName: "famotidine", dosage: "1", unit: "T", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 1 },
+    { prescriptionId: Allergy두드러기처방.id, type: "약", productName: "Ebastel 10mg", ingredientName: "ebastine", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD HS", sortOrder: 2 },
+
+    // continuous lasix
+    { prescriptionId: continuousLasix처방.id, type: "약", productName: "Lasix 20mg/2ml", ingredientName: "furosemide", dosage: "10", unit: "A", frequency: "1", route: "IV", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: continuousLasix처방.id, type: "약", productName: "NS (200ml/Glass) (대한)", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "10ml/hr", sortOrder: 1, mixGroup: "M1" },
+
+    // IV+PO Verapamil(rate)
+    { prescriptionId: IVPOVerapamil처방.id, type: "지시처방", productName: "verapamil 금기증: 심부전, 저혈압, 심인성 쇼크", sortOrder: 0 },
+    { prescriptionId: IVPOVerapamil처방.id, type: "지시처방", productName: "IV: verapamil 5-10mg NS 100에 섞어서 1분 이상 서서히 정주. 필요시 반복 가능.", sortOrder: 1 },
+    { prescriptionId: IVPOVerapamil처방.id, type: "약", productName: "Isoptin 5mg/2ml", ingredientName: "verapamil", dosage: "2", unit: "A", frequency: "1", route: "IV", note: "verapamil 10mg", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: IVPOVerapamil처방.id, type: "약", productName: "Isoptin 5mg/2ml", ingredientName: "verapamil", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "verapamil 5mg", sortOrder: 3, mixGroup: "M2" },
+    { prescriptionId: IVPOVerapamil처방.id, type: "약", productName: "Isoptin 40mg", ingredientName: "verapamil", dosage: "1", unit: "T", frequency: "TID", route: "TID PC", sortOrder: 4 },
+
+    // 통풍 Gout
+    { prescriptionId: 통풍Gout처방.id, type: "약", productName: "Feburic 40mg", ingredientName: "febuxostat", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD PC", sortOrder: 0 },
+    { prescriptionId: 통풍Gout처방.id, type: "약", productName: "K-cab 50mg", ingredientName: "tegoprazan", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD PC", sortOrder: 1 },
+    { prescriptionId: 통풍Gout처방.id, type: "약", productName: "Airtal 100mg", ingredientName: "aceclofenac", dosage: "1", unit: "T", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 2 },
+    { prescriptionId: 통풍Gout처방.id, type: "약", productName: "Anaproxen 275mg", ingredientName: "naproxen", dosage: "1", unit: "T", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 3 },
+    { prescriptionId: 통풍Gout처방.id, type: "약", productName: "Colchicine 0.6mg", dosage: "1", unit: "T", frequency: "1", duration: "3일", route: "UT DICT (내복 1회)", sortOrder: 4 },
+    { prescriptionId: 통풍Gout처방.id, type: "약", productName: "Anaproxen 275mg", ingredientName: "naproxen", dosage: "3", unit: "T", frequency: "1", route: "UT DICT (내복 1회)", note: "응급실에서 복용", sortOrder: 5 },
+
+    // IV+PO Herben(rate)
+    { prescriptionId: IVPOHerben처방.id, type: "지시처방", productName: "Initial bolus dose: 0.25mg/kg over 2 minutes (15 to 20mg)", sortOrder: 0 },
+    { prescriptionId: IVPOHerben처방.id, type: "지시처방", productName: "Continuous infusion: 5mg/hr 시작, HR 110 이상 시 5mg/hr 씩 증량", sortOrder: 1 },
+    { prescriptionId: IVPOHerben처방.id, type: "약", productName: "Herben 50mg", ingredientName: "diltiazem", dosage: "15", unit: "mg", frequency: "1", route: "IV", note: "bolus, 2-3분 걸쳐서", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: IVPOHerben처방.id, type: "약", productName: "Herben 50mg", ingredientName: "diltiazem", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "continuous", sortOrder: 3, mixGroup: "M2" },
+    { prescriptionId: IVPOHerben처방.id, type: "약", productName: "Herben SR 90mg", ingredientName: "diltiazem", dosage: "1", unit: "T", frequency: "BID", route: "BID PC", note: "PO 변경시", sortOrder: 4 },
+
+    // IV+PO Amiodarone
+    { prescriptionId: IVPOAmiodarone처방.id, type: "지시처방", productName: "IV: 150 mg over 10 minutes, then 1 mg/minute for 6 hours, then 0.5 mg/minute for 18 hours, then change to oral maintenance dose", sortOrder: 0 },
+    { prescriptionId: IVPOAmiodarone처방.id, type: "약", productName: "Cordarone 150mg/3ml", ingredientName: "amiodarone", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "loading, over 10min", sortOrder: 1 },
+    { prescriptionId: IVPOAmiodarone처방.id, type: "약", productName: "5% DW (50ml/PP)", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "loading, over 10min", sortOrder: 2, mixGroup: "M8" },
+    { prescriptionId: IVPOAmiodarone처방.id, type: "약", productName: "Cordarone 150mg/3ml", ingredientName: "amiodarone", dosage: "6", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 3, mixGroup: "M9" },
+    { prescriptionId: IVPOAmiodarone처방.id, type: "약", productName: "Cordarone 200mg", ingredientName: "amiodarone", dosage: "1", unit: "T", frequency: "BID", route: "BID PC", sortOrder: 4 },
+
+    // IV+PO digoxin
+    { prescriptionId: IVPODigoxin처방.id, type: "지시처방", productName: "본원에서는 Digoxin은 q6hr마다 로딩하지 않음 (Bradycardia 및 Toxicity 위험)", sortOrder: 0 },
+    { prescriptionId: IVPODigoxin처방.id, type: "지시처방", productName: "Initial: IV: 0.25 to 0.5 mg over several minutes, with repeated doses of 0.25 mg every 6 hours to a maximum of 1.5 mg over 24 hours", note: "Uptodate", sortOrder: 1 },
+    { prescriptionId: IVPODigoxin처방.id, type: "지시처방", productName: "Maintenance dose: Oral: 0.125 to 0.25 mg once daily", note: "Uptodate", sortOrder: 2 },
+    { prescriptionId: IVPODigoxin처방.id, type: "지시처방", productName: "digoxin은 digitalis intoxication 가능성 있어 사용 후에 Digoxin 농도검사 확인 요망", sortOrder: 3 },
+    { prescriptionId: IVPODigoxin처방.id, type: "약", productName: "Digoxin 0.25mg/1ml", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "3분동안", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: IVPODigoxin처방.id, type: "약", productName: "Digoxin 0.25mg", dosage: "0.5", unit: "T", frequency: "QD", route: "QD PC", sortOrder: 5 },
+    { prescriptionId: IVPODigoxin처방.id, type: "혈액검사", productName: "Digoxin(농도+약동학해석보고)(진검)", note: "Serum, SST", sortOrder: 6 },
+
+    // 일반병실 입원 (폐렴)
+    { prescriptionId: 일반병실입원폐렴처방.id, type: "지시처방", productName: "ceftriaxone 또는 moxifloxacin 단독요법", sortOrder: 0 },
+    { prescriptionId: 일반병실입원폐렴처방.id, type: "지시처방", productName: "비정형폐렴인 경우 macrolide 추가", sortOrder: 1 },
+    { prescriptionId: 일반병실입원폐렴처방.id, type: "약", productName: "Avelox inj 400mg/250ml", ingredientName: "moxifloxacin", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 2 },
+    { prescriptionId: 일반병실입원폐렴처방.id, type: "약", productName: "Ceftriaxone 2g", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 3 },
+    { prescriptionId: 일반병실입원폐렴처방.id, type: "약", productName: "NS (100ml/PP)", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 4 },
+    { prescriptionId: 일반병실입원폐렴처방.id, type: "약", productName: "NS (100ml/PP)", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 5 },
+    { prescriptionId: 일반병실입원폐렴처방.id, type: "약", productName: "Atzitops 500mg/5mL", ingredientName: "azithromycin", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 6 },
+
+    // Hemorrhage angio
+    { prescriptionId: Hemorrhageangio처방.id, type: "약", productName: "Tranexamic acid 500mg/5ml", ingredientName: "tranexamic acid", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "15분마다", sortOrder: 0 },
+    { prescriptionId: Hemorrhageangio처방.id, type: "약", productName: "Tranexamic acid 500mg/5ml", ingredientName: "tranexamic acid", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "15분마다", sortOrder: 1 },
+    { prescriptionId: Hemorrhageangio처방.id, type: "약", productName: "Tranexamic acid 500mg/5ml", ingredientName: "tranexamic acid", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "15분마다", sortOrder: 2 },
+    { prescriptionId: Hemorrhageangio처방.id, type: "약", productName: "Tranexamic acid 500mg/5ml", ingredientName: "tranexamic acid", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "15분마다", sortOrder: 3 },
+    { prescriptionId: Hemorrhageangio처방.id, type: "약", productName: "Botropase 2 unit/2ml", ingredientName: "hemocoagulase", dosage: "3", unit: "A", frequency: "1", route: "IV", sortOrder: 4 },
+    { prescriptionId: Hemorrhageangio처방.id, type: "약", productName: "Q-pam inj 500mg", ingredientName: "levetiracetam", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 5 },
+    { prescriptionId: Hemorrhageangio처방.id, type: "영상검사", productName: "CT Brain (++) A [Brain (+) Angio 3D, Rt Arm IV 186]", sortOrder: 6 },
+    { prescriptionId: Hemorrhageangio처방.id, type: "영상검사", productName: "Skull 5P [AP, Towns, Rt Lat, Lt Lat, Water's]", sortOrder: 7 },
+
+    // OPD 치료 (폐렴)
+    { prescriptionId: OPD치료폐렴처방.id, type: "지시처방", productName: "비정형폐렴이 의심되는 경우 macrolide 추가", sortOrder: 0 },
+    { prescriptionId: OPD치료폐렴처방.id, type: "지시처방", productName: "외래치료는 b-lactam 단독 요법", sortOrder: 1 },
+    { prescriptionId: OPD치료폐렴처방.id, type: "약", productName: "K-cab 50mg", ingredientName: "tegoprazan", dosage: "1", unit: "T", frequency: "QD", duration: "5일", route: "QD PC", sortOrder: 2 },
+    { prescriptionId: OPD치료폐렴처방.id, type: "약", productName: "Zithromax tab 250mg", ingredientName: "azithromycin", dosage: "2", unit: "T", frequency: "1", duration: "1일", route: "QD PC", sortOrder: 3 },
+    { prescriptionId: OPD치료폐렴처방.id, type: "약", productName: "Banan 100mg", ingredientName: "cefpodoxime", dosage: "1", unit: "T", frequency: "BID", duration: "5일", route: "BID PC", note: "중증 2T BID", sortOrder: 4 },
+    { prescriptionId: OPD치료폐렴처방.id, type: "약", productName: "Tacenol 8hours ER 650mg", ingredientName: "acetaminophen", dosage: "1", unit: "T", frequency: "TID", duration: "5일", route: "TID PC", sortOrder: 5 },
+    { prescriptionId: OPD치료폐렴처방.id, type: "약", productName: "Muten 200mg", ingredientName: "acetylcysteine", dosage: "1", unit: "C", frequency: "TID", duration: "5일", route: "TID PC", sortOrder: 6 },
+    { prescriptionId: OPD치료폐렴처방.id, type: "약", productName: "Codawenon forte syr 20ml/pk", dosage: "1", unit: "PK", frequency: "TID", duration: "5일", route: "TID PC", sortOrder: 7 },
+
+    // Bell's palsy
+    { prescriptionId: BellsPalsy처방.id, type: "지시처방", productName: "stogar, tanamin은 처방일에 맞춰 변경", sortOrder: 0 },
+    { prescriptionId: BellsPalsy처방.id, type: "약", productName: "Methylon 4mg", ingredientName: "methylprednisolone", dosage: "12", unit: "T", frequency: "QD", duration: "4일", route: "QD PC", note: "1일에서 4일째까지 복용", sortOrder: 1 },
+    { prescriptionId: BellsPalsy처방.id, type: "약", productName: "Methylon 4mg", ingredientName: "methylprednisolone", dosage: "10", unit: "T", frequency: "QD", duration: "1일", route: "QD PC", note: "5일, 6일째 복용", sortOrder: 2 },
+    { prescriptionId: BellsPalsy처방.id, type: "약", productName: "Methylon 4mg", ingredientName: "methylprednisolone", dosage: "8", unit: "T", frequency: "QD", duration: "1일", route: "QD PC", note: "7일, 8일째 복용", sortOrder: 3 },
+    { prescriptionId: BellsPalsy처방.id, type: "약", productName: "Methylon 4mg", ingredientName: "methylprednisolone", dosage: "6", unit: "T", frequency: "QD", duration: "1일", route: "QD PC", note: "9일, 10일째 복용", sortOrder: 4 },
+    { prescriptionId: BellsPalsy처방.id, type: "약", productName: "Methylon 4mg", ingredientName: "methylprednisolone", dosage: "4", unit: "T", frequency: "QD", duration: "1일", route: "QD PC", note: "11일, 12일째 복용", sortOrder: 5 },
+    { prescriptionId: BellsPalsy처방.id, type: "약", productName: "Methylon 4mg", ingredientName: "methylprednisolone", dosage: "2", unit: "T", frequency: "QD", duration: "1일", route: "QD PC", note: "13일, 14일째 복용", sortOrder: 6 },
+    { prescriptionId: BellsPalsy처방.id, type: "약", productName: "Stogar 10mg", ingredientName: "Lafutidine", dosage: "1", unit: "T", frequency: "BID", duration: "4일", route: "QD PC & HS", sortOrder: 7 },
+    { prescriptionId: BellsPalsy처방.id, type: "약", productName: "Liposic eye gel 10g", ingredientName: "carbomer", dosage: "1", unit: "TU", frequency: "1", route: "Oph. DROP", sortOrder: 8 },
+
+    // IV NTG
+    { prescriptionId: IVNTG처방.id, type: "지시처방", productName: "NTG: 10mcg/min start, 최대 200mcg/min까지 투약", sortOrder: 0 },
+    { prescriptionId: IVNTG처방.id, type: "지시처방", productName: "BP 조절은 6시간 이내 25% 이상 낮추면 안됨.", sortOrder: 1 },
+    { prescriptionId: IVNTG처방.id, type: "지시처방", productName: "volume overloading 심할 경우 농도를 늘려서 사용 가능", sortOrder: 2 },
+    { prescriptionId: IVNTG처방.id, type: "지시처방", productName: "MBP 70-80 target으로 BP 높을시 다음번 Perdipine 중단하며 주입 (SBP 110-130 target으로 BP 높을시 10<->20<->40<->80<->120mcg/min, 10->20->doubling 하면서 최대 200mcg/min 까지)", sortOrder: 3 },
+    { prescriptionId: IVNTG처방.id, type: "지시처방", productName: "SBP 110-130 target으로 BP 높을시 10<->20<->40<->80<->120", sortOrder: 4 },
+    { prescriptionId: IVNTG처방.id, type: "약", productName: "5% DW (200ml/Bag) (JW중외)", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "3ml/hr", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: IVNTG처방.id, type: "약", productName: "Nitrolingual 50mg/50ml", ingredientName: "nitroglycerin", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "지속주입 (※속도 OCR 불확실)", sortOrder: 6, mixGroup: "M1" },
+    { prescriptionId: IVNTG처방.id, type: "약", productName: "5% DW (50ml/PP)", dosage: "1", unit: "BT", frequency: "1", route: "IV", note: "0.4~2 q 12hr (※OCR 불확실)", sortOrder: 7, mixGroup: "M2" },
+    { prescriptionId: IVNTG처방.id, type: "약", productName: "5% DW (100ml/PP)", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 8, mixGroup: "M3" },
+
+    // DKA
+    { prescriptionId: DKA처방.id, type: "지시처방", productName: "main fluid replacement: -1000ml normal saline, plasma glucose ≤ 200 mg/dL이면 5%DW/0.45% saline으로 main fluid infusion rate를 0.05U/kg/hr 감량하며 지속", sortOrder: 0 },
+    { prescriptionId: DKA처방.id, type: "지시처방", productName: "potassium replacement: K > 5.0 mEq/L, no supplement", sortOrder: 1 },
+    { prescriptionId: DKA처방.id, type: "지시처방", productName: "Bicarbonate: pH < 6.9이면 bicarbonate 50mEq를 200ml의 H2O에 mix", sortOrder: 2 },
+    { prescriptionId: DKA처방.id, type: "지시처방", productName: "If K<3.3, No insulin pump, KCL 투여", sortOrder: 3 },
+    { prescriptionId: DKA처방.id, type: "지시처방", productName: "If 3.3<K<5.3, Insulin pump start, KCL 투여", sortOrder: 4 },
+    { prescriptionId: DKA처방.id, type: "지시처방", productName: "If K> 5.3, Insulin pump start, Calcium start, No KCL", sortOrder: 5 },
+    { prescriptionId: DKA처방.id, type: "지시처방", productName: "양라인 잡아주세요", sortOrder: 6 },
+    { prescriptionId: DKA처방.id, type: "약", productName: "Humulin R vial 1000unit/10ml", ingredientName: "insulin regular", dosage: "6", unit: "Unit", frequency: "1", route: "IV infusion", note: "0.1U/kg IV bolus", sortOrder: 7 },
+    { prescriptionId: DKA처방.id, type: "약", productName: "Humulin R vial 1000unit/10ml", ingredientName: "insulin regular", dosage: "100", unit: "Unit", frequency: "1", route: "IV infusion", sortOrder: 8 },
+    { prescriptionId: DKA처방.id, type: "약", productName: "Calcium gluconate 2g/20ml", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 9, mixGroup: "M3" },
+    { prescriptionId: DKA처방.id, type: "약", productName: "KCl 40mEq/20ml", ingredientName: "potassium chloride", dosage: "0.5", unit: "A", frequency: "1", route: "IV infusion", note: "K < 5.3 시 mix", sortOrder: 10, mixGroup: "M4" },
+    { prescriptionId: DKA처방.id, type: "약", productName: "KCl 40mEq/20ml", ingredientName: "potassium chloride", dosage: "0.5", unit: "A", frequency: "1", route: "IV infusion", note: "K < 5.3 시 mix", sortOrder: 11, mixGroup: "M4" },
+    { prescriptionId: DKA처방.id, type: "약", productName: "Sodium bicarbonate (20meq/20ml)", dosage: "5", unit: "A", frequency: "1", route: "IV infusion", note: "pH 6.9 시 apply", sortOrder: 12 },
+
+    // anaphylaxis
+    { prescriptionId: anaphylaxis처방.id, type: "지시처방", productName: "wheezing 심하고 호흡곤란 심할 경우 nebulizer", sortOrder: 0 },
+    { prescriptionId: anaphylaxis처방.id, type: "지시처방", productName: "Gaster는 H-blocker에 의한 allergy 의심시 주지마세요.", sortOrder: 1 },
+    { prescriptionId: anaphylaxis처방.id, type: "약", productName: "Epinephrine 1mg/1ml", dosage: "0.3", unit: "A", frequency: "1", route: "IM", note: "anaphylaxis 시", sortOrder: 2 },
+    { prescriptionId: anaphylaxis처방.id, type: "약", productName: "Gaster inj 20mg/10mL (액상)", ingredientName: "famotidine", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 3 },
+    { prescriptionId: anaphylaxis처방.id, type: "약", productName: "Peniramin 4mg/2ml", ingredientName: "chlorpheniramine", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 4 },
+    { prescriptionId: anaphylaxis처방.id, type: "약", productName: "Dexamethasone inj 5mg/mL (제일제약)", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 5 },
+    { prescriptionId: anaphylaxis처방.id, type: "약", productName: "NS (500ml/Bag) 대한", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "120ml/hr", sortOrder: 6 },
+    { prescriptionId: anaphylaxis처방.id, type: "약", productName: "Predisol 125mg", ingredientName: "methylprednisolone", dosage: "0.5", unit: "A", frequency: "1", route: "IV", sortOrder: 7 },
+    { prescriptionId: anaphylaxis처방.id, type: "약", productName: "NS (100ml/PP)", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 8, mixGroup: "M4" },
+    { prescriptionId: anaphylaxis처방.id, type: "약", productName: "Gaster D 20mg", ingredientName: "famotidine", dosage: "1", unit: "T", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 9 },
+    { prescriptionId: anaphylaxis처방.id, type: "약", productName: "Atrovent UDV 500mcg/2ml", ingredientName: "ipratropium", dosage: "1", unit: "A", frequency: "1", route: "Aerosol", sortOrder: 10 },
+    { prescriptionId: anaphylaxis처방.id, type: "약", productName: "Ventolin nebul 2.5mg/2.5ml", ingredientName: "salbutamol", dosage: "1", unit: "A", frequency: "1", route: "Aerosol", sortOrder: 11 },
+    { prescriptionId: anaphylaxis처방.id, type: "약", productName: "Dexamethasone tab 0.5mg", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD PC", sortOrder: 12 },
+    { prescriptionId: anaphylaxis처방.id, type: "약", productName: "Peniramin 2mg", ingredientName: "chlorpheniramine", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 13 },
+
+    // GI bleeding (김대용선생님)
+    { prescriptionId: GI출혈김대용처방.id, type: "약", productName: "Glypressin inj 1mg", ingredientName: "terlipressin", dosage: "2", unit: "A", frequency: "1", route: "IV", sortOrder: 0 },
+    { prescriptionId: GI출혈김대용처방.id, type: "약", productName: "Glypressin inj 1mg", ingredientName: "terlipressin", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "유지용량, q 6hr", sortOrder: 1 },
+    { prescriptionId: GI출혈김대용처방.id, type: "약", productName: "Thiamine 50mg/2ml", dosage: "2", unit: "A", frequency: "1", route: "IV", sortOrder: 2 },
+    { prescriptionId: GI출혈김대용처방.id, type: "약", productName: "Nexium 40mg", ingredientName: "esomeprazole", dosage: "2", unit: "A", frequency: "1", route: "IV", sortOrder: 3, mixGroup: "M1" },
+    { prescriptionId: GI출혈김대용처방.id, type: "약", productName: "Nexium 40mg", ingredientName: "esomeprazole", dosage: "5", unit: "A", frequency: "1", route: "IV", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: GI출혈김대용처방.id, type: "약", productName: "NS (500ml/Bag) 대한", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "20ml/hr", sortOrder: 5, mixGroup: "M2" },
+    { prescriptionId: GI출혈김대용처방.id, type: "약", productName: "Ceftriaxone 2g", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M3" },
+    { prescriptionId: GI출혈김대용처방.id, type: "약", productName: "NS (110mL/Bag, KIT일체형)", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 7 },
+    { prescriptionId: GI출혈김대용처방.id, type: "약", productName: "Aloxi 0.075mg/1.5ml", ingredientName: "palonosetron", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 8 },
+    { prescriptionId: GI출혈김대용처방.id, type: "혈액검사", productName: "Crossmatching 검체", note: "Serum, Plain Tube", sortOrder: 9 },
+    { prescriptionId: GI출혈김대용처방.id, type: "혈액검사", productName: "T&S (ABO/Rh type & Irregular Ab Screening)", note: "WB, EDTA", sortOrder: 10 },
+    { prescriptionId: GI출혈김대용처방.id, type: "혈액검사", productName: "ABGA 5(응급실전용)", note: "Heparinized WB, Artery", sortOrder: 11 },
+    { prescriptionId: GI출혈김대용처방.id, type: "지시처방", productName: "Rectal Digital Examination", sortOrder: 12 },
+    { prescriptionId: GI출혈김대용처방.id, type: "지시처방", productName: "위세척(비위관삽입, 위출혈)(1일당)", sortOrder: 13 },
+
+    // Hypoglycemia (개별)
+    { prescriptionId: Hypoglycemia개별처방.id, type: "약", productName: "50% DW (100ml/Plastic)", dosage: "0.3", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 0 },
+    { prescriptionId: Hypoglycemia개별처방.id, type: "약", productName: "5% DW (1000ml/Bag)", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "80ml/hr", sortOrder: 1 },
+    { prescriptionId: Hypoglycemia개별처방.id, type: "혈액검사", productName: "Hemoglobin A1C(당뇨검사)", note: "WB, EDTA", sortOrder: 2 },
+    { prescriptionId: Hypoglycemia개별처방.id, type: "혈액검사", productName: "Glucagon", note: "WB, EDTA", sortOrder: 3 },
+    { prescriptionId: Hypoglycemia개별처방.id, type: "혈액검사", productName: "ACTH (Adrenocoticotropic hormone)", note: "WB, EDTA", sortOrder: 4 },
+    { prescriptionId: Hypoglycemia개별처방.id, type: "혈액검사", productName: "Cortisol(s)", note: "Serum, SST", sortOrder: 5 },
+    { prescriptionId: Hypoglycemia개별처방.id, type: "혈액검사", productName: "Insulin", note: "Serum, SST", sortOrder: 6 },
+    { prescriptionId: Hypoglycemia개별처방.id, type: "혈액검사", productName: "C-Peptide(s)", note: "Serum, SST", sortOrder: 7 },
+    { prescriptionId: Hypoglycemia개별처방.id, type: "혈액검사", productName: "hGH (Human Growth Hormone)", note: "Serum, SST", sortOrder: 8 },
   ]);
 
 }
