@@ -77,7 +77,27 @@ export async function insertKkuData() {
   const [지타코주] = await db.insert(categories).values({ name: "지타코주", parentId: 건국대학교병원.id, sortOrder: 70 }).returning();
   const [고칼륨혈증치료] = await db.insert(categories).values({ name: "Hyperkalemia 치료", parentId: 건국대학교병원.id, sortOrder: 71 }).returning();
   const [저칼륨혈증치료] = await db.insert(categories).values({ name: "Hypokalemia 치료", parentId: 건국대학교병원.id, sortOrder: 72 }).returning();
-  const [급성심근경색] = await db.insert(categories).values({ name: "MI medications", parentId: 건국대학교병원.id, sortOrder: 73 }).returning();
+  const [로메론] = await db.insert(categories).values({ name: "Romeron", parentId: 건국대학교병원.id, sortOrder: 73 }).returning();
+  const [내원환자Lab] = await db.insert(categories).values({ name: "needle stick injury(내원환자) lab", parentId: 건국대학교병원.id, sortOrder: 74 }).returning();
+  const [직원HIV처방약] = await db.insert(categories).values({ name: "needle stick injury(직원처방용) HIV(+) 처방약", parentId: 건국대학교병원.id, sortOrder: 75 }).returning();
+  const [직원Lab] = await db.insert(categories).values({ name: "needle stick injury(직원처방용) Lab", parentId: 건국대학교병원.id, sortOrder: 76 }).returning();
+  const [간염백신] = await db.insert(categories).values({ name: "needle stick injury(직원처방용) 간염백신", parentId: 건국대학교병원.id, sortOrder: 77 }).returning();
+  const [환자Lab] = await db.insert(categories).values({ name: "needle stick injury(환자처방용) Lab", parentId: 건국대학교병원.id, sortOrder: 78 }).returning();
+  const [산동제] = await db.insert(categories).values({ name: "안약 산동제-Tropherin eye drop", parentId: 건국대학교병원.id, sortOrder: 79 }).returning();
+  const [척수손상스테로이드] = await db.insert(categories).values({ name: "spinal cord injury(steroid)", parentId: 건국대학교병원.id, sortOrder: 80 }).returning();
+  const [경련중첩증] = await db.insert(categories).values({ name: "경련 01.status epilepticus", parentId: 건국대학교병원.id, sortOrder: 81 }).returning();
+  const [BP낮음dyspnea] = await db.insert(categories).values({ name: "피부과 BP낮거나 dyspnea-epinephrine", parentId: 건국대학교병원.id, sortOrder: 82 }).returning();
+  const [두드러기중증] = await db.insert(categories).values({ name: "피부과 Ulticaria(severe)", parentId: 건국대학교병원.id, sortOrder: 83 }).returning();
+  const [대상포진] = await db.insert(categories).values({ name: "피부과 대상포진", parentId: 건국대학교병원.id, sortOrder: 84 }).returning();
+  const [천식약물] = await db.insert(categories).values({ name: "Asthma medication", parentId: 건국대학교병원.id, sortOrder: 85 }).returning();
+  const [천식퇴원약] = await db.insert(categories).values({ name: "Asthma 퇴원약", parentId: 건국대학교병원.id, sortOrder: 86 }).returning();
+  const [AAP중독] = await db.insert(categories).values({ name: "NAC protocol (AAP toxic)", parentId: 건국대학교병원.id, sortOrder: 87 }).returning();
+  const [티아민] = await db.insert(categories).values({ name: "Thiamine (wernicke 의심)", parentId: 건국대학교병원.id, sortOrder: 88 }).returning();
+  const [퍼디핀] = await db.insert(categories).values({ name: "BP 높음 perdipin", parentId: 건국대학교병원.id, sortOrder: 89 }).returning();
+  const [NTG] = await db.insert(categories).values({ name: "BP 높음 NTG(HF인 경우)", parentId: 건국대학교병원.id, sortOrder: 90 }).returning();
+  const [락툴로오스관장] = await db.insert(categories).values({ name: "Hepatic encephalopathy Lactulose enema", parentId: 건국대학교병원.id, sortOrder: 91 }).returning();
+  const [간성뇌증퇴원약] = await db.insert(categories).values({ name: "Hepatic encephalopathy 퇴원약", parentId: 건국대학교병원.id, sortOrder: 92 }).returning();
+  const [급성심근경색] = await db.insert(categories).values({ name: "MI medications", parentId: 건국대학교병원.id, sortOrder: 93 }).returning();
 
   const [철분제제처방] = await db.insert(prescriptions).values({ name: "철분제제", categoryId: 철분제제.id, sortOrder: 0 }).returning();
   const [트라넥삼산처방] = await db.insert(prescriptions).values({ name: "Trauma Tranexamic acid", categoryId: 트라넥삼산.id, sortOrder: 0 }).returning();
@@ -152,6 +172,26 @@ export async function insertKkuData() {
   const [지타코주처방] = await db.insert(prescriptions).values({ name: "지타코주", categoryId: 지타코주.id, sortOrder: 0 }).returning();
   const [고칼륨혈증치료처방] = await db.insert(prescriptions).values({ name: "Hyperkalemia 치료", categoryId: 고칼륨혈증치료.id, sortOrder: 0 }).returning();
   const [저칼륨혈증치료처방] = await db.insert(prescriptions).values({ name: "Hypokalemia 치료", categoryId: 저칼륨혈증치료.id, sortOrder: 0 }).returning();
+  const [로메론처방] = await db.insert(prescriptions).values({ name: "Romeron", categoryId: 로메론.id, sortOrder: 0 }).returning();
+  const [내원환자Lab처방] = await db.insert(prescriptions).values({ name: "needle stick injury(내원환자) lab", categoryId: 내원환자Lab.id, sortOrder: 0 }).returning();
+  const [직원HIV처방약처방] = await db.insert(prescriptions).values({ name: "needle stick injury(직원처방용) HIV(+) 처방약", categoryId: 직원HIV처방약.id, sortOrder: 0 }).returning();
+  const [직원Lab처방] = await db.insert(prescriptions).values({ name: "needle stick injury(직원처방용) Lab", categoryId: 직원Lab.id, sortOrder: 0 }).returning();
+  const [간염백신처방] = await db.insert(prescriptions).values({ name: "needle stick injury(직원처방용) 간염백신", categoryId: 간염백신.id, sortOrder: 0 }).returning();
+  const [환자Lab처방] = await db.insert(prescriptions).values({ name: "needle stick injury(환자처방용) Lab", categoryId: 환자Lab.id, sortOrder: 0 }).returning();
+  const [산동제처방] = await db.insert(prescriptions).values({ name: "안약 산동제-Tropherin eye drop", categoryId: 산동제.id, sortOrder: 0 }).returning();
+  const [척수손상스테로이드처방] = await db.insert(prescriptions).values({ name: "spinal cord injury(steroid)", categoryId: 척수손상스테로이드.id, sortOrder: 0 }).returning();
+  const [경련중첩증처방] = await db.insert(prescriptions).values({ name: "경련 01.status epilepticus", categoryId: 경련중첩증.id, sortOrder: 0 }).returning();
+  const [BP낮음dyspnea처방] = await db.insert(prescriptions).values({ name: "피부과 BP낮거나 dyspnea-epinephrine", categoryId: BP낮음dyspnea.id, sortOrder: 0 }).returning();
+  const [두드러기중증처방] = await db.insert(prescriptions).values({ name: "피부과 Ulticaria(severe)", categoryId: 두드러기중증.id, sortOrder: 0 }).returning();
+  const [대상포진처방] = await db.insert(prescriptions).values({ name: "피부과 대상포진", categoryId: 대상포진.id, sortOrder: 0 }).returning();
+  const [천식약물처방] = await db.insert(prescriptions).values({ name: "Asthma medication", categoryId: 천식약물.id, sortOrder: 0 }).returning();
+  const [천식퇴원약처방] = await db.insert(prescriptions).values({ name: "Asthma 퇴원약", categoryId: 천식퇴원약.id, sortOrder: 0 }).returning();
+  const [AAP중독처방] = await db.insert(prescriptions).values({ name: "NAC protocol (AAP toxic)", categoryId: AAP중독.id, sortOrder: 0 }).returning();
+  const [티아민처방] = await db.insert(prescriptions).values({ name: "Thiamine (wernicke 의심)", categoryId: 티아민.id, sortOrder: 0 }).returning();
+  const [퍼디핀처방] = await db.insert(prescriptions).values({ name: "BP 높음 perdipin", categoryId: 퍼디핀.id, sortOrder: 0 }).returning();
+  const [NTG처방] = await db.insert(prescriptions).values({ name: "BP 높음 NTG(HF인 경우)", categoryId: NTG.id, sortOrder: 0 }).returning();
+  const [락툴로오스관장처방] = await db.insert(prescriptions).values({ name: "Hepatic encephalopathy Lactulose enema", categoryId: 락툴로오스관장.id, sortOrder: 0 }).returning();
+  const [간성뇌증퇴원약처방] = await db.insert(prescriptions).values({ name: "Hepatic encephalopathy 퇴원약", categoryId: 간성뇌증퇴원약.id, sortOrder: 0 }).returning();
   const [급성심근경색처방] = await db.insert(prescriptions).values({ name: "MI medications", categoryId: 급성심근경색.id, sortOrder: 0 }).returning();
 
   await db.insert(prescriptionItems).values([
@@ -621,6 +661,135 @@ export async function insertKkuData() {
     { prescriptionId: 저칼륨혈증치료처방.id, type: "약", productName: "Na K 200 100ml/PP", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "25ml/hr", sortOrder: 1 },
     { prescriptionId: 저칼륨혈증치료처방.id, type: "지시처방", productName: "PO 먹을수 있는 환자는 KCL powder/K-contin", sortOrder: 2 },
     { prescriptionId: 저칼륨혈증치료처방.id, type: "약", productName: "Na K 40 1000mL/Bag", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "100ml/hr", sortOrder: 3 },
+
+    // Romeron
+    { prescriptionId: 로메론처방.id, type: "약", productName: "Romeron 50mg/5mL", ingredientName: "rocuronium", dosage: "3.6", unit: "ml", frequency: "1", route: "IV", note: "IV bolus 시 0.6mg/kg", sortOrder: 0 },
+    { prescriptionId: 로메론처방.id, type: "지시처방", productName: "continous", sortOrder: 1 },
+    { prescriptionId: 로메론처방.id, type: "약", productName: "Romeron 50mg/5mL", ingredientName: "rocuronium", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "mcg/kg/min CIV NMB", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: 로메론처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "mcg/kg/min CIV NMB", sortOrder: 3, mixGroup: "M1" },
+
+    // needle stick injury(내원환자) lab
+    { prescriptionId: 내원환자Lab처방.id, type: "혈액검사", productName: "RPR (syphilis)-정밀", note: "Serum, SST", sortOrder: 0 },
+    { prescriptionId: 내원환자Lab처방.id, type: "지시처방", productName: "녹슨주사바늘, 토양, 분변, 오물, 타액 등에 오염된 상처 및 오염된 기구에 의한 천자의 경우에는 파상풍 조치 시행합니다", sortOrder: 1 },
+    { prescriptionId: 내원환자Lab처방.id, type: "혈액검사", productName: "HBs Ag", note: "Serum, SST", sortOrder: 2 },
+    { prescriptionId: 내원환자Lab처방.id, type: "혈액검사", productName: "Anti-HBs Ab", note: "Serum, SST", sortOrder: 3 },
+    { prescriptionId: 내원환자Lab처방.id, type: "혈액검사", productName: "HCV Ab", note: "Serum, SST", sortOrder: 4 },
+    { prescriptionId: 내원환자Lab처방.id, type: "혈액검사", productName: "HIV Ab/Ag", note: "Serum, SST", sortOrder: 5 },
+
+    // needle stick injury(직원처방용) HIV(+) 처방약
+    { prescriptionId: 직원HIV처방약처방.id, type: "약", productName: "Biktarvy", ingredientName: "bictegravir, emtricitabine, tenofovir alafenamide", dosage: "1", unit: "T", frequency: "QD", duration: "2일", route: "QD", sortOrder: 0 },
+
+    // needle stick injury(직원처방용) Lab
+    { prescriptionId: 직원Lab처방.id, type: "지시처방", productName: "녹슨주사바늘, 토양, 분변, 오물, 타액 등에 오염된 상처 및 오염된 기구에 의한 천자의 경우에는 파상풍 조치 시행합니다", sortOrder: 0 },
+    { prescriptionId: 직원Lab처방.id, type: "혈액검사", productName: "HBs Ag", note: "Serum, SST", sortOrder: 1 },
+    { prescriptionId: 직원Lab처방.id, type: "혈액검사", productName: "Anti-HBs Ab", note: "Serum, SST", sortOrder: 2 },
+    { prescriptionId: 직원Lab처방.id, type: "혈액검사", productName: "HCV Ab", note: "Serum, SST", sortOrder: 3 },
+    { prescriptionId: 직원Lab처방.id, type: "혈액검사", productName: "HIV Ab/Ag", note: "Serum, SST", sortOrder: 4 },
+
+    // needle stick injury(직원처방용) 간염백신
+    { prescriptionId: 간염백신처방.id, type: "약", productName: "Hepabig 200 unit/1ml", ingredientName: "Human antihepatitis B Immunoglobulin", dosage: "1", unit: "A", frequency: "1", route: "IM", note: "0.05ml/kg", sortOrder: 0 },
+
+    // needle stick injury(환자처방용) Lab
+    { prescriptionId: 환자Lab처방.id, type: "혈액검사", productName: "(자상조치용)HBs Ag", note: "Serum, SST", sortOrder: 0 },
+    { prescriptionId: 환자Lab처방.id, type: "혈액검사", productName: "(자상조치용)HCV Ab", note: "Serum, SST", sortOrder: 1 },
+    { prescriptionId: 환자Lab처방.id, type: "혈액검사", productName: "(자상조치용)HIV Ab", note: "Serum, SST", sortOrder: 2 },
+
+    // 안약 산동제-Tropherin eye drop
+    { prescriptionId: 산동제처방.id, type: "약", productName: "Tropherin eye drop 0.8ml/1EA", ingredientName: "phenylephrine HCl, tropicamide", dosage: "1", unit: "EA", frequency: "1", route: "Oph. DROP", sortOrder: 0 },
+
+    // spinal cord injury(steroid)
+    { prescriptionId: 척수손상스테로이드처방.id, type: "지시처방", productName: "1st 15분간 30mg/kg 을 15분 이상 동안 투여하세요", sortOrder: 0 },
+    { prescriptionId: 척수손상스테로이드처방.id, type: "지시처방", productName: "2nd 45분 쉬고, 이후 5.4mg/kg/hr 속도로 23시간동안 투여하세요", sortOrder: 1 },
+    { prescriptionId: 척수손상스테로이드처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "400ml/hr 1st", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: 척수손상스테로이드처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "21.6ml/hr 2nd", sortOrder: 3, mixGroup: "M2" },
+
+    // 경련 01.status epilepticus
+    { prescriptionId: 경련중첩증처방.id, type: "약", productName: "Ativan inj 2mg/0.5ml", ingredientName: "lorazepam", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "2-4mg, slowly(2mg/min)", sortOrder: 0 },
+    { prescriptionId: 경련중첩증처방.id, type: "약", productName: "Q-pam inj 500mg", ingredientName: "levetiracetam", dosage: "3", unit: "A", frequency: "1", route: "IV", note: "20-60mg/kg, 2-5mg/kg/min", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: 경련중첩증처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: 경련중첩증처방.id, type: "약", productName: "Orfiril 300mg/3ml", ingredientName: "valproic acid", dosage: "3", unit: "A", frequency: "1", route: "IV infusion", note: "20-60mg/kg", sortOrder: 3, mixGroup: "M2" },
+    { prescriptionId: 경련중첩증처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M2" },
+    { prescriptionId: 경련중첩증처방.id, type: "지시처방", productName: "Ativan 2-4mg 2번 주고 안되면 Q-pam 주고 NR call", sortOrder: 5 },
+    { prescriptionId: 경련중첩증처방.id, type: "약", productName: "Phenobarbital 100mg/ml", ingredientName: "phenobarbital", dosage: "10", unit: "A", frequency: "1", route: "IV", note: "infusion pump로 3시간 동안", sortOrder: 6, mixGroup: "M3" },
+    { prescriptionId: 경련중첩증처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "infusion pump로 3시간 동안", sortOrder: 7, mixGroup: "M3" },
+    { prescriptionId: 경련중첩증처방.id, type: "지시처방", productName: "간질중첩증 심할경우 Q pam 60로 시작, 경한경우 기존의 30", sortOrder: 8 },
+    { prescriptionId: 경련중첩증처방.id, type: "약", productName: "Q-pam inj 500mg", ingredientName: "levetiracetam", dosage: "6", unit: "A", frequency: "1", route: "IV", note: "20-60mg/kg, 2-5mg/kg/min", sortOrder: 9, mixGroup: "M4" },
+    { prescriptionId: 경련중첩증처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M4" },
+
+    // 피부과 BP낮거나 dyspnea-epinephrine
+    { prescriptionId: BP낮음dyspnea처방.id, type: "약", productName: "Dexamethasone inj 5mg/mL", dosage: "1", unit: "A", frequency: "1", route: "IM", sortOrder: 0 },
+    { prescriptionId: BP낮음dyspnea처방.id, type: "약", productName: "Peniramin 4mg/2ml", ingredientName: "chlorpheniramine", dosage: "1", unit: "A", frequency: "1", route: "IM", sortOrder: 1 },
+    { prescriptionId: BP낮음dyspnea처방.id, type: "퇴원약", productName: "Methylon 4mg", ingredientName: "methylprednisolone", dosage: "1", unit: "T", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 2 },
+    { prescriptionId: BP낮음dyspnea처방.id, type: "퇴원약", productName: "Gaster D 20mg", ingredientName: "famotidine", dosage: "1", unit: "T", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 3 },
+    { prescriptionId: BP낮음dyspnea처방.id, type: "퇴원약", productName: "Ebastel 10mg", ingredientName: "ebastine", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD", sortOrder: 4 },
+
+    // 피부과 Ulticaria(severe)
+    { prescriptionId: 두드러기중증처방.id, type: "지시처방", productName: "wheezing 있거나 호흡곤란 심할 경우 nebulizer 주지마세요", sortOrder: 0 },
+    { prescriptionId: 두드러기중증처방.id, type: "지시처방", productName: "Gaster는 H-blocker에 의한 allergy 의심시 주지마세요", sortOrder: 1 },
+    { prescriptionId: 두드러기중증처방.id, type: "약", productName: "Epinephrine 1mg/1ml", dosage: "0.3", unit: "A", frequency: "1", route: "IM", note: "anaphylaxis 때만 주세요", sortOrder: 2 },
+    { prescriptionId: 두드러기중증처방.id, type: "약", productName: "Gaster inj 20mg/10mL", ingredientName: "famotidine", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 3 },
+    { prescriptionId: 두드러기중증처방.id, type: "약", productName: "Peniramin 4mg/2ml", ingredientName: "chlorpheniramine", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 4 },
+    { prescriptionId: 두드러기중증처방.id, type: "약", productName: "Dexamethasone inj 5mg/mL", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 5 },
+    { prescriptionId: 두드러기중증처방.id, type: "약", productName: "NS 500ml/Bag", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "120ml/hr", sortOrder: 6 },
+    { prescriptionId: 두드러기중증처방.id, type: "약", productName: "Peniramin 2mg", ingredientName: "chlorpheniramine", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 7 },
+    { prescriptionId: 두드러기중증처방.id, type: "약", productName: "Gaster D 20mg", ingredientName: "famotidine", dosage: "1", unit: "T", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 8 },
+    { prescriptionId: 두드러기중증처방.id, type: "약", productName: "Predisol 125mg", ingredientName: "methylprednisolone", dosage: "0.5", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M1" },
+    { prescriptionId: 두드러기중증처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M1" },
+    { prescriptionId: 두드러기중증처방.id, type: "약", productName: "Dexamethasone tab 0.5mg", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD", sortOrder: 11 },
+    { prescriptionId: 두드러기중증처방.id, type: "약", productName: "Atrovent UDV 500mcg/2ml", ingredientName: "ipratropium", dosage: "1", unit: "A", frequency: "1", route: "Aerosol", sortOrder: 12 },
+    { prescriptionId: 두드러기중증처방.id, type: "약", productName: "Ventolin nebul 2.5mg/2.5ml", ingredientName: "salbutamol", dosage: "1", unit: "A", frequency: "1", route: "Aerosol", sortOrder: 13 },
+
+    // 피부과 대상포진
+    { prescriptionId: 대상포진처방.id, type: "퇴원약", productName: "Methylon 4mg", ingredientName: "methylprednisolone", dosage: "2", unit: "T", frequency: "QD", duration: "3일", route: "QD PC", sortOrder: 0 },
+    { prescriptionId: 대상포진처방.id, type: "퇴원약", productName: "Gaster D 20mg", ingredientName: "famotidine", dosage: "1", unit: "T", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 1 },
+    { prescriptionId: 대상포진처방.id, type: "퇴원약", productName: "Ebastel 10mg", ingredientName: "ebastine", dosage: "1", unit: "T", frequency: "QD", duration: "3일", route: "QD", sortOrder: 2 },
+    { prescriptionId: 대상포진처방.id, type: "퇴원약", productName: "Brufen 200mg", ingredientName: "ibuprofen", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 3 },
+    { prescriptionId: 대상포진처방.id, type: "약", productName: "Tramadol inj 50mg/1ml", ingredientName: "tramadol", dosage: "1", unit: "A", frequency: "1", route: "IM", sortOrder: 4 },
+
+    // Asthma medication
+    { prescriptionId: 천식약물처방.id, type: "약", productName: "Ventolin nebul 2.5mg/2.5ml", ingredientName: "salbutamol", dosage: "1", unit: "A", frequency: "1", route: "Aerosol", note: "15분 간격", sortOrder: 0 },
+    { prescriptionId: 천식약물처방.id, type: "약", productName: "Atrovent UDV 500mcg/2ml", ingredientName: "ipratropium", dosage: "1", unit: "A", frequency: "1", route: "Aerosol", sortOrder: 1 },
+    { prescriptionId: 천식약물처방.id, type: "약", productName: "Predisol 125mg", ingredientName: "methylprednisolone", dosage: "40", unit: "mg", frequency: "1", route: "IV infusion", sortOrder: 2 },
+    { prescriptionId: 천식약물처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 3, mixGroup: "M1" },
+    { prescriptionId: 천식약물처방.id, type: "약", productName: "Aroxol inj 15mg/2mL", ingredientName: "ambroxol", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 4, mixGroup: "M1" },
+
+    // Asthma 퇴원약
+    { prescriptionId: 천식퇴원약처방.id, type: "퇴원약", productName: "Asima 400mg", ingredientName: "doxofylline", dosage: "1", unit: "T", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 0 },
+    { prescriptionId: 천식퇴원약처방.id, type: "퇴원약", productName: "Ventolin evohaler 200Dose", ingredientName: "salbutamol 0.1mg/dose", dosage: "1", unit: "EA", frequency: "1", route: "Aerosol", sortOrder: 1 },
+    { prescriptionId: 천식퇴원약처방.id, type: "퇴원약", productName: "Selbex cap 50mg", ingredientName: "teprenone", dosage: "1", unit: "C", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 2 },
+
+    // NAC protocol (AAP toxic)
+    { prescriptionId: AAP중독처방.id, type: "지시처방", productName: "60kg 기준", sortOrder: 0 },
+    { prescriptionId: AAP중독처방.id, type: "지시처방", productName: "1st 150mg/kg, 2nd 50mg/kg, 3rd 100mg/kg", sortOrder: 1 },
+    { prescriptionId: AAP중독처방.id, type: "약", productName: "Muratic 300mg/3mL", ingredientName: "acetylcysteine", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "1st 150mg/kg ★amp용량변경", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: AAP중독처방.id, type: "약", productName: "5% DW 200ml/Bag (JW중외)", ingredientName: "Dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 3, mixGroup: "M1" },
+    { prescriptionId: AAP중독처방.id, type: "약", productName: "Muratic 300mg/3mL", ingredientName: "acetylcysteine", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "2nd 50mg/kg ★amp용량변경", sortOrder: 4, mixGroup: "M2" },
+    { prescriptionId: AAP중독처방.id, type: "약", productName: "5% DW 500mL/Bag (JW중외)", ingredientName: "Dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "2nd 4시간 동안 투여", sortOrder: 5, mixGroup: "M2" },
+    { prescriptionId: AAP중독처방.id, type: "약", productName: "Muratic 300mg/3mL", ingredientName: "acetylcysteine", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "3rd 100mg/kg ★amp용량변경", sortOrder: 6, mixGroup: "M3" },
+    { prescriptionId: AAP중독처방.id, type: "약", productName: "5% DW 1000ml/Bag", ingredientName: "Dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "3rd 16시간 동안", sortOrder: 7, mixGroup: "M3" },
+
+    // Thiamine (wernicke 의심)
+    { prescriptionId: 티아민처방.id, type: "약", productName: "Thiamine 50mg/2ml", ingredientName: "thiamine", dosage: "10", unit: "A", frequency: "1", route: "IV", note: "30분간 천천히", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: 티아민처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+
+    // BP 높음 perdipin
+    { prescriptionId: 퍼디핀처방.id, type: "약", productName: "Perdipin 10mg/10ml", ingredientName: "nicardipine", dosage: "0.2", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 0 },
+    { prescriptionId: 퍼디핀처방.id, type: "약", productName: "Perdipin 10mg/10ml", ingredientName: "nicardipine", dosage: "5", unit: "A", frequency: "1", route: "IV infusion", note: "1mg/hr->2ml/hr continous", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: 퍼디핀처방.id, type: "약", productName: "NS 50mL/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
+
+    // BP 높음 NTG(HF인 경우)
+    { prescriptionId: NTG처방.id, type: "약", productName: "Nitrolingual 50mg/50ml", ingredientName: "nitroglycerin", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "3cc/hr (HF인경우)", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: NTG처방.id, type: "약", productName: "5% DW 200ml/Bag (JW중외)", ingredientName: "Dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "3cc/hr (HF인경우)", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: NTG처방.id, type: "약", productName: "Nitroglycerin 0.6mg", ingredientName: "Nitroglycerin", dosage: "1", unit: "T", frequency: "1", route: "UT DICT (내복 1회)", note: "SL", sortOrder: 2 },
+
+    // Hepatic encephalopathy Lactulose enema
+    { prescriptionId: 락툴로오스관장처방.id, type: "약", productName: "5% Sorbitol 500ml/Bag", ingredientName: "Sorbitol", dosage: "0.4", unit: "BT", frequency: "1", route: "Suppl", sortOrder: 0 },
+    { prescriptionId: 락툴로오스관장처방.id, type: "약", productName: "Duphalac Syr 1ml", ingredientName: "lactulose", dosage: "300", unit: "ml", frequency: "1", route: "Suppl", sortOrder: 1 },
+    { prescriptionId: 락툴로오스관장처방.id, type: "지시처방", productName: "Drug Retention Enema", sortOrder: 2 },
+
+    // Hepatic encephalopathy 퇴원약
+    { prescriptionId: 간성뇌증퇴원약처방.id, type: "퇴원약", productName: "Normix 200mg", ingredientName: "Rifaximin", dosage: "2", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 0 },
+    { prescriptionId: 간성뇌증퇴원약처방.id, type: "퇴원약", productName: "Dulackhan-Easy syr 15ml/PK", ingredientName: "lactulose", dosage: "1", unit: "PK", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 1 },
 
     // MI medications
     { prescriptionId: 급성심근경색처방.id, type: "약", productName: "NS 500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "heparin IV mix", sortOrder: 0, mixGroup: "M1" },
