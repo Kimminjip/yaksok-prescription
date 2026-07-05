@@ -97,7 +97,16 @@ export async function insertKkuData() {
   const [NTG] = await db.insert(categories).values({ name: "BP 높음 NTG(HF인 경우)", parentId: 건국대학교병원.id, sortOrder: 90 }).returning();
   const [락툴로오스관장] = await db.insert(categories).values({ name: "Hepatic encephalopathy Lactulose enema", parentId: 건국대학교병원.id, sortOrder: 91 }).returning();
   const [간성뇌증퇴원약] = await db.insert(categories).values({ name: "Hepatic encephalopathy 퇴원약", parentId: 건국대학교병원.id, sortOrder: 92 }).returning();
-  const [급성심근경색] = await db.insert(categories).values({ name: "MI medications", parentId: 건국대학교병원.id, sortOrder: 93 }).returning();
+  const [DKA관리] = await db.insert(categories).values({ name: "DKA management", parentId: 건국대학교병원.id, sortOrder: 93 }).returning();
+  const [백혈구감소오더] = await db.insert(categories).values({ name: "측과 leukopenia 오더", parentId: 건국대학교병원.id, sortOrder: 94 }).returning();
+  const [복수천자검사] = await db.insert(categories).values({ name: "para sono / lab", parentId: 건국대학교병원.id, sortOrder: 95 }).returning();
+  const [복막투석액검사] = await db.insert(categories).values({ name: "복막투석액 검사(신장내과 요청받음)", parentId: 건국대학교병원.id, sortOrder: 96 }).returning();
+  const [말라리아검사] = await db.insert(categories).values({ name: "malaria 검사", parentId: 건국대학교병원.id, sortOrder: 97 }).returning();
+  const [소아해열제] = await db.insert(categories).values({ name: "소아과 퇴원약 해열제", parentId: 건국대학교병원.id, sortOrder: 98 }).returning();
+  const [소아기침가래] = await db.insert(categories).values({ name: "소아과 퇴원약 기침/가래", parentId: 건국대학교병원.id, sortOrder: 99 }).returning();
+  const [소아콧물] = await db.insert(categories).values({ name: "소아과 퇴원약 콧물", parentId: 건국대학교병원.id, sortOrder: 100 }).returning();
+  const [소아구토변비] = await db.insert(categories).values({ name: "소아과 퇴원약 구토/변비", parentId: 건국대학교병원.id, sortOrder: 101 }).returning();
+  const [급성심근경색] = await db.insert(categories).values({ name: "MI medications", parentId: 건국대학교병원.id, sortOrder: 102 }).returning();
 
   const [철분제제처방] = await db.insert(prescriptions).values({ name: "철분제제", categoryId: 철분제제.id, sortOrder: 0 }).returning();
   const [트라넥삼산처방] = await db.insert(prescriptions).values({ name: "Trauma Tranexamic acid", categoryId: 트라넥삼산.id, sortOrder: 0 }).returning();
@@ -192,6 +201,15 @@ export async function insertKkuData() {
   const [NTG처방] = await db.insert(prescriptions).values({ name: "BP 높음 NTG(HF인 경우)", categoryId: NTG.id, sortOrder: 0 }).returning();
   const [락툴로오스관장처방] = await db.insert(prescriptions).values({ name: "Hepatic encephalopathy Lactulose enema", categoryId: 락툴로오스관장.id, sortOrder: 0 }).returning();
   const [간성뇌증퇴원약처방] = await db.insert(prescriptions).values({ name: "Hepatic encephalopathy 퇴원약", categoryId: 간성뇌증퇴원약.id, sortOrder: 0 }).returning();
+  const [DKA관리처방] = await db.insert(prescriptions).values({ name: "DKA management", categoryId: DKA관리.id, sortOrder: 0 }).returning();
+  const [백혈구감소오더처방] = await db.insert(prescriptions).values({ name: "측과 leukopenia 오더", categoryId: 백혈구감소오더.id, sortOrder: 0 }).returning();
+  const [복수천자검사처방] = await db.insert(prescriptions).values({ name: "para sono / lab", categoryId: 복수천자검사.id, sortOrder: 0 }).returning();
+  const [복막투석액검사처방] = await db.insert(prescriptions).values({ name: "복막투석액 검사(신장내과 요청받음)", categoryId: 복막투석액검사.id, sortOrder: 0 }).returning();
+  const [말라리아검사처방] = await db.insert(prescriptions).values({ name: "malaria 검사", categoryId: 말라리아검사.id, sortOrder: 0 }).returning();
+  const [소아해열제처방] = await db.insert(prescriptions).values({ name: "소아과 퇴원약 해열제", categoryId: 소아해열제.id, sortOrder: 0 }).returning();
+  const [소아기침가래처방] = await db.insert(prescriptions).values({ name: "소아과 퇴원약 기침/가래", categoryId: 소아기침가래.id, sortOrder: 0 }).returning();
+  const [소아콧물처방] = await db.insert(prescriptions).values({ name: "소아과 퇴원약 콧물", categoryId: 소아콧물.id, sortOrder: 0 }).returning();
+  const [소아구토변비처방] = await db.insert(prescriptions).values({ name: "소아과 퇴원약 구토/변비", categoryId: 소아구토변비.id, sortOrder: 0 }).returning();
   const [급성심근경색처방] = await db.insert(prescriptions).values({ name: "MI medications", categoryId: 급성심근경색.id, sortOrder: 0 }).returning();
 
   await db.insert(prescriptionItems).values([
@@ -790,6 +808,82 @@ export async function insertKkuData() {
     // Hepatic encephalopathy 퇴원약
     { prescriptionId: 간성뇌증퇴원약처방.id, type: "퇴원약", productName: "Normix 200mg", ingredientName: "Rifaximin", dosage: "2", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 0 },
     { prescriptionId: 간성뇌증퇴원약처방.id, type: "퇴원약", productName: "Dulackhan-Easy syr 15ml/PK", ingredientName: "lactulose", dosage: "1", unit: "PK", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 1 },
+
+    // DKA management
+    { prescriptionId: DKA관리처방.id, type: "지시처방", productName: "main fluid replacement: -1000 mL normal saline first hour, -plasma glucose <= 200 mg/dL이면 5%DW/0.45% saline으로 main fluid 교체하고 insulin rate를 0.05 U/kg/hr로 감량한다", sortOrder: 0 },
+    { prescriptionId: DKA관리처방.id, type: "지시처방", productName: "potassium replacement: K+ > 5.0 mEq/L : no supplementation", sortOrder: 1 },
+    { prescriptionId: DKA관리처방.id, type: "지시처방", productName: "Bicarbonate: 6.9<pH<7.0 or bicarbonate<5 mEq/L이면 50 mEq in 200mL of H2O (1시간)", sortOrder: 2 },
+    { prescriptionId: DKA관리처방.id, type: "지시처방", productName: "If K<3.3, No insulin pump, KCL 투여", sortOrder: 3 },
+    { prescriptionId: DKA관리처방.id, type: "지시처방", productName: "If 3.3<K<5.3, Insulin pump start, KCL 투여", sortOrder: 4 },
+    { prescriptionId: DKA관리처방.id, type: "지시처방", productName: "If K> 5.3, Insuline pump start, Calcium start, No KCL", sortOrder: 5 },
+    { prescriptionId: DKA관리처방.id, type: "지시처방", productName: "라인 잡아주세요", sortOrder: 6 },
+    { prescriptionId: DKA관리처방.id, type: "약", productName: "Humulin R vial 1000unit/10ml", ingredientName: "insulin regular", dosage: "6", unit: "Unit", frequency: "1", route: "IV infusion", note: "0.1U/kg IV bolus", sortOrder: 7 },
+    { prescriptionId: DKA관리처방.id, type: "약", productName: "Humulin R vial 1000unit/10ml", ingredientName: "insulin regular", dosage: "100", unit: "Unit", frequency: "1", route: "IV", note: "0.1 unit/kg/hr. Pump 연결해주세요", sortOrder: 8, mixGroup: "M1" },
+    { prescriptionId: DKA관리처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M1" },
+    { prescriptionId: DKA관리처방.id, type: "약", productName: "Calcium gluconate 2g/20ml", ingredientName: "Calcium gluconate", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "3세트에 걸쳐주세요", sortOrder: 10, mixGroup: "M2" },
+    { prescriptionId: DKA관리처방.id, type: "약", productName: "NS 100ml/PP", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 11, mixGroup: "M2" },
+    { prescriptionId: DKA관리처방.id, type: "약", productName: "KCl 40mEq/20ml", ingredientName: "potassium chloride", dosage: "0.5", unit: "A", frequency: "1", route: "IV infusion", note: "K < 5.3 시 mix", sortOrder: 12, mixGroup: "M3" },
+    { prescriptionId: DKA관리처방.id, type: "약", productName: "KCl 40mEq/20ml", ingredientName: "potassium chloride", dosage: "0.5", unit: "A", frequency: "1", route: "IV infusion", note: "K < 5.3 시 mix", sortOrder: 13, mixGroup: "M4" },
+    { prescriptionId: DKA관리처방.id, type: "약", productName: "Sodium bicarbonate 20meq/20ml", dosage: "5", unit: "A", frequency: "1", route: "IV infusion", note: "pH 6.9 시 apply", sortOrder: 14, mixGroup: "M5" },
+    { prescriptionId: DKA관리처방.id, type: "지시처방", productName: "bivon continous 처방", sortOrder: 15 },
+    { prescriptionId: DKA관리처방.id, type: "약", productName: "5% DW 1000mL/Bag", ingredientName: "Dextrose", dosage: "800", unit: "ml", frequency: "1", route: "IV infusion", note: "100ml/hr total 1L", sortOrder: 16, mixGroup: "M6" },
+    { prescriptionId: DKA관리처방.id, type: "약", productName: "Sodium bicarbonate 20meq/20ml", dosage: "10", unit: "A", frequency: "1", route: "IV infusion", note: "100ml/hr total 1L", sortOrder: 17, mixGroup: "M6" },
+    { prescriptionId: DKA관리처방.id, type: "혈액검사", productName: "혈중베타케톤(β-hydroxybutyrate)", note: "Capillary Blood,Heparinized", sortOrder: 18 },
+
+    // 측과 leukopenia 오더
+    { prescriptionId: 백혈구감소오더처방.id, type: "혈액검사", productName: "Reticulocyte panel", note: "WB, EDTA", sortOrder: 0 },
+    { prescriptionId: 백혈구감소오더처방.id, type: "혈액검사", productName: "PB Morphology", note: "WB, EDTA", sortOrder: 1 },
+    { prescriptionId: 백혈구감소오더처방.id, type: "혈액검사", productName: "EBV VCA IgG", note: "Serum, SST", sortOrder: 2 },
+    { prescriptionId: 백혈구감소오더처방.id, type: "혈액검사", productName: "EBV VCA IgM", note: "Serum, SST", sortOrder: 3 },
+    { prescriptionId: 백혈구감소오더처방.id, type: "혈액검사", productName: "CMV (cytomegalovirus) PCR", note: "WB, EDTA", sortOrder: 4 },
+    { prescriptionId: 백혈구감소오더처방.id, type: "혈액검사", productName: "HSV PCR(type I/II)", note: "WB, EDTA", sortOrder: 5 },
+    { prescriptionId: 백혈구감소오더처방.id, type: "혈액검사", productName: "Parvovirus B19 PCR", note: "WB, EDTA", sortOrder: 6 },
+    { prescriptionId: 백혈구감소오더처방.id, type: "혈액검사", productName: "EBV EA IgG", note: "Serum, SST", sortOrder: 7 },
+    { prescriptionId: 백혈구감소오더처방.id, type: "혈액검사", productName: "EBV EA IgM", note: "Serum, SST", sortOrder: 8 },
+    { prescriptionId: 백혈구감소오더처방.id, type: "혈액검사", productName: "CMV-IgG", note: "Serum, SST", sortOrder: 9 },
+    { prescriptionId: 백혈구감소오더처방.id, type: "혈액검사", productName: "CMV-IgM", note: "Serum, SST", sortOrder: 10 },
+
+    // para sono / lab
+    { prescriptionId: 복수천자검사처방.id, type: "혈액검사", productName: "(체액)Albumin", note: "ascite", sortOrder: 0 },
+    { prescriptionId: 복수천자검사처방.id, type: "혈액검사", productName: "(체액)Amylase", note: "ascite", sortOrder: 1 },
+    { prescriptionId: 복수천자검사처방.id, type: "혈액검사", productName: "(체액)Routine body fluid", note: "Ascitic fluid", sortOrder: 2 },
+    { prescriptionId: 복수천자검사처방.id, type: "혈액검사", productName: "(체액) T. Protein", note: "ascite", sortOrder: 3 },
+    { prescriptionId: 복수천자검사처방.id, type: "혈액검사", productName: "(체액)LDH", note: "ascite", sortOrder: 4 },
+    { prescriptionId: 복수천자검사처방.id, type: "혈액검사", productName: "(체액)Glucose", note: "ascite", sortOrder: 5 },
+    { prescriptionId: 복수천자검사처방.id, type: "혈액검사", productName: "Gram stain & culture & sensitivity", note: "Ascitic fluid", sortOrder: 6 },
+    { prescriptionId: 복수천자검사처방.id, type: "혈액검사", productName: "체액 검사(Fluid/Cytospin) + Cell block제작", note: "ascite", sortOrder: 7 },
+    { prescriptionId: 복수천자검사처방.id, type: "지시처방", productName: "복막 천자용 sono-site marking용 (응급센터에서 시행)", sortOrder: 8 },
+
+    // 복막투석액 검사(신장내과 요청받음)
+    { prescriptionId: 복막투석액검사처방.id, type: "혈액검사", productName: "Gram stain & culture & sensitivity", note: "Dialysis fluid", sortOrder: 0 },
+    { prescriptionId: 복막투석액검사처방.id, type: "혈액검사", productName: "(체액)Routine body fluid", note: "Dialysis fluid", sortOrder: 1 },
+
+    // malaria 검사
+    { prescriptionId: 말라리아검사처방.id, type: "혈액검사", productName: "Malaria Screening Panel", note: "1시간후 검사 결과 나옴, WB, EDTA", sortOrder: 0 },
+    { prescriptionId: 말라리아검사처방.id, type: "혈액검사", productName: "Malaria PCR (4종)", note: "WB, EDTA", sortOrder: 1 },
+    { prescriptionId: 말라리아검사처방.id, type: "지시처방", productName: "항원검사 KIT 확진후", sortOrder: 2 },
+    { prescriptionId: 말라리아검사처방.id, type: "혈액검사", productName: "PB Morphology", note: "WB, EDTA", sortOrder: 3 },
+
+    // 소아과 퇴원약 해열제
+    { prescriptionId: 소아해열제처방.id, type: "퇴원약", productName: "Setopen susp", ingredientName: "acetaminophen 32mg/ml", dosage: "4", unit: "ml", frequency: "3", duration: "3일", route: "UT DICT (내복 3회)", note: "해열제 두 종류 이상 처방시 4시간 간격으로 투여", sortOrder: 0 },
+    { prescriptionId: 소아해열제처방.id, type: "퇴원약", productName: "Brufen syr", ingredientName: "ibuprofen 20mg/ml", dosage: "4", unit: "ml", frequency: "3", duration: "3일", route: "UT DICT (내복 3회)", note: "해열제 두 종류 이상 처방시 4시간 간격으로 투여", sortOrder: 1 },
+
+    // 소아과 퇴원약 기침/가래
+    { prescriptionId: 소아기침가래처방.id, type: "퇴원약", productName: "Mucosol 8mg", ingredientName: "bromhexine", dosage: "0.33", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", note: "1일량 1T(10kg 기준)", sortOrder: 0 },
+    { prescriptionId: 소아기침가래처방.id, type: "퇴원약", productName: "Atock dry syr", ingredientName: "formoterol 40mcg/1g", dosage: "0.5", unit: "g", frequency: "BID", duration: "3일", route: "BID PC", note: "1일량 1g/10kg", sortOrder: 1 },
+    { prescriptionId: 소아기침가래처방.id, type: "퇴원약", productName: "Dropizin syr", ingredientName: "levodropropizine 6mg/mL", dosage: "2", unit: "ml", frequency: "TID", duration: "3일", route: "TID PC", note: "1일량 6ml/10kg", sortOrder: 2 },
+    { prescriptionId: 소아기침가래처방.id, type: "퇴원약", productName: "Karben syr", ingredientName: "ambroxol 1.5mg/ml", dosage: "5", unit: "ml", frequency: "BID", duration: "3일", route: "BID PC", note: "1일량 1ml/kg", sortOrder: 3 },
+    { prescriptionId: 소아기침가래처방.id, type: "지시처방", productName: "기관지확장제 패치 처방 (연령에 따라)", sortOrder: 4 },
+    { prescriptionId: 소아기침가래처방.id, type: "퇴원약", productName: "Nottemon patch 0.5mg", ingredientName: "tulobuterol", dosage: "1", unit: "Patch", frequency: "1", route: "PM8", note: "6개월~3세", sortOrder: 5 },
+    { prescriptionId: 소아기침가래처방.id, type: "퇴원약", productName: "Nottemon patch 1mg", ingredientName: "tulobuterol", dosage: "1", unit: "Patch", frequency: "1", route: "PM8", note: "3세~9세", sortOrder: 6 },
+    { prescriptionId: 소아기침가래처방.id, type: "퇴원약", productName: "Nottemon patch 2mg", ingredientName: "tulobuterol", dosage: "1", unit: "Patch", frequency: "1", route: "PM8", note: "9세 이상", sortOrder: 7 },
+
+    // 소아과 퇴원약 콧물
+    { prescriptionId: 소아콧물처방.id, type: "퇴원약", productName: "Peniramin 2mg", ingredientName: "chlorpheniramine", dosage: "0.33", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", note: "1일량 1T/10kg", sortOrder: 0 },
+
+    // 소아과 퇴원약 구토/변비
+    { prescriptionId: 소아구토변비처방.id, type: "퇴원약", productName: "Polybutine syr", ingredientName: "trimebutine maleate", dosage: "5", unit: "ml", frequency: "BID", duration: "3일", route: "BID PC", note: "1일량 1ml/kg", sortOrder: 0 },
+    { prescriptionId: 소아구토변비처방.id, type: "퇴원약", productName: "Dulackhan Syr 1ml", ingredientName: "lactulose", dosage: "5", unit: "ml", frequency: "TID", duration: "3일", route: "TID PC", note: "약품팁 참고", sortOrder: 1 },
 
     // MI medications
     { prescriptionId: 급성심근경색처방.id, type: "약", productName: "NS 500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "heparin IV mix", sortOrder: 0, mixGroup: "M1" },
