@@ -4,8 +4,8 @@ import { categories, prescriptions, prescriptionItems } from "@shared/schema";
 import { eq, inArray } from "drizzle-orm";
 import { insertKkuData } from "../server/kku-data";
 
-async function deleteExistingKkuData() {
-  const [top] = await db.select().from(categories).where(eq(categories.name, "건국대학교 병원 약속처방"));
+async function deleteTopCategory(name: string) {
+  const [top] = await db.select().from(categories).where(eq(categories.name, name));
   if (!top) return;
 
   const subCats = await db.select().from(categories).where(eq(categories.parentId, top.id));
@@ -22,6 +22,11 @@ async function deleteExistingKkuData() {
   }
 
   await db.delete(categories).where(eq(categories.id, top.id));
+}
+
+async function deleteExistingKkuData() {
+  await deleteTopCategory("건국대학교 병원 약속처방");
+  await deleteTopCategory("김대용 엑셀 정리");
   console.log("Deleted existing KKU data");
 }
 
