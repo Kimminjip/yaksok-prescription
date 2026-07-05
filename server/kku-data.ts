@@ -229,6 +229,59 @@ export async function insertKkuData() {
   const [간성뇌증질환] = await db.insert(categories).values({ name: "Hepatic encephalopathy", parentId: 김대용엑셀정리.id, sortOrder: 49 }).returning();
   const [알콜금단증후군] = await db.insert(categories).values({ name: "Alcohol withdrawal syndrome", parentId: 김대용엑셀정리.id, sortOrder: 50 }).returning();
 
+  const [AKA_E] = await db.insert(categories).values({ name: "AKA", parentId: 김대용엑셀정리.id, sortOrder: 51 }).returning();
+  const [DKA_E] = await db.insert(categories).values({ name: "DKA", parentId: 김대용엑셀정리.id, sortOrder: 52 }).returning();
+  const [HHS_E] = await db.insert(categories).values({ name: "HHS", parentId: 김대용엑셀정리.id, sortOrder: 53 }).returning();
+  const [Hypoglycemia_E] = await db.insert(categories).values({ name: "Hypoglycemia", parentId: 김대용엑셀정리.id, sortOrder: 54 }).returning();
+  const [Hyperkalemia_E] = await db.insert(categories).values({ name: "Hyperkalemia", parentId: 김대용엑셀정리.id, sortOrder: 55 }).returning();
+  const [Hypokalemia_E] = await db.insert(categories).values({ name: "Hypokalemia", parentId: 김대용엑셀정리.id, sortOrder: 56 }).returning();
+  const [Hypernatremia_E] = await db.insert(categories).values({ name: "Hypernatremia", parentId: 김대용엑셀정리.id, sortOrder: 57 }).returning();
+  const [Hyponatremia_E] = await db.insert(categories).values({ name: "Hyponatremia", parentId: 김대용엑셀정리.id, sortOrder: 58 }).returning();
+  const [Hypercalcemia_E] = await db.insert(categories).values({ name: "Hypercalcemia", parentId: 김대용엑셀정리.id, sortOrder: 59 }).returning();
+  const [Hypocalcemia_E] = await db.insert(categories).values({ name: "Hypocalcemia", parentId: 김대용엑셀정리.id, sortOrder: 60 }).returning();
+  const [Hypomagnesemia_E] = await db.insert(categories).values({ name: "Hypomagnesemia", parentId: 김대용엑셀정리.id, sortOrder: 61 }).returning();
+  const [Rhabdomyolysis_E] = await db.insert(categories).values({ name: "Rhabdomyolysis", parentId: 김대용엑셀정리.id, sortOrder: 62 }).returning();
+  const [AdrenalInsufficiency_E] = await db.insert(categories).values({ name: "Adrenal Insufficiency", parentId: 김대용엑셀정리.id, sortOrder: 63 }).returning();
+  const [ThyroidStorm_E] = await db.insert(categories).values({ name: "Thyroid storm", parentId: 김대용엑셀정리.id, sortOrder: 64 }).returning();
+
+  const [COpoisoning_E] = await db.insert(categories).values({ name: "CO poisoning", parentId: 김대용엑셀정리.id, sortOrder: 65 }).returning();
+  const [Charcoal_E] = await db.insert(categories).values({ name: "Charcoal", parentId: 김대용엑셀정리.id, sortOrder: 66 }).returning();
+  const [Salicylate_E] = await db.insert(categories).values({ name: "salicylate", parentId: 김대용엑셀정리.id, sortOrder: 67 }).returning();
+  const [AAP_E] = await db.insert(categories).values({ name: "AAP", parentId: 김대용엑셀정리.id, sortOrder: 68 }).returning();
+  const [Organophosphate_E] = await db.insert(categories).values({ name: "Organophosphate", parentId: 김대용엑셀정리.id, sortOrder: 69 }).returning();
+  const [BB_E] = await db.insert(categories).values({ name: "BB", parentId: 김대용엑셀정리.id, sortOrder: 70 }).returning();
+  const [CCB_E] = await db.insert(categories).values({ name: "CCB", parentId: 김대용엑셀정리.id, sortOrder: 71 }).returning();
+  const [불산노출_E] = await db.insert(categories).values({ name: "불산노출", parentId: 김대용엑셀정리.id, sortOrder: 72 }).returning();
+  const [AntiVenom_E] = await db.insert(categories).values({ name: "Anti-venom", parentId: 김대용엑셀정리.id, sortOrder: 73 }).returning();
+  const [부식제_E] = await db.insert(categories).values({ name: "부식제", parentId: 김대용엑셀정리.id, sortOrder: 74 }).returning();
+  const [기타해독제_E] = await db.insert(categories).values({ name: "기타 해독제", parentId: 김대용엑셀정리.id, sortOrder: 75 }).returning();
+
+  const [Urticaria_E] = await db.insert(categories).values({ name: "Urticaria", parentId: 김대용엑셀정리.id, sortOrder: 76 }).returning();
+  const [Anaphylaxis_E] = await db.insert(categories).values({ name: "Anaphylaxis", parentId: 김대용엑셀정리.id, sortOrder: 77 }).returning();
+  const [Zoster_E] = await db.insert(categories).values({ name: "Zoster", parentId: 김대용엑셀정리.id, sortOrder: 78 }).returning();
+
+  const [Epistaxis_E] = await db.insert(categories).values({ name: "Epistaxis", parentId: 김대용엑셀정리.id, sortOrder: 79 }).returning();
+  const [Epiglottitis_E] = await db.insert(categories).values({ name: "Epiglottitis", parentId: 김대용엑셀정리.id, sortOrder: 80 }).returning();
+
+  const [IschemicStroke_E] = await db.insert(categories).values({ name: "Ischemic stroke(tPA)", parentId: 김대용엑셀정리.id, sortOrder: 81 }).returning();
+  const [HemorrhagicStroke_E] = await db.insert(categories).values({ name: "Hemorrhagic stroke", parentId: 김대용엑셀정리.id, sortOrder: 82 }).returning();
+  const [Seizure_E] = await db.insert(categories).values({ name: "Seizure", parentId: 김대용엑셀정리.id, sortOrder: 83 }).returning();
+  const [Vertigo_E] = await db.insert(categories).values({ name: "Vertigo", parentId: 김대용엑셀정리.id, sortOrder: 84 }).returning();
+  const [SpinalCordInjury_E] = await db.insert(categories).values({ name: "Spinal cord injury", parentId: 김대용엑셀정리.id, sortOrder: 85 }).returning();
+
+  const [UreterStone_E] = await db.insert(categories).values({ name: "Ureter stone", parentId: 김대용엑셀정리.id, sortOrder: 86 }).returning();
+  const [Epididymitis_E] = await db.insert(categories).values({ name: "Epididymitis", parentId: 김대용엑셀정리.id, sortOrder: 87 }).returning();
+  const [Priapism_E] = await db.insert(categories).values({ name: "Priapism", parentId: 김대용엑셀정리.id, sortOrder: 88 }).returning();
+  const [Balanoposthitis_E] = await db.insert(categories).values({ name: "Balanoposthitis", parentId: 김대용엑셀정리.id, sortOrder: 89 }).returning();
+  const [PID_E] = await db.insert(categories).values({ name: "PID", parentId: 김대용엑셀정리.id, sortOrder: 90 }).returning();
+  const [UrinaryRetention_E] = await db.insert(categories).values({ name: "Urinary retention", parentId: 김대용엑셀정리.id, sortOrder: 91 }).returning();
+
+  const [SprainContusion_E] = await db.insert(categories).values({ name: "Sprain/Strain/Contusion", parentId: 김대용엑셀정리.id, sortOrder: 92 }).returning();
+  const [Cellulitis_E] = await db.insert(categories).values({ name: "Cellulitis", parentId: 김대용엑셀정리.id, sortOrder: 93 }).returning();
+  const [OpenFracture_E] = await db.insert(categories).values({ name: "Open fracture", parentId: 김대용엑셀정리.id, sortOrder: 94 }).returning();
+  const [Osteomyelitis_E] = await db.insert(categories).values({ name: "Osteomyelitis/Spondylitis", parentId: 김대용엑셀정리.id, sortOrder: 95 }).returning();
+  const [NecrotizingFasciitis_E] = await db.insert(categories).values({ name: "Necrotizing fasciitis", parentId: 김대용엑셀정리.id, sortOrder: 96 }).returning();
+
   const [철분제제처방] = await db.insert(prescriptions).values({ name: "철분제제", categoryId: 철분제제.id, sortOrder: 0 }).returning();
   const [트라넥삼산처방] = await db.insert(prescriptions).values({ name: "Trauma Tranexamic acid", categoryId: 트라넥삼산.id, sortOrder: 0 }).returning();
   const [트라우마시리즈처방] = await db.insert(prescriptions).values({ name: "Trauma Series", categoryId: 트라우마시리즈.id, sortOrder: 0 }).returning();
@@ -451,6 +504,59 @@ export async function insertKkuData() {
   const [급성간염처방] = await db.insert(prescriptions).values({ name: "Acute hepatitis", categoryId: 급성간염.id, sortOrder: 0 }).returning();
   const [간성뇌증질환처방] = await db.insert(prescriptions).values({ name: "Hepatic encephalopathy", categoryId: 간성뇌증질환.id, sortOrder: 0 }).returning();
   const [알콜금단증후군처방] = await db.insert(prescriptions).values({ name: "Alcohol withdrawal syndrome", categoryId: 알콜금단증후군.id, sortOrder: 0 }).returning();
+
+  const [AKA_E처방] = await db.insert(prescriptions).values({ name: "AKA", categoryId: AKA_E.id, sortOrder: 0 }).returning();
+  const [DKA_E처방] = await db.insert(prescriptions).values({ name: "DKA", categoryId: DKA_E.id, sortOrder: 0 }).returning();
+  const [HHS_E처방] = await db.insert(prescriptions).values({ name: "HHS", categoryId: HHS_E.id, sortOrder: 0 }).returning();
+  const [Hypoglycemia_E처방] = await db.insert(prescriptions).values({ name: "Hypoglycemia", categoryId: Hypoglycemia_E.id, sortOrder: 0 }).returning();
+  const [Hyperkalemia_E처방] = await db.insert(prescriptions).values({ name: "Hyperkalemia", categoryId: Hyperkalemia_E.id, sortOrder: 0 }).returning();
+  const [Hypokalemia_E처방] = await db.insert(prescriptions).values({ name: "Hypokalemia", categoryId: Hypokalemia_E.id, sortOrder: 0 }).returning();
+  const [Hypernatremia_E처방] = await db.insert(prescriptions).values({ name: "Hypernatremia", categoryId: Hypernatremia_E.id, sortOrder: 0 }).returning();
+  const [Hyponatremia_E처방] = await db.insert(prescriptions).values({ name: "Hyponatremia", categoryId: Hyponatremia_E.id, sortOrder: 0 }).returning();
+  const [Hypercalcemia_E처방] = await db.insert(prescriptions).values({ name: "Hypercalcemia", categoryId: Hypercalcemia_E.id, sortOrder: 0 }).returning();
+  const [Hypocalcemia_E처방] = await db.insert(prescriptions).values({ name: "Hypocalcemia", categoryId: Hypocalcemia_E.id, sortOrder: 0 }).returning();
+  const [Hypomagnesemia_E처방] = await db.insert(prescriptions).values({ name: "Hypomagnesemia", categoryId: Hypomagnesemia_E.id, sortOrder: 0 }).returning();
+  const [Rhabdomyolysis_E처방] = await db.insert(prescriptions).values({ name: "Rhabdomyolysis", categoryId: Rhabdomyolysis_E.id, sortOrder: 0 }).returning();
+  const [AdrenalInsufficiency_E처방] = await db.insert(prescriptions).values({ name: "Adrenal Insufficiency", categoryId: AdrenalInsufficiency_E.id, sortOrder: 0 }).returning();
+  const [ThyroidStorm_E처방] = await db.insert(prescriptions).values({ name: "Thyroid storm", categoryId: ThyroidStorm_E.id, sortOrder: 0 }).returning();
+
+  const [COpoisoning_E처방] = await db.insert(prescriptions).values({ name: "CO poisoning", categoryId: COpoisoning_E.id, sortOrder: 0 }).returning();
+  const [Charcoal_E처방] = await db.insert(prescriptions).values({ name: "Charcoal", categoryId: Charcoal_E.id, sortOrder: 0 }).returning();
+  const [Salicylate_E처방] = await db.insert(prescriptions).values({ name: "salicylate", categoryId: Salicylate_E.id, sortOrder: 0 }).returning();
+  const [AAP_E처방] = await db.insert(prescriptions).values({ name: "AAP", categoryId: AAP_E.id, sortOrder: 0 }).returning();
+  const [Organophosphate_E처방] = await db.insert(prescriptions).values({ name: "Organophosphate", categoryId: Organophosphate_E.id, sortOrder: 0 }).returning();
+  const [BB_E처방] = await db.insert(prescriptions).values({ name: "BB", categoryId: BB_E.id, sortOrder: 0 }).returning();
+  const [CCB_E처방] = await db.insert(prescriptions).values({ name: "CCB", categoryId: CCB_E.id, sortOrder: 0 }).returning();
+  const [불산노출_E처방] = await db.insert(prescriptions).values({ name: "불산노출", categoryId: 불산노출_E.id, sortOrder: 0 }).returning();
+  const [AntiVenom_E처방] = await db.insert(prescriptions).values({ name: "Anti-venom", categoryId: AntiVenom_E.id, sortOrder: 0 }).returning();
+  const [부식제_E처방] = await db.insert(prescriptions).values({ name: "부식제", categoryId: 부식제_E.id, sortOrder: 0 }).returning();
+  const [기타해독제_E처방] = await db.insert(prescriptions).values({ name: "기타 해독제", categoryId: 기타해독제_E.id, sortOrder: 0 }).returning();
+
+  const [Urticaria_E처방] = await db.insert(prescriptions).values({ name: "Urticaria", categoryId: Urticaria_E.id, sortOrder: 0 }).returning();
+  const [Anaphylaxis_E처방] = await db.insert(prescriptions).values({ name: "Anaphylaxis", categoryId: Anaphylaxis_E.id, sortOrder: 0 }).returning();
+  const [Zoster_E처방] = await db.insert(prescriptions).values({ name: "Zoster", categoryId: Zoster_E.id, sortOrder: 0 }).returning();
+
+  const [Epistaxis_E처방] = await db.insert(prescriptions).values({ name: "Epistaxis", categoryId: Epistaxis_E.id, sortOrder: 0 }).returning();
+  const [Epiglottitis_E처방] = await db.insert(prescriptions).values({ name: "Epiglottitis", categoryId: Epiglottitis_E.id, sortOrder: 0 }).returning();
+
+  const [IschemicStroke_E처방] = await db.insert(prescriptions).values({ name: "Ischemic stroke(tPA)", categoryId: IschemicStroke_E.id, sortOrder: 0 }).returning();
+  const [HemorrhagicStroke_E처방] = await db.insert(prescriptions).values({ name: "Hemorrhagic stroke", categoryId: HemorrhagicStroke_E.id, sortOrder: 0 }).returning();
+  const [Seizure_E처방] = await db.insert(prescriptions).values({ name: "Seizure", categoryId: Seizure_E.id, sortOrder: 0 }).returning();
+  const [Vertigo_E처방] = await db.insert(prescriptions).values({ name: "Vertigo", categoryId: Vertigo_E.id, sortOrder: 0 }).returning();
+  const [SpinalCordInjury_E처방] = await db.insert(prescriptions).values({ name: "Spinal cord injury", categoryId: SpinalCordInjury_E.id, sortOrder: 0 }).returning();
+
+  const [UreterStone_E처방] = await db.insert(prescriptions).values({ name: "Ureter stone", categoryId: UreterStone_E.id, sortOrder: 0 }).returning();
+  const [Epididymitis_E처방] = await db.insert(prescriptions).values({ name: "Epididymitis", categoryId: Epididymitis_E.id, sortOrder: 0 }).returning();
+  const [Priapism_E처방] = await db.insert(prescriptions).values({ name: "Priapism", categoryId: Priapism_E.id, sortOrder: 0 }).returning();
+  const [Balanoposthitis_E처방] = await db.insert(prescriptions).values({ name: "Balanoposthitis", categoryId: Balanoposthitis_E.id, sortOrder: 0 }).returning();
+  const [PID_E처방] = await db.insert(prescriptions).values({ name: "PID", categoryId: PID_E.id, sortOrder: 0 }).returning();
+  const [UrinaryRetention_E처방] = await db.insert(prescriptions).values({ name: "Urinary retention", categoryId: UrinaryRetention_E.id, sortOrder: 0 }).returning();
+
+  const [SprainContusion_E처방] = await db.insert(prescriptions).values({ name: "Sprain/Strain/Contusion", categoryId: SprainContusion_E.id, sortOrder: 0 }).returning();
+  const [Cellulitis_E처방] = await db.insert(prescriptions).values({ name: "Cellulitis", categoryId: Cellulitis_E.id, sortOrder: 0 }).returning();
+  const [OpenFracture_E처방] = await db.insert(prescriptions).values({ name: "Open fracture", categoryId: OpenFracture_E.id, sortOrder: 0 }).returning();
+  const [Osteomyelitis_E처방] = await db.insert(prescriptions).values({ name: "Osteomyelitis/Spondylitis", categoryId: Osteomyelitis_E.id, sortOrder: 0 }).returning();
+  const [NecrotizingFasciitis_E처방] = await db.insert(prescriptions).values({ name: "Necrotizing fasciitis", categoryId: NecrotizingFasciitis_E.id, sortOrder: 0 }).returning();
 
   await db.insert(prescriptionItems).values([
     // 철분제제
@@ -1933,7 +2039,7 @@ export async function insertKkuData() {
     { prescriptionId: 수혈제제처방.id, type: "약", productName: "Packed RBC(PRC) 320ml", dosage: "1", frequency: "1", route: "IV infusion", note: "4시간 내에 주세요(보통 2-4hr)", sortOrder: 6 },
     { prescriptionId: 수혈제제처방.id, type: "약", productName: "Packed RBC(PRC) 400ml", dosage: "1", frequency: "1", route: "IV infusion", note: "4시간 내에 주세요(보통 2-4hr)", sortOrder: 7 },
     { prescriptionId: 수혈제제처방.id, type: "약", productName: "FFP 320ml", dosage: "1", frequency: "1", route: "IV infusion", note: "3시간 내에 주세요(보통 30min)", sortOrder: 8 },
-    { prescriptionId: 수혈제제처방.id, type: "약", productName: "FFP 400ml", dosage: "1", frequency: "1", route: "IV infusion", note: "3시간 내에 주세요(보통 30min)", sortOrder: 9 },
+    { prescriptionId: 수혈제제처방.id, type: "약", productName: "FFP 400ml", ingredientName: "fresh frozen plasma", dosage: "1", frequency: "1", route: "IV infusion", note: "3시간 내에 주세요(보통 30min)", sortOrder: 9 },
     { prescriptionId: 수혈제제처방.id, type: "약", productName: "Platelet Concentrate 320ml", dosage: "1", frequency: "1", route: "IV infusion", note: "6시간 내에 주세요(보통 30min)", sortOrder: 10 },
     { prescriptionId: 수혈제제처방.id, type: "약", productName: "Platelet Concentrate 400ml", dosage: "1", frequency: "1", route: "IV infusion", note: "6시간 내에 주세요(보통 30min)", sortOrder: 11 },
 
@@ -2114,7 +2220,7 @@ export async function insertKkuData() {
     // ACS
     { prescriptionId: ACS질환처방.id, type: "추가설명", productName: "Acute coronary syndrome", sortOrder: 0 },
     { prescriptionId: ACS질환처방.id, type: "추가설명", productName: "#1 RV infarction시 full drip", sortOrder: 1 },
-    { prescriptionId: ACS질환처방.id, type: "약", productName: "플라주오피주 1000mL", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 2 },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 2 },
     { prescriptionId: ACS질환처방.id, type: "추가설명", productName: "#2 Anti-coagulation", sortOrder: 3 },
     { prescriptionId: ACS질환처방.id, type: "약", productName: "중외헤파린나트륨주사액1000iu(5000IU/5mL)", ingredientName: "heparin sodium", dosage: "0.8", unit: "V", frequency: "1", route: "IVS", note: "bolus: 60unit/kg", sortOrder: 4 },
     { prescriptionId: ACS질환처방.id, type: "약", productName: "중외헤파린주(25,000IU/5mL)", ingredientName: "heparin sodium", dosage: "1", frequency: "1", route: "IV infusion", note: "continuous 12unit/kg/hr, 헤파린 25000unit+5%DW 500ml, 60kg기준 15cc/hr로 투여", sortOrder: 5, mixGroup: "M1" },
@@ -2187,7 +2293,7 @@ export async function insertKkuData() {
     { prescriptionId: AGE질환처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 20, mixGroup: "M7" },
     { prescriptionId: AGE질환처방.id, type: "약", productName: "명문모르핀염산염수화물주사 10mg/1mL", ingredientName: "morphine", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 21, mixGroup: "M8" },
     { prescriptionId: AGE질환처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 22, mixGroup: "M8" },
-    { prescriptionId: AGE질환처방.id, type: "약", productName: "데노간주1g/1병", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 23, mixGroup: "M9" },
+    { prescriptionId: AGE질환처방.id, type: "약", productName: "데노간주1g/1병", ingredientName: "propacetamol", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 23, mixGroup: "M9" },
     { prescriptionId: AGE질환처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 24, mixGroup: "M9" },
     { prescriptionId: AGE질환처방.id, type: "약", productName: "케토신주사", ingredientName: "ketorolac", dosage: "1", unit: "A", frequency: "1", route: "IVS", note: "천천히 투여, 혈관통 주의", sortOrder: 25 },
     { prescriptionId: AGE질환처방.id, type: "추가설명", productName: "MIX", sortOrder: 26 },
@@ -2197,7 +2303,7 @@ export async function insertKkuData() {
     { prescriptionId: AGE질환처방.id, type: "약", productName: "모틴주(파모티딘)", ingredientName: "famotidine", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 30, mixGroup: "M10" },
 
     // Infectious colitis
-    { prescriptionId: 감염성대장염처방.id, type: "약", productName: "플라주오피주 1000mL", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "500cc drip v/s f/u 확인, 이후부터 120cc/hr", sortOrder: 0 },
+    { prescriptionId: 감염성대장염처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "500cc drip v/s f/u 확인, 이후부터 120cc/hr", sortOrder: 0 },
     { prescriptionId: 감염성대장염처방.id, type: "추가설명", productName: "IV ABx.", sortOrder: 1 },
     { prescriptionId: 감염성대장염처방.id, type: "약", productName: "중외시프로플록사신주(0.4g/200mL)", ingredientName: "ciprofloxacin", dosage: "1", unit: "PK", frequency: "1", route: "IV infusion", note: "임부/수유부/소아 금기, 200cc/hr", sortOrder: 2 },
     { prescriptionId: 감염성대장염처방.id, type: "약", productName: "메트리날주500mg/100ml", ingredientName: "metronidazole", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "200cc/hr", sortOrder: 3 },
@@ -2206,7 +2312,7 @@ export async function insertKkuData() {
     { prescriptionId: 감염성대장염처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M1" },
     { prescriptionId: 감염성대장염처방.id, type: "약", productName: "메트리날주500mg/100ml", ingredientName: "metronidazole", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "200cc/hr", sortOrder: 7 },
     { prescriptionId: 감염성대장염처방.id, type: "추가설명", productName: "fever control", sortOrder: 8 },
-    { prescriptionId: 감염성대장염처방.id, type: "약", productName: "데노간주1g/1병", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M2" },
+    { prescriptionId: 감염성대장염처방.id, type: "약", productName: "데노간주1g/1병", ingredientName: "propacetamol", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M2" },
     { prescriptionId: 감염성대장염처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M2" },
     { prescriptionId: 감염성대장염처방.id, type: "약", productName: "케토신주사", ingredientName: "ketorolac", dosage: "1", unit: "A", frequency: "1", route: "IVS", sortOrder: 11 },
     { prescriptionId: 감염성대장염처방.id, type: "추가설명", productName: "GI medication", sortOrder: 12 },
@@ -2242,7 +2348,7 @@ export async function insertKkuData() {
 
     // Acute pancreatitis
     { prescriptionId: 급성췌장염질환처방.id, type: "추가설명", productName: "Fluid replacement", sortOrder: 0 },
-    { prescriptionId: 급성췌장염질환처방.id, type: "약", productName: "플라주오피주 1000mL", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 1 },
+    { prescriptionId: 급성췌장염질환처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 1 },
     { prescriptionId: 급성췌장염질환처방.id, type: "약", productName: "우리스틴주(10만단위/2mL)", ingredientName: "ulinastatin", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "100cc/hr", sortOrder: 2, mixGroup: "M1" },
     { prescriptionId: 급성췌장염질환처방.id, type: "약", productName: "호의주(가벡세이트메실산염 100g/1병)", ingredientName: "gabexate mesilate", dosage: "1", frequency: "1", route: "IV infusion", sortOrder: 3, mixGroup: "M1" },
     { prescriptionId: 급성췌장염질환처방.id, type: "추가설명", productName: "Pain control", sortOrder: 4 },
@@ -2260,8 +2366,8 @@ export async function insertKkuData() {
     { prescriptionId: 급성췌장염질환처방.id, type: "약", productName: "메트리날주500mg/100ml", ingredientName: "metronidazole", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 16 },
 
     // Acute hepatitis
-    { prescriptionId: 급성간염처방.id, type: "약", productName: "헤파멜즈인퓨전주(L-아스파르트산-L-오르니틴 5g/10mL)", dosage: "4", unit: "A", frequency: "1", route: "IV infusion", note: "60cc/hr", sortOrder: 0, mixGroup: "M1" },
-    { prescriptionId: 급성간염처방.id, type: "약", productName: "하트만액500ml", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: 급성간염처방.id, type: "약", productName: "헤파멜즈인퓨전주(L-아스파르트산-L-오르니틴 5g/10mL)", ingredientName: "L-ornithine L-aspartate", dosage: "4", unit: "A", frequency: "1", route: "IV infusion", note: "60cc/hr", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: 급성간염처방.id, type: "약", productName: "하트만액500ml", ingredientName: "lactated Ringer's solution", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
     { prescriptionId: 급성간염처방.id, type: "약", productName: "티아민염산염주", ingredientName: "thiamine HCl", dosage: "2", unit: "A", frequency: "1", route: "IV infusion", note: "main에 모두 mix 해주세요", sortOrder: 2 },
     { prescriptionId: 급성간염처방.id, type: "약", productName: "삐콤헥사주(에너비트주 2mL)", ingredientName: "vitamin B complex", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 3 },
 
@@ -2287,6 +2393,666 @@ export async function insertKkuData() {
     { prescriptionId: 알콜금단증후군처방.id, type: "약", productName: "아네폴주사(프로포폴)", ingredientName: "propofol", dosage: "0.25", unit: "A", frequency: "1", route: "IV infusion", note: "initial bolus 0.5mg/kg(60kg 기준 30mg)", sortOrder: 7 },
     { prescriptionId: 알콜금단증후군처방.id, type: "약", productName: "아네폴주사(프로포폴)", ingredientName: "propofol", dosage: "2", unit: "A", frequency: "1", route: "IV infusion", note: "5mcg/kg/min→60kg기준 18mg/hr→7.5cc/hr", sortOrder: 8, mixGroup: "M2" },
     { prescriptionId: 알콜금단증후군처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "0.76", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M2" },
+
+    // AKA
+    { prescriptionId: AKA_E처방.id, type: "혈액검사", productName: "Alcohol(Ethanol)", sortOrder: 0 },
+    { prescriptionId: AKA_E처방.id, type: "혈액검사", productName: "ABGA", note: "VBGA", sortOrder: 1 },
+    { prescriptionId: AKA_E처방.id, type: "지시처방", productName: "VBGA 나가주세요", sortOrder: 2 },
+    { prescriptionId: AKA_E처방.id, type: "약", productName: "중외5%포도당생리식염주1000ml", ingredientName: "dextrose/sodium chloride", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 3 },
+    { prescriptionId: AKA_E처방.id, type: "약", productName: "티아민염산염주", ingredientName: "thiamine HCl", dosage: "2", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: AKA_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: AKA_E처방.id, type: "약", productName: "멕쿨주10mg/2mL", ingredientName: "metoclopramide", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M2" },
+    { prescriptionId: AKA_E처방.id, type: "약", productName: "엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M2" },
+    { prescriptionId: AKA_E처방.id, type: "추가설명", productName: "Drunken cocktail 수액", sortOrder: 8 },
+    { prescriptionId: AKA_E처방.id, type: "약", productName: "중외5%포도당생리식염주1000ml", ingredientName: "dextrose/sodium chloride", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "loading", sortOrder: 9 },
+    { prescriptionId: AKA_E처방.id, type: "약", productName: "티아민염산염주", ingredientName: "thiamine HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "main mix", sortOrder: 10, mixGroup: "M3" },
+    { prescriptionId: AKA_E처방.id, type: "약", productName: "멕쿨주10mg/2mL", ingredientName: "metoclopramide", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "main mix, 로딩 이후에는 D/S만 추가 loading", sortOrder: 11, mixGroup: "M3" },
+
+    // DKA
+    { prescriptionId: DKA_E처방.id, type: "혈액검사", productName: "ABGA", note: "VBGA나가주세요", sortOrder: 0 },
+    { prescriptionId: DKA_E처방.id, type: "혈액검사", productName: "반정량(BST)-ER전용", sortOrder: 1 },
+    { prescriptionId: DKA_E처방.id, type: "지시처방", productName: "BST q1hr check", sortOrder: 2 },
+    { prescriptionId: DKA_E처방.id, type: "혈액검사", productName: "Electrolyte3종", note: "2hr 뒤 f/u", sortOrder: 3 },
+    { prescriptionId: DKA_E처방.id, type: "혈액검사", productName: "ABGA", note: "2hr 뒤 f/u VBGA", sortOrder: 4 },
+    { prescriptionId: DKA_E처방.id, type: "지시처방", productName: "electrolyte, VBGA q2hr check", sortOrder: 5 },
+    { prescriptionId: DKA_E처방.id, type: "지시처방", productName: "양 line잡아주세요", sortOrder: 6 },
+    { prescriptionId: DKA_E처방.id, type: "지시처방", productName: "I/O check", sortOrder: 7 },
+    { prescriptionId: DKA_E처방.id, type: "지시처방", productName: "KCl mix투여시 꼭 urine out확인 후 시작", sortOrder: 8 },
+    { prescriptionId: DKA_E처방.id, type: "지시처방", productName: "foley insertion 시행해주세요", sortOrder: 9 },
+    { prescriptionId: DKA_E처방.id, type: "추가설명", productName: "Target goal: BST 180-200, pH >7.3, AG:nl, HCO3>18", sortOrder: 10 },
+    { prescriptionId: DKA_E처방.id, type: "추가설명", productName: "1. Hydration", sortOrder: 11 },
+    { prescriptionId: DKA_E처방.id, type: "약", productName: "중외 N/S 생리식염수 1000mL", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "30분-1시간 안에 loading, 이후 half TKO만 유지", sortOrder: 12 },
+    { prescriptionId: DKA_E처방.id, type: "추가설명", productName: "2. K+ replacement: 1/2 saline TKO", sortOrder: 13 },
+    { prescriptionId: DKA_E처방.id, type: "약", productName: "제일제약염화칼륨주사액(3g/20mL)", ingredientName: "potassium chloride", dosage: "0.5", frequency: "1", route: "IV infusion", note: "K level 에 따라 용량 조절", sortOrder: 14, mixGroup: "M1" },
+    { prescriptionId: DKA_E처방.id, type: "약", productName: "half saline infu 1000ml(0.45%)", ingredientName: "sodium chloride 0.45%", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "250-500cc/hr(4-14ml/kg/hr)", sortOrder: 15, mixGroup: "M1" },
+    { prescriptionId: DKA_E처방.id, type: "추가설명", productName: "초기 K>5.2: no KCl, RI만 투여 / 3.3<K<5.2: KCl 20mEq+half+RI / K<3.3: KCl 40mEq+half, RI stop", sortOrder: 16 },
+    { prescriptionId: DKA_E처방.id, type: "지시처방", productName: "BST 200 가까이로 떨어질경우 양라인 수액을 5%DW 1L+1/2 saline 1L으로 교체(±KCl 40mEq/20ml 0.5Vial, K 수치에 따라 mix 결정)", sortOrder: 17 },
+    { prescriptionId: DKA_E처방.id, type: "약", productName: "중외5%포도당주1000mL", ingredientName: "dextrose", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "250cc/hr", sortOrder: 18, mixGroup: "M2" },
+    { prescriptionId: DKA_E처방.id, type: "약", productName: "중외0.45%염화나트륨주사액 1000ml", ingredientName: "sodium chloride", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "250cc/hr", sortOrder: 19, mixGroup: "M2" },
+    { prescriptionId: DKA_E처방.id, type: "약", productName: "제일제약염화칼륨주사액(3g/20mL)", ingredientName: "potassium chloride", dosage: "0.5", unit: "A", frequency: "1", route: "IV infusion", note: "0.45% saline에 mix", sortOrder: 20, mixGroup: "M2" },
+    { prescriptionId: DKA_E처방.id, type: "추가설명", productName: "3. RI infusion", sortOrder: 21 },
+    { prescriptionId: DKA_E처방.id, type: "지시처방", productName: "K<3.3일 경우 hold", sortOrder: 22 },
+    { prescriptionId: DKA_E처방.id, type: "약", productName: "휴물린알주100단위 1000iu/10ml", ingredientName: "insulin regular", dosage: "6", unit: "IU", frequency: "1", route: "IVS", note: "1st bolus: 0.1unit/kg(60kg기준 0.006vial)", sortOrder: 23 },
+    { prescriptionId: DKA_E처방.id, type: "약", productName: "휴물린알주100단위 1000iu/10ml", ingredientName: "insulin regular", dosage: "100", unit: "IU", frequency: "1", route: "IV infusion", note: "100IU(0.1vial)", sortOrder: 24, mixGroup: "M4" },
+    { prescriptionId: DKA_E처방.id, type: "약", productName: "엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "6cc/hr(60kg기준), continuous 유지 0.1unit/kg/hr", sortOrder: 25, mixGroup: "M4" },
+    { prescriptionId: DKA_E처방.id, type: "지시처방", productName: "Goal: 시간당 BST 50이상 감소. BST 200 가까이로 떨어질경우 RI 1/5~1/2(0.02-0.05unit/kg/hr)로 감량", sortOrder: 26 },
+    { prescriptionId: DKA_E처방.id, type: "추가설명", productName: "4. 비본: pH<6.9 일때만 투여", sortOrder: 27 },
+    { prescriptionId: DKA_E처방.id, type: "약", productName: "제일탄산수소나트륨주사액8.4%", ingredientName: "sodium bicarbonate", dosage: "5", unit: "A", frequency: "1", route: "IV infusion", note: "severe acidosis, wide QRS 에 사용고려", sortOrder: 28, mixGroup: "M5" },
+    { prescriptionId: DKA_E처방.id, type: "약", productName: "5%포도당주 500ml", ingredientName: "dextrose", dosage: "0.8", unit: "Bag", frequency: "1", route: "IV infusion", note: "250cc/hr", sortOrder: 29, mixGroup: "M5" },
+    { prescriptionId: DKA_E처방.id, type: "지시처방", productName: "target goal 도달시, 식이 진행하고 short & long acting insulin SC로 change(IV insulin stop)", sortOrder: 30 },
+
+    // HHS
+    { prescriptionId: HHS_E처방.id, type: "혈액검사", productName: "ABGA", note: "VBGA", sortOrder: 0 },
+    { prescriptionId: HHS_E처방.id, type: "혈액검사", productName: "Osmolarity(S)", note: "기본 lab 빠졌을 경우 추가", sortOrder: 1 },
+    { prescriptionId: HHS_E처방.id, type: "혈액검사", productName: "반정량(BST)-ER전용", sortOrder: 2 },
+    { prescriptionId: HHS_E처방.id, type: "지시처방", productName: "BST q1hr check", sortOrder: 3 },
+    { prescriptionId: HHS_E처방.id, type: "혈액검사", productName: "ABGA", note: "2hr 뒤 f/u vbga", sortOrder: 4 },
+    { prescriptionId: HHS_E처방.id, type: "혈액검사", productName: "Electrolyte3종", note: "2hr 뒤 f/u", sortOrder: 5 },
+    { prescriptionId: HHS_E처방.id, type: "지시처방", productName: "electrolyte, VBGA, Osm q2hr check", sortOrder: 6 },
+    { prescriptionId: HHS_E처방.id, type: "지시처방", productName: "양 line잡아주세요", sortOrder: 7 },
+    { prescriptionId: HHS_E처방.id, type: "지시처방", productName: "I/O check", sortOrder: 8 },
+    { prescriptionId: HHS_E처방.id, type: "지시처방", productName: "KCl mix투여시 꼭 urine out확인 후 시작", sortOrder: 9 },
+    { prescriptionId: HHS_E처방.id, type: "지시처방", productName: "foley insertion 시행해주세요", sortOrder: 10 },
+    { prescriptionId: HHS_E처방.id, type: "추가설명", productName: "Target goal: BST<300 및 BST 200-250 유지, Osm<315", sortOrder: 11 },
+    { prescriptionId: HHS_E처방.id, type: "추가설명", productName: "1. Hydration", sortOrder: 12 },
+    { prescriptionId: HHS_E처방.id, type: "약", productName: "중외 N/S 생리식염수 1000mL", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "1시간 안에 loading, 이후 half or NS TKO만 유지", sortOrder: 13 },
+    { prescriptionId: HHS_E처방.id, type: "추가설명", productName: "2. K+ replacement: HyperNa/Na nl.이면 half saline TKO(초기 K>5.0 KCl불필요/3.3<K<5.0 KCl 20mEq+half/K<3.3 KCl 40mEq+half)", sortOrder: 14 },
+    { prescriptionId: HHS_E처방.id, type: "약", productName: "half saline infu 1000ml(0.45%)", ingredientName: "sodium chloride 0.45%", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "250-500cc/hr(4-14ml/kg/hr)", sortOrder: 15, mixGroup: "M1" },
+    { prescriptionId: HHS_E처방.id, type: "약", productName: "제일제약염화칼륨주사액(3g/20mL)", ingredientName: "potassium chloride", dosage: "0.5", frequency: "1", route: "IV infusion", note: "K 용량에 따라 0.5-1A 조절", sortOrder: 16, mixGroup: "M1" },
+    { prescriptionId: HHS_E처방.id, type: "추가설명", productName: "hypoNa 일경우 N/S TKO", sortOrder: 17 },
+    { prescriptionId: HHS_E처방.id, type: "약", productName: "제일제약염화칼륨주사액(3g/20mL)", ingredientName: "potassium chloride", dosage: "0.5", frequency: "1", route: "IV infusion", note: "K 용량에 따라 0.5-1A 조절", sortOrder: 18, mixGroup: "M2" },
+    { prescriptionId: HHS_E처방.id, type: "약", productName: "N/S 1000ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "250cc/hr", sortOrder: 19, mixGroup: "M2" },
+    { prescriptionId: HHS_E처방.id, type: "약", productName: "K-40 40meq/20ml(고주의-반드시 희석)", ingredientName: "potassium chloride", dosage: "0.5", unit: "A", frequency: "1", route: "IV infusion", note: "0.5-1A, 250-500cc/hr, 초기 K>5.0일경우 KCl 절대 믹스 금지", sortOrder: 20, mixGroup: "M2" },
+    { prescriptionId: HHS_E처방.id, type: "추가설명", productName: "BST<300으로 떨어질경우 main fluid를 5D 0.45NS+KCl로 change, OSM<315 될때까지 BST 200-250 유지(5%DW 0.45NaCl 1000ml±KCl 40mEq/20ml 0.5Vial, 250cc/hr)", sortOrder: 21 },
+    { prescriptionId: HHS_E처방.id, type: "추가설명", productName: "3. RI infusion", sortOrder: 22 },
+    { prescriptionId: HHS_E처방.id, type: "약", productName: "휴물린알주100단위 1000iu/10ml", ingredientName: "insulin regular", dosage: "100", unit: "IU", frequency: "1", route: "IV infusion", note: "100IU(0.1vial)", sortOrder: 23, mixGroup: "M3" },
+    { prescriptionId: HHS_E처방.id, type: "약", productName: "엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "6cc/hr(60kg기준), continuous 유지 0.1unit/kg/hr", sortOrder: 24, mixGroup: "M3" },
+    { prescriptionId: HHS_E처방.id, type: "지시처방", productName: "Goal: 시간당 BST 50이상 감소. BST<300으로 떨어질경우 RI속도 1/2배(0.05unit/kg/hr)로 감량", sortOrder: 25 },
+
+    // Hypoglycemia (END,NPH)
+    { prescriptionId: Hypoglycemia_E처방.id, type: "약", productName: "중외50%포도당주50mL", ingredientName: "dextrose 50%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "loading해주세요", sortOrder: 0 },
+    { prescriptionId: Hypoglycemia_E처방.id, type: "약", productName: "10% D/W 1000ml", ingredientName: "dextrose 10%", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "수시 BST 후 속도 재조절, 80cc/hr", sortOrder: 1 },
+    { prescriptionId: Hypoglycemia_E처방.id, type: "혈액검사", productName: "반정량(BST)-ER전용", note: "30분 후 F/U 해주세요", sortOrder: 2 },
+    { prescriptionId: Hypoglycemia_E처방.id, type: "추가설명", productName: "필요시 추가 처방", sortOrder: 3 },
+    { prescriptionId: Hypoglycemia_E처방.id, type: "혈액검사", productName: "HBA1C", sortOrder: 4 },
+    { prescriptionId: Hypoglycemia_E처방.id, type: "혈액검사", productName: "Insulin", sortOrder: 5 },
+    { prescriptionId: Hypoglycemia_E처방.id, type: "혈액검사", productName: "C-Peptide", sortOrder: 6 },
+    { prescriptionId: Hypoglycemia_E처방.id, type: "혈액검사", productName: "Cortisol", sortOrder: 7 },
+    { prescriptionId: Hypoglycemia_E처방.id, type: "혈액검사", productName: "ACTH", sortOrder: 8 },
+
+    // Hyperkalemia
+    { prescriptionId: Hyperkalemia_E처방.id, type: "추가설명", productName: "TTKG=(Urine K/Serum K)/(Urine Osm/Serum Osm); TTKG≥10: 신세뇨관 정상/유효순환혈장량 감소, TTKG<7: K 분비 장애", sortOrder: 0 },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "혈액검사", productName: "EKG 기록및 판독", note: "필요시 serial f/u", sortOrder: 1 },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "추가설명", productName: "주사", sortOrder: 2 },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "약", productName: "글루콘산칼슘주", ingredientName: "calcium gluconate", dosage: "0.5", unit: "A", frequency: "1", route: "IVS", note: "3분 동안 투여", sortOrder: 3 },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "약", productName: "휴물린알주100단위 1000iu/10ml", ingredientName: "insulin regular", dosage: "10", unit: "IU", frequency: "1", route: "IV infusion", note: "10IU(0.01vial) IVS", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "약", productName: "50%포도당주100ml", ingredientName: "dextrose 50%", dosage: "0.5", unit: "BT", frequency: "1", route: "IV infusion", note: "100cc/hr", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "약", productName: "중외50%포도당주50mL", ingredientName: "dextrose 50%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "onset 30min, hypoglycemia 조심", sortOrder: 6, mixGroup: "M1" },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "약", productName: "라식스주사20mg/2mL", ingredientName: "furosemide", dosage: "1", unit: "A", frequency: "1", route: "IVS", note: "신기능 정상 시", sortOrder: 7 },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "약", productName: "제일탄산수소나트륨주사액8.4%", ingredientName: "sodium bicarbonate", dosage: "3", unit: "A", frequency: "1", route: "IV infusion", note: "250cc/hr, 2시간 동안 투약", sortOrder: 8, mixGroup: "M2" },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "약", productName: "5%포도당주 500ml", ingredientName: "dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M2" },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "추가설명", productName: "관장", sortOrder: 10 },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "지시처방", productName: "약물저류관장(관장제포함) Drug Retention Enema", sortOrder: 11 },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "약", productName: "카리메트산5g", ingredientName: "calcium polystyrene sulfonate", dosage: "10", unit: "PK", frequency: "1", route: "Rectal", note: "onset 1-2hr, Kalimate enema, BID", sortOrder: 12, mixGroup: "M3" },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "약", productName: "중외5% 포도당주 100mL", ingredientName: "dextrose", dosage: "1", unit: "BT", frequency: "1", route: "Rectal", sortOrder: 13, mixGroup: "M3" },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "추가설명", productName: "PO", sortOrder: 14 },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "약", productName: "카리메트산5g", ingredientName: "calcium polystyrene sulfonate", dosage: "3", unit: "PK", frequency: "1", route: "PO", note: "물50mL에 타서 하루 4회 복용", sortOrder: 15 },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "추가설명", productName: "Nebulizer", sortOrder: 16 },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "약", productName: "벤토린네뷸2.5mg/2.5ml", ingredientName: "salbutamol sulfate", dosage: "1", unit: "A", frequency: "1", route: "Aerosol", note: "onset 15-30min", sortOrder: 17 },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "지시처방", productName: "증기흡입치료(1일당)", sortOrder: 18 },
+    { prescriptionId: Hyperkalemia_E처방.id, type: "추가설명", productName: "치료 목표: 1)막 안정화(Ca gluconate/chloride, 투여 후 3분내 효과·5분후 EKG 재평가, arrest시엔 chloride를 c-line으로) 2)세포내 재분배(Insulin+Dextrose, Ventolin nebul, 심한 대사성산증엔 bicarbonate) 3)체외 배출(이뇨제, Kalimate PO/enema, 반응없으면 투석)", sortOrder: 19 },
+
+    // Hypokalemia
+    { prescriptionId: Hypokalemia_E처방.id, type: "추가설명", productName: "Hypomagnesemia 동반 여부를 확인, 40meq = 1mmol/L", sortOrder: 0 },
+    { prescriptionId: Hypokalemia_E처방.id, type: "추가설명", productName: "K 3.0-3.5", sortOrder: 1 },
+    { prescriptionId: Hypokalemia_E처방.id, type: "약", productName: "케이콘틴서방정600mg", ingredientName: "potassium chloride", dosage: "2", unit: "T", frequency: "1", route: "PO", note: "K 3.0~3.5 일경우, 오렌지 주스와 함께 복용시키세요", sortOrder: 2 },
+    { prescriptionId: Hypokalemia_E처방.id, type: "추가설명", productName: "케이콘틴 대체약", sortOrder: 3 },
+    { prescriptionId: Hypokalemia_E처방.id, type: "약", productName: "유로시트라케이10mEq서방정", ingredientName: "potassium citrate", dosage: "3", unit: "T", frequency: "1", route: "PO", note: "K 3.0~3.5 일경우, 오렌지 주스와 함께 복용시키세요", sortOrder: 4 },
+    { prescriptionId: Hypokalemia_E처방.id, type: "추가설명", productName: "K 2.5-3.0 with sx. or K < 2.5", sortOrder: 5 },
+    { prescriptionId: Hypokalemia_E처방.id, type: "약", productName: "제일제약염화칼륨주사액(3g/20mL)", ingredientName: "potassium chloride", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "4~6시간 동안 투여", sortOrder: 6, mixGroup: "M1" },
+    { prescriptionId: Hypokalemia_E처방.id, type: "약", productName: "엔에스주사액500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "80-125ml/hr", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: Hypokalemia_E처방.id, type: "약", productName: "제일제약염화칼륨주사액(3g/20mL)", ingredientName: "potassium chloride", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 8, mixGroup: "M2" },
+    { prescriptionId: Hypokalemia_E처방.id, type: "약", productName: "중외0.45%염화나트륨주사액 1000ml", ingredientName: "sodium chloride", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "24시간 동안 투여, 40cc/hr", sortOrder: 9, mixGroup: "M2" },
+    { prescriptionId: Hypokalemia_E처방.id, type: "추가설명", productName: "KCl-40(20ml, 반드시 희석) 1A=40mEq, 속도<20mEq/hr, 농도<40mEq/L; K-contin 1T=8mEq, 경구 5T(40mEq) 투여시 약 1mEq/L 상승", sortOrder: 10 },
+
+    // Hypernatremia
+    { prescriptionId: Hypernatremia_E처방.id, type: "추가설명", productName: "1st. Volume deficit(단위L)만큼 수액 투여. volume deficit(L)=(측정된 Na/nl.Na)-1", sortOrder: 0 },
+    { prescriptionId: Hypernatremia_E처방.id, type: "약", productName: "엔에스주사액500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "계산된 volume deficit 만큼 loading", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: Hypernatremia_E처방.id, type: "약", productName: "0.45%염화나트륨주사액 1000ml", ingredientName: "sodium chloride", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "계산된 volume deficit 만큼 loading", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: Hypernatremia_E처방.id, type: "지시처방", productName: "2nd. Underlying cause 치료: 열→해열제, 구토→항구토제, 설사→지사제 등. desmopressin 추가는 central DI 경우에만", sortOrder: 3 },
+    { prescriptionId: Hypernatremia_E처방.id, type: "추가설명", productName: "3rd. 5DW <free water deficit(L)>만큼 acute/chronic onset에 따라 교정. free water deficit=TBW*(Posm-285)/Posm. TBW(소아·남성<65)=Bwt*0.6, TBW(여성·남성≥65)=Bwt*0.5", sortOrder: 4 },
+    { prescriptionId: Hypernatremia_E처방.id, type: "약", productName: "중외5%포도당주1000mL", ingredientName: "dextrose", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "acute(<48hr): 계산된 Free water deficit(L)만큼 최대속도 -1mEq/hr 교정(보통 1-2hrs)", sortOrder: 5 },
+    { prescriptionId: Hypernatremia_E처방.id, type: "약", productName: "중외5%포도당주1000mL", ingredientName: "dextrose", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "chronic(>48hr): 계산된 Free water deficit(L)만큼 최대속도 -0.5mEq/hr 교정(보통 2-3days)", sortOrder: 6 },
+    { prescriptionId: Hypernatremia_E처방.id, type: "추가설명", productName: "Expected Na change(5DW 1L 투여시)=((0-측정된Na)/(TBW+1))=@; 5DW 최대속도=1000*(1 또는 0.5)/@", sortOrder: 7 },
+
+    // Hyponatremia
+    { prescriptionId: Hyponatremia_E처방.id, type: "추가설명", productName: "Na<120, acute HypoNa, seizure, mental change 등 발생시 교정", sortOrder: 0 },
+    { prescriptionId: Hyponatremia_E처방.id, type: "약", productName: "3% sodium chloride 500ml", ingredientName: "sodium chloride 3%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "acute(<48hrs): 계산된 속도(0.5-2mEq/hr) 만큼", sortOrder: 1 },
+    { prescriptionId: Hyponatremia_E처방.id, type: "약", productName: "3%염화나트륨액 500ml", ingredientName: "sodium chloride 3%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "chronic(>48hrs): 계산된 속도에 맞춰서", sortOrder: 2 },
+    { prescriptionId: Hyponatremia_E처방.id, type: "추가설명", productName: "저위험군 최대 교정속도 +0.5mEq/hr, 고위험군 +0.25mEq/hr(고위험군: Na<120, CHF, alcoholic, LC, HypoK, 영양실조, Vasopressin antagonist 사용자)", sortOrder: 3 },
+    { prescriptionId: Hyponatremia_E처방.id, type: "추가설명", productName: "Expected Na change(3% 1L 투여시)=((513-측정된Na)/(TBW+1))=@; TBW(소아·남성<65)=Bwt*0.6, TBW(여성·남성≥65)=Bwt*0.5; 3% 최대속도=1000*(0.5 또는 0.25)/@", sortOrder: 4 },
+
+    // Hypercalcemia
+    { prescriptionId: Hypercalcemia_E처방.id, type: "추가설명", productName: "total albumin-corrected calcium >14 mg/dL ?", sortOrder: 0 },
+    { prescriptionId: Hypercalcemia_E처방.id, type: "혈액검사", productName: "Intact PTH", sortOrder: 1 },
+    { prescriptionId: Hypercalcemia_E처방.id, type: "혈액검사", productName: "25-(OH) Vitamin D", sortOrder: 2 },
+    { prescriptionId: Hypercalcemia_E처방.id, type: "혈액검사", productName: "Ca(24hr)", sortOrder: 3 },
+    { prescriptionId: Hypercalcemia_E처방.id, type: "혈액검사", productName: "Creatinine(24hr U)", sortOrder: 4 },
+    { prescriptionId: Hypercalcemia_E처방.id, type: "추가설명", productName: "1. Bisphosphonate + Massive hydration", sortOrder: 5 },
+    { prescriptionId: Hypercalcemia_E처방.id, type: "약", productName: "N/S 1000ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "full drip", sortOrder: 6 },
+    { prescriptionId: Hypercalcemia_E처방.id, type: "약", productName: "파노린주사18.75mg/1mL", ingredientName: "pamidronate disodium", dosage: "6", unit: "A", frequency: "1", route: "IV infusion", note: "위 수액 투여 후", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: Hypercalcemia_E처방.id, type: "약", productName: "N/S 500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "250cc/hr", sortOrder: 8, mixGroup: "M1" },
+    { prescriptionId: Hypercalcemia_E처방.id, type: "약", productName: "파노린주사18.75mg/1mL", ingredientName: "pamidronate disodium", dosage: "3", unit: "A", frequency: "1", route: "IV infusion", note: "if Cr>4.5mg/dl", sortOrder: 9, mixGroup: "M2" },
+    { prescriptionId: Hypercalcemia_E처방.id, type: "약", productName: "N/S 500ml", ingredientName: "Normal Saline", dosage: "0.5", unit: "Bag", frequency: "1", route: "IV infusion", note: "60cc/hr", sortOrder: 10, mixGroup: "M2" },
+    { prescriptionId: Hypercalcemia_E처방.id, type: "추가설명", productName: "2. Continue massive hydration: N/S 1000ml 200-300ml/hr, target U/O 100-150mL/hr, HF/CKD 있는 경우에만 Lasix 추가", sortOrder: 11 },
+    { prescriptionId: Hypercalcemia_E처방.id, type: "추가설명", productName: "3. Calcitonin: 원내에 없음", sortOrder: 12 },
+    { prescriptionId: Hypercalcemia_E처방.id, type: "추가설명", productName: "치료 목표: 정상 혈압/관류될 때까지 NS hydration(초기 500-1000ml/hr 후 200-300ml/hr, 배뇨량 2L/day 이상 유지), Furosemide는 볼륨과부하 교정 목적(루틴 아님), 반응없는 중증은 혈액투석 고려", sortOrder: 13 },
+
+    // Hypocalcemia
+    { prescriptionId: Hypocalcemia_E처방.id, type: "추가설명", productName: "정의: ionized Ca < 2.0 mEq/L(1.1mmol/L). serum albumin 감소시 단백결합칼슘만 감소, ionized Ca는 그대로. 저마그네슘혈증 동반시 마그네슘도 함께 교정", sortOrder: 0 },
+    { prescriptionId: Hypocalcemia_E처방.id, type: "추가설명", productName: "임상증상: 근육경련, 구강주위/손끝 감각이상, 기관지경련으로 인한 호흡곤란(tetany, Chvostek/Trousseau sign 양성)", sortOrder: 1 },
+    { prescriptionId: Hypocalcemia_E처방.id, type: "약", productName: "Calcium Carbonate Tab", ingredientName: "calcium carbonate", dosage: "2", unit: "T", frequency: "TID", route: "TID", note: "무증상/경미하거나 만성(10-14일 이상)시, 3일간", sortOrder: 2 },
+    { prescriptionId: Hypocalcemia_E처방.id, type: "추가설명", productName: "중등도 이상은 IV 칼슘 보충(증상 없어질 때까지 60분마다 반복, 염화칼슘은 c-line으로, digitalis 복용자 중독위험 증가 주의, 대량수혈시 4-6단위마다 10% 염화칼슘 10ml 권고)", sortOrder: 3 },
+    { prescriptionId: Hypocalcemia_E처방.id, type: "약", productName: "Calcium Gluconate(대한글루콘산칼슘주)", ingredientName: "calcium gluconate", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "중등도 이상", sortOrder: 4 },
+    { prescriptionId: Hypocalcemia_E처방.id, type: "약", productName: "Normal Saline 50ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 5 },
+    { prescriptionId: Hypocalcemia_E처방.id, type: "약", productName: "Calcium chloride(염카루주3%)", ingredientName: "calcium chloride", dosage: "0.5", unit: "A", frequency: "1", route: "IV infusion", note: "c-line 통해 주입", sortOrder: 6 },
+    { prescriptionId: Hypocalcemia_E처방.id, type: "약", productName: "Normal Saline 50ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 7 },
+
+    // Hypomagnesemia
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "추가설명", productName: "Hypomagnesemia는 Hypocalcemia, Hypokalemia를 동반할 수 있음. Asymptomatic→경구보충/Symptomatic→IV보충. 원인: GI 흡수장애/신배설증가/약물. 증상: 기면,의식혼탁,떨림,운동실조,안진,강직,경련,부정맥", sortOrder: 0 },
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "혈액검사", productName: "EKG 기록및 판독", note: "TdP, PR, QT prolong 등 확인, 필요시 serial f/u", sortOrder: 1 },
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "추가설명", productName: "hemodynamically unstable patients", sortOrder: 2 },
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "약", productName: "황산마그네슘주10%", ingredientName: "magnesium sulfate", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "2분간 투여", sortOrder: 3 },
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "약", productName: "황산마그네슘주10%", ingredientName: "magnesium sulfate", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "bolus 투여 후 continuous 시작, 50cc/hr", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "추가설명", productName: "stable patients", sortOrder: 6 },
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "추가설명", productName: "#1 Mg 1.6 to 1.9 mg/dL or symptomatic", sortOrder: 7 },
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "약", productName: "황산마그네슘주10%", ingredientName: "magnesium sulfate", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "Symptomatic, 100cc/hr", sortOrder: 8, mixGroup: "M2" },
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "Symptomatic", sortOrder: 9, mixGroup: "M2" },
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "추가설명", productName: "#2 Mg: 1 to 1.5 mg/dL", sortOrder: 10 },
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "약", productName: "황산마그네슘주10%", ingredientName: "magnesium sulfate", dosage: "2", unit: "A", frequency: "1", route: "IV infusion", note: "40cc/hr", sortOrder: 11, mixGroup: "M3" },
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "약", productName: "N/S 500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 12, mixGroup: "M3" },
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "추가설명", productName: "#3 Mg: <1mg/dL", sortOrder: 13 },
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "약", productName: "황산마그네슘주10%", ingredientName: "magnesium sulfate", dosage: "4", unit: "A", frequency: "1", route: "IV infusion", note: "20cc/hr", sortOrder: 14, mixGroup: "M4" },
+    { prescriptionId: Hypomagnesemia_E처방.id, type: "약", productName: "N/S 500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 15, mixGroup: "M4" },
+
+    // Rhabdomyolysis
+    { prescriptionId: Rhabdomyolysis_E처방.id, type: "지시처방", productName: "초기 24hrs 내 10-20L massive hydration 시행(No K+ or lactate 함유 수액)", sortOrder: 0 },
+    { prescriptionId: Rhabdomyolysis_E처방.id, type: "지시처방", productName: "U/O 2ml/kg/hr 이상 유지(200-300cc/hr 유지)", sortOrder: 1 },
+    { prescriptionId: Rhabdomyolysis_E처방.id, type: "지시처방", productName: "check I/O", sortOrder: 2 },
+    { prescriptionId: Rhabdomyolysis_E처방.id, type: "지시처방", productName: "필요시 foley insertion 시행", sortOrder: 3 },
+    { prescriptionId: Rhabdomyolysis_E처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "200cc/hr", sortOrder: 4 },
+    { prescriptionId: Rhabdomyolysis_E처방.id, type: "혈액검사", productName: "CPK", note: "다음날 오전에 f/u 나가주세요", sortOrder: 5 },
+    { prescriptionId: Rhabdomyolysis_E처방.id, type: "혈액검사", productName: "Chemistry(19종)", note: "다음날 오전에 f/u 나가주세요", sortOrder: 6 },
+    { prescriptionId: Rhabdomyolysis_E처방.id, type: "혈액검사", productName: "Myoglobin(정량)", sortOrder: 7 },
+
+    // Adrenal Insufficiency
+    { prescriptionId: AdrenalInsufficiency_E처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "loading 해주세요", sortOrder: 0 },
+    { prescriptionId: AdrenalInsufficiency_E처방.id, type: "약", productName: "코티소루주 0.1337g/1병", ingredientName: "hydrocortisone", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "8hr 마다 반복", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: AdrenalInsufficiency_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "3-5분 안에 들어가게끔 로딩", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: AdrenalInsufficiency_E처방.id, type: "지시처방", productName: "승압제 사용전에 steroid 부터 사용", sortOrder: 3 },
+    { prescriptionId: AdrenalInsufficiency_E처방.id, type: "약", productName: "큐프린주8mg/4mL", ingredientName: "norepinephrine bitartrate", dosage: "3", frequency: "1", route: "IV infusion", note: "12mg", sortOrder: 4, mixGroup: "M2" },
+    { prescriptionId: AdrenalInsufficiency_E처방.id, type: "지시처방", productName: "steroid 에도 반응 없고 BP 증가 안할시 승압제 사용 고려", sortOrder: 5 },
+    { prescriptionId: AdrenalInsufficiency_E처방.id, type: "약", productName: "노르핀주(8mg/4mL)", ingredientName: "norepinephrine tartrate", dosage: "3", unit: "A", frequency: "1", route: "IV infusion", note: "5mcg/min으로 시작(Max 50mcg/min)", sortOrder: 6, mixGroup: "M3" },
+    { prescriptionId: AdrenalInsufficiency_E처방.id, type: "약", productName: "5%포도당주 200mL", ingredientName: "dextrose", dosage: "1", frequency: "1", route: "IV infusion", note: "5mcg/min→5cc/hr", sortOrder: 7, mixGroup: "M3" },
+    { prescriptionId: AdrenalInsufficiency_E처방.id, type: "약", productName: "염산도파민프리믹스 500ml", ingredientName: "dopamine HCl", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "60kg기준 11.25cc/hr(5mcg/kg/min)로 시작, 5-10mcg/kg/min 고려(max 10)", sortOrder: 8 },
+
+    // Thyroid storm
+    { prescriptionId: ThyroidStorm_E처방.id, type: "추가설명", productName: "1. 보존적 치료", sortOrder: 0 },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "지시처방", productName: "cooling 같이 해주세요", sortOrder: 1 },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "약", productName: "데노간주1g/1병", ingredientName: "propacetamol", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "발열시 AAP계통", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 3, mixGroup: "M1" },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "약", productName: "50% D/W 100ml", ingredientName: "dextrose 50%", dosage: "0.5", unit: "BT", frequency: "1", route: "IV infusion", note: "저혈당일 경우 loading", sortOrder: 4, mixGroup: "M2" },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "약", productName: "중외50%포도당주50mL", ingredientName: "dextrose 50%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M2" },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "약", productName: "Thiamine hcl inj 50mg/2ml", ingredientName: "thiamine HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M3" },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M3" },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "추가설명", productName: "2. Thionamide계: 갑상선호르몬 억제. 의식 없을 경우 L-tube insertion 후 PO med. 준비", sortOrder: 8 },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "약", productName: "안티로이드정", ingredientName: "propylthiouracil", dosage: "12", unit: "T", frequency: "1", route: "PO", note: "PTU가 1st choice, 즉시 복용, 이후 5T를 4시간 간격으로 복용", sortOrder: 9 },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "약", productName: "부광메티마졸정5mg", ingredientName: "methimazole", dosage: "8", unit: "T", frequency: "1", route: "PO", note: "PTU alternative(안정성 높음), 즉시 복용", sortOrder: 10 },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "추가설명", productName: "3. 갑상선호르몬 분비 차단: Iodine 투여(thionamide계 사용 후 1시간 뒤!)", sortOrder: 11 },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "약", productName: "제뉴원젬스테인용액", ingredientName: "potassium iodide solution", dosage: "1", unit: "V", frequency: "1", route: "PO", note: "0.25cc(5방울을 물100cc에 희석), 6시간 간격 복용", sortOrder: 12 },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "추가설명", productName: "4. BB: HR 감소 목적", sortOrder: 13 },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "약", productName: "제일브레비블록주100mg", ingredientName: "esmolol HCl", dosage: "0.3", unit: "V", frequency: "1", route: "IVS", note: "Bolus 0.5mg/kg IV, 1분간(60kg기준 30mg IV)", sortOrder: 14 },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "약", productName: "제일브레비블록주2.5그램", ingredientName: "esmolol HCl", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "initial 20cc/hr, 5분마다 20cc/hr titration", sortOrder: 15, mixGroup: "M4" },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "약", productName: "5% D/W 500ml", ingredientName: "dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 16, mixGroup: "M4" },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "추가설명", productName: "5. 말초 T4→T3 전환차단", sortOrder: 17 },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "약", productName: "코티소루주 0.1337g/1병", ingredientName: "hydrocortisone", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "loading 해주세요", sortOrder: 18, mixGroup: "M5" },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "3-5분 안에 들어가게끔 로딩", sortOrder: 19, mixGroup: "M5" },
+    { prescriptionId: ThyroidStorm_E처방.id, type: "추가설명", productName: "6. 감염 있을 경우 항생제 추가", sortOrder: 20 },
+
+    // CO poisoning
+    { prescriptionId: COpoisoning_E처방.id, type: "추가설명", productName: "r/o combined CN toxicity", sortOrder: 0 },
+    { prescriptionId: COpoisoning_E처방.id, type: "지시처방", productName: "O2 15L supply via NRM", sortOrder: 1 },
+    { prescriptionId: COpoisoning_E처방.id, type: "약", productName: "아메톡스주25%(치오황산나트륨)", ingredientName: "sodium thiosulfate", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "30분동안 투여", sortOrder: 2 },
+    { prescriptionId: COpoisoning_E처방.id, type: "약", productName: "아메톡스주25%(치오황산나트륨)", ingredientName: "sodium thiosulfate", dosage: "0.5", unit: "V", frequency: "1", route: "IV infusion", note: "2시간 뒤 재투여", sortOrder: 3 },
+    { prescriptionId: COpoisoning_E처방.id, type: "추가설명", productName: "inhalation injury", sortOrder: 4 },
+    { prescriptionId: COpoisoning_E처방.id, type: "지시처방", productName: "증기흡입치료(1일당), 4시간마다", sortOrder: 5 },
+    { prescriptionId: COpoisoning_E처방.id, type: "약", productName: "벤토린네뷸2.5mg/2.5ml", ingredientName: "salbutamol sulfate", dosage: "1", unit: "A", frequency: "1", route: "Aerosol", sortOrder: 6 },
+    { prescriptionId: COpoisoning_E처방.id, type: "약", productName: "아트로벤트흡입액유디비", ingredientName: "ipratropium bromide", dosage: "1", unit: "EA", frequency: "1", route: "Aerosol", sortOrder: 7 },
+    { prescriptionId: COpoisoning_E처방.id, type: "추가설명", productName: "이어서", sortOrder: 8 },
+    { prescriptionId: COpoisoning_E처방.id, type: "약", productName: "보령뮤코미스트액4ml", ingredientName: "acetylcysteine", dosage: "1", unit: "EA", frequency: "1", route: "Aerosol", note: "4시간마다, N/S 1mL로 희석", sortOrder: 9 },
+    { prescriptionId: COpoisoning_E처방.id, type: "지시처방", productName: "Close observation for 4~6h", sortOrder: 10 },
+
+    // Charcoal
+    { prescriptionId: Charcoal_E처방.id, type: "약", productName: "흑산(약용탄)", ingredientName: "activated charcoal", dosage: "1", frequency: "1", route: "PO", note: "성인 50g, 소아 1g/kg", sortOrder: 0 },
+    { prescriptionId: Charcoal_E처방.id, type: "약", productName: "대한25% D-만니톨주100ml", ingredientName: "mannitol", dosage: "2", unit: "BT", frequency: "1", route: "PO", sortOrder: 1 },
+    { prescriptionId: Charcoal_E처방.id, type: "추가설명", productName: "Not for: 금속(철,납,리튬), 탄화수소(휘발유,등유,벤젠), 술(메탄,에탄,ethylene glycol), 부식제(표백제,빙초산), 유기인계농약", sortOrder: 2 },
+    { prescriptionId: Charcoal_E처방.id, type: "지시처방", productName: "비위관삽관술(L-tube)", sortOrder: 3 },
+    { prescriptionId: Charcoal_E처방.id, type: "지시처방", productName: "Gastric Lavage(일반 위세척용)", sortOrder: 4 },
+    { prescriptionId: Charcoal_E처방.id, type: "약", productName: "흑산(약용탄)", ingredientName: "activated charcoal", dosage: "1", frequency: "1", route: "PO", note: "multi dose Ix: carbamazepine, phenobarbital, dapsone, quinine, theophylline", sortOrder: 5 },
+    { prescriptionId: Charcoal_E처방.id, type: "약", productName: "대한25% D-만니톨주100ml", ingredientName: "mannitol", dosage: "2", unit: "BT", frequency: "1", route: "PO", sortOrder: 6 },
+    { prescriptionId: Charcoal_E처방.id, type: "추가설명", productName: "multi dose: 1st dose 이후 2시간마다 성인(25g), 소아(0.5g/kg) 반복", sortOrder: 7 },
+
+    // salicylate
+    { prescriptionId: Salicylate_E처방.id, type: "추가설명", productName: "IV hydration, bicarbonate, charcoal, HD고려", sortOrder: 0 },
+    { prescriptionId: Salicylate_E처방.id, type: "약", productName: "흑산(약용탄)", ingredientName: "activated charcoal", dosage: "1", unit: "BT", frequency: "1", route: "PO", sortOrder: 1 },
+    { prescriptionId: Salicylate_E처방.id, type: "약", productName: "대한25% D-만니톨주100ml", ingredientName: "mannitol", dosage: "2", unit: "BT", frequency: "1", route: "PO", note: "성인 50g, 소아 1g/kg", sortOrder: 2 },
+    { prescriptionId: Salicylate_E처방.id, type: "지시처방", productName: "비위관삽관술(L-tube), Gastric Lavage", sortOrder: 3 },
+    { prescriptionId: Salicylate_E처방.id, type: "지시처방", productName: "양라인 잡아주세요", sortOrder: 4 },
+    { prescriptionId: Salicylate_E처방.id, type: "약", productName: "하트만액 1L", ingredientName: "lactated Ringer's solution", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "1st line: 20cc/kg 우선 로딩→200cc/hr", sortOrder: 5 },
+    { prescriptionId: Salicylate_E처방.id, type: "약", productName: "염화칼륨주사액(KCL)", ingredientName: "potassium chloride", dosage: "0.5", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M1" },
+    { prescriptionId: Salicylate_E처방.id, type: "약", productName: "탄산수소나트륨8.4%주(NaHCO3)", ingredientName: "sodium bicarbonate", dosage: "5", unit: "A", frequency: "1", route: "IV infusion", note: "2nd line: 250cc/hr, 2시간 동안 투약", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: Salicylate_E처방.id, type: "약", productName: "5%포도당주 500ml", ingredientName: "dextrose", dosage: "0.8", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 8, mixGroup: "M1" },
+    { prescriptionId: Salicylate_E처방.id, type: "지시처방", productName: "유치 카테타 설치", sortOrder: 9 },
+    { prescriptionId: Salicylate_E처방.id, type: "추가설명", productName: "target: urine pH>7.5, serum potassium 4.0~4.5, target urine output 1~2 mL/kg/hr", sortOrder: 10 },
+
+    // AAP
+    { prescriptionId: AAP_E처방.id, type: "추가설명", productName: "charcoal + NAC", sortOrder: 0 },
+    { prescriptionId: AAP_E처방.id, type: "지시처방", productName: "AAP 하루동안 10g 이상 or 200mg/kg 이상 복용시 투약", sortOrder: 1 },
+    { prescriptionId: AAP_E처방.id, type: "지시처방", productName: "side 발생시 바로 stop 하고 noti 주세요", sortOrder: 2 },
+    { prescriptionId: AAP_E처방.id, type: "추가설명", productName: "20hr protocol - 60kg 기준", sortOrder: 3 },
+    { prescriptionId: AAP_E처방.id, type: "약", productName: "뮤테란주사(1g/10mL)", ingredientName: "acetylcysteine", dosage: "9", unit: "A", frequency: "1", route: "IV infusion", note: "첫 1시간 동안 투여(150mg/kg)", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: AAP_E처방.id, type: "약", productName: "5%포도당주 200mL", ingredientName: "dextrose", dosage: "1", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: AAP_E처방.id, type: "약", productName: "뮤테란주사(1g/10mL)", ingredientName: "acetylcysteine", dosage: "3", unit: "A", frequency: "1", route: "IV infusion", note: "다음 4시간 동안 투여(50mg/kg)", sortOrder: 6, mixGroup: "M2" },
+    { prescriptionId: AAP_E처방.id, type: "약", productName: "5%포도당주 200mL", ingredientName: "dextrose", dosage: "1", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M2" },
+    { prescriptionId: AAP_E처방.id, type: "약", productName: "뮤테란주사(1g/10mL)", ingredientName: "acetylcysteine", dosage: "6", unit: "A", frequency: "1", route: "IV infusion", note: "나머지 16시간 동안 투여(100mg/kg)", sortOrder: 8, mixGroup: "M3" },
+    { prescriptionId: AAP_E처방.id, type: "약", productName: "5%포도당주 200mL", ingredientName: "dextrose", dosage: "1", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M3" },
+    { prescriptionId: AAP_E처방.id, type: "약", productName: "페니라민주사(4mg/2mL)", ingredientName: "chlorpheniramine maleate", dosage: "1", unit: "A", frequency: "1", route: "IVS", note: "itching sense 있을 시 투여", sortOrder: 10 },
+
+    // Organophosphate
+    { prescriptionId: Organophosphate_E처방.id, type: "추가설명", productName: "atropine, PAM", sortOrder: 0 },
+    { prescriptionId: Organophosphate_E처방.id, type: "지시처방", productName: "복용한 살충제 종류 꼭 확인해주세요", sortOrder: 1 },
+    { prescriptionId: Organophosphate_E처방.id, type: "지시처방", productName: "RSI 시행시 NM blocker 로 석시콜린 사용금지. Rocuronium 또는 Vecuronium 사용하세요", sortOrder: 2 },
+    { prescriptionId: Organophosphate_E처방.id, type: "약", productName: "아트로핀황산염주사액0.5mg/1mL", ingredientName: "atropine sulfate", dosage: "2", unit: "A", frequency: "1", route: "IVS", note: "Bolus 1-3mg IV q5min, Broncho-secretion 감소하거나 아트로핀화 될때까지 반복(아트로핀화: 홍조,구강건조,동공확대)", sortOrder: 3 },
+    { prescriptionId: Organophosphate_E처방.id, type: "약", productName: "아트로핀황산염주사액0.5mg/1mL", ingredientName: "atropine sulfate", dosage: "10", unit: "A", frequency: "1", route: "IV infusion", note: "8cc/hr(0.4mg/hr)로 시작", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: Organophosphate_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: Organophosphate_E처방.id, type: "약", productName: "파무에이주500mg", ingredientName: "pralidoxime chloride", dosage: "2", unit: "V", frequency: "1", route: "IV infusion", note: "Initial: 1-2g over 10min(소아 20-40mg/kg), 10분 이상에 걸쳐 천천히 투여", sortOrder: 6, mixGroup: "M2" },
+    { prescriptionId: Organophosphate_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "0.6", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M2" },
+    { prescriptionId: Organophosphate_E처방.id, type: "약", productName: "파무에이주500mg", ingredientName: "pralidoxime chloride", dosage: "10", unit: "V", frequency: "1", route: "IV infusion", note: "Continuous for 24-48hrs: 500mg/hr(소아 5-10mg/kg/hr), 50cc/hr", sortOrder: 8, mixGroup: "M3" },
+    { prescriptionId: Organophosphate_E처방.id, type: "약", productName: "엔에스주사액500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M3" },
+    { prescriptionId: Organophosphate_E처방.id, type: "추가설명", productName: "PAM: muscle 관련 무증상이거나, carbamate 계 살충제 복용시에는 사용하지 마세요", sortOrder: 10 },
+    { prescriptionId: Organophosphate_E처방.id, type: "약", productName: "아티반주사", ingredientName: "lorazepam", dosage: "0.5", unit: "A", frequency: "1", route: "IVS", note: "shooting, 최대 0.1mg/kg까지 반복 가능, 경련할 경우 BDZ 투여", sortOrder: 11 },
+    { prescriptionId: Organophosphate_E처방.id, type: "추가설명", productName: "흡입제", sortOrder: 12 },
+    { prescriptionId: Organophosphate_E처방.id, type: "지시처방", productName: "증기흡입치료(1일당)", sortOrder: 13 },
+    { prescriptionId: Organophosphate_E처방.id, type: "약", productName: "아트로벤트흡입액유디비", ingredientName: "ipratropium bromide", dosage: "1", unit: "EA", frequency: "1", route: "Aerosol", sortOrder: 14 },
+
+    // BB (베타차단제 중독)
+    { prescriptionId: BB_E처방.id, type: "추가설명", productName: "charcoal, glucagon, high insulin, NE, bicarbonate", sortOrder: 0 },
+    { prescriptionId: BB_E처방.id, type: "약", productName: "흑산(약용탄)", ingredientName: "activated charcoal", dosage: "1", frequency: "1", route: "PO", sortOrder: 1 },
+    { prescriptionId: BB_E처방.id, type: "약", productName: "대한25% D-만니톨주100ml", ingredientName: "mannitol", dosage: "2", unit: "BT", frequency: "1", route: "PO", note: "성인 50g, 소아 1g/kg", sortOrder: 2 },
+    { prescriptionId: BB_E처방.id, type: "지시처방", productName: "비위관삽관술(L-tube), Gastric Lavage", sortOrder: 3 },
+    { prescriptionId: BB_E처방.id, type: "약", productName: "휴물린알주100단위 1000iu/10ml", ingredientName: "insulin regular", dosage: "60", unit: "IU", frequency: "1", route: "IV infusion", note: "용량 확인!! 1unit/kg", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: BB_E처방.id, type: "약", productName: "중외50%포도당주 100mL", ingredientName: "dextrose 50%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: BB_E처방.id, type: "약", productName: "50%포도당주100ml", ingredientName: "dextrose 50%", dosage: "1", unit: "BOT", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M1" },
+    { prescriptionId: BB_E처방.id, type: "약", productName: "큐프린주8mg/4mL", ingredientName: "norepinephrine bitartrate", dosage: "3", frequency: "1", route: "IV infusion", note: "시작용량 5mcg/min(=5cc/hr)", sortOrder: 7, mixGroup: "M2" },
+    { prescriptionId: BB_E처방.id, type: "약", productName: "5%포도당주 200mL", ingredientName: "dextrose", dosage: "1", frequency: "1", route: "IV infusion", sortOrder: 8, mixGroup: "M2" },
+    { prescriptionId: BB_E처방.id, type: "약", productName: "탄산수소나트륨8.4%주", ingredientName: "sodium bicarbonate", dosage: "3", frequency: "1", route: "IVS", note: "severe acidosis, wide QRS 에 사용고려, 필요시 pacing/투석 고려", sortOrder: 9 },
+    { prescriptionId: BB_E처방.id, type: "혈액검사", productName: "EKG 기록및 판독", note: "f/u 심전도", sortOrder: 10 },
+
+    // CCB (칼슘차단제 중독)
+    { prescriptionId: CCB_E처방.id, type: "추가설명", productName: "charcoal, Ca, NE, glucagon, high insulin", sortOrder: 0 },
+    { prescriptionId: CCB_E처방.id, type: "약", productName: "흑산(약용탄)", ingredientName: "activated charcoal", dosage: "1", frequency: "1", route: "PO", sortOrder: 1 },
+    { prescriptionId: CCB_E처방.id, type: "약", productName: "대한25% D-만니톨주100ml", ingredientName: "mannitol", dosage: "2", unit: "BT", frequency: "1", route: "PO", note: "성인 50g, 소아 1g/kg", sortOrder: 2 },
+    { prescriptionId: CCB_E처방.id, type: "지시처방", productName: "비위관삽관술(L-tube), Gastric Lavage", sortOrder: 3 },
+    { prescriptionId: CCB_E처방.id, type: "약", productName: "글루콘산칼슘주", ingredientName: "calcium gluconate", dosage: "1", unit: "A", frequency: "1", route: "IVS", note: "3분 동안 투여, 1st antidote, 20분마다 3번까지 반복 가능(필요시 infusion 6g/hr)", sortOrder: 4 },
+    { prescriptionId: CCB_E처방.id, type: "약", productName: "대한50%포도당주", ingredientName: "dextrose 50%", dosage: "1", unit: "BOT", frequency: "1", route: "IV", sortOrder: 5 },
+    { prescriptionId: CCB_E처방.id, type: "약", productName: "큐프린주8mg/4mL", ingredientName: "norepinephrine bitartrate", dosage: "3", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M1" },
+    { prescriptionId: CCB_E처방.id, type: "약", productName: "노르핀주(4mg/4mL)", ingredientName: "norepinephrine", dosage: "3", unit: "A", frequency: "1", route: "IV infusion", note: "시작용량 5mcg/min(=5cc/hr)", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: CCB_E처방.id, type: "약", productName: "5%포도당주 200mL", ingredientName: "dextrose", dosage: "1", frequency: "1", route: "IV infusion", sortOrder: 8, mixGroup: "M1" },
+    { prescriptionId: CCB_E처방.id, type: "약", productName: "휴물린알주100단위 1000iu/10ml", ingredientName: "insulin regular", dosage: "60", unit: "V", frequency: "1", route: "IV infusion", note: "1unit/kg, 용량확인, BST<200일 경우 high insulin 투여, 필요시 atropine/pacing 고려", sortOrder: 9 },
+    { prescriptionId: CCB_E처방.id, type: "약", productName: "중외50%포도당주 100mL", ingredientName: "dextrose 50%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 10 },
+    { prescriptionId: CCB_E처방.id, type: "추가설명", productName: "먹은지 6hr 무증상 이면 discharge 가능, 서방제 복용시에는 12-24hr 관찰 필요", sortOrder: 11 },
+
+    // 불산노출
+    { prescriptionId: 불산노출_E처방.id, type: "추가설명", productName: "불산 흡입시", sortOrder: 0 },
+    { prescriptionId: 불산노출_E처방.id, type: "약", productName: "글루콘산칼슘주", ingredientName: "calcium gluconate", dosage: "1.5", unit: "ml", frequency: "1", route: "Aerosol", note: "Nebulizer 해주세요", sortOrder: 1 },
+    { prescriptionId: 불산노출_E처방.id, type: "지시처방", productName: "증기흡입치료(1일당)", sortOrder: 2 },
+    { prescriptionId: 불산노출_E처방.id, type: "추가설명", productName: "불산 Dressing", sortOrder: 3 },
+    { prescriptionId: 불산노출_E처방.id, type: "지시처방", productName: "15분 이상 water irrigation", sortOrder: 4 },
+    { prescriptionId: 불산노출_E처방.id, type: "약", productName: "글루콘산칼슘주", ingredientName: "calcium gluconate", dosage: "1.25", unit: "A", frequency: "1", route: "외용", note: "윤활제와 섞어서 소독해주세요", sortOrder: 5 },
+    { prescriptionId: 불산노출_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "0.75", unit: "Bag", frequency: "1", route: "외용", note: "75ml sterile water soluble lubricant, 윤활제와 섞어서 소독", sortOrder: 6 },
+    { prescriptionId: 불산노출_E처방.id, type: "지시처방", productName: "simple dressing 부위별 추가하기", sortOrder: 7 },
+    { prescriptionId: 불산노출_E처방.id, type: "추가설명", productName: "Major injury 의심시", sortOrder: 8 },
+    { prescriptionId: 불산노출_E처방.id, type: "약", productName: "글루콘산칼슘주", ingredientName: "calcium gluconate", dosage: "1", unit: "A", frequency: "1", route: "IVS", note: "하루에 한번", sortOrder: 9 },
+    { prescriptionId: 불산노출_E처방.id, type: "약", productName: "황산마그네슘주10%", ingredientName: "magnesium sulfate", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "하루에 한번", sortOrder: 10, mixGroup: "M1" },
+    { prescriptionId: 불산노출_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 11, mixGroup: "M1" },
+    { prescriptionId: 불산노출_E처방.id, type: "추가설명", productName: "불산 EYE irrigation", sortOrder: 12 },
+    { prescriptionId: 불산노출_E처방.id, type: "약", productName: "글루콘산칼슘주", ingredientName: "calcium gluconate", dosage: "2.5", unit: "A", frequency: "1", route: "세척", note: "1% Cal gluconate irrigation solution", sortOrder: 13 },
+    { prescriptionId: 불산노출_E처방.id, type: "약", productName: "엔에스주사액500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "세척", sortOrder: 14 },
+
+    // Anti-venom
+    { prescriptionId: AntiVenom_E처방.id, type: "지시처방", productName: "교상부위 xray 촬영", sortOrder: 0 },
+    { prescriptionId: AntiVenom_E처방.id, type: "지시처방", productName: "드레싱 시행. 병변부위 surgimarker로 시간과 범위표시", sortOrder: 1 },
+    { prescriptionId: AntiVenom_E처방.id, type: "추가설명", productName: "1st dose: 1vial + NS 250 over 1hr", sortOrder: 2 },
+    { prescriptionId: AntiVenom_E처방.id, type: "약", productName: "보란건조살무사항독소주(6000unit/1병)", ingredientName: "snake antivenom", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 3, mixGroup: "M1" },
+    { prescriptionId: AntiVenom_E처방.id, type: "약", productName: "엔에스주사액500ml", ingredientName: "Normal Saline", dosage: "0.5", unit: "Bag", frequency: "1", route: "IV infusion", note: "Sx. Control 안될시(증상 악화 또는 Coagulopathy lab 악화) 1st dose 반복 투여, Sx. Control 될경우 2,3,4th dose 투여", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: AntiVenom_E처방.id, type: "추가설명", productName: "2,3,4th dose: 1vial + NS 250 over 1hr q6hrs", sortOrder: 5 },
+    { prescriptionId: AntiVenom_E처방.id, type: "약", productName: "보란건조살무사항독소주(6000unit/1병)", ingredientName: "snake antivenom", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "250cc/hr", sortOrder: 6, mixGroup: "M2" },
+    { prescriptionId: AntiVenom_E처방.id, type: "약", productName: "엔에스주사액500ml", ingredientName: "Normal Saline", dosage: "0.5", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M2" },
+    { prescriptionId: AntiVenom_E처방.id, type: "추가설명", productName: "Active bleeding 동반시 FFP 수혈 시행", sortOrder: 8 },
+    { prescriptionId: AntiVenom_E처방.id, type: "지시처방", productName: "수혈동의서 받아주세요. BT check, 열 발생시 notify", sortOrder: 9 },
+    { prescriptionId: AntiVenom_E처방.id, type: "약", productName: "FFP 400ml", ingredientName: "fresh frozen plasma", dosage: "3", frequency: "1", route: "IV", sortOrder: 10 },
+    { prescriptionId: AntiVenom_E처방.id, type: "약", productName: "페니라민주사(4mg/2mL)", ingredientName: "chlorpheniramine maleate", dosage: "1", unit: "A", frequency: "1", route: "IVS", note: "side push 해주세요", sortOrder: 11 },
+    { prescriptionId: AntiVenom_E처방.id, type: "혈액검사", productName: "PT & APTT", note: "수혈 완료 1시간 후 f/u check 해주세요", sortOrder: 12 },
+    { prescriptionId: AntiVenom_E처방.id, type: "약", productName: "세포졸주1g", ingredientName: "cefazolin", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 13, mixGroup: "M3" },
+    { prescriptionId: AntiVenom_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 14, mixGroup: "M3" },
+    { prescriptionId: AntiVenom_E처방.id, type: "약", productName: "케토신주사", ingredientName: "ketorolac tromethamine", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 15 },
+    { prescriptionId: AntiVenom_E처방.id, type: "추가설명", productName: "파상풍", sortOrder: 16 },
+    { prescriptionId: AntiVenom_E처방.id, type: "약", productName: "녹십자티디백신프리필드시린지주(0.5mL)", ingredientName: "Td vaccine(tetanus-diphtheria toxoid)", dosage: "1", unit: "SYR", frequency: "1", route: "IM", note: "환부 반대편 deltoid M.", sortOrder: 17 },
+    { prescriptionId: AntiVenom_E처방.id, type: "약", productName: "테타불린에스앤주프리필드시린지(250IU/1mL)", ingredientName: "tetanus immunoglobulin", dosage: "1", unit: "SYR", frequency: "1", route: "IM", note: "환부 주변에 나눠서 직접 IL inj.", sortOrder: 18 },
+    { prescriptionId: AntiVenom_E처방.id, type: "지시처방", productName: "compartment synd. 발생시 manitol & 1st dose 추가 투여", sortOrder: 19 },
+    { prescriptionId: AntiVenom_E처방.id, type: "약", productName: "중외20%만니톨주(20g/100mL)", ingredientName: "mannitol", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "30분간 투여, 200cc/hr", sortOrder: 20 },
+
+    // 부식제
+    { prescriptionId: 부식제_E처방.id, type: "지시처방", productName: "airway 확보 우선 고려(only intubation!!. LMA,i-gel 금기)", sortOrder: 0 },
+    { prescriptionId: 부식제_E처방.id, type: "지시처방", productName: "빠른 내시경(12시간 이내, 늦어도 24시간 이내)", sortOrder: 1 },
+    { prescriptionId: 부식제_E처방.id, type: "추가설명", productName: "보존적 치료(수액, PPI, antiemetics)", sortOrder: 2 },
+    { prescriptionId: 부식제_E처방.id, type: "지시처방", productName: "비위관 삽입X, 활성탄X, 구토 유발X, 스테로이드X, 중화X", sortOrder: 3 },
+    { prescriptionId: 부식제_E처방.id, type: "약", productName: "펩타졸주1Vial", ingredientName: "pantoprazole", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: 부식제_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: 부식제_E처방.id, type: "약", productName: "멕쿨주10mg/2mL", ingredientName: "metoclopramide", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M2" },
+    { prescriptionId: 부식제_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M2" },
+    { prescriptionId: 부식제_E처방.id, type: "약", productName: "온단트주(5mg/2mL)", ingredientName: "ondansetron", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "수술후 구역구토에만 급여", sortOrder: 8, mixGroup: "M3" },
+    { prescriptionId: 부식제_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M3" },
+
+    // 기타 해독제
+    { prescriptionId: 기타해독제_E처방.id, type: "약", productName: "아넥세이트주0.5mg", ingredientName: "flumazenil", dosage: "0.4", unit: "A", frequency: "1", route: "IVS", note: "BZD antidote 0.2mg씩, 호흡부전 없을시 0.1-0.4mg IV & repeat, 호흡부전 발생시 2mg IV & repeat(max 10mg)", sortOrder: 0 },
+    { prescriptionId: 기타해독제_E처방.id, type: "약", productName: "프로타민황산염주사액 5ml", ingredientName: "protamine sulfate", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "헤파린 antidote. 1000IU 당 10mg(1cc) 투여 over 10min", sortOrder: 1 },
+    { prescriptionId: 기타해독제_E처방.id, type: "약", productName: "중외5%포도당주 200mL", ingredientName: "dextrose", dosage: "1", frequency: "1", route: "IV infusion", sortOrder: 2 },
+    { prescriptionId: 기타해독제_E처방.id, type: "약", productName: "날록손염산염주사2mg", ingredientName: "naloxone HCl", dosage: "0.2", unit: "A", frequency: "1", route: "IVS", note: "opioid antidote. Naive user", sortOrder: 3 },
+    { prescriptionId: 기타해독제_E처방.id, type: "약", productName: "날록손염산염주사2mg", ingredientName: "naloxone HCl", dosage: "1", unit: "A", frequency: "1", route: "IVS", note: "호흡정지환자 2-3min마다 반복", sortOrder: 4 },
+    { prescriptionId: 기타해독제_E처방.id, type: "약", productName: "탄산수소나트륨8.4%주(NaHCO3)", ingredientName: "sodium bicarbonate", dosage: "5", unit: "A", frequency: "1", route: "IV infusion", note: "250cc/hr, 2시간 동안 투약, severe acidosis/wide QRS 에 사용고려", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: 기타해독제_E처방.id, type: "약", productName: "5%포도당주 500ml", ingredientName: "dextrose", dosage: "0.8", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M1" },
+
+    // Urticaria (DER)
+    { prescriptionId: Urticaria_E처방.id, type: "추가설명", productName: "IV주사 쓰는 경우", sortOrder: 0 },
+    { prescriptionId: Urticaria_E처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "120cc/hr", sortOrder: 1 },
+    { prescriptionId: Urticaria_E처방.id, type: "약", productName: "모틴주(파모티딘 20mg)", ingredientName: "famotidine", dosage: "1", unit: "V", frequency: "1", route: "IVS", note: "천천히 투여, 혈관통 주의", sortOrder: 2 },
+    { prescriptionId: Urticaria_E처방.id, type: "약", productName: "페니라민주사(4mg/2mL)", ingredientName: "chlorpheniramine maleate", dosage: "1", unit: "A", frequency: "1", route: "IVS", sortOrder: 3 },
+    { prescriptionId: Urticaria_E처방.id, type: "약", productName: "살론주125밀리그람", ingredientName: "methylprednisolone sodium succinate", dosage: "0.5", unit: "V", frequency: "1", route: "IV infusion", note: "15분간 투여", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: Urticaria_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: Urticaria_E처방.id, type: "추가설명", productName: "IM주사만 쓰는경우", sortOrder: 6 },
+    { prescriptionId: Urticaria_E처방.id, type: "약", productName: "페니라민주사(4mg/2mL)", ingredientName: "chlorpheniramine maleate", dosage: "1", unit: "A", frequency: "1", route: "IM", sortOrder: 7 },
+    { prescriptionId: Urticaria_E처방.id, type: "약", productName: "제일덱사메타손주사액(5mg/1mL)", ingredientName: "dexamethasone", dosage: "1", unit: "A", frequency: "1", route: "IM", sortOrder: 8 },
+    { prescriptionId: Urticaria_E처방.id, type: "추가설명", productName: "퇴원약", sortOrder: 9 },
+    { prescriptionId: Urticaria_E처방.id, type: "약", productName: "소론도정5mg", ingredientName: "prednisolone", dosage: "4", unit: "T", frequency: "BID", route: "BID", sortOrder: 10 },
+    { prescriptionId: Urticaria_E처방.id, type: "약", productName: "펙소나딘정120mg", ingredientName: "fexofenadine HCl", dosage: "1", unit: "T", frequency: "BID", route: "BID", sortOrder: 11 },
+    { prescriptionId: Urticaria_E처방.id, type: "약", productName: "제리티딘정20밀리그램", ingredientName: "famotidine", dosage: "1", unit: "T", frequency: "BID", route: "BID", sortOrder: 12 },
+
+    // Anaphylaxis
+    { prescriptionId: Anaphylaxis_E처방.id, type: "지시처방", productName: "O2 Inhalation(1일당)", sortOrder: 0 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "지시처방", productName: "경피적혈액산소포화도측정(1일당)", sortOrder: 1 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "약", productName: "제일에피네프린주사액1mg/1mL", ingredientName: "epinephrine", dosage: "0.3", unit: "A", frequency: "1", route: "IM", note: "0.3mg, 1.라인 잡기 전에 먼저 주세요 2.anterolateral thigh", sortOrder: 2 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "full drip 후 v/s f/u", sortOrder: 3 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "약", productName: "페니라민주사(4mg/2mL)", ingredientName: "chlorpheniramine maleate", dosage: "1", unit: "A", frequency: "1", route: "IVS", sortOrder: 4 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "약", productName: "모틴주(파모티딘 20mg)", ingredientName: "famotidine", dosage: "1", unit: "V", frequency: "1", route: "IVS", note: "천천히 투여, 혈관통 주의", sortOrder: 5 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "약", productName: "살론주125밀리그람", ingredientName: "methylprednisolone sodium succinate", dosage: "0.5", unit: "V", frequency: "1", route: "IV infusion", note: "15분간 투여", sortOrder: 6, mixGroup: "M1" },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "약", productName: "엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "추가설명", productName: "호흡곤란 심할 경우 Nebulizer", sortOrder: 8 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "지시처방", productName: "증기흡입치료(1일당)", sortOrder: 9 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "약", productName: "벤토린네뷸2.5mg/2.5ml", ingredientName: "salbutamol sulfate", dosage: "1", unit: "A", frequency: "1", route: "Aerosol", note: "20분 간격으로 3회 연속 시행", sortOrder: 10 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "약", productName: "아트로벤트흡입액유디비", ingredientName: "ipratropium bromide", dosage: "1", frequency: "1", route: "Aerosol", note: "ventolin + atrovent 같이 nebulizer", sortOrder: 11 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "추가설명", productName: "Refractory anaphylactic shock", sortOrder: 12 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "추가설명", productName: "#1 일단 Epi bolus 를 시도해본다", sortOrder: 13 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "약", productName: "에피네프린주사액1mg/1mL", ingredientName: "epinephrine", dosage: "0.1", unit: "A", frequency: "1", route: "IV infusion", note: "10분간 투여해주세요", sortOrder: 14, mixGroup: "M2" },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 15, mixGroup: "M2" },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "추가설명", productName: "#2 bolus 없이 바로 continuous 해도 좋다", sortOrder: 16 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "약", productName: "에피네프린주사액1mg/1mL", ingredientName: "epinephrine", dosage: "3", unit: "A", frequency: "1", route: "IV infusion", note: "1mcg/min(max 10mcg/min), Initial 4cc/hr, 3분마다 4cc/hr씩 증량, Max 40cc/hr, 부정맥/흉통 발생시 즉시 stop", sortOrder: 17, mixGroup: "M3" },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "약", productName: "중외5%포도당주 200mL", ingredientName: "dextrose", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "1mcg/min=4cc/hr", sortOrder: 18, mixGroup: "M3" },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "추가설명", productName: "퇴원약", sortOrder: 19 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "약", productName: "펙소나딘정120mg", ingredientName: "fexofenadine HCl", dosage: "1", unit: "T", frequency: "BID", route: "BID", sortOrder: 20 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "약", productName: "소론도정5mg", ingredientName: "prednisolone", dosage: "4", unit: "T", frequency: "BID", route: "BID", sortOrder: 21 },
+    { prescriptionId: Anaphylaxis_E처방.id, type: "약", productName: "제리티딘정20밀리그램", ingredientName: "famotidine", dosage: "1", unit: "T", frequency: "BID", route: "BID", sortOrder: 22 },
+
+    // Zoster
+    { prescriptionId: Zoster_E처방.id, type: "약", productName: "레프리카캡슐75mg", ingredientName: "pregabalin", dosage: "1", unit: "C", frequency: "BID", route: "BID", sortOrder: 0 },
+    { prescriptionId: Zoster_E처방.id, type: "약", productName: "베아클로버정250mg", ingredientName: "acyclovir", dosage: "1", unit: "T", frequency: "BID", route: "BID", sortOrder: 1 },
+    { prescriptionId: Zoster_E처방.id, type: "약", productName: "베아셋정", ingredientName: "vitamin B complex", dosage: "1", unit: "T", frequency: "BID", route: "BID", sortOrder: 2 },
+    { prescriptionId: Zoster_E처방.id, type: "약", productName: "낙소졸정500/20mg", ingredientName: "esomeprazole strontium/naproxen", dosage: "1", unit: "T", frequency: "BID", route: "BID", sortOrder: 3 },
+    { prescriptionId: Zoster_E처방.id, type: "약", productName: "베아로반연고(0.2g/10g)", ingredientName: "mupirocin", dosage: "1", unit: "TU", frequency: "1", route: "외용", note: "약 복용시마다 바를 것", sortOrder: 4 },
+    { prescriptionId: Zoster_E처방.id, type: "추가설명", productName: "Severe case", sortOrder: 5 },
+    { prescriptionId: Zoster_E처방.id, type: "약", productName: "조이렉스주250mg", ingredientName: "acyclovir", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M1" },
+    { prescriptionId: Zoster_E처방.id, type: "약", productName: "엔에스주사액500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M1" },
+
+    // Epistaxis
+    { prescriptionId: Epistaxis_E처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 0 },
+    { prescriptionId: Epistaxis_E처방.id, type: "혈액검사", productName: "CBC & Diff", sortOrder: 1 },
+    { prescriptionId: Epistaxis_E처방.id, type: "혈액검사", productName: "PT & APTT", sortOrder: 2 },
+    { prescriptionId: Epistaxis_E처방.id, type: "추가설명", productName: "Nasal packing", sortOrder: 3 },
+    { prescriptionId: Epistaxis_E처방.id, type: "지시처방", productName: "Anterior Nasal Packing(복잡한것) / MEROCEL / NASAL PACKING(RAPID RHINO) 5.5CM", sortOrder: 4 },
+    { prescriptionId: Epistaxis_E처방.id, type: "약", productName: "보스민액(염산에피네프린액 50mg/50mL)", ingredientName: "epinephrine HCl", dosage: "1", unit: "BT", frequency: "1", route: "외용", note: "코피 지혈용", sortOrder: 5 },
+    { prescriptionId: Epistaxis_E처방.id, type: "약", productName: "유한2%염산리도카인.에피네프린주사(1:100000)", ingredientName: "lidocaine/epinephrine", dosage: "1", unit: "A", frequency: "1", route: "국소주입", note: "코피 지혈용", sortOrder: 6 },
+
+    // Epiglottitis
+    { prescriptionId: Epiglottitis_E처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 0 },
+    { prescriptionId: Epiglottitis_E처방.id, type: "약", productName: "보령세프트리악손주2g", ingredientName: "ceftriaxone", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "30분간 투여", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: Epiglottitis_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: Epiglottitis_E처방.id, type: "약", productName: "동광반코마이신주1g", ingredientName: "vancomycin", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "1g, 30분간 투여", sortOrder: 3, mixGroup: "M2" },
+    { prescriptionId: Epiglottitis_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M2" },
+    { prescriptionId: Epiglottitis_E처방.id, type: "약", productName: "살론주125밀리그람", ingredientName: "methylprednisolone sodium succinate", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M3" },
+    { prescriptionId: Epiglottitis_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M3" },
+    { prescriptionId: Epiglottitis_E처방.id, type: "영상검사", productName: "Neck AP + LAT", sortOrder: 7 },
+    { prescriptionId: Epiglottitis_E처방.id, type: "영상검사", productName: "Neck CT (CE)", sortOrder: 8 },
+
+    // Ischemic stroke(tPA)
+    { prescriptionId: IschemicStroke_E처방.id, type: "지시처방", productName: "보호자 keep", sortOrder: 0 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "지시처방", productName: "복용약 확인 해주세요(항응고제 등)", sortOrder: 1 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "지시처방", productName: "Bwt check(바로 물어봐주세요)", sortOrder: 2 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "지시처방", productName: "NIBP monitor q15min", sortOrder: 3 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "추가설명", productName: "SaO2<94%일시 O2 3L VNP 투여", sortOrder: 4 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "지시처방", productName: "SBP>215 또는 DBP>105일 경우 perdipine 1mg 바로 투여해주세요", sortOrder: 5 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "비니카핀주10mL", ingredientName: "nicardipine", dosage: "0.1", unit: "A", frequency: "1", route: "IVS", note: "SBP>215 또는 DBP>105일 경우", sortOrder: 6 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "지시처방", productName: "foley insertion 시행해주세요", sortOrder: 7 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "지시처방", productName: "tPA 주기전 foley insertion 해주세요", sortOrder: 8 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "지시처방", productName: "tPA 주기전 CBC,INR 확인하고 동의서 사인받고 actilyse 오픈합니다", sortOrder: 9 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "액티라제주20mg", ingredientName: "alteplase", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "꼭 아래 지시처방대로 투여합니다", sortOrder: 10 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "액티라제주50mg", ingredientName: "alteplase", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "꼭 아래 지시처방대로 투여합니다", sortOrder: 11 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "지시처방", productName: "actilyse dose 0.9mg/kg(Max 90mg). 첫10%는 IV bolus 투여, 남은 90%는 over 60min동안 IV infusion 투여", sortOrder: 12 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "뮤테란주사3mL", ingredientName: "acetylcysteine", dosage: "2", unit: "A", frequency: "1", route: "IVS", sortOrder: 13 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "가스터주 20mg", ingredientName: "famotidine", dosage: "1", unit: "A", frequency: "1", route: "IVS", sortOrder: 14 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "지시처방", productName: "check GCS q1hr. 심한 두통, 의식변화시 즉시 notify. target BP<185/110으로 유지. BP유지 안될 경우 IV BB 또는 CCB 투여", sortOrder: 15 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "라베신주20mg/4ml", ingredientName: "labetalol HCl", dosage: "0.5", unit: "A", frequency: "1", route: "IVS", note: "bolus:2분간", sortOrder: 16 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "라베신주100mg/20ml", ingredientName: "labetalol HCl", dosage: "10", unit: "A", frequency: "1", route: "IV infusion", note: "Continuous: 시작용량 60ml/hr(=120mg/hr, 2mg/min), total dose 300mg/day", sortOrder: 17, mixGroup: "M1" },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "5% D/W 500ml", ingredientName: "dextrose", dosage: "0.6", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 18, mixGroup: "M1" },
+    { prescriptionId: IschemicStroke_E처방.id, type: "추가설명", productName: "또는", sortOrder: 19 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "동아페르디핀주사액10mg/10mL", ingredientName: "nicardipine", dosage: "0.2", unit: "A", frequency: "1", route: "IVS", sortOrder: 20 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "동아페르디핀주사액10mg/10mL", ingredientName: "nicardipine", dosage: "5", unit: "A", frequency: "1", route: "IVS", sortOrder: 21, mixGroup: "M2" },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "중외5%포도당주 200mL", ingredientName: "dextrose", dosage: "0.5", frequency: "1", route: "IV infusion", note: "Continuous: 시작용량 15cc/hr, 15분마다 7.5cc/hr씩 증량, 최대 60cc/hr", sortOrder: 22, mixGroup: "M2" },
+    { prescriptionId: IschemicStroke_E처방.id, type: "지시처방", productName: "DBP>140이상으로 잘 조절안될경우 nitroprusside 투여", sortOrder: 23 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "나이트로프레스주(50mg/2mL)", ingredientName: "nitroprusside", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "0.3mcg/kg/min시작→0.5-10mcg/kg/min(보통 3mcg/kg/min), 10cc/hr", sortOrder: 24, mixGroup: "M3" },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "5% D/W 500ml", ingredientName: "dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "60kg기준 10cc/hr시작→100cc/hr(3mcg/kg/min)으로 유지", sortOrder: 25, mixGroup: "M3" },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "한미아스피린장용정100밀리그램", ingredientName: "aspirin", dosage: "1", unit: "T", frequency: "QD", route: "QD", note: "씹어서 즉시복용", sortOrder: 26 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "플라빅스정75밀리그람", ingredientName: "clopidogrel", dosage: "1", unit: "T", frequency: "QD", route: "QD", note: "즉시복용", sortOrder: 27 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "크라틴정5mg", ingredientName: "rosuvastatin calcium", dosage: "1", unit: "T", frequency: "QD", route: "QD", note: "즉시복용", sortOrder: 28 },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "펩타졸주1Vial", ingredientName: "pantoprazole", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 29, mixGroup: "M4" },
+    { prescriptionId: IschemicStroke_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 30, mixGroup: "M4" },
+
+    // Hemorrhagic stroke
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "추가설명", productName: "SAH 경우 target goal: MAP<140(SBP<160). ICH 경우 target goal: Cbr perfusion pr.>60 유지(MAP 110, BP 160/90)", sortOrder: 0 },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "중외20%만니톨주(20g/100mL)", ingredientName: "mannitol", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "1bag을 10분간 투여", sortOrder: 1 },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "혈액검사", productName: "Osmolarity(S)", note: "f/u", sortOrder: 2 },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "삼진니모디핀정(30mg/1정)", ingredientName: "nimodipine", dosage: "2", unit: "T", frequency: "1", route: "PRN", note: "EM이 투여할지, mental없을때 NGT 투여할지 등 NS 상의 필요, mental 없을 때 2T 추가", sortOrder: 3 },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "동아페르디핀주사액10mg/10mL", ingredientName: "nicardipine", dosage: "0.2", unit: "A", frequency: "1", route: "IVS", sortOrder: 4 },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "동아페르디핀주사액10mg/10mL", ingredientName: "nicardipine", dosage: "5", unit: "A", frequency: "1", route: "IVS", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "중외5%포도당주 200mL", ingredientName: "dextrose", dosage: "0.5", unit: "BT", frequency: "1", route: "IV infusion", note: "Continuous: 시작용량 15cc/hr, 15분마다 7.5cc/hr씩 증량, 최대 60cc/hr", sortOrder: 6, mixGroup: "M1" },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "라베신주20mg/4ml", ingredientName: "labetalol HCl", dosage: "0.5", unit: "A", frequency: "1", route: "IVS", note: "bolus:2분간", sortOrder: 7 },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "라베신주100mg/20ml", ingredientName: "labetalol HCl", dosage: "10", unit: "A", frequency: "1", route: "IV infusion", note: "total dose 300mg/day", sortOrder: 8, mixGroup: "M2" },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "5% D/W 500ml", ingredientName: "dextrose", dosage: "0.6", unit: "Bag", frequency: "1", route: "IV infusion", note: "30~60cc/hr, 60~120mg/hr", sortOrder: 9, mixGroup: "M2" },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "보트로파제주2ml", ingredientName: "hemocoagulase", dosage: "3", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M3" },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 11, mixGroup: "M3" },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "비타민케이원주 10mg/ml", ingredientName: "vitamin K1(phytonadione)", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 12, mixGroup: "M4" },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 13, mixGroup: "M4" },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "큐팜주사500mg", ingredientName: "levetiracetam", dosage: "2", unit: "V", frequency: "1", route: "IV infusion", note: "15분간, loading", sortOrder: 14, mixGroup: "M5" },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 15, mixGroup: "M5" },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "큐팜주사500mg", ingredientName: "levetiracetam", dosage: "2", unit: "V", frequency: "1", route: "IV infusion", note: "12시간 후 두번째 투약, q12hr", sortOrder: 16 },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 17 },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "추가설명", productName: "CRASH-3 protocol for traumatic SAH", sortOrder: 18 },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "트라넥삼산주500mg", ingredientName: "tranexamic acid", dosage: "2", unit: "A", frequency: "1", route: "IV infusion", note: "10분간, GCS 8~13, 3시간 내 손상", sortOrder: 19 },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 20 },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "트라넥삼산주500mg", ingredientName: "tranexamic acid", dosage: "2", unit: "A", frequency: "1", route: "IV infusion", note: "8시간 동안", sortOrder: 21, mixGroup: "M6" },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "엔에스주사액500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "60cc/hr", sortOrder: 22, mixGroup: "M6" },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "추가설명", productName: "mental alert할 경우 통증 조절", sortOrder: 23 },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "명문염산페치딘주사(50mg/1mL)", ingredientName: "pethidine HCl", dosage: "1", frequency: "1", route: "IV infusion", sortOrder: 24 },
+    { prescriptionId: HemorrhagicStroke_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 25 },
+
+    // Seizure (NS,NR)
+    { prescriptionId: Seizure_E처방.id, type: "지시처방", productName: "경피적혈액산소포화도측정(1일당)", sortOrder: 0 },
+    { prescriptionId: Seizure_E처방.id, type: "추가설명", productName: "1차약-lorazepam", sortOrder: 1 },
+    { prescriptionId: Seizure_E처방.id, type: "약", productName: "아티반주사1ml", ingredientName: "lorazepam", dosage: "0.5", unit: "A", frequency: "1", route: "IVS", note: "최대 0.1mg/kg 까지 반복 가능", sortOrder: 2 },
+    { prescriptionId: Seizure_E처방.id, type: "추가설명", productName: "#1 Status epilepticus - 1차약", sortOrder: 3 },
+    { prescriptionId: Seizure_E처방.id, type: "약", productName: "큐팜주사500mg", ingredientName: "levetiracetam", dosage: "4", unit: "V", frequency: "1", route: "IV infusion", note: "케프라, 15분간 투약, loading", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: Seizure_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: Seizure_E처방.id, type: "추가설명", productName: "#2 Status epilepticus - 2차약(mida 또는 propofol)", sortOrder: 6 },
+    { prescriptionId: Seizure_E처방.id, type: "약", productName: "부광미다졸람주사5mL", ingredientName: "midazolam", dosage: "2", frequency: "1", route: "IVS", note: "Loading: 0.2mg/kg(60kg기준 12mg)", sortOrder: 7 },
+    { prescriptionId: Seizure_E처방.id, type: "약", productName: "부광미다졸람주사5mL", ingredientName: "midazolam", dosage: "2", frequency: "1", route: "IV infusion", note: "30cc/hr(60kg기준 0.05mg/kg/hr)", sortOrder: 8, mixGroup: "M2" },
+    { prescriptionId: Seizure_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M2" },
+    { prescriptionId: Seizure_E처방.id, type: "추가설명", productName: "OR", sortOrder: 10 },
+    { prescriptionId: Seizure_E처방.id, type: "약", productName: "포폴주사12ml", ingredientName: "propofol", dosage: "0.5", unit: "A", frequency: "1", route: "IVS", note: "loading: 1mg/kg IV(60kg기준 60mg)", sortOrder: 11 },
+    { prescriptionId: Seizure_E처방.id, type: "약", productName: "포폴주사12ml", ingredientName: "propofol", dosage: "2", unit: "A", frequency: "1", route: "IV infusion", note: "continuous: 1-10mg/kg/hr(60kg기준 60-600mg/hr)", sortOrder: 12, mixGroup: "M3" },
+    { prescriptionId: Seizure_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "76", unit: "ml", frequency: "1", route: "IV infusion", note: "25cc/hr(60kg기준 1mg/kg/hr)", sortOrder: 13, mixGroup: "M3" },
+
+    // Vertigo
+    { prescriptionId: Vertigo_E처방.id, type: "추가설명", productName: "NEx", sortOrder: 0 },
+    { prescriptionId: Vertigo_E처방.id, type: "지시처방", productName: "두위및두위변환안진검사(Dix hallpike test)", sortOrder: 1 },
+    { prescriptionId: Vertigo_E처방.id, type: "지시처방", productName: "신경학적검사-단순검사", sortOrder: 2 },
+    { prescriptionId: Vertigo_E처방.id, type: "지시처방", productName: "신경학적검사-일반검사(월1회)", sortOrder: 3 },
+    { prescriptionId: Vertigo_E처방.id, type: "추가설명", productName: "주사약", sortOrder: 4 },
+    { prescriptionId: Vertigo_E처방.id, type: "약", productName: "멕쿨주10mg/2mL", ingredientName: "metoclopramide", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: Vertigo_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M1" },
+    { prescriptionId: Vertigo_E처방.id, type: "약", productName: "페니라민주사(4mg/2mL)", ingredientName: "chlorpheniramine maleate", dosage: "1", unit: "A", frequency: "1", route: "IVS", sortOrder: 7 },
+    { prescriptionId: Vertigo_E처방.id, type: "추가설명", productName: "MRI 등 w/u 완료 후 또는 명확한 말초성일경우에만 BDZ 투여 고려", sortOrder: 8 },
+    { prescriptionId: Vertigo_E처방.id, type: "약", productName: "디아제팜주10mg/2ml", ingredientName: "diazepam", dosage: "0.5", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M2" },
+    { prescriptionId: Vertigo_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M2" },
+    { prescriptionId: Vertigo_E처방.id, type: "추가설명", productName: "퇴원약", sortOrder: 11 },
+    { prescriptionId: Vertigo_E처방.id, type: "약", productName: "맥페란정5mg", ingredientName: "metoclopramide", dosage: "1", unit: "T", frequency: "TID", route: "TID", sortOrder: 12 },
+    { prescriptionId: Vertigo_E처방.id, type: "약", productName: "보나링에이정50mg", ingredientName: "dimenhydrinate", dosage: "1", unit: "T", frequency: "TID", route: "TID", note: "졸릴 수 있습니다", sortOrder: 13 },
+
+    // Spinal cord injury
+    { prescriptionId: SpinalCordInjury_E처방.id, type: "추가설명", productName: "Megadose steroid protocol", sortOrder: 0 },
+    { prescriptionId: SpinalCordInjury_E처방.id, type: "지시처방", productName: "8시간 이내의 Blunt spinal cord injury 에서 사용, Penetrating injury 는 금기", sortOrder: 1 },
+    { prescriptionId: SpinalCordInjury_E처방.id, type: "지시처방", productName: "1. Methyl-PD 30mg/kg IV bolus over 15min", sortOrder: 2 },
+    { prescriptionId: SpinalCordInjury_E처방.id, type: "약", productName: "메치솔주500mg", ingredientName: "methylprednisolone sodium succinate", dosage: "4", frequency: "1", route: "IV infusion", note: "Loading", sortOrder: 3, mixGroup: "M1" },
+    { prescriptionId: SpinalCordInjury_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: SpinalCordInjury_E처방.id, type: "지시처방", productName: "2. 15분 투여 후 45분간 Pause", sortOrder: 5 },
+    { prescriptionId: SpinalCordInjury_E처방.id, type: "지시처방", productName: "3. Methyl-PD 5.4mg/kg/hr IV for 23 hours", sortOrder: 6 },
+    { prescriptionId: SpinalCordInjury_E처방.id, type: "약", productName: "메치솔주500mg", ingredientName: "methylprednisolone sodium succinate", dosage: "15", frequency: "1", route: "IV infusion", note: "Continuous, 21.6cc/hr for 23hrs", sortOrder: 7, mixGroup: "M2" },
+    { prescriptionId: SpinalCordInjury_E처방.id, type: "약", productName: "엔에스주사액500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "첫 투여 후 45분 뒤에 투여", sortOrder: 8, mixGroup: "M2" },
+
+    // Ureter stone (URO)
+    { prescriptionId: UreterStone_E처방.id, type: "추가설명", productName: "주사약", sortOrder: 0 },
+    { prescriptionId: UreterStone_E처방.id, type: "약", productName: "케토신주사", ingredientName: "ketorolac tromethamine", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: UreterStone_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: UreterStone_E처방.id, type: "약", productName: "제일페티딘염산염주사액(25mg/0.5mL)", ingredientName: "pethidine HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "NSAID로 통증 경감 없을시 추가 투여 고려", sortOrder: 3, mixGroup: "M2" },
+    { prescriptionId: UreterStone_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M2" },
+    { prescriptionId: UreterStone_E처방.id, type: "추가설명", productName: "Image study", sortOrder: 5 },
+    { prescriptionId: UreterStone_E처방.id, type: "영상검사", productName: "K.U.B", sortOrder: 6 },
+    { prescriptionId: UreterStone_E처방.id, type: "영상검사", productName: "Abdomen & Pelvis CT(stone)", sortOrder: 7 },
+
+    // Epididymitis
+    { prescriptionId: Epididymitis_E처방.id, type: "영상검사", productName: "Penis + Scrotum Sono", sortOrder: 0 },
+    { prescriptionId: Epididymitis_E처방.id, type: "약", productName: "휴메딕스트라마돌염산염주사(50mg/1mL)", ingredientName: "tramadol HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: Epididymitis_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: Epididymitis_E처방.id, type: "추가설명", productName: "Young age(35y 미만): STD 가능성 높음", sortOrder: 3 },
+    { prescriptionId: Epididymitis_E처방.id, type: "약", productName: "하원세프트리악손주2g", ingredientName: "ceftriaxone", dosage: "0.5", unit: "V", frequency: "1", route: "IM", sortOrder: 4 },
+    { prescriptionId: Epididymitis_E처방.id, type: "약", productName: "하원세프트리악손주2g", ingredientName: "ceftriaxone", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M2" },
+    { prescriptionId: Epididymitis_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M2" },
+    { prescriptionId: Epididymitis_E처방.id, type: "약", productName: "테라싸이클린캅셀250mg", ingredientName: "tetracycline HCl", dosage: "1", unit: "C", frequency: "QID", route: "QID", sortOrder: 7 },
+    { prescriptionId: Epididymitis_E처방.id, type: "추가설명", productName: "또는", sortOrder: 8 },
+    { prescriptionId: Epididymitis_E처방.id, type: "약", productName: "미노씬캡슐50mg", ingredientName: "minocycline HCl", dosage: "2", unit: "C", frequency: "BID", route: "BID", note: "퇴원약 구비 불가시 다음날 외래에서 추가 처방", sortOrder: 9 },
+    { prescriptionId: Epididymitis_E처방.id, type: "추가설명", productName: "Old age(35y 이상): E.coli, klebsiella 등 가능성. 퇴원약 구비 불가시 다음날 외래에서 추가 처방", sortOrder: 10 },
+    { prescriptionId: Epididymitis_E처방.id, type: "약", productName: "레보펙신주150mL", ingredientName: "levofloxacin", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "levofloxacin 250mg/50ml 나오면 변경!!", sortOrder: 11 },
+    { prescriptionId: Epididymitis_E처방.id, type: "약", productName: "크라보신정250mg", ingredientName: "cefaclor", dosage: "1", unit: "T", frequency: "QD", route: "QD", sortOrder: 12 },
+
+    // Priapism
+    { prescriptionId: Priapism_E처방.id, type: "약", productName: "휴메딕스트라마돌염산염주사(50mg/1mL)", ingredientName: "tramadol HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "필요시 추가 진통 투여 고려", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: Priapism_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: Priapism_E처방.id, type: "지시처방", productName: "해면체 바늘천자 & 세척 할 세트 준비해주세요", sortOrder: 2 },
+    { prescriptionId: Priapism_E처방.id, type: "지시처방", productName: "기타부위천자-치료목적(aspiration & irrigation)", sortOrder: 3 },
+
+    // Balanoposthitis
+    { prescriptionId: Balanoposthitis_E처방.id, type: "지시처방", productName: "Simple Dressing(배부). saline 으로만 귀두 및 표피 부위 닦아주세요. 필요시 항생제 연고 도포 후 건조", sortOrder: 0 },
+    { prescriptionId: Balanoposthitis_E처방.id, type: "추가설명", productName: "퇴원약", sortOrder: 1 },
+    { prescriptionId: Balanoposthitis_E처방.id, type: "약", productName: "베아로반연고(0.2g/10g)", ingredientName: "mupirocin", dosage: "1", unit: "TU", frequency: "1", route: "외용", sortOrder: 2 },
+
+    // PID
+    { prescriptionId: PID_E처방.id, type: "약", productName: "하원세프트리악손주2g", ingredientName: "ceftriaxone", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "200cc/hr", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: PID_E처방.id, type: "약", productName: "엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: PID_E처방.id, type: "약", productName: "메트리날주500mg/100ml", ingredientName: "metronidazole", dosage: "1", unit: "BOT", frequency: "1", route: "IV infusion", note: "200cc/hr", sortOrder: 2 },
+    { prescriptionId: PID_E처방.id, type: "약", productName: "아지탑스주사500mg", ingredientName: "azithromycin", dosage: "1", frequency: "1", route: "IV infusion", note: "500cc/hr", sortOrder: 3, mixGroup: "M2" },
+    { prescriptionId: PID_E처방.id, type: "약", productName: "엔에스주사액500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M2" },
+    { prescriptionId: PID_E처방.id, type: "추가설명", productName: "퇴원약", sortOrder: 5 },
+    { prescriptionId: PID_E처방.id, type: "약", productName: "미노씬캡슐50mg", ingredientName: "minocycline HCl", dosage: "2", unit: "C", frequency: "BID", route: "BID", sortOrder: 6 },
+    { prescriptionId: PID_E처방.id, type: "약", productName: "후라시닐정250mg", ingredientName: "metronidazole", dosage: "2", unit: "T", frequency: "TID", route: "TID", sortOrder: 7 },
+    { prescriptionId: PID_E처방.id, type: "약", productName: "메이액트정100mg", ingredientName: "cefditoren pivoxil", dosage: "1", unit: "T", frequency: "TID", route: "TID", sortOrder: 8 },
+    { prescriptionId: PID_E처방.id, type: "약", productName: "낙소졸정500/20mg", ingredientName: "esomeprazole strontium/naproxen", dosage: "1", unit: "T", frequency: "BID", route: "BID", sortOrder: 9 },
+
+    // Urinary retention
+    { prescriptionId: UrinaryRetention_E처방.id, type: "지시처방", productName: "foley insertion 시행해주세요", sortOrder: 0 },
+    { prescriptionId: UrinaryRetention_E처방.id, type: "지시처방", productName: "nelaton 시행해주세요", sortOrder: 1 },
+    { prescriptionId: UrinaryRetention_E처방.id, type: "약", productName: "한미탐스오디정0.4mg", ingredientName: "tamsulosin HCl", dosage: "1", unit: "T", frequency: "QD", route: "QD", sortOrder: 2 },
+
+    // Sprain/Strain/Contusion
+    { prescriptionId: SprainContusion_E처방.id, type: "약", productName: "플라주오피주500mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "120cc/hr", sortOrder: 0 },
+    { prescriptionId: SprainContusion_E처방.id, type: "약", productName: "마로비벤-에이주사2.2ml", ingredientName: "aconitum tincture", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 1 },
+    { prescriptionId: SprainContusion_E처방.id, type: "약", productName: "휴메딕스트라마돌염산염주사(50mg/1mL)", ingredientName: "tramadol HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: SprainContusion_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 3, mixGroup: "M1" },
+    { prescriptionId: SprainContusion_E처방.id, type: "약", productName: "케토신주사", ingredientName: "ketorolac tromethamine", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M2" },
+    { prescriptionId: SprainContusion_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M2" },
+
+    // Cellulitis
+    { prescriptionId: Cellulitis_E처방.id, type: "약", productName: "세포졸주(세파졸린나트륨)", ingredientName: "cefazolin", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "1g, 대상: Cellulitis", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: Cellulitis_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "30분 동안 투여", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: Cellulitis_E처방.id, type: "추가설명", productName: "Cutaneous abscess, furuncle, inflamed epidermoid cyst", sortOrder: 2 },
+    { prescriptionId: Cellulitis_E처방.id, type: "약", productName: "세포졸주(세파졸린나트륨)", ingredientName: "cefazolin", dosage: "2", unit: "V", frequency: "1", route: "IV infusion", note: "2g", sortOrder: 3, mixGroup: "M2" },
+    { prescriptionId: Cellulitis_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "30분 동안 투여", sortOrder: 4, mixGroup: "M2" },
+
+    // Open fracture
+    { prescriptionId: OpenFracture_E처방.id, type: "추가설명", productName: "Clear open fx.", sortOrder: 0 },
+    { prescriptionId: OpenFracture_E처방.id, type: "약", productName: "세포졸주(세파졸린나트륨)", ingredientName: "cefazolin", dosage: "2", unit: "V", frequency: "1", route: "IV infusion", note: "2g IV q8h", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: OpenFracture_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "30분 동안 투여", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: OpenFracture_E처방.id, type: "추가설명", productName: "plus", sortOrder: 3 },
+    { prescriptionId: OpenFracture_E처방.id, type: "약", productName: "겐타프로주사(80mg/2mL)", ingredientName: "gentamicin sulfate", dosage: "4", unit: "A", frequency: "1", route: "IV infusion", note: "5mg/kg IV q24h", sortOrder: 4, mixGroup: "M2" },
+    { prescriptionId: OpenFracture_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "30분 동안 투여", sortOrder: 5, mixGroup: "M2" },
+    { prescriptionId: OpenFracture_E처방.id, type: "추가설명", productName: "with soil contamination: add metronidazole", sortOrder: 6 },
+    { prescriptionId: OpenFracture_E처방.id, type: "약", productName: "메트리날주500mg/100ml", ingredientName: "metronidazole", dosage: "1", unit: "BOT", frequency: "1", route: "IV infusion", note: "q8h", sortOrder: 7 },
+    { prescriptionId: OpenFracture_E처방.id, type: "추가설명", productName: "with water contamination: PIP/TAZ+Doxy로 교체", sortOrder: 8 },
+    { prescriptionId: OpenFracture_E처방.id, type: "약", productName: "타조페란주4.5g", ingredientName: "piperacillin/tazobactam", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "q6h, 30분 동안 투여", sortOrder: 9, mixGroup: "M3" },
+    { prescriptionId: OpenFracture_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M3" },
+    { prescriptionId: OpenFracture_E처방.id, type: "추가설명", productName: "plus", sortOrder: 11 },
+    { prescriptionId: OpenFracture_E처방.id, type: "약", productName: "영풍독시사이클린정100mg", ingredientName: "doxycycline", dosage: "1", unit: "T", frequency: "QD", route: "QD", note: "q12h", sortOrder: 12 },
+
+    // Osteomyelitis/Spondylitis
+    { prescriptionId: Osteomyelitis_E처방.id, type: "추가설명", productName: "healthcare-associated", sortOrder: 0 },
+    { prescriptionId: Osteomyelitis_E처방.id, type: "약", productName: "세펨주사(세페핌염산염수화물)", ingredientName: "cefepime HCl", dosage: "2", unit: "V", frequency: "1", route: "IV infusion", note: "30분 동안 투여", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: Osteomyelitis_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: Osteomyelitis_E처방.id, type: "추가설명", productName: "plus", sortOrder: 3 },
+    { prescriptionId: Osteomyelitis_E처방.id, type: "약", productName: "비씨반코마이신염산염주1그램", ingredientName: "vancomycin HCl", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "30분 동안 투여", sortOrder: 4, mixGroup: "M2" },
+    { prescriptionId: Osteomyelitis_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M2" },
+
+    // Necrotizing fasciitis
+    { prescriptionId: NecrotizingFasciitis_E처방.id, type: "약", productName: "타조페란주4.5g", ingredientName: "piperacillin/tazobactam", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "q8h, 30분 동안 투여", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: NecrotizingFasciitis_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: NecrotizingFasciitis_E처방.id, type: "추가설명", productName: "plus", sortOrder: 2 },
+    { prescriptionId: NecrotizingFasciitis_E처방.id, type: "약", productName: "동광반코마이신주1g", ingredientName: "vancomycin", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "q12h, 30분 동안 투여", sortOrder: 3, mixGroup: "M2" },
+    { prescriptionId: NecrotizingFasciitis_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M2" },
+    { prescriptionId: NecrotizingFasciitis_E처방.id, type: "추가설명", productName: "plus", sortOrder: 5 },
+    { prescriptionId: NecrotizingFasciitis_E처방.id, type: "약", productName: "훌그램600mg", ingredientName: "piperacillin", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "q8h, 50mL mix해서 20분동안 투여", sortOrder: 6, mixGroup: "M3" },
+    { prescriptionId: NecrotizingFasciitis_E처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "0.5", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M3" },
+    { prescriptionId: NecrotizingFasciitis_E처방.id, type: "추가설명", productName: "Vibrio vulnificus", sortOrder: 8 },
+    { prescriptionId: NecrotizingFasciitis_E처방.id, type: "약", productName: "하원세프트리악손주2g", ingredientName: "ceftriaxone", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "q24h, 30분 동안 투여", sortOrder: 9, mixGroup: "M4" },
+    { prescriptionId: NecrotizingFasciitis_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M4" },
+    { prescriptionId: NecrotizingFasciitis_E처방.id, type: "추가설명", productName: "plus", sortOrder: 11 },
+    { prescriptionId: NecrotizingFasciitis_E처방.id, type: "약", productName: "영풍독시사이클린정100mg", ingredientName: "doxycycline", dosage: "1", unit: "T", frequency: "QD", route: "QD", note: "q12h", sortOrder: 12 },
   ]);
 
 }
