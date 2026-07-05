@@ -65,5 +65,5 @@ export type FavoriteItem = typeof favoriteItems.$inferSelect;
 export const prescriptionTypeOptions = ["약", "혈액검사", "영상검사", "지시처방", "추가설명", "퇴원약"] as const;
 export const unitOptions = ["A", "mg", "ml", "T", "Bag"] as const;
 export const mixGroupOptions = ["", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9"] as const;
-export const routeOptions = ["iv", "im", "po", "nebul", "ivs"] as const;
+export const routeOptions = ["iv", "im", "po", "nebul", "ivs", "IV infusion"] as const;
 export const frequencyOptions = ["1", "Qd", "Bid", "Tid"] as const;

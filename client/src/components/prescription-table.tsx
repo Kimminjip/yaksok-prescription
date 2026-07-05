@@ -215,6 +215,7 @@ function EditableCell({
   const [localVal, setLocalVal] = useState(value || "");
   const inputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     setLocalVal(value || "");
@@ -238,7 +239,7 @@ function EditableCell({
     if (newVal !== (value || null)) {
       // 간단한 검증: 길이 체크
       const maxLengths: Record<string, number> = {
-        productName: 100,
+        productName: 500,
         ingredientName: 100,
         dosage: 50,
         duration: 30,
@@ -246,6 +247,8 @@ function EditableCell({
       };
       const maxLen = maxLengths[field];
       if (maxLen && newVal && newVal.length > maxLen) {
+        toast({ title: `${maxLen}자를 초과하여 저장되지 않았습니다`, variant: "destructive" });
+        setLocalVal(value || "");
         return; // 검증 실패, 저장 안 함
       }
 
@@ -1128,7 +1131,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
                                       <EditableCell value={item.productName} itemId={item.id} field="productName" prescriptionId={prescriptionId} className="font-medium" />
                                     </TableCell>
                                     <TableCell className="px-2" data-tab-row={index} data-tab-col={2}>
-                                      <EditableCell value={item.note} itemId={item.id} field="note" prescriptionId={prescriptionId} className="text-muted-foreground" />
+                                      <EditableCell value={item.note} itemId={item.id} field="note" prescriptionId={prescriptionId} className="text-muted-foreground" multiline />
                                     </TableCell>
                                   </>
                                 ) : (
@@ -1168,7 +1171,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
                                       <SelectableCell value={item.route} itemId={item.id} field="route" prescriptionId={prescriptionId} options={routeOptions} />
                                     </TableCell>
                                     <TableCell className="px-2" data-tab-row={index} data-tab-col={hasDuration ? 9 : 8}>
-                                      <EditableCell value={item.note} itemId={item.id} field="note" prescriptionId={prescriptionId} className="text-muted-foreground" />
+                                      <EditableCell value={item.note} itemId={item.id} field="note" prescriptionId={prescriptionId} className="text-muted-foreground" multiline />
                                     </TableCell>
                                   </>
                                 )}

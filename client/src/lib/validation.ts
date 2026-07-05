@@ -18,7 +18,7 @@ export const prescriptionValidation = z.object({
 export const prescriptionItemValidation = z.object({
   productName: z.string()
     .min(1, "상품명은 필수입니다")
-    .max(100, "상품명은 100자 이하여야 합니다")
+    .max(500, "상품명은 500자 이하여야 합니다")
     .trim(),
   ingredientName: z.string().max(100, "성분명은 100자 이하여야 합니다").nullable(),
   dosage: z.string().max(50, "용량은 50자 이하여야 합니다").nullable(),
