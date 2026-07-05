@@ -210,6 +210,17 @@ export async function insertKkuData() {
   const [외용제] = await db.insert(categories).values({ name: "외용제", parentId: 김대용엑셀정리.id, sortOrder: 32 }).returning();
   const [항정신약IV] = await db.insert(categories).values({ name: "항정신약 IV", parentId: 김대용엑셀정리.id, sortOrder: 33 }).returning();
 
+  const [천식COPD] = await db.insert(categories).values({ name: "Asthma/COPD AE", parentId: 김대용엑셀정리.id, sortOrder: 34 }).returning();
+  const [PSVT질환] = await db.insert(categories).values({ name: "PSVT", parentId: 김대용엑셀정리.id, sortOrder: 35 }).returning();
+  const [Afib] = await db.insert(categories).values({ name: "A-fib", parentId: 김대용엑셀정리.id, sortOrder: 36 }).returning();
+  const [단형성VT] = await db.insert(categories).values({ name: "monomorphic VT", parentId: 김대용엑셀정리.id, sortOrder: 37 }).returning();
+  const [Bradycardia질환] = await db.insert(categories).values({ name: "Bradycardia", parentId: 김대용엑셀정리.id, sortOrder: 38 }).returning();
+  const [고혈압위기] = await db.insert(categories).values({ name: "Hypertensive Crisis", parentId: 김대용엑셀정리.id, sortOrder: 39 }).returning();
+  const [ASO질환] = await db.insert(categories).values({ name: "ASO", parentId: 김대용엑셀정리.id, sortOrder: 40 }).returning();
+  const [PTE질환] = await db.insert(categories).values({ name: "PTE", parentId: 김대용엑셀정리.id, sortOrder: 41 }).returning();
+  const [ACS질환] = await db.insert(categories).values({ name: "ACS", parentId: 김대용엑셀정리.id, sortOrder: 42 }).returning();
+  const [심부전질환] = await db.insert(categories).values({ name: "Heart failure", parentId: 김대용엑셀정리.id, sortOrder: 43 }).returning();
+
   const [철분제제처방] = await db.insert(prescriptions).values({ name: "철분제제", categoryId: 철분제제.id, sortOrder: 0 }).returning();
   const [트라넥삼산처방] = await db.insert(prescriptions).values({ name: "Trauma Tranexamic acid", categoryId: 트라넥삼산.id, sortOrder: 0 }).returning();
   const [트라우마시리즈처방] = await db.insert(prescriptions).values({ name: "Trauma Series", categoryId: 트라우마시리즈.id, sortOrder: 0 }).returning();
@@ -413,6 +424,17 @@ export async function insertKkuData() {
   const [수혈제제처방] = await db.insert(prescriptions).values({ name: "수혈제제", categoryId: 수혈제제.id, sortOrder: 0 }).returning();
   const [외용제처방] = await db.insert(prescriptions).values({ name: "외용제", categoryId: 외용제.id, sortOrder: 0 }).returning();
   const [항정신약IV처방] = await db.insert(prescriptions).values({ name: "항정신약 IV", categoryId: 항정신약IV.id, sortOrder: 0 }).returning();
+
+  const [천식COPD처방] = await db.insert(prescriptions).values({ name: "Asthma/COPD AE", categoryId: 천식COPD.id, sortOrder: 0 }).returning();
+  const [PSVT질환처방] = await db.insert(prescriptions).values({ name: "PSVT", categoryId: PSVT질환.id, sortOrder: 0 }).returning();
+  const [Afib처방] = await db.insert(prescriptions).values({ name: "A-fib", categoryId: Afib.id, sortOrder: 0 }).returning();
+  const [단형성VT처방] = await db.insert(prescriptions).values({ name: "monomorphic VT", categoryId: 단형성VT.id, sortOrder: 0 }).returning();
+  const [Bradycardia질환처방] = await db.insert(prescriptions).values({ name: "Bradycardia", categoryId: Bradycardia질환.id, sortOrder: 0 }).returning();
+  const [고혈압위기처방] = await db.insert(prescriptions).values({ name: "Hypertensive Crisis", categoryId: 고혈압위기.id, sortOrder: 0 }).returning();
+  const [ASO질환처방] = await db.insert(prescriptions).values({ name: "ASO", categoryId: ASO질환.id, sortOrder: 0 }).returning();
+  const [PTE질환처방] = await db.insert(prescriptions).values({ name: "PTE", categoryId: PTE질환.id, sortOrder: 0 }).returning();
+  const [ACS질환처방] = await db.insert(prescriptions).values({ name: "ACS", categoryId: ACS질환.id, sortOrder: 0 }).returning();
+  const [심부전질환처방] = await db.insert(prescriptions).values({ name: "Heart failure", categoryId: 심부전질환.id, sortOrder: 0 }).returning();
 
   await db.insert(prescriptionItems).values([
     // 철분제제
@@ -1920,6 +1942,210 @@ export async function insertKkuData() {
     { prescriptionId: 항정신약IV처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M3" },
     { prescriptionId: 항정신약IV처방.id, type: "약", productName: "포폴주사 120mg", ingredientName: "propofol", dosage: "5", unit: "A", frequency: "1", route: "IV infusion", note: "continuous 5~50mcg/kg/min, 5cc/hr start", sortOrder: 10, mixGroup: "M4" },
     { prescriptionId: 항정신약IV처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 11, mixGroup: "M4" },
+
+    // Asthma/COPD AE
+    { prescriptionId: 천식COPD처방.id, type: "추가설명", productName: "흡입제", sortOrder: 0 },
+    { prescriptionId: 천식COPD처방.id, type: "지시처방", productName: "증기흡입치료(1일당)", sortOrder: 1 },
+    { prescriptionId: 천식COPD처방.id, type: "약", productName: "벤토린네뷸2.5mg/2.5ml", ingredientName: "salbutamol sulfate", dosage: "1", unit: "EA", frequency: "1", route: "Aerosol", note: "20분 간격으로 3회 연속 시행", sortOrder: 2 },
+    { prescriptionId: 천식COPD처방.id, type: "약", productName: "아트로벤트흡입액유디비(0.5218mg/2mL)", ingredientName: "ipratropium bromide", dosage: "1", unit: "EA", frequency: "1", route: "Aerosol", sortOrder: 3 },
+    { prescriptionId: 천식COPD처방.id, type: "약", productName: "풀미코트레스퓰분무용현탁액0.5mg/2ml", ingredientName: "budesonide", dosage: "1", unit: "EA", frequency: "1", route: "Aerosol", sortOrder: 4 },
+    { prescriptionId: 천식COPD처방.id, type: "추가설명", productName: "Systemic steroid", sortOrder: 5 },
+    { prescriptionId: 천식COPD처방.id, type: "약", productName: "살론주125밀리그람", ingredientName: "methylprednisolone succinate", dosage: "0.5", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M1" },
+    { prescriptionId: 천식COPD처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: 천식COPD처방.id, type: "추가설명", productName: "Mucolytics", sortOrder: 8 },
+    { prescriptionId: 천식COPD처방.id, type: "약", productName: "아록솔주 15mg/2mL", ingredientName: "ambroxol", dosage: "1", unit: "A", frequency: "1", route: "IVS", sortOrder: 9 },
+    { prescriptionId: 천식COPD처방.id, type: "약", productName: "Magnesium Sulfate 10% Inj(1g/10ml/amp)", ingredientName: "magnesium sulfate", dosage: "2", unit: "A", frequency: "1", route: "IV infusion", note: "ut dict", sortOrder: 10, mixGroup: "M2" },
+    { prescriptionId: 천식COPD처방.id, type: "약", productName: "5%Dextrose 100ml Bag(중외)", ingredientName: "dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 11, mixGroup: "M2" },
+    { prescriptionId: 천식COPD처방.id, type: "약", productName: "Epinephrine Inj", ingredientName: "epinephrine", dosage: "0.3", unit: "A", frequency: "1", route: "Aerosol", note: "벤토린네뷸 병용금기, 25도이하 냉장보관 금지, 차광, ut dict", sortOrder: 12 },
+    { prescriptionId: 천식COPD처방.id, type: "추가설명", productName: "IV ABx.", sortOrder: 13 },
+    { prescriptionId: 천식COPD처방.id, type: "약", productName: "타조페란주4.5g", ingredientName: "piperacillin/tazobactam", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "200cc/hr", sortOrder: 14, mixGroup: "M3" },
+    { prescriptionId: 천식COPD처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 15, mixGroup: "M3" },
+    { prescriptionId: 천식COPD처방.id, type: "약", productName: "퀴녹스주400mg/250mL", ingredientName: "moxifloxacin", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "250cc/hr", sortOrder: 16 },
+
+    // PSVT
+    { prescriptionId: PSVT질환처방.id, type: "지시처방", productName: "v/s unstable 시 50-100J DC cardioversion 고려", sortOrder: 0 },
+    { prescriptionId: PSVT질환처방.id, type: "지시처방", productName: "antecubital fossa 에 line 잡아주세요.", sortOrder: 1 },
+    { prescriptionId: PSVT질환처방.id, type: "지시처방", productName: "약 투여 후 해당 팔 elevation 시키면서 flushing 꼭 해주세요.", sortOrder: 2 },
+    { prescriptionId: PSVT질환처방.id, type: "약", productName: "아데노코주 6mg/2ml", ingredientName: "adenosine", dosage: "1", unit: "V", frequency: "1", route: "IVS", note: "1st", sortOrder: 3 },
+    { prescriptionId: PSVT질환처방.id, type: "약", productName: "아데노코주 6mg/2ml", ingredientName: "adenosine", dosage: "2", unit: "V", frequency: "1", route: "IVS", note: "2nd", sortOrder: 4 },
+    { prescriptionId: PSVT질환처방.id, type: "약", productName: "아데노코주 6mg/2ml", ingredientName: "adenosine", dosage: "2", unit: "V", frequency: "1", route: "IVS", note: "3rd", sortOrder: 5 },
+    { prescriptionId: PSVT질환처방.id, type: "약", productName: "헤르벤주50mg", ingredientName: "diltiazem", dosage: "0.3", unit: "V", frequency: "1", route: "IV infusion", note: "loading dose 0.25mg/kg IV over 2min", sortOrder: 6, mixGroup: "M1" },
+    { prescriptionId: PSVT질환처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: PSVT질환처방.id, type: "약", productName: "헤르벤주50mg", ingredientName: "diltiazem", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "유지용량 10cc/hr", sortOrder: 8, mixGroup: "M2" },
+    { prescriptionId: PSVT질환처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M2" },
+
+    // A-fib
+    { prescriptionId: Afib처방.id, type: "지시처방", productName: "주의!! PSVT 와 구별하세요. Herben 금기 확인하세요.", sortOrder: 0 },
+    { prescriptionId: Afib처방.id, type: "지시처방", productName: "v/s unstable 시 120-200J DC cardioversion 고려", sortOrder: 1 },
+    { prescriptionId: Afib처방.id, type: "지시처방", productName: "cardioversion 전에 echo 로 LA thrombosis 유무 확인/ LVEF 확인", sortOrder: 2 },
+    { prescriptionId: Afib처방.id, type: "지시처방", productName: "HR<110이하 유지목표", sortOrder: 3 },
+    { prescriptionId: Afib처방.id, type: "약", productName: "헤르벤주50mg", ingredientName: "diltiazem", dosage: "0.3", unit: "V", frequency: "1", route: "IV infusion", note: "1st bolus 15mg(0.25mg/kg), 2분이상 걸쳐 투여", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: Afib처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: Afib처방.id, type: "약", productName: "헤르벤주50mg", ingredientName: "diltiazem", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "continuous(4-20mg/hr), 유지용량 10cc/hr", sortOrder: 6, mixGroup: "M2" },
+    { prescriptionId: Afib처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M2" },
+    { prescriptionId: Afib처방.id, type: "추가설명", productName: "2차약: Isoptin(2.5mg → 5mg → 10mg IV bolus)", sortOrder: 8 },
+    { prescriptionId: Afib처방.id, type: "약", productName: "이솦틴주5mg/2ml", ingredientName: "verapamil", dosage: "0.5", unit: "A", frequency: "1", route: "IV infusion", note: "1st: 2.5mg", sortOrder: 9, mixGroup: "M3" },
+    { prescriptionId: Afib처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M3" },
+    { prescriptionId: Afib처방.id, type: "약", productName: "이솦틴주5mg/2ml", ingredientName: "verapamil", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "2nd: 5mg", sortOrder: 11, mixGroup: "M4" },
+    { prescriptionId: Afib처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 12, mixGroup: "M4" },
+    { prescriptionId: Afib처방.id, type: "약", productName: "이솦틴주5mg/2ml", ingredientName: "verapamil", dosage: "2", unit: "A", frequency: "1", route: "IV infusion", note: "3rd: 10mg", sortOrder: 13, mixGroup: "M5" },
+    { prescriptionId: Afib처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 14, mixGroup: "M5" },
+    { prescriptionId: Afib처방.id, type: "추가설명", productName: "LVEF<40% 이하시", sortOrder: 15 },
+    { prescriptionId: Afib처방.id, type: "약", productName: "디곡신(digoxin) 0.25mg/mL", ingredientName: "digoxin", dosage: "2", unit: "A", frequency: "1", route: "IV", sortOrder: 16 },
+    { prescriptionId: Afib처방.id, type: "지시처방", productName: "급속포화요법(포화량 1.0-2.0mg)으로 1회 0.25-0.5mg을 2-4시간마다 효과가 나타날 때까지 정주", sortOrder: 17 },
+    { prescriptionId: Afib처방.id, type: "지시처방", productName: "0.5mg 1회 투여 후 경과 관찰", sortOrder: 18 },
+    { prescriptionId: Afib처방.id, type: "약", productName: "제일브레비블록주100mg", ingredientName: "esmolol HCl", dosage: "0.3", unit: "V", frequency: "1", route: "IVS", note: "bolus 0.1-0.5mg/kg(0.1-0.3A), 1분간(60kg 기준 6-30mg IV)", sortOrder: 19 },
+    { prescriptionId: Afib처방.id, type: "약", productName: "제일브레비블록주2.5그램", ingredientName: "esmolol HCl", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "initial 20cc/hr, 5분마다 20cc/hr titration", sortOrder: 20, mixGroup: "M6" },
+    { prescriptionId: Afib처방.id, type: "약", productName: "5% D/W 500ml", ingredientName: "dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 21, mixGroup: "M6" },
+
+    // monomorphic VT
+    { prescriptionId: 단형성VT처방.id, type: "지시처방", productName: "v/s unstable 시 100J DC cardioversion", sortOrder: 0 },
+    { prescriptionId: 단형성VT처방.id, type: "추가설명", productName: "1차: amiodarone loading(150mg 씩 total 2g 까지 반복가능)", sortOrder: 1 },
+    { prescriptionId: 단형성VT처방.id, type: "약", productName: "코다론주 150mg/3ml", ingredientName: "amiodarone", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "1st loading, 10분내로 투여", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: 단형성VT처방.id, type: "약", productName: "중외5% 포도당주 100mL", ingredientName: "dextrose", dosage: "1", frequency: "1", route: "IV infusion", sortOrder: 3, mixGroup: "M1" },
+    { prescriptionId: 단형성VT처방.id, type: "추가설명", productName: "amiodarone continuous", sortOrder: 4 },
+    { prescriptionId: 단형성VT처방.id, type: "약", productName: "코다론주 150mg/3ml", ingredientName: "amiodarone", dosage: "6", unit: "A", frequency: "1", route: "IV infusion", note: "처음 8시간 1mg/min(60mg/hr→33.3cc/hr), 다음 16시간 0.5mg/min(30mg/hr→16.6cc/hr)", sortOrder: 5, mixGroup: "M2" },
+    { prescriptionId: 단형성VT처방.id, type: "약", productName: "5% D/W 500ml", ingredientName: "dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M2" },
+    { prescriptionId: 단형성VT처방.id, type: "추가설명", productName: "2차: lidocaine", sortOrder: 7 },
+    { prescriptionId: 단형성VT처방.id, type: "약", productName: "대한2%리도카인염산염수화물주", ingredientName: "lidocaine", dosage: "0.8", unit: "V", frequency: "1", route: "IV infusion", note: "1st loading(1.0-1.5mg/kg), 5분에 걸쳐서 투여", sortOrder: 8, mixGroup: "M3" },
+    { prescriptionId: 단형성VT처방.id, type: "약", productName: "중외5% 포도당주 100mL", ingredientName: "dextrose", dosage: "1", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M3" },
+    { prescriptionId: 단형성VT처방.id, type: "추가설명", productName: "리도카인 유지용량", sortOrder: 10 },
+    { prescriptionId: 단형성VT처방.id, type: "약", productName: "대한2%리도카인염산염수화물주", ingredientName: "lidocaine", dosage: "4", unit: "V", frequency: "1", route: "IV infusion", note: "continuous 60-240mg/hr(18-72cc/hr)", sortOrder: 11, mixGroup: "M4" },
+    { prescriptionId: 단형성VT처방.id, type: "약", productName: "중외5% 포도당주 100mL", ingredientName: "dextrose", dosage: "1", frequency: "1", route: "IV infusion", sortOrder: 12, mixGroup: "M4" },
+
+    // Bradycardia
+    { prescriptionId: Bradycardia질환처방.id, type: "지시처방", productName: "EKG 모니터 keep", sortOrder: 0 },
+    { prescriptionId: Bradycardia질환처방.id, type: "지시처방", productName: "EKG 기록및 판독", sortOrder: 1 },
+    { prescriptionId: Bradycardia질환처방.id, type: "지시처방", productName: "약물 투여 후 EKG f/u", sortOrder: 2 },
+    { prescriptionId: Bradycardia질환처방.id, type: "약", productName: "아트로핀황산염주사액0.5mg/1mL", ingredientName: "atropine sulfate", dosage: "2", unit: "A", frequency: "1", route: "IVS", note: "한번에 1mg씩 총 3번 반복가능(total 3mg까지)", sortOrder: 3 },
+    { prescriptionId: Bradycardia질환처방.id, type: "약", productName: "염산도파민프리믹스 500ml", ingredientName: "dopamine HCl", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "2~20mcg/kg/min(예: 60kg기준 10mcg/kg/min=22.5cc/hr)", sortOrder: 4 },
+    { prescriptionId: Bradycardia질환처방.id, type: "지시처방", productName: "Transcutaneous Cardiac Pacing(체외용)", sortOrder: 5 },
+    { prescriptionId: Bradycardia질환처방.id, type: "지시처방", productName: "TCP시 sedation, pain control 고려", sortOrder: 6 },
+    { prescriptionId: Bradycardia질환처방.id, type: "추가설명", productName: "Pain control", sortOrder: 7 },
+    { prescriptionId: Bradycardia질환처방.id, type: "약", productName: "명문모르핀염산염수화물주사 10mg/1mL", ingredientName: "morphine", dosage: "0.5", unit: "A", frequency: "1", route: "IV infusion", note: "필요시 5-15분마다 반복", sortOrder: 8, mixGroup: "M1" },
+    { prescriptionId: Bradycardia질환처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M1" },
+    { prescriptionId: Bradycardia질환처방.id, type: "추가설명", productName: "sedation", sortOrder: 10 },
+    { prescriptionId: Bradycardia질환처방.id, type: "약", productName: "부광미다졸람주사5mL", ingredientName: "midazolam", dosage: "0.6", frequency: "1", route: "IVS", note: "initial bolus 0.05mg/kg(60kg 기준 3mg=3ml)", sortOrder: 11 },
+    { prescriptionId: Bradycardia질환처방.id, type: "약", productName: "부광미다졸람주사5mL", ingredientName: "midazolam", dosage: "2", frequency: "1", route: "IV infusion", note: "TCP용 30cc/hr start, continuous 0.05~2mg/kg/hr", sortOrder: 12, mixGroup: "M2" },
+    { prescriptionId: Bradycardia질환처방.id, type: "약", productName: "엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 13, mixGroup: "M2" },
+
+    // Hypertensive Crisis
+    { prescriptionId: 고혈압위기처방.id, type: "지시처방", productName: "if AD(Aortic Dissection): target SBP 100-120, HR<60 목표", sortOrder: 0 },
+    { prescriptionId: 고혈압위기처방.id, type: "추가설명", productName: "Short acting BB", sortOrder: 1 },
+    { prescriptionId: 고혈압위기처방.id, type: "약", productName: "제일브레비블록주100mg", ingredientName: "esmolol HCl", dosage: "0.3", unit: "V", frequency: "1", route: "IVS", note: "bolus 0.1-0.5mg/kg(0.1-0.3A), 1분간(60kg 기준6-30mg)", sortOrder: 2 },
+    { prescriptionId: 고혈압위기처방.id, type: "약", productName: "제일브레비블록주2.5그램", ingredientName: "esmolol HCl", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "initial 20cc/hr, 5분마다 20cc/hr titration", sortOrder: 3, mixGroup: "M1" },
+    { prescriptionId: 고혈압위기처방.id, type: "약", productName: "5% D/W 500ml", ingredientName: "dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: 고혈압위기처방.id, type: "추가설명", productName: "Long acting BB", sortOrder: 5 },
+    { prescriptionId: 고혈압위기처방.id, type: "약", productName: "라베신주20mg/4ml", ingredientName: "labetalol HCl", dosage: "1", unit: "A", frequency: "1", route: "IVS", note: "bolus 2분간, 20-80mg repeat 가능", sortOrder: 6 },
+    { prescriptionId: 고혈압위기처방.id, type: "약", productName: "라베신주100mg/20ml", ingredientName: "labetalol HCl", dosage: "12", unit: "A", frequency: "1", route: "IV infusion", note: "0.5-2mg/min", sortOrder: 7, mixGroup: "M2" },
+    { prescriptionId: 고혈압위기처방.id, type: "약", productName: "중외5% D/S 500ml", ingredientName: "dextrose saline", dosage: "260", unit: "ml", frequency: "1", route: "IV infusion", note: "initial 12.5cc/hr, max 50cc/hr, total 300mg/day", sortOrder: 8, mixGroup: "M2" },
+    { prescriptionId: 고혈압위기처방.id, type: "추가설명", productName: "CCB", sortOrder: 9 },
+    { prescriptionId: 고혈압위기처방.id, type: "약", productName: "동아페르디핀주사액10mg/10mL", ingredientName: "nicardipine", dosage: "0.2", unit: "A", frequency: "1", route: "IVS", sortOrder: 10 },
+    { prescriptionId: 고혈압위기처방.id, type: "약", productName: "동아페르디핀주사액10mg/10mL", ingredientName: "nicardipine", dosage: "5", unit: "A", frequency: "1", route: "IVS", sortOrder: 11, mixGroup: "M3" },
+    { prescriptionId: 고혈압위기처방.id, type: "약", productName: "중외5%포도당주 200mL", ingredientName: "dextrose", dosage: "0.5", unit: "BT", frequency: "1", route: "IV infusion", note: "continuous 15cc/hr 시작, 15분마다 7.5cc/hr씩 증량, 최대 60cc/hr", sortOrder: 12, mixGroup: "M3" },
+    { prescriptionId: 고혈압위기처방.id, type: "추가설명", productName: "Nitroprusside", sortOrder: 13 },
+    { prescriptionId: 고혈압위기처방.id, type: "약", productName: "나이트로프레스주(50mg/2mL)", ingredientName: "nitroprusside", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 14, mixGroup: "M4" },
+    { prescriptionId: 고혈압위기처방.id, type: "약", productName: "중외5%포도당주 200mL", ingredientName: "dextrose", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "continuous 시작 7cc/hr→14→21→28, 28cc/hr 이상 사용 금지(독성)", sortOrder: 15, mixGroup: "M4" },
+    { prescriptionId: 고혈압위기처방.id, type: "추가설명", productName: "NTG", sortOrder: 16 },
+    { prescriptionId: 고혈압위기처방.id, type: "약", productName: "니트로링구알주사 10mg/10mL", ingredientName: "nitroglycerin", dosage: "5", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 17, mixGroup: "M5" },
+    { prescriptionId: 고혈압위기처방.id, type: "약", productName: "5%포도당주 500ml", ingredientName: "dextrose", dosage: "450", unit: "ml", frequency: "1", route: "IV infusion", note: "continuous 시작 3cc/hr, 5분마다 3cc/hr씩 증량(12cc까지), 이후 6cc/hr씩 증량(최대 120cc/hr)", sortOrder: 18, mixGroup: "M5" },
+
+    // ASO
+    { prescriptionId: ASO질환처방.id, type: "추가설명", productName: "ABI < 0.9 일 경우 의심", sortOrder: 0 },
+    { prescriptionId: ASO질환처방.id, type: "지시처방", productName: "사지 BP 재주세요.", sortOrder: 1 },
+    { prescriptionId: ASO질환처방.id, type: "추가설명", productName: "Heparin 치료", sortOrder: 2 },
+    { prescriptionId: ASO질환처방.id, type: "약", productName: "중외헤파린나트륨주사액1000iu(5000IU/5mL)", ingredientName: "heparin sodium", dosage: "1", unit: "V", frequency: "1", route: "IVS", note: "IV bolus: 80unit/kg(60kg 기준 4800unit)", sortOrder: 3 },
+    { prescriptionId: ASO질환처방.id, type: "약", productName: "중외헤파린주(25KIU/5mL)", ingredientName: "heparin sodium", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "유지용량 18unit/kg/hr, 25cc/hr", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: ASO질환처방.id, type: "약", productName: "5% D/W 500ml", ingredientName: "dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: ASO질환처방.id, type: "혈액검사", productName: "aPTT", sortOrder: 6 },
+    { prescriptionId: ASO질환처방.id, type: "지시처방", productName: "헤파린 투여 6시간 후 aPTT검사 6시간마다 반복, target 60-80sec", sortOrder: 7 },
+    { prescriptionId: ASO질환처방.id, type: "지시처방", productName: "aPTT<50: 헤파린 4000unit bolus 투여 및 continuous 속도 10%증가", sortOrder: 8 },
+    { prescriptionId: ASO질환처방.id, type: "지시처방", productName: "aPTT 50-59: continuous 속도 10%증가", sortOrder: 9 },
+    { prescriptionId: ASO질환처방.id, type: "지시처방", productName: "aPTT 60-85: 현재 속도 유지", sortOrder: 10 },
+    { prescriptionId: ASO질환처방.id, type: "지시처방", productName: "aPTT 86-95: 속도 10%감량", sortOrder: 11 },
+    { prescriptionId: ASO질환처방.id, type: "지시처방", productName: "aPTT 96-120: continuous 30분 중단 후, 속도 10% 감량 후 재시작", sortOrder: 12 },
+    { prescriptionId: ASO질환처방.id, type: "지시처방", productName: "aPTT>120: continuous 30분 중단 후, 속도 15% 감량 후 재시작", sortOrder: 13 },
+    { prescriptionId: ASO질환처방.id, type: "지시처방", productName: "투여속도 변경시 aPTT 4시간 후 f/u", sortOrder: 14 },
+    { prescriptionId: ASO질환처방.id, type: "약", productName: "한미아스피린장용정100밀리그램", ingredientName: "aspirin", dosage: "3", unit: "T", frequency: "QD", route: "QD", note: "씹어서 즉시 복용하세요", sortOrder: 15 },
+
+    // PTE
+    { prescriptionId: PTE질환처방.id, type: "추가설명", productName: "1. Fibrinolysis(tPA 사용) - massive 일경우 사용 고려", sortOrder: 0 },
+    { prescriptionId: PTE질환처방.id, type: "추가설명", productName: "massive 기준: SBP<90, Shock index(HR/SBP)>1.0, SaO2<95%", sortOrder: 1 },
+    { prescriptionId: PTE질환처방.id, type: "약", productName: "액티라제주50mg", ingredientName: "alteplase", dosage: "2", unit: "V", frequency: "1", route: "IV infusion", note: "코멘트대로 꼭 확인 투여, 반드시 10mg(2분간)+나머지 90mg(2시간동안) 나눠서 투여", sortOrder: 2 },
+    { prescriptionId: PTE질환처방.id, type: "지시처방", productName: "BWt. 꼭 확인해주세요", sortOrder: 3 },
+    { prescriptionId: PTE질환처방.id, type: "지시처방", productName: "유치 카테타 설치", sortOrder: 4 },
+    { prescriptionId: PTE질환처방.id, type: "지시처방", productName: "tPA주기 전 foley insertion해주세요", sortOrder: 5 },
+    { prescriptionId: PTE질환처방.id, type: "지시처방", productName: "동의서 사인 받고나서 Actilyse오픈 합니다.", sortOrder: 6 },
+    { prescriptionId: PTE질환처방.id, type: "지시처방", productName: "massive 일 경우에도 heparin 또는 enoxaparin 같이 투여", sortOrder: 7 },
+    { prescriptionId: PTE질환처방.id, type: "추가설명", productName: "2. 또는 3중에 사용", sortOrder: 8 },
+    { prescriptionId: PTE질환처방.id, type: "추가설명", productName: "2. Heparin 치료", sortOrder: 9 },
+    { prescriptionId: PTE질환처방.id, type: "약", productName: "중외헤파린나트륨주사액1000iu(5000IU/5mL)", ingredientName: "heparin sodium", dosage: "1", unit: "V", frequency: "1", route: "IVS", note: "IV bolus: 80unit/kg(60kg 기준 4800unit)", sortOrder: 10 },
+    { prescriptionId: PTE질환처방.id, type: "약", productName: "중외헤파린주(25KIU/5mL)", ingredientName: "heparin sodium", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "유지용량 18unit/kg/hr, 25cc/hr", sortOrder: 11, mixGroup: "M1" },
+    { prescriptionId: PTE질환처방.id, type: "약", productName: "5% D/W 500ml", ingredientName: "dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 12, mixGroup: "M1" },
+    { prescriptionId: PTE질환처방.id, type: "혈액검사", productName: "aPTT", sortOrder: 13 },
+    { prescriptionId: PTE질환처방.id, type: "지시처방", productName: "헤파린 투여 6시간 후 aPTT검사 6시간마다 반복, target 60-80sec", sortOrder: 14 },
+    { prescriptionId: PTE질환처방.id, type: "지시처방", productName: "aPTT<50: 헤파린 4000unit bolus 투여 및 continuous 속도 10%증가", sortOrder: 15 },
+    { prescriptionId: PTE질환처방.id, type: "지시처방", productName: "aPTT 50-59: continuous 속도 10%증가", sortOrder: 16 },
+    { prescriptionId: PTE질환처방.id, type: "지시처방", productName: "aPTT 60-85: 현재 속도 유지", sortOrder: 17 },
+    { prescriptionId: PTE질환처방.id, type: "지시처방", productName: "aPTT 86-95: 속도 10%감량", sortOrder: 18 },
+    { prescriptionId: PTE질환처방.id, type: "지시처방", productName: "aPTT 96-120: continuous 30분 중단 후, 속도 10% 감량 후 재시작", sortOrder: 19 },
+    { prescriptionId: PTE질환처방.id, type: "지시처방", productName: "aPTT>120: continuous 30분 중단 후, 속도 15% 감량 후 재시작", sortOrder: 20 },
+    { prescriptionId: PTE질환처방.id, type: "지시처방", productName: "투여속도 변경시 aPTT 4시간 후 f/u", sortOrder: 21 },
+    { prescriptionId: PTE질환처방.id, type: "추가설명", productName: "3. Enoxaparin치료", sortOrder: 22 },
+    { prescriptionId: PTE질환처방.id, type: "약", productName: "크렉산주40mg", ingredientName: "enoxaparin sodium", dosage: "1", unit: "PFS", frequency: "1", route: "SC", note: "1mg/kg, 12시간마다 투여", sortOrder: 23 },
+    { prescriptionId: PTE질환처방.id, type: "추가설명", productName: "일반 수술 후 또는 Nonsurgical Acute Illness 에서 DVT 방지 예방 사용 목적은 40mg/day SQ", sortOrder: 24 },
+
+    // ACS
+    { prescriptionId: ACS질환처방.id, type: "추가설명", productName: "Acute coronary syndrome", sortOrder: 0 },
+    { prescriptionId: ACS질환처방.id, type: "추가설명", productName: "#1 RV infarction시 full drip", sortOrder: 1 },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "플라주오피주 1000mL", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 2 },
+    { prescriptionId: ACS질환처방.id, type: "추가설명", productName: "#2 Anti-coagulation", sortOrder: 3 },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "중외헤파린나트륨주사액1000iu(5000IU/5mL)", ingredientName: "heparin sodium", dosage: "0.8", unit: "V", frequency: "1", route: "IVS", note: "bolus: 60unit/kg", sortOrder: 4 },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "중외헤파린주(25,000IU/5mL)", ingredientName: "heparin sodium", dosage: "1", frequency: "1", route: "IV infusion", note: "continuous 12unit/kg/hr, 헤파린 25000unit+5%DW 500ml, 60kg기준 15cc/hr로 투여", sortOrder: 5, mixGroup: "M1" },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "5% D/W 500ml", ingredientName: "dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M1" },
+    { prescriptionId: ACS질환처방.id, type: "추가설명", productName: "Enoxaparin (GFR 확인한다고 투여가 늦어지면 안됩니다)", sortOrder: 7 },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "크렉산주(에녹사파린나트륨 60mg/0.6mL)", ingredientName: "enoxaparin", dosage: "0.5", unit: "SYR", frequency: "1", route: "IV", sortOrder: 8 },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "크렉산주(에녹사파린나트륨 60mg/0.6mL)", ingredientName: "enoxaparin", dosage: "1", unit: "SYR", frequency: "1", route: "SC", sortOrder: 9 },
+    { prescriptionId: ACS질환처방.id, type: "지시처방", productName: "75세 이하이면 30mg IV loading 15분 후 1mg/kg SC 추가투여", sortOrder: 10 },
+    { prescriptionId: ACS질환처방.id, type: "지시처방", productName: "75세 이상이면 loading 없이 GFR>30 이면 0.75mg/kg BID, GFR<30 이면 1mg/kg QD", sortOrder: 11 },
+    { prescriptionId: ACS질환처방.id, type: "추가설명", productName: "#3 Pain control", sortOrder: 12 },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "명문모르핀염산염10mg/1mL", ingredientName: "morphine", dosage: "0.5", unit: "A", frequency: "1", route: "IVS", sortOrder: 13 },
+    { prescriptionId: ACS질환처방.id, type: "지시처방", productName: "통증 호전시까지 5분간격으로 2-4mg 씩 투여 가능", sortOrder: 14 },
+    { prescriptionId: ACS질환처방.id, type: "추가설명", productName: "#4 NTG", sortOrder: 15 },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "니트로글리세린0.6mg설하정", ingredientName: "nitroglycerin", dosage: "1", unit: "T", frequency: "1", route: "SL", note: "혀밑에서 녹여서 흡수", sortOrder: 16 },
+    { prescriptionId: ACS질환처방.id, type: "지시처방", productName: "설하정은 5분 간격으로 3회까지 줄 수 있다", sortOrder: 17 },
+    { prescriptionId: ACS질환처방.id, type: "지시처방", productName: "이후에도 흉통 지속되면 IV NTG 를 시작", sortOrder: 18 },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "니트로링구알주사(희석된 니트로글리세린 50mg/50mL)", ingredientName: "nitroglycerin", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "Hypotension 주의, 비아그라 복용력 주의", sortOrder: 19, mixGroup: "M2" },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "5% D/W 500ml", ingredientName: "dextrose", dosage: "450", unit: "ml", frequency: "1", route: "IV infusion", note: "5-20mcg/min, 3cc/hr 시작 후 10분마다 3cc/hr씩 추가(최대 12cc/hr), 목표: 정상혈압 10%/고혈압 30%까지 mBP 감소, sBP<90 또는 30mmHg 이상 하강 시 주의", sortOrder: 20, mixGroup: "M2" },
+    { prescriptionId: ACS질환처방.id, type: "추가설명", productName: "#5 추가 경구약 -2023/02 CV", sortOrder: 21 },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "아스피린정500mg", ingredientName: "aspirin", dosage: "0.5", unit: "T", frequency: "QD", route: "QD", note: "즉시 씹어서 복용", sortOrder: 22 },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "리피로우정80mg", ingredientName: "atorvastatin", dosage: "1", unit: "T", frequency: "1", route: "1회", note: "즉시 복용하세요", sortOrder: 23 },
+    { prescriptionId: ACS질환처방.id, type: "추가설명", productName: "#6 P2Y12 inhibitor (CV 상의 후 투여)", sortOrder: 24 },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "에피언트정10밀리그램", ingredientName: "prasugrel", dosage: "6", unit: "T", frequency: "1", route: "1회", note: "즉시 복용하세요. 60mg", sortOrder: 25 },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "티카젠정90mg", ingredientName: "ticagrelor", dosage: "2", unit: "T", frequency: "1", route: "1회", note: "즉시 복용하세요. 180mg", sortOrder: 26 },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "플라빅스정75밀리그람", ingredientName: "clopidogrel", dosage: "4", unit: "T", frequency: "QD", route: "QD", note: "즉시 복용하세요 300mg", sortOrder: 27 },
+    { prescriptionId: ACS질환처방.id, type: "추가설명", productName: "#7 Beta blocker (CV 상의 후 투여)", sortOrder: 28 },
+    { prescriptionId: ACS질환처방.id, type: "약", productName: "베타록정", ingredientName: "metoprolol tartrate", dosage: "0.5", unit: "T", frequency: "QD", route: "QD", sortOrder: 29 },
+
+    // Heart failure
+    { prescriptionId: 심부전질환처방.id, type: "추가설명", productName: "Heart failure(hypertensive)", sortOrder: 0 },
+    { prescriptionId: 심부전질환처방.id, type: "지시처방", productName: "SBP > 140 & Pul-edema 확인", sortOrder: 1 },
+    { prescriptionId: 심부전질환처방.id, type: "지시처방", productName: "O2투여에도 SaO2 > 95 유지 안될경우 Optiflow 또는 Intubation 고려", sortOrder: 2 },
+    { prescriptionId: 심부전질환처방.id, type: "추가설명", productName: "1st: O2 + sublingual NTG + Lasix", sortOrder: 3 },
+    { prescriptionId: 심부전질환처방.id, type: "지시처방", productName: "산소 투여 및 Sat. 모니터해주세요", sortOrder: 4 },
+    { prescriptionId: 심부전질환처방.id, type: "약", productName: "니트로글리세린0.6mg설하정", ingredientName: "nitroglycerin", dosage: "1", unit: "T", frequency: "1", route: "SL", sortOrder: 5 },
+    { prescriptionId: 심부전질환처방.id, type: "약", productName: "라식스주사20mg/2mL", ingredientName: "furosemide", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 6 },
+    { prescriptionId: 심부전질환처방.id, type: "지시처방", productName: "Foley insertion 후 라식스 투여해주세요", sortOrder: 7 },
+    { prescriptionId: 심부전질환처방.id, type: "약", productName: "라식스주사20mg/2mL", ingredientName: "furosemide", dosage: "10", unit: "A", frequency: "1", route: "IV infusion", note: "10-40mg/hr(10cc~40cc/hr)", sortOrder: 8, mixGroup: "M1" },
+    { prescriptionId: 심부전질환처방.id, type: "약", productName: "5%포도당주 200mL", ingredientName: "dextrose", dosage: "1", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M1" },
+    { prescriptionId: 심부전질환처방.id, type: "지시처방", productName: "I/O check 해주세요", sortOrder: 10 },
+    { prescriptionId: 심부전질환처방.id, type: "추가설명", productName: "sublingual NTG투여 후에도 BP >150/100일 경우", sortOrder: 11 },
+    { prescriptionId: 심부전질환처방.id, type: "약", productName: "니트로링구알주사(희석된 니트로글리세린 50mg/50mL)", ingredientName: "nitroglycerin", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "5-10mcg/min 시작, 5분마다 5-10mcg/min씩 증량 최대 200mcg/min", sortOrder: 12, mixGroup: "M2" },
+    { prescriptionId: 심부전질환처방.id, type: "약", productName: "5% D/W 500ml", ingredientName: "dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "3.3-6.6cc/hr 시작, 최종 132cc/hr 까지 증량", sortOrder: 13, mixGroup: "M2" },
+    { prescriptionId: 심부전질환처방.id, type: "추가설명", productName: "또는", sortOrder: 14 },
+    { prescriptionId: 심부전질환처방.id, type: "약", productName: "나이트로프레스주(니트로푸루시드나트륨 50mg/2mL)", ingredientName: "nitroprusside", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "0.3mcg/kg/min 시작→0.5-10mcg/kg/min(보통 3mcg/kg/min), 60kg기준 10cc/hr 시작→100cc/hr(3mcg/kg/min)으로 유지", sortOrder: 15, mixGroup: "M3" },
+    { prescriptionId: 심부전질환처방.id, type: "약", productName: "5% D/W 500ml", ingredientName: "dextrose", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 16, mixGroup: "M3" },
+    { prescriptionId: 심부전질환처방.id, type: "지시처방", productName: "약 투여후 SBP<100 될시 IV hold해주세요", sortOrder: 17 },
   ]);
 
 }
