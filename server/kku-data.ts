@@ -282,6 +282,58 @@ export async function insertKkuData() {
   const [Osteomyelitis_E] = await db.insert(categories).values({ name: "Osteomyelitis/Spondylitis", parentId: 김대용엑셀정리.id, sortOrder: 95 }).returning();
   const [NecrotizingFasciitis_E] = await db.insert(categories).values({ name: "Necrotizing fasciitis", parentId: 김대용엑셀정리.id, sortOrder: 96 }).returning();
 
+  // 시트5: 퇴원약
+  const [T5해열진통제] = await db.insert(categories).values({ name: "해열진통소염제", parentId: 김대용엑셀정리.id, sortOrder: 97 }).returning();
+  const [T5항생제Augmentin] = await db.insert(categories).values({ name: "항생제(augmentin 계열)", parentId: 김대용엑셀정리.id, sortOrder: 98 }).returning();
+  const [T5URI] = await db.insert(categories).values({ name: "URI(단순 감기)", parentId: 김대용엑셀정리.id, sortOrder: 99 }).returning();
+  const [T5Flu] = await db.insert(categories).values({ name: "독감", parentId: 김대용엑셀정리.id, sortOrder: 100 }).returning();
+  const [T5천식흡입제] = await db.insert(categories).values({ name: "천식 흡입제", parentId: 김대용엑셀정리.id, sortOrder: 101 }).returning();
+  const [T5코로나] = await db.insert(categories).values({ name: "코로나(팍스로비드/렘데시비르)", parentId: 김대용엑셀정리.id, sortOrder: 102 }).returning();
+  const [T5GI약] = await db.insert(categories).values({ name: "GI약(위염,FGID)", parentId: 김대용엑셀정리.id, sortOrder: 103 }).returning();
+  const [T5장염] = await db.insert(categories).values({ name: "장염(항생제 포함)", parentId: 김대용엑셀정리.id, sortOrder: 104 }).returning();
+  const [T5변비] = await db.insert(categories).values({ name: "변비", parentId: 김대용엑셀정리.id, sortOrder: 105 }).returning();
+  const [T5타박상염좌] = await db.insert(categories).values({ name: "타박상/염좌", parentId: 김대용엑셀정리.id, sortOrder: 106 }).returning();
+  const [T5열상] = await db.insert(categories).values({ name: "열상", parentId: 김대용엑셀정리.id, sortOrder: 107 }).returning();
+  const [T5Gout] = await db.insert(categories).values({ name: "Gout", parentId: 김대용엑셀정리.id, sortOrder: 108 }).returning();
+  const [T5Allergy] = await db.insert(categories).values({ name: "Allergy", parentId: 김대용엑셀정리.id, sortOrder: 109 }).returning();
+  const [T5Zoster] = await db.insert(categories).values({ name: "Zoster", parentId: 김대용엑셀정리.id, sortOrder: 110 }).returning();
+  const [T5스테로이드연고] = await db.insert(categories).values({ name: "스테로이드 연고", parentId: 김대용엑셀정리.id, sortOrder: 111 }).returning();
+  const [T5무좀] = await db.insert(categories).values({ name: "무좀", parentId: 김대용엑셀정리.id, sortOrder: 112 }).returning();
+  const [T5두통] = await db.insert(categories).values({ name: "두통(TTH,migraine)", parentId: 김대용엑셀정리.id, sortOrder: 113 }).returning();
+  const [T5현훈] = await db.insert(categories).values({ name: "말초성 현훈(vertigo)", parentId: 김대용엑셀정리.id, sortOrder: 114 }).returning();
+  const [T5요관결석] = await db.insert(categories).values({ name: "Ureter stone", parentId: 김대용엑셀정리.id, sortOrder: 115 }).returning();
+  const [T5UTI] = await db.insert(categories).values({ name: "UTI", parentId: 김대용엑셀정리.id, sortOrder: 116 }).returning();
+  const [T5사후피임약] = await db.insert(categories).values({ name: "사후피임약", parentId: 김대용엑셀정리.id, sortOrder: 117 }).returning();
+  const [T5PID] = await db.insert(categories).values({ name: "PID(STD)", parentId: 김대용엑셀정리.id, sortOrder: 118 }).returning();
+  const [T5치질치열] = await db.insert(categories).values({ name: "치질,치열", parentId: 김대용엑셀정리.id, sortOrder: 119 }).returning();
+  const [T5안약] = await db.insert(categories).values({ name: "안약", parentId: 김대용엑셀정리.id, sortOrder: 120 }).returning();
+  const [T5점이액] = await db.insert(categories).values({ name: "점이액", parentId: 김대용엑셀정리.id, sortOrder: 121 }).returning();
+
+  // 시트6: 소아과
+  const [T6입원검사수액] = await db.insert(categories).values({ name: "입원검사 & 수액", parentId: 김대용엑셀정리.id, sortOrder: 122 }).returning();
+  const [T6소아경구약] = await db.insert(categories).values({ name: "소아 경구약", parentId: 김대용엑셀정리.id, sortOrder: 123 }).returning();
+  const [T6소아주사제] = await db.insert(categories).values({ name: "소아 주사제", parentId: 김대용엑셀정리.id, sortOrder: 124 }).returning();
+  const [T6소아Resus주사제] = await db.insert(categories).values({ name: "소아 Resuscitation 주사제", parentId: 김대용엑셀정리.id, sortOrder: 125 }).returning();
+  const [T6소아NEB] = await db.insert(categories).values({ name: "소아 NEB", parentId: 김대용엑셀정리.id, sortOrder: 126 }).returning();
+  const [T6소아PSA] = await db.insert(categories).values({ name: "소아 PSA", parentId: 김대용엑셀정리.id, sortOrder: 127 }).returning();
+  const [T6감기퇴원약] = await db.insert(categories).values({ name: "감기 퇴원약", parentId: 김대용엑셀정리.id, sortOrder: 128 }).returning();
+  const [T6기저귀발진연고] = await db.insert(categories).values({ name: "기저귀발진 연고", parentId: 김대용엑셀정리.id, sortOrder: 129 }).returning();
+  const [T6타미플루체중별] = await db.insert(categories).values({ name: "타미플루(체중별)", parentId: 김대용엑셀정리.id, sortOrder: 130 }).returning();
+  const [T6AGEFGID] = await db.insert(categories).values({ name: "AGE/FGID", parentId: 김대용엑셀정리.id, sortOrder: 131 }).returning();
+  const [T6AOM] = await db.insert(categories).values({ name: "AOM", parentId: 김대용엑셀정리.id, sortOrder: 132 }).returning();
+  const [T6Constipation] = await db.insert(categories).values({ name: "Constipation", parentId: 김대용엑셀정리.id, sortOrder: 133 }).returning();
+  const [T6Contusion] = await db.insert(categories).values({ name: "Contusion", parentId: 김대용엑셀정리.id, sortOrder: 134 }).returning();
+  const [T6FeverControl] = await db.insert(categories).values({ name: "Fever control", parentId: 김대용엑셀정리.id, sortOrder: 135 }).returning();
+  const [T6Laceration] = await db.insert(categories).values({ name: "Laceration", parentId: 김대용엑셀정리.id, sortOrder: 136 }).returning();
+  const [T6Urticaria] = await db.insert(categories).values({ name: "Urticaria", parentId: 김대용엑셀정리.id, sortOrder: 137 }).returning();
+  const [T6Anaphylaxis] = await db.insert(categories).values({ name: "Anaphylaxis", parentId: 김대용엑셀정리.id, sortOrder: 138 }).returning();
+  const [T6Asthma] = await db.insert(categories).values({ name: "Asthma", parentId: 김대용엑셀정리.id, sortOrder: 139 }).returning();
+  const [T6Croup] = await db.insert(categories).values({ name: "Croup", parentId: 김대용엑셀정리.id, sortOrder: 140 }).returning();
+  const [T6CPR] = await db.insert(categories).values({ name: "소아 CPR", parentId: 김대용엑셀정리.id, sortOrder: 141 }).returning();
+  const [T6Hyperglycemia] = await db.insert(categories).values({ name: "Hyperglycemia", parentId: 김대용엑셀정리.id, sortOrder: 142 }).returning();
+  const [T6Hypoglycemia] = await db.insert(categories).values({ name: "Hypoglycemia", parentId: 김대용엑셀정리.id, sortOrder: 143 }).returning();
+  const [T6Seizure] = await db.insert(categories).values({ name: "Seizure(febrile)", parentId: 김대용엑셀정리.id, sortOrder: 144 }).returning();
+
   const [철분제제처방] = await db.insert(prescriptions).values({ name: "철분제제", categoryId: 철분제제.id, sortOrder: 0 }).returning();
   const [트라넥삼산처방] = await db.insert(prescriptions).values({ name: "Trauma Tranexamic acid", categoryId: 트라넥삼산.id, sortOrder: 0 }).returning();
   const [트라우마시리즈처방] = await db.insert(prescriptions).values({ name: "Trauma Series", categoryId: 트라우마시리즈.id, sortOrder: 0 }).returning();
@@ -557,6 +609,56 @@ export async function insertKkuData() {
   const [OpenFracture_E처방] = await db.insert(prescriptions).values({ name: "Open fracture", categoryId: OpenFracture_E.id, sortOrder: 0 }).returning();
   const [Osteomyelitis_E처방] = await db.insert(prescriptions).values({ name: "Osteomyelitis/Spondylitis", categoryId: Osteomyelitis_E.id, sortOrder: 0 }).returning();
   const [NecrotizingFasciitis_E처방] = await db.insert(prescriptions).values({ name: "Necrotizing fasciitis", categoryId: NecrotizingFasciitis_E.id, sortOrder: 0 }).returning();
+
+  const [T5해열진통제처방] = await db.insert(prescriptions).values({ name: "해열진통소염제", categoryId: T5해열진통제.id, sortOrder: 0 }).returning();
+  const [T5항생제Augmentin처방] = await db.insert(prescriptions).values({ name: "항생제(augmentin 계열)", categoryId: T5항생제Augmentin.id, sortOrder: 0 }).returning();
+  const [T5URI처방] = await db.insert(prescriptions).values({ name: "URI", categoryId: T5URI.id, sortOrder: 0 }).returning();
+  const [T5Flu처방] = await db.insert(prescriptions).values({ name: "독감", categoryId: T5Flu.id, sortOrder: 0 }).returning();
+  const [T5천식흡입제처방] = await db.insert(prescriptions).values({ name: "천식 흡입제", categoryId: T5천식흡입제.id, sortOrder: 0 }).returning();
+  const [T5코로나처방] = await db.insert(prescriptions).values({ name: "코로나", categoryId: T5코로나.id, sortOrder: 0 }).returning();
+  const [T5GI약처방] = await db.insert(prescriptions).values({ name: "GI약", categoryId: T5GI약.id, sortOrder: 0 }).returning();
+  const [T5장염처방] = await db.insert(prescriptions).values({ name: "장염", categoryId: T5장염.id, sortOrder: 0 }).returning();
+  const [T5변비처방] = await db.insert(prescriptions).values({ name: "변비", categoryId: T5변비.id, sortOrder: 0 }).returning();
+  const [T5타박상염좌처방] = await db.insert(prescriptions).values({ name: "타박상/염좌", categoryId: T5타박상염좌.id, sortOrder: 0 }).returning();
+  const [T5열상처방] = await db.insert(prescriptions).values({ name: "열상", categoryId: T5열상.id, sortOrder: 0 }).returning();
+  const [T5Gout처방] = await db.insert(prescriptions).values({ name: "Gout", categoryId: T5Gout.id, sortOrder: 0 }).returning();
+  const [T5Allergy처방] = await db.insert(prescriptions).values({ name: "Allergy", categoryId: T5Allergy.id, sortOrder: 0 }).returning();
+  const [T5Zoster처방] = await db.insert(prescriptions).values({ name: "Zoster", categoryId: T5Zoster.id, sortOrder: 0 }).returning();
+  const [T5스테로이드연고처방] = await db.insert(prescriptions).values({ name: "스테로이드 연고", categoryId: T5스테로이드연고.id, sortOrder: 0 }).returning();
+  const [T5무좀처방] = await db.insert(prescriptions).values({ name: "무좀", categoryId: T5무좀.id, sortOrder: 0 }).returning();
+  const [T5두통처방] = await db.insert(prescriptions).values({ name: "두통", categoryId: T5두통.id, sortOrder: 0 }).returning();
+  const [T5현훈처방] = await db.insert(prescriptions).values({ name: "말초성 현훈", categoryId: T5현훈.id, sortOrder: 0 }).returning();
+  const [T5요관결석처방] = await db.insert(prescriptions).values({ name: "Ureter stone", categoryId: T5요관결석.id, sortOrder: 0 }).returning();
+  const [T5UTI처방] = await db.insert(prescriptions).values({ name: "UTI", categoryId: T5UTI.id, sortOrder: 0 }).returning();
+  const [T5사후피임약처방] = await db.insert(prescriptions).values({ name: "사후피임약", categoryId: T5사후피임약.id, sortOrder: 0 }).returning();
+  const [T5PID처방] = await db.insert(prescriptions).values({ name: "PID", categoryId: T5PID.id, sortOrder: 0 }).returning();
+  const [T5치질치열처방] = await db.insert(prescriptions).values({ name: "치질,치열", categoryId: T5치질치열.id, sortOrder: 0 }).returning();
+  const [T5안약처방] = await db.insert(prescriptions).values({ name: "안약", categoryId: T5안약.id, sortOrder: 0 }).returning();
+  const [T5점이액처방] = await db.insert(prescriptions).values({ name: "점이액", categoryId: T5점이액.id, sortOrder: 0 }).returning();
+
+  const [T6입원검사수액처방] = await db.insert(prescriptions).values({ name: "입원검사 & 수액", categoryId: T6입원검사수액.id, sortOrder: 0 }).returning();
+  const [T6소아경구약처방] = await db.insert(prescriptions).values({ name: "소아 경구약", categoryId: T6소아경구약.id, sortOrder: 0 }).returning();
+  const [T6소아주사제처방] = await db.insert(prescriptions).values({ name: "소아 주사제", categoryId: T6소아주사제.id, sortOrder: 0 }).returning();
+  const [T6소아Resus주사제처방] = await db.insert(prescriptions).values({ name: "소아 Resuscitation 주사제", categoryId: T6소아Resus주사제.id, sortOrder: 0 }).returning();
+  const [T6소아NEB처방] = await db.insert(prescriptions).values({ name: "소아 NEB", categoryId: T6소아NEB.id, sortOrder: 0 }).returning();
+  const [T6소아PSA처방] = await db.insert(prescriptions).values({ name: "소아 PSA", categoryId: T6소아PSA.id, sortOrder: 0 }).returning();
+  const [T6감기퇴원약처방] = await db.insert(prescriptions).values({ name: "감기 퇴원약", categoryId: T6감기퇴원약.id, sortOrder: 0 }).returning();
+  const [T6기저귀발진연고처방] = await db.insert(prescriptions).values({ name: "기저귀발진 연고", categoryId: T6기저귀발진연고.id, sortOrder: 0 }).returning();
+  const [T6타미플루체중별처방] = await db.insert(prescriptions).values({ name: "타미플루(체중별)", categoryId: T6타미플루체중별.id, sortOrder: 0 }).returning();
+  const [T6AGEFGID처방] = await db.insert(prescriptions).values({ name: "AGE/FGID", categoryId: T6AGEFGID.id, sortOrder: 0 }).returning();
+  const [T6AOM처방] = await db.insert(prescriptions).values({ name: "AOM", categoryId: T6AOM.id, sortOrder: 0 }).returning();
+  const [T6Constipation처방] = await db.insert(prescriptions).values({ name: "Constipation", categoryId: T6Constipation.id, sortOrder: 0 }).returning();
+  const [T6Contusion처방] = await db.insert(prescriptions).values({ name: "Contusion", categoryId: T6Contusion.id, sortOrder: 0 }).returning();
+  const [T6FeverControl처방] = await db.insert(prescriptions).values({ name: "Fever control", categoryId: T6FeverControl.id, sortOrder: 0 }).returning();
+  const [T6Laceration처방] = await db.insert(prescriptions).values({ name: "Laceration", categoryId: T6Laceration.id, sortOrder: 0 }).returning();
+  const [T6Urticaria처방] = await db.insert(prescriptions).values({ name: "Urticaria", categoryId: T6Urticaria.id, sortOrder: 0 }).returning();
+  const [T6Anaphylaxis처방] = await db.insert(prescriptions).values({ name: "Anaphylaxis", categoryId: T6Anaphylaxis.id, sortOrder: 0 }).returning();
+  const [T6Asthma처방] = await db.insert(prescriptions).values({ name: "Asthma", categoryId: T6Asthma.id, sortOrder: 0 }).returning();
+  const [T6Croup처방] = await db.insert(prescriptions).values({ name: "Croup", categoryId: T6Croup.id, sortOrder: 0 }).returning();
+  const [T6CPR처방] = await db.insert(prescriptions).values({ name: "소아 CPR", categoryId: T6CPR.id, sortOrder: 0 }).returning();
+  const [T6Hyperglycemia처방] = await db.insert(prescriptions).values({ name: "Hyperglycemia", categoryId: T6Hyperglycemia.id, sortOrder: 0 }).returning();
+  const [T6Hypoglycemia처방] = await db.insert(prescriptions).values({ name: "Hypoglycemia", categoryId: T6Hypoglycemia.id, sortOrder: 0 }).returning();
+  const [T6Seizure처방] = await db.insert(prescriptions).values({ name: "Seizure(febrile)", categoryId: T6Seizure.id, sortOrder: 0 }).returning();
 
   await db.insert(prescriptionItems).values([
     // 철분제제
@@ -3053,6 +3155,586 @@ export async function insertKkuData() {
     { prescriptionId: NecrotizingFasciitis_E처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M4" },
     { prescriptionId: NecrotizingFasciitis_E처방.id, type: "추가설명", productName: "plus", sortOrder: 11 },
     { prescriptionId: NecrotizingFasciitis_E처방.id, type: "약", productName: "영풍독시사이클린정100mg", ingredientName: "doxycycline", dosage: "1", unit: "T", frequency: "QD", route: "QD", note: "q12h", sortOrder: 12 },
+
+    // 시트5-1: 해열진통소염제
+    { prescriptionId: T5해열진통제처방.id, type: "추가설명", productName: "진통제, 해열제(병용)", sortOrder: 0 },
+    { prescriptionId: T5해열진통제처방.id, type: "퇴원약", productName: "타세놀8시간이알서방정", ingredientName: "acetaminophen", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 1 },
+    { prescriptionId: T5해열진통제처방.id, type: "퇴원약", productName: "이부펜정400mg", ingredientName: "ibuprofen", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 2 },
+    { prescriptionId: T5해열진통제처방.id, type: "추가설명", productName: "진통제, 해열제(타세놀 단독)", sortOrder: 3 },
+    { prescriptionId: T5해열진통제처방.id, type: "퇴원약", productName: "타세놀8시간이알서방정", ingredientName: "acetaminophen", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 4 },
+    { prescriptionId: T5해열진통제처방.id, type: "추가설명", productName: "진통제, 해열제(이부펜 단독)", sortOrder: 5 },
+    { prescriptionId: T5해열진통제처방.id, type: "퇴원약", productName: "이부펜정400mg", ingredientName: "ibuprofen", dosage: "1", unit: "T", frequency: "TID", duration: "3일", route: "TID PC", sortOrder: 6 },
+    { prescriptionId: T5해열진통제처방.id, type: "추가설명", productName: "위장약", sortOrder: 7 },
+    { prescriptionId: T5해열진통제처방.id, type: "퇴원약", productName: "제리티딘정20밀리그램", ingredientName: "famotidine", dosage: "1", unit: "T", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 8 },
+
+    // 시트5-2: 항생제(augmentin 계열)
+    { prescriptionId: T5항생제Augmentin처방.id, type: "퇴원약", productName: "크로아난정625mg", ingredientName: "amoxicillin/clavulanate", dosage: "1", unit: "T", frequency: "TID", duration: "11일", route: "TID PC", sortOrder: 0 },
+    { prescriptionId: T5항생제Augmentin처방.id, type: "퇴원약", productName: "메이액트정100mg", ingredientName: "cefditoren pivoxil", dosage: "1", unit: "T", frequency: "TID", duration: "13일", route: "TID PC", sortOrder: 1 },
+    { prescriptionId: T5항생제Augmentin처방.id, type: "추가설명", productName: "메이액트 소진시 세포세틸로 변경", sortOrder: 2 },
+    { prescriptionId: T5항생제Augmentin처방.id, type: "퇴원약", productName: "세포세틸정(세프포독심프록세틸 0.1g)", ingredientName: "cefpodoxime proxetil", dosage: "1", unit: "T", frequency: "BID", duration: "12일", route: "BID PC", sortOrder: 3 },
+
+    // 시트5-3: URI(단순 감기)
+    { prescriptionId: T5URI처방.id, type: "추가설명", productName: "단순 감기", sortOrder: 0 },
+    { prescriptionId: T5URI처방.id, type: "퇴원약", productName: "애니코프캡슐300mg", ingredientName: "theobromine", dosage: "1", unit: "C", frequency: "BID", duration: "5일", route: "BID PC", note: "진해", sortOrder: 1 },
+    { prescriptionId: T5URI처방.id, type: "퇴원약", productName: "코싹엘정120mg", ingredientName: "미상(항히스타민 복합 콧물약)", dosage: "1", unit: "T", frequency: "BID", duration: "5일", route: "BID PC", note: "콧물", sortOrder: 2 },
+    { prescriptionId: T5URI처방.id, type: "퇴원약", productName: "아세테인캡슐200밀리그램", ingredientName: "acetylcysteine", dosage: "1", unit: "T", frequency: "BID", duration: "5일", route: "BID PC", note: "가래", sortOrder: 3 },
+    { prescriptionId: T5URI처방.id, type: "퇴원약", productName: "코데날시럽(20mL)", ingredientName: "codeine phosphate 복합 진해거담시럽", dosage: "1", unit: "PK", frequency: "TID", duration: "3일", route: "TID PC", note: "기침,가래 심할 경우 추가", sortOrder: 4 },
+    { prescriptionId: T5URI처방.id, type: "퇴원약", productName: "헥사메딘액0.12%", ingredientName: "chlorhexidine gluconate", dosage: "1", unit: "BT", frequency: "1", duration: "4일", route: "외용", note: "가글액, 수시로 자주 가글하세요", sortOrder: 5 },
+
+    // 시트5-4: 독감
+    { prescriptionId: T5Flu처방.id, type: "약", productName: "페라미플루주15mL", ingredientName: "peramivir", dosage: "2", unit: "V", frequency: "1", route: "IV infusion", note: "300mg(성인), 10mg/kg(6mo 이상 소아), 15분 동안 투여", sortOrder: 0, mixGroup: "M1" },
+    { prescriptionId: T5Flu처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: T5Flu처방.id, type: "퇴원약", productName: "플루캡슐75mg", ingredientName: "oseltamivir", dosage: "1", unit: "C", frequency: "BID", duration: "5일", route: "BID PC", sortOrder: 2 },
+
+    // 시트5-5: 천식 흡입제
+    { prescriptionId: T5천식흡입제처방.id, type: "추가설명", productName: "천식 흡입제", sortOrder: 0 },
+    { prescriptionId: T5천식흡입제처방.id, type: "퇴원약", productName: "벤토린에보할러200회/1통", ingredientName: "salbutamol", dosage: "1", unit: "BT", frequency: "1", duration: "2일", route: "Aerosol", note: "급성 천식증상시 최소 초회 1회 100㎍ 분무, 필요시 2번까지 가능", sortOrder: 1 },
+    { prescriptionId: T5천식흡입제처방.id, type: "퇴원약", productName: "심비코트터부헬러160/4.5μg 120회/통", ingredientName: "budesonide/formoterol", dosage: "1", unit: "EA", frequency: "BID", duration: "2일", route: "BID", note: "유지 용량: 1회 1번씩 1일 2회(아침,저녁) 흡입", sortOrder: 2 },
+
+    // 시트5-6: 코로나(팍스로비드/렘데시비르)
+    { prescriptionId: T5코로나처방.id, type: "퇴원약", productName: "팍스로비드", ingredientName: "nirmatrelvir/ritonavir", dosage: "3", unit: "T", frequency: "BID", duration: "5일", route: "BID PC", sortOrder: 0 },
+    { prescriptionId: T5코로나처방.id, type: "약", productName: "베클루리주정맥주사용동결건조분말", ingredientName: "remdesivir", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "N/S 20ml에서 20ml 빼고 mix", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: T5코로나처방.id, type: "약", productName: "N/S 250mL", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "125cc/hr", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: T5코로나처방.id, type: "추가설명", productName: "폐렴, SO2<94% in room air, O2 demand 있는 경우 투여 고려", sortOrder: 3 },
+    { prescriptionId: T5코로나처방.id, type: "추가설명", productName: "렘데시비르 처방시 소견서 작성 필요", sortOrder: 4 },
+
+    // 시트5-7: GI약(위염,FGID)
+    { prescriptionId: T5GI약처방.id, type: "추가설명", productName: "위염, FGID", sortOrder: 0 },
+    { prescriptionId: T5GI약처방.id, type: "퇴원약", productName: "맥페란정5mg", ingredientName: "metoclopramide", dosage: "1", unit: "T", frequency: "TID", duration: "2일", route: "TID PC", sortOrder: 1 },
+    { prescriptionId: T5GI약처방.id, type: "퇴원약", productName: "비오플250산", ingredientName: "Saccharomyces boulardii", dosage: "1", unit: "PK", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 2 },
+    { prescriptionId: T5GI약처방.id, type: "퇴원약", productName: "포리부틴정150mg", ingredientName: "trimebutine maleate", dosage: "1", unit: "T", frequency: "TID", duration: "2일", route: "TID PC", sortOrder: 3 },
+    { prescriptionId: T5GI약처방.id, type: "퇴원약", productName: "제리티딘정20밀리그램", ingredientName: "famotidine", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 4 },
+    { prescriptionId: T5GI약처방.id, type: "퇴원약", productName: "파티겔현탁액15ml/포", ingredientName: "almagate", dosage: "1", unit: "PK", frequency: "TID", duration: "2일", route: "TID PC", note: "속쓰림 심할 경우 추가", sortOrder: 5 },
+    { prescriptionId: T5GI약처방.id, type: "퇴원약", productName: "스타빅현탁액", ingredientName: "dioctahedral smectite", dosage: "1", unit: "PK", frequency: "TID", duration: "1일", route: "TID AC", note: "설사 심할 경우 추가", sortOrder: 6 },
+    { prescriptionId: T5GI약처방.id, type: "퇴원약", productName: "메디락디에스장용캡슐", ingredientName: "Bacillus subtilis, Enterococcus faecium", dosage: "1", unit: "C", frequency: "QD", duration: "1일", route: "QD", note: "QD~TID 가능", sortOrder: 7 },
+    { prescriptionId: T5GI약처방.id, type: "추가설명", productName: "비오플 소진시 메디락디에스로 대체 고려", sortOrder: 8 },
+    { prescriptionId: T5GI약처방.id, type: "추가설명", productName: "스타빅 소진시 포타겔로 대체 예정", sortOrder: 9 },
+
+    // 시트5-8: 장염(항생제 포함)
+    { prescriptionId: T5장염처방.id, type: "추가설명", productName: "장염(항생제 포함)", sortOrder: 0 },
+    { prescriptionId: T5장염처방.id, type: "퇴원약", productName: "타세놀8시간이알서방정", ingredientName: "acetaminophen", dosage: "1", unit: "T", frequency: "TID", duration: "15일", route: "TID PC", sortOrder: 1 },
+    { prescriptionId: T5장염처방.id, type: "퇴원약", productName: "맥페란정5mg", ingredientName: "metoclopramide", dosage: "1", unit: "T", frequency: "TID", duration: "15일", route: "TID PC", sortOrder: 2 },
+    { prescriptionId: T5장염처방.id, type: "퇴원약", productName: "부스코판당의정10mg", ingredientName: "scopolamine butylbromide", dosage: "1", unit: "T", frequency: "TID", duration: "15일", route: "TID PC", sortOrder: 3 },
+    { prescriptionId: T5장염처방.id, type: "퇴원약", productName: "제리티딘정20밀리그램", ingredientName: "famotidine", dosage: "1", unit: "T", frequency: "BID", duration: "15일", route: "BID PC", sortOrder: 4 },
+    { prescriptionId: T5장염처방.id, type: "퇴원약", productName: "싸이신정500mg", ingredientName: "ciprofloxacin", dosage: "1", unit: "T", frequency: "BID", duration: "15일", route: "BID PC", sortOrder: 5 },
+    { prescriptionId: T5장염처방.id, type: "추가설명", productName: "설사 심할시 둘 중 하나 추가", sortOrder: 6 },
+    { prescriptionId: T5장염처방.id, type: "퇴원약", productName: "로파인캡슐2mg", ingredientName: "loperamide HCl", dosage: "1", unit: "C", frequency: "TID", duration: "1일", route: "TID PC", note: "설사 심할시 추가", sortOrder: 7 },
+    { prescriptionId: T5장염처방.id, type: "퇴원약", productName: "스타빅현탁액", ingredientName: "dioctahedral smectite", dosage: "1", unit: "PK", frequency: "TID", duration: "1일", route: "TID AC", note: "설사 심할시 추가", sortOrder: 8 },
+    { prescriptionId: T5장염처방.id, type: "추가설명", productName: "타세놀 재고 소진시 대체약으로 변경 예정", sortOrder: 9 },
+
+    // 시트5-9: 변비
+    { prescriptionId: T5변비처방.id, type: "추가설명", productName: "변비", sortOrder: 0 },
+    { prescriptionId: T5변비처방.id, type: "퇴원약", productName: "마그밀정500mg", ingredientName: "magnesium hydroxide", dosage: "1", unit: "T", frequency: "TID", duration: "2일", route: "TID PC", sortOrder: 1 },
+    { prescriptionId: T5변비처방.id, type: "퇴원약", productName: "듀락칸이지시럽15mL", ingredientName: "lactulose", dosage: "1", unit: "PK", frequency: "TID", duration: "2일", route: "TID PC", sortOrder: 2 },
+
+    // 시트5-10: 타박상/염좌
+    { prescriptionId: T5타박상염좌처방.id, type: "추가설명", productName: "타박상/염좌", sortOrder: 0 },
+    { prescriptionId: T5타박상염좌처방.id, type: "퇴원약", productName: "에이펙스정", ingredientName: "aceclofenac", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", note: "아세로탈정 대체약", sortOrder: 1 },
+    { prescriptionId: T5타박상염좌처방.id, type: "퇴원약", productName: "동구에페리손정", ingredientName: "eperisone HCl", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 2 },
+    { prescriptionId: T5타박상염좌처방.id, type: "퇴원약", productName: "트라마롤정", ingredientName: "tramadol/acetaminophen", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 3 },
+    { prescriptionId: T5타박상염좌처방.id, type: "퇴원약", productName: "무코텍트서방정150밀리그램", ingredientName: "rebamipide", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 4 },
+
+    // 시트5-11: 열상
+    { prescriptionId: T5열상처방.id, type: "추가설명", productName: "열상", sortOrder: 0 },
+    { prescriptionId: T5열상처방.id, type: "퇴원약", productName: "낙소졸정500/20mg", ingredientName: "naproxen/esomeprazole strontium", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 1 },
+    { prescriptionId: T5열상처방.id, type: "퇴원약", productName: "한미세프라딘캡슐500mg", ingredientName: "cephradine", dosage: "1", unit: "C", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 2 },
+    { prescriptionId: T5열상처방.id, type: "약", productName: "베아로반연고(무피로신 0.2g/10g)", ingredientName: "mupirocin", dosage: "1", unit: "TU", frequency: "1", route: "외용", note: "필요시 연고 처방", sortOrder: 3 },
+    { prescriptionId: T5열상처방.id, type: "약", productName: "에펙신안연고", ingredientName: "ofloxacin", dosage: "1", unit: "TU", frequency: "1", route: "Oph.", note: "필요시 연고 처방(얼굴,소아)", sortOrder: 4 },
+    { prescriptionId: T5열상처방.id, type: "약", productName: "오라메디연고10g", ingredientName: "triamcinolone acetonide", dosage: "1", unit: "TU", frequency: "1", route: "외용", note: "필요시 처방(구강내 도포)", sortOrder: 5 },
+    { prescriptionId: T5열상처방.id, type: "약", productName: "DERMATIX ULTRA GEL 7g", ingredientName: "silicone gel", dosage: "1", unit: "TU", frequency: "1", route: "외용", note: "필요시 흉터연고 처방", sortOrder: 6 },
+
+    // 시트5-12: Gout
+    { prescriptionId: T5Gout처방.id, type: "추가설명", productName: "Gout", sortOrder: 0 },
+    { prescriptionId: T5Gout처방.id, type: "퇴원약", productName: "콜킨정0.6mg", ingredientName: "colchicine", dosage: "2", unit: "T", frequency: "QD", duration: "2일", route: "QD", note: "즉시 복용", sortOrder: 1 },
+    { prescriptionId: T5Gout처방.id, type: "퇴원약", productName: "콜킨정0.6mg", ingredientName: "colchicine", dosage: "1", unit: "T", frequency: "QD", duration: "2일", route: "QD", note: "12시간 뒤에 복용", sortOrder: 2 },
+    { prescriptionId: T5Gout처방.id, type: "퇴원약", productName: "낙소졸정500/20mg", ingredientName: "naproxen/esomeprazole strontium", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 3 },
+
+    // 시트5-13: Allergy
+    { prescriptionId: T5Allergy처방.id, type: "추가설명", productName: "알레르기", sortOrder: 0 },
+    { prescriptionId: T5Allergy처방.id, type: "퇴원약", productName: "소론도정5mg", ingredientName: "prednisolone", dosage: "4", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 1 },
+    { prescriptionId: T5Allergy처방.id, type: "퇴원약", productName: "펙소나딘정120mg", ingredientName: "fexofenadine HCl", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 2 },
+    { prescriptionId: T5Allergy처방.id, type: "퇴원약", productName: "제리티딘정20밀리그램", ingredientName: "famotidine", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 3 },
+    { prescriptionId: T5Allergy처방.id, type: "추가설명", productName: "파모칸 소진시 제리티딘으로 변경", sortOrder: 4 },
+
+    // 시트5-14: Zoster
+    { prescriptionId: T5Zoster처방.id, type: "추가설명", productName: "Zoster", sortOrder: 0 },
+    { prescriptionId: T5Zoster처방.id, type: "퇴원약", productName: "낙소졸정500/20mg", ingredientName: "naproxen/esomeprazole strontium", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 1 },
+    { prescriptionId: T5Zoster처방.id, type: "퇴원약", productName: "트라마롤정", ingredientName: "tramadol/acetaminophen", dosage: "1", unit: "T", frequency: "TID", duration: "2일", route: "TID PC", sortOrder: 2 },
+    { prescriptionId: T5Zoster처방.id, type: "퇴원약", productName: "리리베아캡슐75mg", ingredientName: "pregabalin", dosage: "1", unit: "C", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 3 },
+    { prescriptionId: T5Zoster처방.id, type: "퇴원약", productName: "팜비어정250밀리그램", ingredientName: "famciclovir", dosage: "1", unit: "T", frequency: "TID", duration: "2일", route: "TID PC", sortOrder: 4 },
+    { prescriptionId: T5Zoster처방.id, type: "약", productName: "베아로반연고(무피로신)", ingredientName: "mupirocin", dosage: "1", unit: "TU", frequency: "1", route: "외용", sortOrder: 5 },
+
+    // 시트5-15: 스테로이드 연고
+    { prescriptionId: T5스테로이드연고처방.id, type: "추가설명", productName: "스테로이드 연고", sortOrder: 0 },
+    { prescriptionId: T5스테로이드연고처방.id, type: "약", productName: "하티손로션1% 60ml", ingredientName: "hydrocortisone", dosage: "1", unit: "EA", frequency: "1", route: "외용", note: "potency 7 : 얼굴까지 사용 가능", sortOrder: 1 },
+    { prescriptionId: T5스테로이드연고처방.id, type: "약", productName: "리도멕스크림 20g", ingredientName: "prednisolone valeroacetate", dosage: "1", unit: "TU", frequency: "1", route: "외용", note: "potency 7 : 얼굴까지 사용 가능", sortOrder: 2 },
+    { prescriptionId: T5스테로이드연고처방.id, type: "약", productName: "프레벨연고10g", ingredientName: "prednicarbate", dosage: "1", unit: "TU", frequency: "1", route: "외용", note: "potency 5 : 얼굴,목 제외", sortOrder: 3 },
+    { prescriptionId: T5스테로이드연고처방.id, type: "약", productName: "아드반탄크림 15g", ingredientName: "methylprednisolone aceponate", dosage: "1", unit: "TU", frequency: "1", route: "외용", note: "potency 4 : 난치성 부위", sortOrder: 4 },
+
+    // 시트5-16: 무좀
+    { prescriptionId: T5무좀처방.id, type: "약", productName: "무조날크림", ingredientName: "bifonazole", dosage: "1", unit: "EA", frequency: "QD", route: "QD", note: "성분 표기 원본에 없어 추정", sortOrder: 0 },
+
+    // 시트5-17: 두통(TTH,migraine)
+    { prescriptionId: T5두통처방.id, type: "추가설명", productName: "두통(TTH,migraine)", sortOrder: 0 },
+    { prescriptionId: T5두통처방.id, type: "퇴원약", productName: "낙소졸정500/20mg", ingredientName: "naproxen/esomeprazole strontium", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 1 },
+    { prescriptionId: T5두통처방.id, type: "퇴원약", productName: "맥페란정5mg", ingredientName: "metoclopramide", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 2 },
+    { prescriptionId: T5두통처방.id, type: "퇴원약", productName: "크래밍정", ingredientName: "ergotamine/caffeine/isopropylantipyrine", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 3 },
+
+    // 시트5-18: 말초성 현훈(vertigo)
+    { prescriptionId: T5현훈처방.id, type: "추가설명", productName: "말초성 현훈(vertigo)", sortOrder: 0 },
+    { prescriptionId: T5현훈처방.id, type: "퇴원약", productName: "맥페란정5mg", ingredientName: "metoclopramide", dosage: "1", unit: "T", frequency: "TID", duration: "2일", route: "TID PC", sortOrder: 1 },
+    { prescriptionId: T5현훈처방.id, type: "퇴원약", productName: "보나링에이정50mg", ingredientName: "dimenhydrinate", dosage: "1", unit: "T", frequency: "TID", duration: "2일", route: "TID PC", note: "졸릴 수 있습니다", sortOrder: 2 },
+
+    // 시트5-19: Ureter stone
+    { prescriptionId: T5요관결석처방.id, type: "추가설명", productName: "Ureter stone", sortOrder: 0 },
+    { prescriptionId: T5요관결석처방.id, type: "퇴원약", productName: "낙소졸정500/20mg", ingredientName: "naproxen/esomeprazole strontium", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 1 },
+    { prescriptionId: T5요관결석처방.id, type: "퇴원약", productName: "부스코판당의정10mg", ingredientName: "scopolamine butylbromide", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 2 },
+    { prescriptionId: T5요관결석처방.id, type: "퇴원약", productName: "한미탐스오디정0.4mg", ingredientName: "tamsulosin HCl", dosage: "1", unit: "T", frequency: "QD", duration: "2일", route: "QD", note: "고함량 약으로 변경", sortOrder: 3 },
+    { prescriptionId: T5요관결석처방.id, type: "퇴원약", productName: "마이폴캡슐", ingredientName: "acetaminophen/ibuprofen/codeine phosphate", dosage: "1", unit: "C", frequency: "BID", duration: "4일", route: "BID PC", note: "통증 악화시 필요시 추가(4주까지만 인정)", sortOrder: 4 },
+
+    // 시트5-20: UTI
+    { prescriptionId: T5UTI처방.id, type: "추가설명", productName: "UTI", sortOrder: 0 },
+    { prescriptionId: T5UTI처방.id, type: "퇴원약", productName: "이부펜정400mg", ingredientName: "ibuprofen", dosage: "1", unit: "T", frequency: "TID", duration: "2일", route: "TID PC", sortOrder: 1 },
+    { prescriptionId: T5UTI처방.id, type: "퇴원약", productName: "광동레바미피드정(0.1g)", ingredientName: "rebamipide", dosage: "1", unit: "T", frequency: "TID", duration: "2일", route: "TID PC", sortOrder: 2 },
+    { prescriptionId: T5UTI처방.id, type: "퇴원약", productName: "메이액트정100mg", ingredientName: "cefditoren pivoxil", dosage: "1", unit: "T", frequency: "TID", duration: "2일", route: "TID PC", sortOrder: 3 },
+    { prescriptionId: T5UTI처방.id, type: "추가설명", productName: "슈프락스 또는 메이액트 중 선택", sortOrder: 4 },
+    { prescriptionId: T5UTI처방.id, type: "퇴원약", productName: "동아슈프락스캡슐100mg", ingredientName: "cefixime", dosage: "1", unit: "C", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 5 },
+
+    // 시트5-21: 사후피임약
+    { prescriptionId: T5사후피임약처방.id, type: "추가설명", productName: "사후피임약", sortOrder: 0 },
+    { prescriptionId: T5사후피임약처방.id, type: "퇴원약", productName: "노레보원정", ingredientName: "levonorgestrel", dosage: "1", unit: "T", frequency: "1", duration: "1일", route: "PRN", note: "마지막 성교 후 12시간 이내(늦어도 72시간 이내) 즉시 복용", sortOrder: 1 },
+
+    // 시트5-22: PID(STD)
+    { prescriptionId: T5PID처방.id, type: "추가설명", productName: "PID(STD)", sortOrder: 0 },
+    { prescriptionId: T5PID처방.id, type: "퇴원약", productName: "낙소졸정500/20mg", ingredientName: "naproxen/esomeprazole strontium", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 1 },
+    { prescriptionId: T5PID처방.id, type: "퇴원약", productName: "메이액트정100mg", ingredientName: "cefditoren pivoxil", dosage: "1", unit: "T", frequency: "TID", duration: "2일", route: "TID PC", sortOrder: 2 },
+    { prescriptionId: T5PID처방.id, type: "퇴원약", productName: "미노씬캡슐50mg", ingredientName: "minocycline HCl", dosage: "2", unit: "C", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 3 },
+    { prescriptionId: T5PID처방.id, type: "퇴원약", productName: "후라시닐정250mg", ingredientName: "metronidazole", dosage: "2", unit: "T", frequency: "TID", duration: "2일", route: "TID PC", sortOrder: 4 },
+    { prescriptionId: T5PID처방.id, type: "추가설명", productName: "메이액트 소진시 슈프락스로 변경", sortOrder: 5 },
+    { prescriptionId: T5PID처방.id, type: "퇴원약", productName: "동아슈프락스캡슐100mg", ingredientName: "cefixime", dosage: "1", unit: "C", frequency: "BID", duration: "3일", route: "BID PC", sortOrder: 6 },
+
+    // 시트5-23: 치질,치열
+    { prescriptionId: T5치질치열처방.id, type: "추가설명", productName: "치질,치열", sortOrder: 0 },
+    { prescriptionId: T5치질치열처방.id, type: "퇴원약", productName: "낙소졸정500/20mg", ingredientName: "naproxen/esomeprazole strontium", dosage: "1", unit: "T", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 1 },
+    { prescriptionId: T5치질치열처방.id, type: "퇴원약", productName: "헤모스민캡슐", ingredientName: "diosmin", dosage: "1", unit: "C", frequency: "BID", duration: "2일", route: "BID PC", sortOrder: 2 },
+    { prescriptionId: T5치질치열처방.id, type: "약", productName: "헤모렉스크림35g", ingredientName: "pramoxine HCl", dosage: "1", unit: "TU", frequency: "TID", duration: "3일", route: "TID", note: "좌욕 후 충분히 건조 후 환부에 도포", sortOrder: 3 },
+
+    // 시트5-24: 안약
+    { prescriptionId: T5안약처방.id, type: "추가설명", productName: "항생제 안약", sortOrder: 0 },
+    { prescriptionId: T5안약처방.id, type: "약", productName: "레복사신점안액0.5%", ingredientName: "levofloxacin", dosage: "1", unit: "EA", frequency: "TID", route: "Oph.", note: "1회 1방울, 1일 3회", sortOrder: 1 },
+    { prescriptionId: T5안약처방.id, type: "추가설명", productName: "알레르기성 결막염", sortOrder: 2 },
+    { prescriptionId: T5안약처방.id, type: "약", productName: "라이트올론점안액0.1%", ingredientName: "olopatadine HCl", dosage: "1", unit: "EA", frequency: "BID", route: "Oph.", note: "1일 2회", sortOrder: 3 },
+    { prescriptionId: T5안약처방.id, type: "추가설명", productName: "인공눈물", sortOrder: 4 },
+    { prescriptionId: T5안약처방.id, type: "약", productName: "히알루드롭점안액5mL", ingredientName: "sodium hyaluronate", dosage: "1", unit: "EA", frequency: "TID", route: "Oph.", note: "1일 3회", sortOrder: 5 },
+    { prescriptionId: T5안약처방.id, type: "추가설명", productName: "안연고", sortOrder: 6 },
+    { prescriptionId: T5안약처방.id, type: "약", productName: "에펙신안연고", ingredientName: "ofloxacin", dosage: "1", unit: "TU", frequency: "TID", route: "Oph.", note: "1일 3회", sortOrder: 7 },
+    { prescriptionId: T5안약처방.id, type: "약", productName: "퀴노비드안연고", ingredientName: "ofloxacin", dosage: "1", unit: "TU", frequency: "TID", route: "Oph.", note: "1일 3회", sortOrder: 8 },
+
+    // 시트5-25: 점이액
+    { prescriptionId: T5점이액처방.id, type: "약", productName: "에펙신이용액", ingredientName: "ofloxacin", dosage: "1", unit: "EA", frequency: "1", route: "점이", sortOrder: 0 },
+
+    // 시트6-1: 입원검사 & 수액
+    { prescriptionId: T6입원검사수액처방.id, type: "지시처방", productName: "V/S Check, TID", sortOrder: 0 },
+    { prescriptionId: T6입원검사수액처방.id, type: "지시처방", productName: "I/O Check, TID", sortOrder: 1 },
+    { prescriptionId: T6입원검사수액처방.id, type: "추가설명", productName: "BST 60 이하일 경우 바로 notify", sortOrder: 2 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "반정량(BST)-ER전용", sortOrder: 3 },
+    { prescriptionId: T6입원검사수액처방.id, type: "약", productName: "에스디주1:4 500ml", ingredientName: "dextrose/sodium chloride 혼합액(1:4)", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "1st 속도 20cc/kg, urination 되면 감량 고려. 유지속도: 0-10kg 4cc/kg + 10-20kg 2cc/kg + 20kg이상 1cc/kg (예: 25kg=65cc/hr)", sortOrder: 4 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "ABGA", note: "VBGA", sortOrder: 5 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "CBC & Diff & ESR", sortOrder: 6 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "PT & APTT", sortOrder: 7 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "Chemistry(19종)", sortOrder: 8 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "Direct Bilirubin", sortOrder: 9 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "Lactate", sortOrder: 10 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "CPK", sortOrder: 11 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "CRP(정량)", sortOrder: 12 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "프로칼시토닌 정량검사(PCT)", sortOrder: 13 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "EKG 기록및 판독", sortOrder: 14 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "CK-MB(정량)", sortOrder: 15 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "Troponin-T(hs)", sortOrder: 16 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "UA 10종 & micro", sortOrder: 17 },
+    { prescriptionId: T6입원검사수액처방.id, type: "추가설명", productName: "영상 검사", sortOrder: 18 },
+    { prescriptionId: T6입원검사수액처방.id, type: "영상검사", productName: "Chest PA", sortOrder: 19 },
+    { prescriptionId: T6입원검사수액처방.id, type: "영상검사", productName: "Abdomen Erect+Supine", sortOrder: 20 },
+    { prescriptionId: T6입원검사수액처방.id, type: "영상검사", productName: "Neck AP+LAT", sortOrder: 21 },
+    { prescriptionId: T6입원검사수액처방.id, type: "영상검사", productName: "Chest AP", sortOrder: 22 },
+    { prescriptionId: T6입원검사수액처방.id, type: "추가설명", productName: "fever", sortOrder: 23 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "Blood Culture(소아)", sortOrder: 24 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "Ordinary culture(Random urine)", sortOrder: 25 },
+    { prescriptionId: T6입원검사수액처방.id, type: "추가설명", productName: "코로나 검사", sortOrder: 26 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "선별PCR->중증응급환자(KTAS1-3등급)", sortOrder: 27 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "국비->코로나19 먹는치료제 대상군", sortOrder: 28 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "PCR 중증응급환자제외(전액본인부담)", sortOrder: 29 },
+    { prescriptionId: T6입원검사수액처방.id, type: "추가설명", productName: "독감검사", sortOrder: 30 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "인플루엔자 A·B 바이러스항원검사", sortOrder: 31 },
+    { prescriptionId: T6입원검사수액처방.id, type: "추가설명", productName: "소아과 추가 처방", sortOrder: 32 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "Ordinary culture(Stool)", sortOrder: 33 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "Stool fat(정성)", sortOrder: 34 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "Stool Hb Quantification", sortOrder: 35 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "stool parasite", sortOrder: 36 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "Stool WBC", sortOrder: 37 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "Widal test", sortOrder: 38 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "바이러스성 급성설사 선별검사", sortOrder: 39 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "세균성 급성설사 선별검사", sortOrder: 40 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "Norovirus Ag", sortOrder: 41 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "Rota Virus Ag", sortOrder: 42 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "Mycoplasma Ab", sortOrder: 43 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "호흡기 바이러스 PCR 19종", sortOrder: 44 },
+    { prescriptionId: T6입원검사수액처방.id, type: "혈액검사", productName: "폐렴 원인균 선별검사 6종", sortOrder: 45 },
+
+    // 시트6-2: 소아 경구약
+    { prescriptionId: T6소아경구약처방.id, type: "추가설명", productName: "이부프로펜", sortOrder: 0 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "이부서스펜시럽", ingredientName: "ibuprofen", dosage: "5", unit: "ml", frequency: "TID", route: "TID PC", note: "1-2세(3-5mL)", sortOrder: 1 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "이부서스펜시럽", ingredientName: "ibuprofen", dosage: "8", unit: "ml", frequency: "TID", route: "TID PC", note: "3-6세(5-8mL)", sortOrder: 2 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "이부서스펜시럽", ingredientName: "ibuprofen", dosage: "10", unit: "ml", frequency: "TID", route: "TID PC", note: "7-10세(8-10mL)", sortOrder: 3 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "이부서스펜시럽", ingredientName: "ibuprofen", dosage: "13", unit: "ml", frequency: "TID", route: "TID PC", note: "11-14세(10-13mL)", sortOrder: 4 },
+    { prescriptionId: T6소아경구약처방.id, type: "추가설명", productName: "체중 30kg 미만 어린이 1일 최대용량 25mL", sortOrder: 5 },
+    { prescriptionId: T6소아경구약처방.id, type: "추가설명", productName: "세토펜(체중 우선 고려)", sortOrder: 6 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "세토펜현탁액", ingredientName: "acetaminophen", dosage: "2.5", unit: "ml", frequency: "TID", route: "TID PC", note: "4-6개월 or 7-7.9kg", sortOrder: 7 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "세토펜현탁액", ingredientName: "acetaminophen", dosage: "3.5", unit: "ml", frequency: "TID", route: "TID PC", note: "7-23개월 or 8-11.9kg", sortOrder: 8 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "세토펜현탁액", ingredientName: "acetaminophen", dosage: "5", unit: "ml", frequency: "TID", route: "TID PC", note: "2-3세 or 12-15.9kg", sortOrder: 9 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "세토펜현탁액", ingredientName: "acetaminophen", dosage: "7.5", unit: "ml", frequency: "TID", route: "TID PC", note: "4-6세 or 16-22.9kg", sortOrder: 10 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "세토펜현탁액", ingredientName: "acetaminophen", dosage: "10", unit: "ml", frequency: "TID", route: "TID PC", note: "7-8세 or 23-29.9kg", sortOrder: 11 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "세토펜현탁액", ingredientName: "acetaminophen", dosage: "12.5", unit: "ml", frequency: "TID", route: "TID PC", note: "9-10세 or 30-37.9kg", sortOrder: 12 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "세토펜현탁액", ingredientName: "acetaminophen", dosage: "15", unit: "ml", frequency: "TID", route: "TID PC", note: "11세 or 38-42.9kg", sortOrder: 13 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "세토펜현탁액", ingredientName: "acetaminophen", dosage: "20", unit: "ml", frequency: "TID", route: "TID PC", note: "12세 or 43kg이상", sortOrder: 14 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "삼남아세트아미노펜정", ingredientName: "acetaminophen", dosage: "1", unit: "T", frequency: "TID", route: "TID PC", sortOrder: 15 },
+    { prescriptionId: T6소아경구약처방.id, type: "추가설명", productName: "항생제 시럽", sortOrder: 16 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "크로아난듀오건조시럽(아목시실린/클라불란산 7:1)", ingredientName: "amoxicillin/clavulanate", dosage: "1", unit: "ml", frequency: "BID", route: "BID PC", note: "경증: 0.31mL/kg BID", sortOrder: 17 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "크로아난듀오건조시럽(아목시실린/클라불란산 7:1)", ingredientName: "amoxicillin/clavulanate", dosage: "1", unit: "ml", frequency: "BID", route: "BID PC", note: "중증: 0.56mL/kg BID", sortOrder: 18 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "바난건조시럽10mg/ml", ingredientName: "cefpodoxime proxetil", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "0.3mL/kg TID", sortOrder: 19 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "보령듀리세프건조시럽125mg/5ml", ingredientName: "cefadroxil", dosage: "1", unit: "ml", frequency: "BID", route: "BID PC", note: "0.6mL/kg BID", sortOrder: 20 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "크로세프건조시럽", ingredientName: "cefaclor", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "0.27mL/kg TID", sortOrder: 21 },
+    { prescriptionId: T6소아경구약처방.id, type: "추가설명", productName: "기침약", sortOrder: 22 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "코푸스티시럽(Ivy leaf 추출물)", ingredientName: "ivy leaf dry extract", dosage: "2.5", unit: "ml", frequency: "BID", route: "BID PC", note: "2-3세", sortOrder: 23 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "코푸스티시럽(Ivy leaf 추출물)", ingredientName: "ivy leaf dry extract", dosage: "5", unit: "ml", frequency: "BID", route: "BID PC", note: "4-14세", sortOrder: 24 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "코푸스티시럽(Ivy leaf 추출물)", ingredientName: "ivy leaf dry extract", dosage: "5", unit: "ml", frequency: "TID", route: "TID PC", note: "15세이상", sortOrder: 25 },
+    { prescriptionId: T6소아경구약처방.id, type: "추가설명", productName: "항히스타민", sortOrder: 26 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "유시락스시럽", ingredientName: "hydroxyzine HCl", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "0.3mL/kg TID", sortOrder: 27 },
+    { prescriptionId: T6소아경구약처방.id, type: "추가설명", productName: "기관지 확장제(LABA)", sortOrder: 28 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "아토크건조시럽", ingredientName: "formoterol fumarate hydrate", dosage: "0.33", unit: "G", frequency: "TID", route: "TID PC", note: "6개월-1세, total 1g TID 분복", sortOrder: 29 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "아토크건조시럽", ingredientName: "formoterol fumarate hydrate", dosage: "0.5", unit: "G", frequency: "TID", route: "TID PC", note: "1-3세, total 1.5g TID 분복", sortOrder: 30 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "아토크건조시럽", ingredientName: "formoterol fumarate hydrate", dosage: "0.66", unit: "G", frequency: "TID", route: "TID PC", note: "4-6세, total 2g TID 분복", sortOrder: 31 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "아토크건조시럽", ingredientName: "formoterol fumarate hydrate", dosage: "1", unit: "G", frequency: "TID", route: "TID PC", note: "7-9세, total 3g TID 분복", sortOrder: 32 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "아토크건조시럽", ingredientName: "formoterol fumarate hydrate", dosage: "1.33", unit: "G", frequency: "TID", route: "TID PC", note: "10-11세, total 4g TID 분복", sortOrder: 33 },
+    { prescriptionId: T6소아경구약처방.id, type: "추가설명", productName: "진경제", sortOrder: 34 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "포리부틴드라이시럽", ingredientName: "trimebutine maleate", dosage: "2.5", unit: "ml", frequency: "BID", route: "BID PC", note: "6개월 미만", sortOrder: 35 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "포리부틴드라이시럽", ingredientName: "trimebutine maleate", dosage: "5", unit: "ml", frequency: "BID", route: "BID PC", note: "6개월-1세", sortOrder: 36 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "포리부틴드라이시럽", ingredientName: "trimebutine maleate", dosage: "5", unit: "ml", frequency: "TID", route: "TID AC", note: "1세-5세미만", sortOrder: 37 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "포리부틴드라이시럽", ingredientName: "trimebutine maleate", dosage: "10", unit: "ml", frequency: "TID", route: "TID AC", note: "5세이상", sortOrder: 38 },
+    { prescriptionId: T6소아경구약처방.id, type: "추가설명", productName: "항구토제", sortOrder: 39 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "하미돈현탁액", ingredientName: "domperidone", dosage: "1", unit: "ml", frequency: "TID", route: "TID AC", note: "1회분: 0.25mL/kg", sortOrder: 40 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "온세란정4mg", ingredientName: "ondansetron HCl", dosage: "0.5", unit: "T", frequency: "QD", route: "QD", note: "8-15kg, 응급실에서 1회 복용", sortOrder: 41 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "온세란정4mg", ingredientName: "ondansetron HCl", dosage: "1", unit: "T", frequency: "QD", route: "QD", note: "16-30kg, 응급실에서 1회 복용", sortOrder: 42 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "온세란정4mg", ingredientName: "ondansetron HCl", dosage: "2", unit: "T", frequency: "QD", route: "QD", note: "30kg 초과, 응급실에서 1회 복용", sortOrder: 43 },
+    { prescriptionId: T6소아경구약처방.id, type: "추가설명", productName: "정장제", sortOrder: 44 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "비오플250산", ingredientName: "Saccharomyces boulardii", dosage: "1", unit: "PK", frequency: "BID", route: "BID PC", note: "3세미만", sortOrder: 45 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "비오플250산", ingredientName: "Saccharomyces boulardii", dosage: "1", unit: "PK", frequency: "TID", route: "TID PC", note: "3-12세미만", sortOrder: 46 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "비오플250산", ingredientName: "Saccharomyces boulardii", dosage: "2", unit: "PK", frequency: "BID", route: "BID PC", note: "12세이상", sortOrder: 47 },
+    { prescriptionId: T6소아경구약처방.id, type: "추가설명", productName: "변비약", sortOrder: 48 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "듀락칸이지시럽670g/500mL", ingredientName: "lactulose", dosage: "5", unit: "ml", frequency: "QD", route: "QD", note: "1세미만: 5mL 아침 식전 1회", sortOrder: 49 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "듀락칸이지시럽670g/500mL", ingredientName: "lactulose", dosage: "7", unit: "ml", frequency: "QD", route: "QD", note: "1-6세: 5-10mL 아침 식전 1회", sortOrder: 50 },
+    { prescriptionId: T6소아경구약처방.id, type: "퇴원약", productName: "듀락칸이지시럽15mL(pack)", ingredientName: "lactulose", dosage: "1", unit: "PK", frequency: "QD", route: "QD", note: "7-14세: 15mL 아침 식전 1회(첫2-3일)->이후 하루 10mL QD", sortOrder: 51 },
+
+    // 시트6-3: 소아 주사제
+    { prescriptionId: T6소아주사제처방.id, type: "추가설명", productName: "해열제", sortOrder: 0 },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "아모부로펜프리믹스주", ingredientName: "ibuprofen", dosage: "1", unit: "V", frequency: "1", route: "IV", note: "10mg/kg(max 400mg), 20분 동안 투여, 비급여 설명 후 투여", sortOrder: 1 },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "토라렌주2mL", ingredientName: "diclofenac sodium", dosage: "1", unit: "A", frequency: "1", route: "IM", note: "0.03mL/kg IM. 단위 확인", sortOrder: 2 },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "데노간주1g/1병", ingredientName: "propacetamol", dosage: "1", unit: "V", frequency: "1", route: "IV", note: "15mg/kg(50kg이상, 13세이상은 1vial)", sortOrder: 3, mixGroup: "M1" },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: T6소아주사제처방.id, type: "추가설명", productName: "항생제", sortOrder: 5 },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "크목실린주1.2g", ingredientName: "amoxicillin/clavulanate", dosage: "0.25", unit: "V", frequency: "1", route: "IV", note: "30mg/kg IV, TID", sortOrder: 6, mixGroup: "M2" },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "100cc/hr", sortOrder: 7, mixGroup: "M2" },
+    { prescriptionId: T6소아주사제처방.id, type: "추가설명", productName: "경증(구역구토)", sortOrder: 8 },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "페니라민주사", ingredientName: "chlorpheniramine maleate", dosage: "1", unit: "A", frequency: "1", route: "IM", note: "0.035mL/kg, IM", sortOrder: 9 },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "온단트주(ER)", ingredientName: "ondansetron HCl", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "수술후 구역구토에만 급여, 0.06mL/kg", sortOrder: 10, mixGroup: "M3" },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 11, mixGroup: "M3" },
+    { prescriptionId: T6소아주사제처방.id, type: "추가설명", productName: "중증(구역구토)", sortOrder: 12 },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "덱사메타손주사액5mg/1mL", ingredientName: "dexamethasone disodium phosphate", dosage: "1", unit: "A", frequency: "1", route: "IM", note: "0.12mL/kg(Max 2.4mL)", sortOrder: 13 },
+    { prescriptionId: T6소아주사제처방.id, type: "추가설명", productName: "AED(경련)", sortOrder: 14 },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "아티반주사1ml", ingredientName: "lorazepam", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "0.05mL/kg(Max 2mL). 1st dose 0.05mL/kg, repeat 2nd dose 0.025mL/kg", sortOrder: 15 },
+    { prescriptionId: T6소아주사제처방.id, type: "추가설명", productName: "Status epilepticus 1차약", sortOrder: 16 },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "큐팜주사500mg", ingredientName: "levetiracetam", dosage: "1", unit: "V", frequency: "1", route: "IV", note: "0.2-0.4mL/kg", sortOrder: 17, mixGroup: "M4" },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "20분간 투여", sortOrder: 18, mixGroup: "M4" },
+    { prescriptionId: T6소아주사제처방.id, type: "추가설명", productName: "Status epilepticus 2차약", sortOrder: 19 },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "부광미다졸람주사5mg", ingredientName: "midazolam", dosage: "1", unit: "A", frequency: "1", route: "IVS", note: "0.1-0.2mL/kg slow IV push", sortOrder: 20 },
+    { prescriptionId: T6소아주사제처방.id, type: "추가설명", productName: "소아 진정", sortOrder: 21 },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "염산케타민주사 500mg/10ml", ingredientName: "ketamine HCl", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "0.02-0.04mL/kg", sortOrder: 22, mixGroup: "M5" },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "30-50cc 우선 loading 후 필요시 의사요청에 따라 10cc씩 추가 투여", sortOrder: 23, mixGroup: "M5" },
+    { prescriptionId: T6소아주사제처방.id, type: "약", productName: "염산케타민주사 500mg/10ml", ingredientName: "ketamine HCl", dosage: "1", unit: "V", frequency: "1", route: "IM", note: "IM: 0.08mL/kg", sortOrder: 24 },
+
+    // 시트6-4: 소아 Resuscitation 주사제
+    { prescriptionId: T6소아Resus주사제처방.id, type: "추가설명", productName: "Bradycardia", sortOrder: 0 },
+    { prescriptionId: T6소아Resus주사제처방.id, type: "약", productName: "에피네프린주사액1mg/1mL", ingredientName: "epinephrine", dosage: "0.1", unit: "A", frequency: "1", route: "IVS", note: "IV/IO: 0.01mg/kg", sortOrder: 1 },
+    { prescriptionId: T6소아Resus주사제처방.id, type: "약", productName: "아트로핀황산염주사액0.5mg/1mL", ingredientName: "atropine sulfate hydrate", dosage: "0.4", unit: "A", frequency: "1", route: "IVS", note: "IV/IO: 1st 0.02mg/kg(최소 0.1mg) 투여 -> 5분뒤 repeat once", sortOrder: 2 },
+    { prescriptionId: T6소아Resus주사제처방.id, type: "추가설명", productName: "Tachycardia", sortOrder: 3 },
+    { prescriptionId: T6소아Resus주사제처방.id, type: "지시처방", productName: "Defibrillation, Cardioversion(1일당)", note: "0.5-1J/kg로 시작 -> 이후 2J/kg로 증가", sortOrder: 4 },
+    { prescriptionId: T6소아Resus주사제처방.id, type: "약", productName: "아데노코주 6mg/2ml", ingredientName: "adenosine", dosage: "1", unit: "V", frequency: "1", route: "IVS", note: "IV/IO: 0.1mg/kg, followed by 2-5ml NS bolus -> 이후 2배 용량", sortOrder: 5 },
+    { prescriptionId: T6소아Resus주사제처방.id, type: "약", productName: "코다론주 150mg/3ml", ingredientName: "amiodarone HCl", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "IV/IO: 5mg/kg over 20-60min", sortOrder: 6, mixGroup: "M1" },
+    { prescriptionId: T6소아Resus주사제처방.id, type: "약", productName: "중외5% 포도당주 100mL", ingredientName: "dextrose 5%", dosage: "1", unit: "BT", frequency: "1", route: "IV", note: "100cc/hr", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: T6소아Resus주사제처방.id, type: "추가설명", productName: "Others", sortOrder: 8 },
+    { prescriptionId: T6소아Resus주사제처방.id, type: "약", productName: "탄산수소나트륨8.4%주", ingredientName: "sodium bicarbonate", dosage: "0.5", unit: "A", frequency: "1", route: "IVS", note: "20mEq/20ml, IV/IO: 1mEq/kg만큼 투여", sortOrder: 9 },
+
+    // 시트6-5: 소아 NEB
+    { prescriptionId: T6소아NEB처방.id, type: "추가설명", productName: "네뷸라이저 - Croup", sortOrder: 0 },
+    { prescriptionId: T6소아NEB처방.id, type: "지시처방", productName: "증기흡입치료(1일당)", note: "상기도", sortOrder: 1 },
+    { prescriptionId: T6소아NEB처방.id, type: "약", productName: "에피네프린주사액1mg/1mL", ingredientName: "epinephrine", dosage: "2.5", unit: "mg", frequency: "1", route: "Aerosol", note: "네뷸라이저 0.5ml/kg, max 5ml, 3세미만 2.5cc", sortOrder: 2 },
+    { prescriptionId: T6소아NEB처방.id, type: "약", productName: "에피네프린주사액1mg/1mL", ingredientName: "epinephrine", dosage: "5", unit: "mg", frequency: "1", route: "Aerosol", note: "네뷸라이저 0.5ml/kg, max 5ml, 3세이상 5cc", sortOrder: 3 },
+    { prescriptionId: T6소아NEB처방.id, type: "추가설명", productName: "네뷸라이저 - Asthma", sortOrder: 4 },
+    { prescriptionId: T6소아NEB처방.id, type: "지시처방", productName: "증기흡입치료(1일당)", note: "하기도", sortOrder: 5 },
+    { prescriptionId: T6소아NEB처방.id, type: "약", productName: "벤토린네뷸2.5mg/2.5ml", ingredientName: "salbutamol sulfate", dosage: "0.5", unit: "A", frequency: "1", route: "Aerosol", note: "10kg 미만", sortOrder: 6 },
+    { prescriptionId: T6소아NEB처방.id, type: "약", productName: "벤토린네뷸2.5mg/2.5ml", ingredientName: "salbutamol sulfate", dosage: "1", unit: "A", frequency: "1", route: "Aerosol", note: "10-20kg", sortOrder: 7 },
+    { prescriptionId: T6소아NEB처방.id, type: "약", productName: "벤토린네뷸2.5mg/2.5ml", ingredientName: "salbutamol sulfate", dosage: "2", unit: "A", frequency: "1", route: "Aerosol", note: "20kg 초과", sortOrder: 8 },
+    { prescriptionId: T6소아NEB처방.id, type: "추가설명", productName: "plus", sortOrder: 9 },
+    { prescriptionId: T6소아NEB처방.id, type: "약", productName: "아트로벤트흡입액유디비", ingredientName: "ipratropium bromide hydrate", dosage: "0.5", unit: "EA", frequency: "1", route: "Aerosol", note: "250mcg", sortOrder: 10 },
+
+    // 시트6-6: 소아 PSA
+    { prescriptionId: T6소아PSA처방.id, type: "추가설명", productName: "통증 없는 자세 제어 필요시", sortOrder: 0 },
+    { prescriptionId: T6소아PSA처방.id, type: "약", productName: "펜토탈소디움주사0.25g", ingredientName: "thiopental sodium", dosage: "1", unit: "V", frequency: "1", route: "PR", note: "25mg/kg", sortOrder: 1 },
+    { prescriptionId: T6소아PSA처방.id, type: "약", productName: "에토미데이트리푸로주10mL", ingredientName: "etomidate", dosage: "1", unit: "A", frequency: "1", route: "IVS", note: "0.2mg/kg", sortOrder: 2 },
+    { prescriptionId: T6소아PSA처방.id, type: "추가설명", productName: "약한 통증, 심한 불안", sortOrder: 3 },
+    { prescriptionId: T6소아PSA처방.id, type: "약", productName: "염산케타민주사 500mg/10ml", ingredientName: "ketamine HCl", dosage: "40", unit: "mg", frequency: "1", route: "IM", note: "4mg/kg", sortOrder: 4 },
+    { prescriptionId: T6소아PSA처방.id, type: "추가설명", productName: "강한 통증", sortOrder: 5 },
+    { prescriptionId: T6소아PSA처방.id, type: "추가설명", productName: "Ketamine+Midazolam", sortOrder: 6 },
+    { prescriptionId: T6소아PSA처방.id, type: "약", productName: "염산케타민주사 500mg/10ml", ingredientName: "ketamine HCl", dosage: "1", unit: "V", frequency: "1", route: "IVS", note: "0.5mg/kg", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: T6소아PSA처방.id, type: "약", productName: "부광미다졸람주사5mg", ingredientName: "midazolam", dosage: "1", unit: "A", frequency: "1", route: "IVS", note: "0.1mg/kg", sortOrder: 8, mixGroup: "M1" },
+    { prescriptionId: T6소아PSA처방.id, type: "추가설명", productName: "Etomidate", sortOrder: 9 },
+    { prescriptionId: T6소아PSA처방.id, type: "약", productName: "에토미데이트리푸로주10mL", ingredientName: "etomidate", dosage: "1", unit: "A", frequency: "1", route: "IVS", note: "0.2mg/kg", sortOrder: 10 },
+
+    // 시트6-7: 감기 퇴원약
+    { prescriptionId: T6감기퇴원약처방.id, type: "퇴원약", productName: "코미시럽", ingredientName: "chlorpheniramine/dl-메칠에페드린(추정, 복합 비충혈완화제)", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "콧물약, 0.3cc/kg", sortOrder: 0 },
+    { prescriptionId: T6감기퇴원약처방.id, type: "퇴원약", productName: "크로아난듀오건조시럽", ingredientName: "amoxicillin/clavulanate", dosage: "1", unit: "ml", frequency: "BID", route: "BID PC", note: "1회분: 0.375cc/kg, bid 또는 하루 30mg/kg/d를 2회분으로 분복", sortOrder: 1 },
+    { prescriptionId: T6감기퇴원약처방.id, type: "퇴원약", productName: "코푸스티시럽", ingredientName: "ivy leaf dry extract", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "진해거담제 0.2cc/kg", sortOrder: 2 },
+    { prescriptionId: T6감기퇴원약처방.id, type: "퇴원약", productName: "세토펜현탁액", ingredientName: "acetaminophen", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "0.375cc/kg", sortOrder: 3 },
+    { prescriptionId: T6감기퇴원약처방.id, type: "퇴원약", productName: "이부서스펜시럽", ingredientName: "ibuprofen", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "Wt/3(Max 40mg/kg/d)", sortOrder: 4 },
+    { prescriptionId: T6감기퇴원약처방.id, type: "추가설명", productName: "해열제 두 종류 이상 처방시 4시간 이상 간격으로 번갈아 투여, 한 종류 투약 후 1시간 경과해도 해열 안되면 다른 종류 추가 투약 가능", sortOrder: 5 },
+
+    // 시트6-8: 기저귀발진 연고
+    { prescriptionId: T6기저귀발진연고처방.id, type: "약", productName: "보소미연고 20g", ingredientName: "zinc oxide", dosage: "1", unit: "TU", frequency: "1", route: "외용", note: "1일 여러 번 환부에 도포", sortOrder: 0 },
+
+    // 시트6-9: 타미플루(체중별)
+    { prescriptionId: T6타미플루체중별처방.id, type: "추가설명", productName: "Tamiflu(체중별)", sortOrder: 0 },
+    { prescriptionId: T6타미플루체중별처방.id, type: "약", productName: "코미플루현탁용분말", ingredientName: "oseltamivir", dosage: "1", unit: "ml", frequency: "BID", route: "BID", note: "파우더. 3kg 1.5ml/4kg 2ml/5kg 2.5ml/6kg 3ml/7kg 3.5ml/8kg 4ml/9kg 4.5ml/10kg 5ml, 모두 BID", sortOrder: 1 },
+    { prescriptionId: T6타미플루체중별처방.id, type: "퇴원약", productName: "플루캡슐30mg", ingredientName: "oseltamivir", dosage: "1", unit: "C", frequency: "BID", route: "BID", note: "15kg이하: 30mg BID", sortOrder: 2 },
+    { prescriptionId: T6타미플루체중별처방.id, type: "퇴원약", productName: "플루캡슐45mg", ingredientName: "oseltamivir", dosage: "1", unit: "C", frequency: "BID", route: "BID", note: "15-23kg: 45mg BID", sortOrder: 3 },
+    { prescriptionId: T6타미플루체중별처방.id, type: "퇴원약", productName: "플루캡슐30mg", ingredientName: "oseltamivir", dosage: "2", unit: "C", frequency: "BID", route: "BID", note: "23-40kg: 60mg(30mg x2) BID", sortOrder: 4 },
+    { prescriptionId: T6타미플루체중별처방.id, type: "퇴원약", productName: "플루캡슐75mg", ingredientName: "oseltamivir", dosage: "1", unit: "C", frequency: "BID", route: "BID", note: "40kg이상: 75mg BID", sortOrder: 5 },
+    { prescriptionId: T6타미플루체중별처방.id, type: "추가설명", productName: "페라미플루(6개월 이상, 10mg/kg)", sortOrder: 6 },
+    { prescriptionId: T6타미플루체중별처방.id, type: "약", productName: "페라미플루주15mL", ingredientName: "peramivir", dosage: "2", unit: "V", frequency: "1", route: "IV infusion", note: "10mg/kg(6mo이상 소아), 15분 동안 투여", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: T6타미플루체중별처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 8, mixGroup: "M1" },
+
+    // 시트6-10: AGE/FGID
+    { prescriptionId: T6AGEFGID처방.id, type: "추가설명", productName: "주사", sortOrder: 0 },
+    { prescriptionId: T6AGEFGID처방.id, type: "약", productName: "온단트주(ER)", ingredientName: "ondansetron HCl", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "수술후 구역구토에만 급여, 0.15mg/kg", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: T6AGEFGID처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: T6AGEFGID처방.id, type: "추가설명", productName: "필요시 해열제 또는 항생제 추가", sortOrder: 3 },
+    { prescriptionId: T6AGEFGID처방.id, type: "추가설명", productName: "퇴원약 - 진경제", sortOrder: 4 },
+    { prescriptionId: T6AGEFGID처방.id, type: "퇴원약", productName: "포리부틴드라이시럽", ingredientName: "trimebutine maleate", dosage: "2.5", unit: "ml", frequency: "BID", route: "BID PC", note: "6개월미만", sortOrder: 5 },
+    { prescriptionId: T6AGEFGID처방.id, type: "퇴원약", productName: "포리부틴드라이시럽", ingredientName: "trimebutine maleate", dosage: "5", unit: "ml", frequency: "BID", route: "BID PC", note: "6개월-1세", sortOrder: 6 },
+    { prescriptionId: T6AGEFGID처방.id, type: "퇴원약", productName: "포리부틴드라이시럽", ingredientName: "trimebutine maleate", dosage: "5", unit: "ml", frequency: "TID", route: "TID AC", note: "1세-5세미만", sortOrder: 7 },
+    { prescriptionId: T6AGEFGID처방.id, type: "퇴원약", productName: "포리부틴드라이시럽", ingredientName: "trimebutine maleate", dosage: "10", unit: "ml", frequency: "TID", route: "TID AC", note: "5세이상", sortOrder: 8 },
+    { prescriptionId: T6AGEFGID처방.id, type: "추가설명", productName: "정장제", sortOrder: 9 },
+    { prescriptionId: T6AGEFGID처방.id, type: "퇴원약", productName: "비오플250산", ingredientName: "Saccharomyces boulardii", dosage: "1", unit: "PK", frequency: "BID", route: "BID PC", note: "3세미만", sortOrder: 10 },
+    { prescriptionId: T6AGEFGID처방.id, type: "퇴원약", productName: "비오플250산", ingredientName: "Saccharomyces boulardii", dosage: "1", unit: "PK", frequency: "TID", route: "TID PC", note: "3-12세", sortOrder: 11 },
+    { prescriptionId: T6AGEFGID처방.id, type: "퇴원약", productName: "비오플250산", ingredientName: "Saccharomyces boulardii", dosage: "2", unit: "PK", frequency: "BID", route: "BID PC", note: "12세이상", sortOrder: 12 },
+    { prescriptionId: T6AGEFGID처방.id, type: "추가설명", productName: "항구토제", sortOrder: 13 },
+    { prescriptionId: T6AGEFGID처방.id, type: "퇴원약", productName: "하미돈현탁액", ingredientName: "domperidone", dosage: "1", unit: "ml", frequency: "TID", route: "TID AC", note: "1회 0.25mL/kg를 TID", sortOrder: 14 },
+    { prescriptionId: T6AGEFGID처방.id, type: "퇴원약", productName: "온세란정4mg", ingredientName: "ondansetron HCl", dosage: "0.5", unit: "T", frequency: "QD", route: "QD", note: "8-15kg, 응급실에서 1회 복용", sortOrder: 15 },
+    { prescriptionId: T6AGEFGID처방.id, type: "퇴원약", productName: "온세란정4mg", ingredientName: "ondansetron HCl", dosage: "1", unit: "T", frequency: "QD", route: "QD", note: "16-30kg, 응급실에서 1회 복용", sortOrder: 16 },
+    { prescriptionId: T6AGEFGID처방.id, type: "퇴원약", productName: "온세란정4mg", ingredientName: "ondansetron HCl", dosage: "2", unit: "T", frequency: "QD", route: "QD", note: "30kg 초과, 응급실에서 1회 복용", sortOrder: 17 },
+
+    // 시트6-11: AOM
+    { prescriptionId: T6AOM처방.id, type: "퇴원약", productName: "크로아난듀오건조시럽", ingredientName: "amoxicillin/clavulanate", dosage: "1", unit: "ml", frequency: "BID", route: "BID PC", note: "1회분: 0.375cc/kg, bid 또는 하루 30mg/kg/d를 2회분으로 분복", sortOrder: 0 },
+    { prescriptionId: T6AOM처방.id, type: "퇴원약", productName: "이부서스펜시럽", ingredientName: "ibuprofen", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "Wt/3(Max 40mg/kg/d)", sortOrder: 1 },
+    { prescriptionId: T6AOM처방.id, type: "추가설명", productName: "Anti-ix 꼭 확인 후 항생제 처방", sortOrder: 2 },
+
+    // 시트6-12: Constipation
+    { prescriptionId: T6Constipation처방.id, type: "지시처방", productName: "글리세린관장/생리식염수관장/에스에스관장", note: "소아 관장: 글리세린(Kg/2)cc + N/S(Kg/2)cc, suction catheter 반 잘라서 준비", sortOrder: 0 },
+    { prescriptionId: T6Constipation처방.id, type: "약", productName: "하미돈현탁액", ingredientName: "domperidone", dosage: "1", unit: "ml", frequency: "TID", route: "TID AC", note: "1회 0.25mg/kg를 TID", sortOrder: 1 },
+    { prescriptionId: T6Constipation처방.id, type: "퇴원약", productName: "듀락칸이지시럽15mL(pack)", ingredientName: "lactulose", dosage: "1", unit: "PK", frequency: "PRN", route: "PRN", note: "1세미만: 5mL QD AC", sortOrder: 2 },
+    { prescriptionId: T6Constipation처방.id, type: "퇴원약", productName: "듀락칸이지시럽15mL(pack)", ingredientName: "lactulose", dosage: "1", unit: "PK", frequency: "PRN", route: "PRN", note: "1-6세: 5-10mL QD AC", sortOrder: 3 },
+    { prescriptionId: T6Constipation처방.id, type: "퇴원약", productName: "듀락칸이지시럽15mL(pack)", ingredientName: "lactulose", dosage: "1", unit: "PK", frequency: "PRN", route: "PRN", note: "7-14세: 15mL QD AC(첫2-3일)->이후 하루 10mL QD", sortOrder: 4 },
+
+    // 시트6-13: Contusion
+    { prescriptionId: T6Contusion처방.id, type: "퇴원약", productName: "삼남아세트아미노펜정", ingredientName: "acetaminophen", dosage: "1", unit: "T", frequency: "TID", route: "TID PC", sortOrder: 0 },
+    { prescriptionId: T6Contusion처방.id, type: "퇴원약", productName: "이부서스펜시럽", ingredientName: "ibuprofen", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "Wt/3(Max 40mg/kg/d)", sortOrder: 1 },
+
+    // 시트6-14: Fever control
+    { prescriptionId: T6FeverControl처방.id, type: "영상검사", productName: "Chest AP", sortOrder: 0 },
+    { prescriptionId: T6FeverControl처방.id, type: "영상검사", productName: "Abdomen Supine", sortOrder: 1 },
+    { prescriptionId: T6FeverControl처방.id, type: "추가설명", productName: "PO 제제", sortOrder: 2 },
+    { prescriptionId: T6FeverControl처방.id, type: "약", productName: "이부서스펜시럽", ingredientName: "ibuprofen", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", sortOrder: 3 },
+    { prescriptionId: T6FeverControl처방.id, type: "약", productName: "세토펜현탁액", ingredientName: "acetaminophen", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "해열제 두 종류 이상 처방시 4시간 이상 간격으로 번갈아 투여, 한 종류 투약 후 1시간 경과해도 해열 안되면 다른 종류 추가 투약 가능", sortOrder: 4 },
+    { prescriptionId: T6FeverControl처방.id, type: "추가설명", productName: "IM 제제", sortOrder: 5 },
+    { prescriptionId: T6FeverControl처방.id, type: "약", productName: "토라렌주2mL", ingredientName: "diclofenac sodium", dosage: "1", unit: "A", frequency: "1", route: "IM", note: "0.03cc/kg IM", sortOrder: 6 },
+    { prescriptionId: T6FeverControl처방.id, type: "추가설명", productName: "IV 제제", sortOrder: 7 },
+    { prescriptionId: T6FeverControl처방.id, type: "약", productName: "데노간주1g/1병", ingredientName: "propacetamol", dosage: "1", unit: "V", frequency: "1", route: "IV", note: "15mg/kg(50kg이상, 13세이상은 1vial)", sortOrder: 8, mixGroup: "M1" },
+    { prescriptionId: T6FeverControl처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV", sortOrder: 9, mixGroup: "M1" },
+    { prescriptionId: T6FeverControl처방.id, type: "약", productName: "아모부로펜프리믹스주", ingredientName: "ibuprofen", dosage: "1", unit: "V", frequency: "1", route: "IV", note: "10mg/kg(max 400mg), 비급여 설명 후 투여, 20분 동안 투여", sortOrder: 10 },
+    { prescriptionId: T6FeverControl처방.id, type: "추가설명", productName: "항생제 IV", sortOrder: 11 },
+    { prescriptionId: T6FeverControl처방.id, type: "약", productName: "크목실린주1.2g", ingredientName: "amoxicillin/clavulanate", dosage: "0.25", unit: "V", frequency: "1", route: "IV", note: "30mg/kg IV, TID", sortOrder: 12, mixGroup: "M2" },
+    { prescriptionId: T6FeverControl처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "100cc/hr", sortOrder: 13, mixGroup: "M2" },
+
+    // 시트6-15: Laceration
+    { prescriptionId: T6Laceration처방.id, type: "추가설명", productName: "Laceration(진정처치 및 약), 소아 진정동의서 받기, 진정약 투여시 꼭 Sat. monitoring 시행", sortOrder: 0 },
+    { prescriptionId: T6Laceration처방.id, type: "추가설명", productName: "PSA(IV) - Ketamine, O2 monitoring, line 확보, SaO2<94%시 O2 3L VNP 투여", sortOrder: 1 },
+    { prescriptionId: T6Laceration처방.id, type: "약", productName: "염산케타민주사 500mg/10ml", ingredientName: "ketamine HCl", dosage: "20", unit: "mg", frequency: "1", route: "IV infusion", note: "1.0-2.0mg/kg", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: T6Laceration처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "30-50cc 우선 loading 후 필요시 의사요청에 따라 10cc씩 추가 투여", sortOrder: 3, mixGroup: "M1" },
+    { prescriptionId: T6Laceration처방.id, type: "추가설명", productName: "PSA(IM) - Ketamine", sortOrder: 4 },
+    { prescriptionId: T6Laceration처방.id, type: "약", productName: "염산케타민주사 500mg/10ml", ingredientName: "ketamine HCl", dosage: "40", unit: "mg", frequency: "1", route: "IM", note: "IM: 4mg/kg", sortOrder: 5 },
+    { prescriptionId: T6Laceration처방.id, type: "추가설명", productName: "수술부위에 따라", sortOrder: 6 },
+    { prescriptionId: T6Laceration처방.id, type: "지시처방", productName: "Face or Neck, Simple Suture(표재성, 1.5cm 미만)", sortOrder: 7 },
+    { prescriptionId: T6Laceration처방.id, type: "지시처방", productName: "Face or Neck, Simple Suture(표재성, 1.5-3.0cm 미만)", sortOrder: 8 },
+    { prescriptionId: T6Laceration처방.id, type: "지시처방", productName: "Other, Simple Suture(표재성, 2.5cm 미만)", sortOrder: 9 },
+    { prescriptionId: T6Laceration처방.id, type: "지시처방", productName: "Other, Simple Suture(표재성, 2.5-5.0cm 미만)", sortOrder: 10 },
+    { prescriptionId: T6Laceration처방.id, type: "추가설명", productName: "국소마취", sortOrder: 11 },
+    { prescriptionId: T6Laceration처방.id, type: "약", productName: "2%휴온스염산리도카인주400mg/20ml", ingredientName: "lidocaine HCl", dosage: "0.25", unit: "V", frequency: "1", route: "국소주입", note: "의사가 직접 병변내 마취", sortOrder: 12 },
+    { prescriptionId: T6Laceration처방.id, type: "추가설명", productName: "처치 이후 v/s, 의식수준 회복 및 도움없이 혼자 sitting 가능할 경우 퇴원 가능", sortOrder: 13 },
+    { prescriptionId: T6Laceration처방.id, type: "추가설명", productName: "퇴원약", sortOrder: 14 },
+    { prescriptionId: T6Laceration처방.id, type: "퇴원약", productName: "어린이부루펜시럽", ingredientName: "ibuprofen", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "Wt/3(Max 40mg/kg/d)", sortOrder: 15 },
+    { prescriptionId: T6Laceration처방.id, type: "퇴원약", productName: "크로아난듀오건조시럽", ingredientName: "amoxicillin/clavulanate", dosage: "1", unit: "ml", frequency: "BID", route: "BID PC", note: "1회분: 0.375cc/kg, bid, 하루 30mg/kg/d 분복", sortOrder: 16 },
+
+    // 시트6-16: Urticaria
+    { prescriptionId: T6Urticaria처방.id, type: "약", productName: "페니라민주사", ingredientName: "chlorpheniramine maleate", dosage: "0.25", unit: "A", frequency: "1", route: "IM", note: "0.035mL/kg, IM", sortOrder: 0 },
+    { prescriptionId: T6Urticaria처방.id, type: "추가설명", productName: "퇴원약", sortOrder: 1 },
+    { prescriptionId: T6Urticaria처방.id, type: "퇴원약", productName: "유시락스시럽", ingredientName: "hydroxyzine HCl", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "0.3mL/kg TID", sortOrder: 2 },
+
+    // 시트6-17: Anaphylaxis
+    { prescriptionId: T6Anaphylaxis처방.id, type: "지시처방", productName: "경피적혈액산소포화도측정(1일당)", sortOrder: 0 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "지시처방", productName: "O2 Inhalation(1일당)", sortOrder: 1 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "약", productName: "제일에피네프린주사액1mg/1mL", ingredientName: "epinephrine", dosage: "0.1", unit: "A", frequency: "1", route: "IM", note: "0.01mg/kg(max 0.5mg), anterolat. thigh IM, 제일 선처치", sortOrder: 2 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "추가설명", productName: "line 잡은 이후 처치", sortOrder: 3 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "약", productName: "N/S 500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV", note: "full drip 후 v/s f/u", sortOrder: 4 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "약", productName: "페니라민주사", ingredientName: "chlorpheniramine maleate", dosage: "0.4", unit: "A", frequency: "1", route: "IVS", note: "0.035mL/kg IVS", sortOrder: 5 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "약", productName: "모틴주", ingredientName: "famotidine", dosage: "0.4", unit: "V", frequency: "1", route: "IVS", note: "1mg/kg(max 50mg), 천천히 투여, 혈관통 주의", sortOrder: 6 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "약", productName: "살론주125mg", ingredientName: "methylprednisolone sodium succinate", dosage: "0.2", unit: "V", frequency: "1", route: "IV", note: "1mg/kg IV(max 125mg)", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "15분간 투여", sortOrder: 8, mixGroup: "M1" },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "추가설명", productName: "상기도 nebulizer(stridor), 필요시 20분 간격 반복", sortOrder: 9 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "지시처방", productName: "증기흡입치료(1일당)", sortOrder: 10 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "약", productName: "제일에피네프린주사액1mg/1mL", ingredientName: "epinephrine", dosage: "2.5", unit: "mg", frequency: "1", route: "Aerosol", note: "3세미만(max 5mg)", sortOrder: 11 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "약", productName: "제일에피네프린주사액1mg/1mL", ingredientName: "epinephrine", dosage: "5", unit: "mg", frequency: "1", route: "Aerosol", note: "3세이상(max 5mg)", sortOrder: 12 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "추가설명", productName: "하기도 nebulizer(wheezing, shortness of breath), 필요시 20분 간격 반복", sortOrder: 13 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "약", productName: "벤토린네뷸2.5mg/2.5ml", ingredientName: "salbutamol sulfate", dosage: "0.5", unit: "EA", frequency: "1", route: "Aerosol", note: "10kg미만", sortOrder: 14 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "약", productName: "벤토린네뷸2.5mg/2.5ml", ingredientName: "salbutamol sulfate", dosage: "1", unit: "EA", frequency: "1", route: "Aerosol", note: "10-20kg", sortOrder: 15 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "약", productName: "벤토린네뷸2.5mg/2.5ml", ingredientName: "salbutamol sulfate", dosage: "2", unit: "EA", frequency: "1", route: "Aerosol", note: "20kg이상", sortOrder: 16 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "추가설명", productName: "Anaphylactic shock, Epi-infusion 0.1-1mcg/kg/min(max 10mcg/min)", sortOrder: 17 },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "약", productName: "제일에피네프린주사액1mg/1mL", ingredientName: "epinephrine", dosage: "3", unit: "A", frequency: "1", route: "IV infusion", note: "1mcg/min", sortOrder: 18, mixGroup: "M2" },
+    { prescriptionId: T6Anaphylaxis처방.id, type: "약", productName: "중외5%포도당주 200mL", ingredientName: "dextrose 5%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "1mcg/min=4cc/hr. Initial 4cc/h(1mcg/min), titrate every 3min by 4cc/h, 부정맥/흉통 발생시 즉시 중단", sortOrder: 19, mixGroup: "M2" },
+
+    // 시트6-18: Asthma
+    { prescriptionId: T6Asthma처방.id, type: "추가설명", productName: "천식=2세이상 / 2세미만은 세기관지염 의심", sortOrder: 0 },
+    { prescriptionId: T6Asthma처방.id, type: "영상검사", productName: "Chest PA", sortOrder: 1 },
+    { prescriptionId: T6Asthma처방.id, type: "추가설명", productName: "O2 supply, Sat. monitoring", sortOrder: 2 },
+    { prescriptionId: T6Asthma처방.id, type: "추가설명", productName: "네뷸라이저 = Ventolin + Budesonide(Pulmican)", sortOrder: 3 },
+    { prescriptionId: T6Asthma처방.id, type: "지시처방", productName: "증기흡입치료(1일당)", note: "하기도", sortOrder: 4 },
+    { prescriptionId: T6Asthma처방.id, type: "약", productName: "벤토린네뷸2.5mg/2.5ml", ingredientName: "salbutamol sulfate", dosage: "0.5", unit: "A", frequency: "1", route: "Aerosol", note: "10kg 미만", sortOrder: 5 },
+    { prescriptionId: T6Asthma처방.id, type: "약", productName: "벤토린네뷸2.5mg/2.5ml", ingredientName: "salbutamol sulfate", dosage: "1", unit: "EA", frequency: "1", route: "Aerosol", note: "10-20kg", sortOrder: 6 },
+    { prescriptionId: T6Asthma처방.id, type: "약", productName: "벤토린네뷸2.5mg/2.5ml", ingredientName: "salbutamol sulfate", dosage: "2", unit: "EA", frequency: "1", route: "Aerosol", note: "20kg 초과", sortOrder: 7 },
+    { prescriptionId: T6Asthma처방.id, type: "추가설명", productName: "plus", sortOrder: 8 },
+    { prescriptionId: T6Asthma처방.id, type: "약", productName: "아트로벤트흡입액유디비", ingredientName: "ipratropium bromide hydrate", dosage: "0.5", unit: "EA", frequency: "1", route: "Aerosol", note: "250mcg", sortOrder: 9 },
+    { prescriptionId: T6Asthma처방.id, type: "추가설명", productName: "plus", sortOrder: 10 },
+    { prescriptionId: T6Asthma처방.id, type: "약", productName: "풀미코트레스퓰분무용현탁액0.5mg/2ml", ingredientName: "budesonide(미분화)", dosage: "1", unit: "EA", frequency: "1", route: "Aerosol", note: "1세미만 0.5A, 1세이상 1A", sortOrder: 11 },
+    { prescriptionId: T6Asthma처방.id, type: "추가설명", productName: "퇴원약", sortOrder: 12 },
+    { prescriptionId: T6Asthma처방.id, type: "퇴원약", productName: "코푸스티시럽", ingredientName: "ivy leaf dry extract", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "진해거담제 3.5cc/10kg", sortOrder: 13 },
+    { prescriptionId: T6Asthma처방.id, type: "퇴원약", productName: "네오날린패취2mg", ingredientName: "tulobuterol", dosage: "1", unit: "EA", frequency: "1", route: "부착", note: "9세이상", sortOrder: 14 },
+    { prescriptionId: T6Asthma처방.id, type: "퇴원약", productName: "아스날린패취1mg", ingredientName: "tulobuterol", dosage: "1", unit: "EA", frequency: "1", route: "부착", note: "3-9세미만", sortOrder: 15 },
+    { prescriptionId: T6Asthma처방.id, type: "추가설명", productName: "아토크건조시럽 품절(재입고시 0.4g/10kg,tid), 6개월-3세미만: 0.5mg(원내없음)", sortOrder: 16 },
+
+    // 시트6-19: Croup
+    { prescriptionId: T6Croup처방.id, type: "영상검사", productName: "Chest PA", sortOrder: 0 },
+    { prescriptionId: T6Croup처방.id, type: "영상검사", productName: "Neck AP+LAT", note: "hyper-extension 후 촬영", sortOrder: 1 },
+    { prescriptionId: T6Croup처방.id, type: "추가설명", productName: "네뷸라이저", sortOrder: 2 },
+    { prescriptionId: T6Croup처방.id, type: "지시처방", productName: "증기흡입치료(1일당)", note: "상기도", sortOrder: 3 },
+    { prescriptionId: T6Croup처방.id, type: "약", productName: "보스민액(염산에피네프린액)", ingredientName: "epinephrine HCl", dosage: "5", unit: "ml", frequency: "1", route: "Aerosol", note: "0.5ml/kg, max 5ml, 3세미만 2.5cc 3세이상 5cc", sortOrder: 4 },
+    { prescriptionId: T6Croup처방.id, type: "약", productName: "에피네프린주사액1mg/1mL", ingredientName: "epinephrine", dosage: "2.5", unit: "mg", frequency: "1", route: "Aerosol", note: "3세미만, 네뷸라이저 0.5ml/kg, max 5ml", sortOrder: 5 },
+    { prescriptionId: T6Croup처방.id, type: "약", productName: "에피네프린주사액1mg/1mL", ingredientName: "epinephrine", dosage: "5", unit: "mg", frequency: "1", route: "Aerosol", note: "3세이상, 네뷸라이저 0.5ml/kg, max 5ml", sortOrder: 6 },
+    { prescriptionId: T6Croup처방.id, type: "추가설명", productName: "주사", sortOrder: 7 },
+    { prescriptionId: T6Croup처방.id, type: "약", productName: "덱사메타손주사액5mg/1mL", ingredientName: "dexamethasone disodium phosphate", dosage: "0.4", unit: "A", frequency: "1", route: "IM", note: "0.15-0.6mg/kg IM(10mg maximum)", sortOrder: 8 },
+    { prescriptionId: T6Croup처방.id, type: "추가설명", productName: "퇴원약", sortOrder: 9 },
+    { prescriptionId: T6Croup처방.id, type: "퇴원약", productName: "코푸스티시럽", ingredientName: "ivy leaf dry extract", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "진해거담제 3.5cc/10kg", sortOrder: 10 },
+    { prescriptionId: T6Croup처방.id, type: "퇴원약", productName: "세토펜현탁액", ingredientName: "acetaminophen", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "0.375cc/kg", sortOrder: 11 },
+    { prescriptionId: T6Croup처방.id, type: "퇴원약", productName: "어린이부루펜시럽", ingredientName: "ibuprofen", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "Wt/3(Max 40mg/kg/d)", sortOrder: 12 },
+    { prescriptionId: T6Croup처방.id, type: "퇴원약", productName: "코미시럽", ingredientName: "chlorpheniramine/dl-메칠에페드린(추정, 복합 비충혈완화제)", dosage: "1", unit: "ml", frequency: "TID", route: "TID PC", note: "콧물약, 0.3cc/kg", sortOrder: 13 },
+    { prescriptionId: T6Croup처방.id, type: "퇴원약", productName: "네오날린패취2mg", ingredientName: "tulobuterol", dosage: "1", unit: "EA", frequency: "1", route: "부착", note: "9세이상", sortOrder: 14 },
+    { prescriptionId: T6Croup처방.id, type: "퇴원약", productName: "아스날린패취1mg", ingredientName: "tulobuterol", dosage: "1", unit: "EA", frequency: "1", route: "부착", note: "3-9세미만", sortOrder: 15 },
+    { prescriptionId: T6Croup처방.id, type: "추가설명", productName: "3세이하는 0.5mg(원내엔 없음), 아토크는 품절(재입고시 0.4g/kg,tid)", sortOrder: 16 },
+
+    // 시트6-20: 소아 CPR
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "반정량(BST)", sortOrder: 0 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "CBC & Diff & ESR", sortOrder: 1 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "CRP(정량)", sortOrder: 2 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "CPK", sortOrder: 3 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "Amylase", sortOrder: 4 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "Lipase", sortOrder: 5 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "Chemistry(19종)", sortOrder: 6 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "Lactate", sortOrder: 7 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "BT", sortOrder: 8 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "PT", sortOrder: 9 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "aPTT", sortOrder: 10 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "CK-MB(응급)", sortOrder: 11 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "Troponin-I(응급)", sortOrder: 12 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "NT-Pro BNP", sortOrder: 13 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "D-Dimer", sortOrder: 14 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "Ammonia", sortOrder: 15 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "Osmolarity(S)(R)", sortOrder: 16 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "UA 10종 & micro", sortOrder: 17 },
+    { prescriptionId: T6CPR처방.id, type: "혈액검사", productName: "ABGA", note: "VBGA 바로 나가주세요", sortOrder: 18 },
+    { prescriptionId: T6CPR처방.id, type: "추가설명", productName: "CPR 감시용", sortOrder: 19 },
+    { prescriptionId: T6CPR처방.id, type: "지시처방", productName: "EKG Bedside Monitoring", note: "1회용 Electrode는 별도 산정", sortOrder: 20 },
+    { prescriptionId: T6CPR처방.id, type: "지시처방", productName: "경피적혈액산소포화도측정(1일당)", sortOrder: 21 },
+    { prescriptionId: T6CPR처방.id, type: "지시처방", productName: "End Expiratory CO2 Partial Pressure Monitoring(Capnography)(1일당)", sortOrder: 22 },
+    { prescriptionId: T6CPR처방.id, type: "지시처방", productName: "EM target sono", note: "arrest Echo monitoring", sortOrder: 23 },
+    { prescriptionId: T6CPR처방.id, type: "추가설명", productName: "CPR 처치 처방", sortOrder: 24 },
+    { prescriptionId: T6CPR처방.id, type: "지시처방", productName: "Tracheal Intubation(기관내삽입술)", sortOrder: 25 },
+    { prescriptionId: T6CPR처방.id, type: "지시처방", productName: "O2 Inhalation(1일당)", sortOrder: 26 },
+    { prescriptionId: T6CPR처방.id, type: "지시처방", productName: "CPR(15분까지)", sortOrder: 27 },
+    { prescriptionId: T6CPR처방.id, type: "지시처방", productName: "CPR(15분 초과 30분까지)", sortOrder: 28 },
+    { prescriptionId: T6CPR처방.id, type: "지시처방", productName: "CPR(30분 초과 45분까지)", sortOrder: 29 },
+    { prescriptionId: T6CPR처방.id, type: "추가설명", productName: "제세동 처방", sortOrder: 30 },
+    { prescriptionId: T6CPR처방.id, type: "지시처방", productName: "Defibrillation, Cardioversion(1일당)", note: "1st 2J/kg, 2nd 4J/kg, 3rd 이후 4J/kg이상(최대 10J/kg or 성인용량)", sortOrder: 31 },
+    { prescriptionId: T6CPR처방.id, type: "추가설명", productName: "IO 처치", sortOrder: 32 },
+    { prescriptionId: T6CPR처방.id, type: "지시처방", productName: "Intraosseous Injection", sortOrder: 33 },
+    { prescriptionId: T6CPR처방.id, type: "추가설명", productName: "약 사용", sortOrder: 34 },
+    { prescriptionId: T6CPR처방.id, type: "약", productName: "에피네프린주사액1mg/1mL", ingredientName: "epinephrine", dosage: "0.1", unit: "A", frequency: "1", route: "IVS", note: "IV/IO: 0.01mg/kg, 개수 확인해서 처방", sortOrder: 35 },
+    { prescriptionId: T6CPR처방.id, type: "약", productName: "코다론주 150mg/3ml", ingredientName: "amiodarone HCl", dosage: "0.33", unit: "A", frequency: "1", route: "IVS", note: "IV/IO: 1st 5mg/kg -> 2nd 5mg/kg", sortOrder: 36 },
+    { prescriptionId: T6CPR처방.id, type: "약", productName: "염산리도카인주400mg/20ml", ingredientName: "lidocaine HCl", dosage: "0.02", unit: "V", frequency: "1", route: "IVS", note: "IV/IO: 1mg/kg bolus", sortOrder: 37 },
+
+    // 시트6-21: Hyperglycemia
+    { prescriptionId: T6Hyperglycemia처방.id, type: "추가설명", productName: "고혈당(DKA 없는), hydration 유지", sortOrder: 0 },
+    { prescriptionId: T6Hyperglycemia처방.id, type: "약", productName: "휴물린알주100단위", ingredientName: "insulin regular (Humulin R)", dosage: "1", unit: "IU", frequency: "1", route: "SC", note: "RI 0.1unit/kg SC 투여", sortOrder: 1 },
+
+    // 시트6-22: Hypoglycemia
+    { prescriptionId: T6Hypoglycemia처방.id, type: "추가설명", productName: "저혈당, BST<45 미만일 경우 U/A ketone 꼭 확인", sortOrder: 0 },
+    { prescriptionId: T6Hypoglycemia처방.id, type: "약", productName: "중외10%포도당주1000mL", ingredientName: "dextrose 10%", dosage: "1", unit: "Bag", frequency: "1", route: "IV", note: "5cc/kg loading 후 10DW 수액으로 유지속도 맞추기. 유지용량/속도: 0-10kg 6cc/kg + 10-20kg 3cc/kg + 20kg이상 1.5cc/kg(예:22kg=93cc/hr). 영아,소아는 25DW 2cc/kg인데 해당 수액 없음", sortOrder: 1 },
+
+    // 시트6-23: Seizure(febrile)
+    { prescriptionId: T6Seizure처방.id, type: "지시처방", productName: "Resuscitation of Febrile Convulsion", sortOrder: 0 },
+    { prescriptionId: T6Seizure처방.id, type: "추가설명", productName: "단순 febrile seizure일 경우 추가 검사 필요함. 해열 및 약물 조절만 해도 가능. BST부터 체크", sortOrder: 1 },
+    { prescriptionId: T6Seizure처방.id, type: "혈액검사", productName: "반정량(BST)", sortOrder: 2 },
+    { prescriptionId: T6Seizure처방.id, type: "혈액검사", productName: "신경학적검사-단순검사", sortOrder: 3 },
+    { prescriptionId: T6Seizure처방.id, type: "추가설명", productName: "검사 시행시 추가", sortOrder: 4 },
+    { prescriptionId: T6Seizure처방.id, type: "약", productName: "에스디주1:4 500ml", ingredientName: "dextrose/sodium chloride 혼합액(1:4)", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "200ml/hr. 1st 속도 20cc/kg, urination되면 감량고려. 유지속도: 0-10kg 4cc/kg+10-20kg 2cc/kg+20kg이상 1cc/kg(예:25kg=65cc/hr)", sortOrder: 5 },
+    { prescriptionId: T6Seizure처방.id, type: "혈액검사", productName: "CBC & Diff & ESR", sortOrder: 6 },
+    { prescriptionId: T6Seizure처방.id, type: "혈액검사", productName: "CRP(정량)", sortOrder: 7 },
+    { prescriptionId: T6Seizure처방.id, type: "혈액검사", productName: "Amylase", sortOrder: 8 },
+    { prescriptionId: T6Seizure처방.id, type: "혈액검사", productName: "Lipase", sortOrder: 9 },
+    { prescriptionId: T6Seizure처방.id, type: "혈액검사", productName: "Chemistry(19종)", sortOrder: 10 },
+    { prescriptionId: T6Seizure처방.id, type: "혈액검사", productName: "Lactate", sortOrder: 11 },
+    { prescriptionId: T6Seizure처방.id, type: "혈액검사", productName: "Ammonia", sortOrder: 12 },
+    { prescriptionId: T6Seizure처방.id, type: "혈액검사", productName: "UA 10종 & micro", sortOrder: 13 },
+    { prescriptionId: T6Seizure처방.id, type: "혈액검사", productName: "ABGA", note: "VBGA 나가주세요", sortOrder: 14 },
+    { prescriptionId: T6Seizure처방.id, type: "영상검사", productName: "Chest AP", sortOrder: 15 },
+    { prescriptionId: T6Seizure처방.id, type: "영상검사", productName: "Abdomen Supine", sortOrder: 16 },
+    { prescriptionId: T6Seizure처방.id, type: "영상검사", productName: "Brain CT", sortOrder: 17 },
+    { prescriptionId: T6Seizure처방.id, type: "추가설명", productName: "발열 동반시 해열제 투여", sortOrder: 18 },
+    { prescriptionId: T6Seizure처방.id, type: "약", productName: "어린이부루펜시럽", ingredientName: "ibuprofen", dosage: "3.3", unit: "ml", frequency: "1", route: "PRN", note: "wt/3(Max 40mg/kg/d)", sortOrder: 19 },
+    { prescriptionId: T6Seizure처방.id, type: "약", productName: "토라렌주2mL", ingredientName: "diclofenac sodium", dosage: "0.25", unit: "A", frequency: "1", route: "IM", note: "0.03cc/kg IM", sortOrder: 20 },
+    { prescriptionId: T6Seizure처방.id, type: "추가설명", productName: "AED 약", sortOrder: 21 },
+    { prescriptionId: T6Seizure처방.id, type: "약", productName: "아티반주사1ml", ingredientName: "lorazepam", dosage: "0.25", unit: "A", frequency: "1", route: "IVS", note: "0.1mg/kg 투여: do not exceed 4mg/single dose. 1st dose 0.1mg/kg, repeat 2nd dose 0.05mg/kg", sortOrder: 22 },
+    { prescriptionId: T6Seizure처방.id, type: "추가설명", productName: "Status epilepticus 1차약", sortOrder: 23 },
+    { prescriptionId: T6Seizure처방.id, type: "약", productName: "큐팜주사500mg", ingredientName: "levetiracetam", dosage: "200", unit: "mg", frequency: "1", route: "IV infusion", note: "20-40mg/kg, 20분간 투여", sortOrder: 24, mixGroup: "M1" },
+    { prescriptionId: T6Seizure처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 25, mixGroup: "M1" },
+    { prescriptionId: T6Seizure처방.id, type: "추가설명", productName: "Status epilepticus 2차약", sortOrder: 26 },
+    { prescriptionId: T6Seizure처방.id, type: "약", productName: "부광미다졸람주사5mg", ingredientName: "midazolam", dosage: "0.25", unit: "A", frequency: "1", route: "IVS", note: "0.1-0.2mg/kg slow IV push", sortOrder: 27 },
   ]);
 
 }
