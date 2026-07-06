@@ -334,6 +334,72 @@ export async function insertKkuData() {
   const [T6Hypoglycemia] = await db.insert(categories).values({ name: "Hypoglycemia", parentId: 김대용엑셀정리.id, sortOrder: 143 }).returning();
   const [T6Seizure] = await db.insert(categories).values({ name: "Seizure(febrile)", parentId: 김대용엑셀정리.id, sortOrder: 144 }).returning();
 
+  // 시트1: 내원 시 검사
+  const [T1기본검사] = await db.insert(categories).values({ name: "기본 검사(Lab)", parentId: 김대용엑셀정리.id, sortOrder: 145 }).returning();
+  const [T1ChestPain] = await db.insert(categories).values({ name: "Chest pain", parentId: 김대용엑셀정리.id, sortOrder: 146 }).returning();
+  const [T1CardiacEnzyme] = await db.insert(categories).values({ name: "Cardiac enzyme 추가", parentId: 김대용엑셀정리.id, sortOrder: 147 }).returning();
+  const [T1AbdominalPain] = await db.insert(categories).values({ name: "Abdominal pain", parentId: 김대용엑셀정리.id, sortOrder: 148 }).returning();
+  const [T1Dizziness] = await db.insert(categories).values({ name: "Dizziness", parentId: 김대용엑셀정리.id, sortOrder: 149 }).returning();
+  const [T1OneDayFever] = await db.insert(categories).values({ name: "One-day Fever", parentId: 김대용엑셀정리.id, sortOrder: 150 }).returning();
+  const [T1FullLabBNP제외] = await db.insert(categories).values({ name: "Full lab - BNP 제외(중환)", parentId: 김대용엑셀정리.id, sortOrder: 151 }).returning();
+  const [T1FullLabDyspnea] = await db.insert(categories).values({ name: "Full lab - Dyspnea(중환)", parentId: 김대용엑셀정리.id, sortOrder: 152 }).returning();
+  const [T1신경학적검사추가] = await db.insert(categories).values({ name: "신경학적 검사 추가(중환)", parentId: 김대용엑셀정리.id, sortOrder: 153 }).returning();
+  const [T1CPR성인] = await db.insert(categories).values({ name: "CPR(성인)", parentId: 김대용엑셀정리.id, sortOrder: 154 }).returning();
+  const [T1CPRPostROSC] = await db.insert(categories).values({ name: "CPR (Post ROSC)", parentId: 김대용엑셀정리.id, sortOrder: 155 }).returning();
+  const [T1SepticShock] = await db.insert(categories).values({ name: "Septic shock", parentId: 김대용엑셀정리.id, sortOrder: 156 }).returning();
+  const [T1GIBleeding] = await db.insert(categories).values({ name: "GI bleeding(중환)", parentId: 김대용엑셀정리.id, sortOrder: 157 }).returning();
+  const [T1Stroke6이내] = await db.insert(categories).values({ name: "Stroke (6시간 이내)", parentId: 김대용엑셀정리.id, sortOrder: 158 }).returning();
+  const [T1Stroke6이후] = await db.insert(categories).values({ name: "Stroke (6시간 이후)", parentId: 김대용엑셀정리.id, sortOrder: 159 }).returning();
+  const [T1코로나독감검사] = await db.insert(categories).values({ name: "코로나 검사/독감 검사", parentId: 김대용엑셀정리.id, sortOrder: 160 }).returning();
+  const [T1hCG] = await db.insert(categories).values({ name: "가임기 여성 추가(hCG)", parentId: 김대용엑셀정리.id, sortOrder: 161 }).returning();
+  const [T1수혈검사처방] = await db.insert(categories).values({ name: "수혈 검사 및 처방", parentId: 김대용엑셀정리.id, sortOrder: 162 }).returning();
+  const [T1추가lab감염3종] = await db.insert(categories).values({ name: "추가 lab(감염 3종)", parentId: 김대용엑셀정리.id, sortOrder: 163 }).returning();
+  const [T1추가lab배양검사] = await db.insert(categories).values({ name: "추가 lab(배양검사 모음)", parentId: 김대용엑셀정리.id, sortOrder: 164 }).returning();
+  const [T1추가lab소변검사] = await db.insert(categories).values({ name: "추가 lab(소변검사)", parentId: 김대용엑셀정리.id, sortOrder: 165 }).returning();
+  const [T1추가lab요양원] = await db.insert(categories).values({ name: "추가 lab(요양원 환자)", parentId: 김대용엑셀정리.id, sortOrder: 166 }).returning();
+  const [T1추가labAnemia] = await db.insert(categories).values({ name: "추가 lab(Anemia study)", parentId: 김대용엑셀정리.id, sortOrder: 167 }).returning();
+  const [T1추가labAutoimmune] = await db.insert(categories).values({ name: "추가 lab(Autoimmune study)", parentId: 김대용엑셀정리.id, sortOrder: 168 }).returning();
+  const [T1추가labDrugIntox] = await db.insert(categories).values({ name: "추가 lab(Drug Intoxication)", parentId: 김대용엑셀정리.id, sortOrder: 169 }).returning();
+  const [T1추가labERPOCT] = await db.insert(categories).values({ name: "추가 lab(ER POCT)", parentId: 김대용엑셀정리.id, sortOrder: 170 }).returning();
+  const [T1추가labHepatitis] = await db.insert(categories).values({ name: "추가 lab(Hepatitis)", parentId: 김대용엑셀정리.id, sortOrder: 171 }).returning();
+  const [T1추가labNeedlestick] = await db.insert(categories).values({ name: "추가 lab(Needle stick injury)", parentId: 김대용엑셀정리.id, sortOrder: 172 }).returning();
+  const [T1추가labPneumonia] = await db.insert(categories).values({ name: "추가 lab(Pneumonia)", parentId: 김대용엑셀정리.id, sortOrder: 173 }).returning();
+  const [T1추가labStool] = await db.insert(categories).values({ name: "추가 lab(Stool)", parentId: 김대용엑셀정리.id, sortOrder: 174 }).returning();
+  const [T1추가labTumorMarker] = await db.insert(categories).values({ name: "추가 lab(Tumor marker)", parentId: 김대용엑셀정리.id, sortOrder: 175 }).returning();
+  const [T1추가lab수두] = await db.insert(categories).values({ name: "추가 lab(수두 의심)", parentId: 김대용엑셀정리.id, sortOrder: 176 }).returning();
+  const [T1추가labMumps] = await db.insert(categories).values({ name: "추가 lab(Mumps 의심)", parentId: 김대용엑셀정리.id, sortOrder: 177 }).returning();
+  const [T1추가lab말라리아] = await db.insert(categories).values({ name: "추가 lab(말라리아 의심)", parentId: 김대용엑셀정리.id, sortOrder: 178 }).returning();
+  const [T1음주채혈검사] = await db.insert(categories).values({ name: "음주채혈검사", parentId: 김대용엑셀정리.id, sortOrder: 179 }).returning();
+  const [T1MajorTrauma] = await db.insert(categories).values({ name: "Major trauma", parentId: 김대용엑셀정리.id, sortOrder: 180 }).returning();
+  const [T1MinorTrauma] = await db.insert(categories).values({ name: "Minor trauma", parentId: 김대용엑셀정리.id, sortOrder: 181 }).returning();
+  const [T1HeadTrauma] = await db.insert(categories).values({ name: "Head trauma", parentId: 김대용엑셀정리.id, sortOrder: 182 }).returning();
+  const [T1자보lab] = await db.insert(categories).values({ name: "자보 lab", parentId: 김대용엑셀정리.id, sortOrder: 183 }).returning();
+  const [T1입원전FullLab] = await db.insert(categories).values({ name: "입원 전 Full lab", parentId: 김대용엑셀정리.id, sortOrder: 184 }).returning();
+  const [T1입원전추가lab] = await db.insert(categories).values({ name: "입원 전 추가 lab", parentId: 김대용엑셀정리.id, sortOrder: 185 }).returning();
+  const [T1Appe입원전처방] = await db.insert(categories).values({ name: "Appe. 입원전 처방(전원 등)", parentId: 김대용엑셀정리.id, sortOrder: 186 }).returning();
+  const [T1입원지시오더] = await db.insert(categories).values({ name: "입원 지시 오더", parentId: 김대용엑셀정리.id, sortOrder: 187 }).returning();
+  const [T1입원오더IM] = await db.insert(categories).values({ name: "입원 오더 추가(IM)", parentId: 김대용엑셀정리.id, sortOrder: 188 }).returning();
+  const [T1입원오더NS] = await db.insert(categories).values({ name: "입원 오더 추가(NS)", parentId: 김대용엑셀정리.id, sortOrder: 189 }).returning();
+  const [T1입원오더OS] = await db.insert(categories).values({ name: "입원 오더 추가(OS)", parentId: 김대용엑셀정리.id, sortOrder: 190 }).returning();
+  const [T1입원오더GS] = await db.insert(categories).values({ name: "입원 오더 추가(GS)", parentId: 김대용엑셀정리.id, sortOrder: 191 }).returning();
+  const [T1입원전CREVRE] = await db.insert(categories).values({ name: "입원 전 CRE/VRE(요양원 환자)", parentId: 김대용엑셀정리.id, sortOrder: 192 }).returning();
+  const [T1기본xray] = await db.insert(categories).values({ name: "기본 X-ray", parentId: 김대용엑셀정리.id, sortOrder: 193 }).returning();
+  const [T1XrayBedridden] = await db.insert(categories).values({ name: "X-ray(Bed-ridden 변경)", parentId: 김대용엑셀정리.id, sortOrder: 194 }).returning();
+  const [T1PortableXray] = await db.insert(categories).values({ name: "Portable X-ray", parentId: 김대용엑셀정리.id, sortOrder: 195 }).returning();
+  const [T1XrayHead] = await db.insert(categories).values({ name: "X-ray(Head)", parentId: 김대용엑셀정리.id, sortOrder: 196 }).returning();
+  const [T1XrayNeck] = await db.insert(categories).values({ name: "X-ray(Neck soft)", parentId: 김대용엑셀정리.id, sortOrder: 197 }).returning();
+  const [T1XraySpine] = await db.insert(categories).values({ name: "X-ray(Spine)", parentId: 김대용엑셀정리.id, sortOrder: 198 }).returning();
+  const [T1XrayChestAbdomen] = await db.insert(categories).values({ name: "X-ray(Chest & Abdomen)", parentId: 김대용엑셀정리.id, sortOrder: 199 }).returning();
+  const [T1XrayHipPelvis] = await db.insert(categories).values({ name: "X-ray(Hip/Pelvis)", parentId: 김대용엑셀정리.id, sortOrder: 200 }).returning();
+  const [T1XrayClavicleShoulder] = await db.insert(categories).values({ name: "X-ray(Clavicle & Shoulder)", parentId: 김대용엑셀정리.id, sortOrder: 201 }).returning();
+  const [T1XrayUpperExt] = await db.insert(categories).values({ name: "X-ray(Upper ext.)", parentId: 김대용엑셀정리.id, sortOrder: 202 }).returning();
+  const [T1XrayLowerExt] = await db.insert(categories).values({ name: "X-ray(Lower ext.)", parentId: 김대용엑셀정리.id, sortOrder: 203 }).returning();
+  const [T1CT코드모음] = await db.insert(categories).values({ name: "CT 코드 모음", parentId: 김대용엑셀정리.id, sortOrder: 204 }).returning();
+  const [T1MRI코드모음] = await db.insert(categories).values({ name: "MRI 코드 모음", parentId: 김대용엑셀정리.id, sortOrder: 205 }).returning();
+  const [T1초음파코드모음] = await db.insert(categories).values({ name: "초음파 코드 모음", parentId: 김대용엑셀정리.id, sortOrder: 206 }).returning();
+  const [T1외부CD판독] = await db.insert(categories).values({ name: "외부 CD 판독", parentId: 김대용엑셀정리.id, sortOrder: 207 }).returning();
+  const [T1조영제AKI] = await db.insert(categories).values({ name: "조영제 AKI protocol", parentId: 김대용엑셀정리.id, sortOrder: 208 }).returning();
+
   const [철분제제처방] = await db.insert(prescriptions).values({ name: "철분제제", categoryId: 철분제제.id, sortOrder: 0 }).returning();
   const [트라넥삼산처방] = await db.insert(prescriptions).values({ name: "Trauma Tranexamic acid", categoryId: 트라넥삼산.id, sortOrder: 0 }).returning();
   const [트라우마시리즈처방] = await db.insert(prescriptions).values({ name: "Trauma Series", categoryId: 트라우마시리즈.id, sortOrder: 0 }).returning();
@@ -659,6 +725,71 @@ export async function insertKkuData() {
   const [T6Hyperglycemia처방] = await db.insert(prescriptions).values({ name: "Hyperglycemia", categoryId: T6Hyperglycemia.id, sortOrder: 0 }).returning();
   const [T6Hypoglycemia처방] = await db.insert(prescriptions).values({ name: "Hypoglycemia", categoryId: T6Hypoglycemia.id, sortOrder: 0 }).returning();
   const [T6Seizure처방] = await db.insert(prescriptions).values({ name: "Seizure(febrile)", categoryId: T6Seizure.id, sortOrder: 0 }).returning();
+
+  const [T1기본검사처방] = await db.insert(prescriptions).values({ name: "기본 검사(Lab)", categoryId: T1기본검사.id, sortOrder: 0 }).returning();
+  const [T1ChestPain처방] = await db.insert(prescriptions).values({ name: "Chest pain", categoryId: T1ChestPain.id, sortOrder: 0 }).returning();
+  const [T1CardiacEnzyme처방] = await db.insert(prescriptions).values({ name: "Cardiac enzyme 추가", categoryId: T1CardiacEnzyme.id, sortOrder: 0 }).returning();
+  const [T1AbdominalPain처방] = await db.insert(prescriptions).values({ name: "Abdominal pain", categoryId: T1AbdominalPain.id, sortOrder: 0 }).returning();
+  const [T1Dizziness처방] = await db.insert(prescriptions).values({ name: "Dizziness", categoryId: T1Dizziness.id, sortOrder: 0 }).returning();
+  const [T1OneDayFever처방] = await db.insert(prescriptions).values({ name: "One-day Fever", categoryId: T1OneDayFever.id, sortOrder: 0 }).returning();
+  const [T1FullLabBNP제외처방] = await db.insert(prescriptions).values({ name: "Full lab - BNP 제외", categoryId: T1FullLabBNP제외.id, sortOrder: 0 }).returning();
+  const [T1FullLabDyspnea처방] = await db.insert(prescriptions).values({ name: "Full lab - Dyspnea", categoryId: T1FullLabDyspnea.id, sortOrder: 0 }).returning();
+  const [T1신경학적검사추가처방] = await db.insert(prescriptions).values({ name: "신경학적 검사 추가", categoryId: T1신경학적검사추가.id, sortOrder: 0 }).returning();
+  const [T1CPR성인처방] = await db.insert(prescriptions).values({ name: "CPR(성인)", categoryId: T1CPR성인.id, sortOrder: 0 }).returning();
+  const [T1CPRPostROSC처방] = await db.insert(prescriptions).values({ name: "CPR (Post ROSC)", categoryId: T1CPRPostROSC.id, sortOrder: 0 }).returning();
+  const [T1SepticShock처방] = await db.insert(prescriptions).values({ name: "Septic shock", categoryId: T1SepticShock.id, sortOrder: 0 }).returning();
+  const [T1GIBleeding처방] = await db.insert(prescriptions).values({ name: "GI bleeding", categoryId: T1GIBleeding.id, sortOrder: 0 }).returning();
+  const [T1Stroke6이내처방] = await db.insert(prescriptions).values({ name: "Stroke (6시간 이내)", categoryId: T1Stroke6이내.id, sortOrder: 0 }).returning();
+  const [T1Stroke6이후처방] = await db.insert(prescriptions).values({ name: "Stroke (6시간 이후)", categoryId: T1Stroke6이후.id, sortOrder: 0 }).returning();
+  const [T1코로나독감검사처방] = await db.insert(prescriptions).values({ name: "코로나 검사/독감 검사", categoryId: T1코로나독감검사.id, sortOrder: 0 }).returning();
+  const [T1hCG처방] = await db.insert(prescriptions).values({ name: "가임기 여성 추가(hCG)", categoryId: T1hCG.id, sortOrder: 0 }).returning();
+  const [T1수혈검사처방처방] = await db.insert(prescriptions).values({ name: "수혈 검사 및 처방", categoryId: T1수혈검사처방.id, sortOrder: 0 }).returning();
+  const [T1추가lab감염3종처방] = await db.insert(prescriptions).values({ name: "추가 lab(감염 3종)", categoryId: T1추가lab감염3종.id, sortOrder: 0 }).returning();
+  const [T1추가lab배양검사처방] = await db.insert(prescriptions).values({ name: "추가 lab(배양검사 모음)", categoryId: T1추가lab배양검사.id, sortOrder: 0 }).returning();
+  const [T1추가lab소변검사처방] = await db.insert(prescriptions).values({ name: "추가 lab(소변검사)", categoryId: T1추가lab소변검사.id, sortOrder: 0 }).returning();
+  const [T1추가lab요양원처방] = await db.insert(prescriptions).values({ name: "추가 lab(요양원 환자)", categoryId: T1추가lab요양원.id, sortOrder: 0 }).returning();
+  const [T1추가labAnemia처방] = await db.insert(prescriptions).values({ name: "추가 lab(Anemia study)", categoryId: T1추가labAnemia.id, sortOrder: 0 }).returning();
+  const [T1추가labAutoimmune처방] = await db.insert(prescriptions).values({ name: "추가 lab(Autoimmune study)", categoryId: T1추가labAutoimmune.id, sortOrder: 0 }).returning();
+  const [T1추가labDrugIntox처방] = await db.insert(prescriptions).values({ name: "추가 lab(Drug Intoxication)", categoryId: T1추가labDrugIntox.id, sortOrder: 0 }).returning();
+  const [T1추가labERPOCT처방] = await db.insert(prescriptions).values({ name: "추가 lab(ER POCT)", categoryId: T1추가labERPOCT.id, sortOrder: 0 }).returning();
+  const [T1추가labHepatitis처방] = await db.insert(prescriptions).values({ name: "추가 lab(Hepatitis)", categoryId: T1추가labHepatitis.id, sortOrder: 0 }).returning();
+  const [T1추가labNeedlestick처방] = await db.insert(prescriptions).values({ name: "추가 lab(Needle stick injury)", categoryId: T1추가labNeedlestick.id, sortOrder: 0 }).returning();
+  const [T1추가labPneumonia처방] = await db.insert(prescriptions).values({ name: "추가 lab(Pneumonia)", categoryId: T1추가labPneumonia.id, sortOrder: 0 }).returning();
+  const [T1추가labStool처방] = await db.insert(prescriptions).values({ name: "추가 lab(Stool)", categoryId: T1추가labStool.id, sortOrder: 0 }).returning();
+  const [T1추가labTumorMarker처방] = await db.insert(prescriptions).values({ name: "추가 lab(Tumor marker)", categoryId: T1추가labTumorMarker.id, sortOrder: 0 }).returning();
+  const [T1추가lab수두처방] = await db.insert(prescriptions).values({ name: "추가 lab(수두 의심)", categoryId: T1추가lab수두.id, sortOrder: 0 }).returning();
+  const [T1추가labMumps처방] = await db.insert(prescriptions).values({ name: "추가 lab(Mumps 의심)", categoryId: T1추가labMumps.id, sortOrder: 0 }).returning();
+  const [T1추가lab말라리아처방] = await db.insert(prescriptions).values({ name: "추가 lab(말라리아 의심)", categoryId: T1추가lab말라리아.id, sortOrder: 0 }).returning();
+  const [T1음주채혈검사처방] = await db.insert(prescriptions).values({ name: "음주채혈검사", categoryId: T1음주채혈검사.id, sortOrder: 0 }).returning();
+  const [T1MajorTrauma처방] = await db.insert(prescriptions).values({ name: "Major trauma", categoryId: T1MajorTrauma.id, sortOrder: 0 }).returning();
+  const [T1MinorTrauma처방] = await db.insert(prescriptions).values({ name: "Minor trauma", categoryId: T1MinorTrauma.id, sortOrder: 0 }).returning();
+  const [T1HeadTrauma처방] = await db.insert(prescriptions).values({ name: "Head trauma", categoryId: T1HeadTrauma.id, sortOrder: 0 }).returning();
+  const [T1자보lab처방] = await db.insert(prescriptions).values({ name: "자보 lab", categoryId: T1자보lab.id, sortOrder: 0 }).returning();
+  const [T1입원전FullLab처방] = await db.insert(prescriptions).values({ name: "입원 전 Full lab", categoryId: T1입원전FullLab.id, sortOrder: 0 }).returning();
+  const [T1입원전추가lab처방] = await db.insert(prescriptions).values({ name: "입원 전 추가 lab", categoryId: T1입원전추가lab.id, sortOrder: 0 }).returning();
+  const [T1Appe입원전처방처방] = await db.insert(prescriptions).values({ name: "Appe. 입원전 처방(전원 등)", categoryId: T1Appe입원전처방.id, sortOrder: 0 }).returning();
+  const [T1입원지시오더처방] = await db.insert(prescriptions).values({ name: "입원 지시 오더", categoryId: T1입원지시오더.id, sortOrder: 0 }).returning();
+  const [T1입원오더IM처방] = await db.insert(prescriptions).values({ name: "입원 오더 추가(IM)", categoryId: T1입원오더IM.id, sortOrder: 0 }).returning();
+  const [T1입원오더NS처방] = await db.insert(prescriptions).values({ name: "입원 오더 추가(NS)", categoryId: T1입원오더NS.id, sortOrder: 0 }).returning();
+  const [T1입원오더OS처방] = await db.insert(prescriptions).values({ name: "입원 오더 추가(OS)", categoryId: T1입원오더OS.id, sortOrder: 0 }).returning();
+  const [T1입원오더GS처방] = await db.insert(prescriptions).values({ name: "입원 오더 추가(GS)", categoryId: T1입원오더GS.id, sortOrder: 0 }).returning();
+  const [T1입원전CREVRE처방] = await db.insert(prescriptions).values({ name: "입원 전 CRE/VRE(요양원 환자)", categoryId: T1입원전CREVRE.id, sortOrder: 0 }).returning();
+  const [T1기본xray처방] = await db.insert(prescriptions).values({ name: "기본 X-ray", categoryId: T1기본xray.id, sortOrder: 0 }).returning();
+  const [T1XrayBedridden처방] = await db.insert(prescriptions).values({ name: "X-ray(Bed-ridden 변경)", categoryId: T1XrayBedridden.id, sortOrder: 0 }).returning();
+  const [T1PortableXray처방] = await db.insert(prescriptions).values({ name: "Portable X-ray", categoryId: T1PortableXray.id, sortOrder: 0 }).returning();
+  const [T1XrayHead처방] = await db.insert(prescriptions).values({ name: "X-ray(Head)", categoryId: T1XrayHead.id, sortOrder: 0 }).returning();
+  const [T1XrayNeck처방] = await db.insert(prescriptions).values({ name: "X-ray(Neck soft)", categoryId: T1XrayNeck.id, sortOrder: 0 }).returning();
+  const [T1XraySpine처방] = await db.insert(prescriptions).values({ name: "X-ray(Spine)", categoryId: T1XraySpine.id, sortOrder: 0 }).returning();
+  const [T1XrayChestAbdomen처방] = await db.insert(prescriptions).values({ name: "X-ray(Chest & Abdomen)", categoryId: T1XrayChestAbdomen.id, sortOrder: 0 }).returning();
+  const [T1XrayHipPelvis처방] = await db.insert(prescriptions).values({ name: "X-ray(Hip/Pelvis)", categoryId: T1XrayHipPelvis.id, sortOrder: 0 }).returning();
+  const [T1XrayClavicleShoulder처방] = await db.insert(prescriptions).values({ name: "X-ray(Clavicle & Shoulder)", categoryId: T1XrayClavicleShoulder.id, sortOrder: 0 }).returning();
+  const [T1XrayUpperExt처방] = await db.insert(prescriptions).values({ name: "X-ray(Upper ext.)", categoryId: T1XrayUpperExt.id, sortOrder: 0 }).returning();
+  const [T1XrayLowerExt처방] = await db.insert(prescriptions).values({ name: "X-ray(Lower ext.)", categoryId: T1XrayLowerExt.id, sortOrder: 0 }).returning();
+  const [T1CT코드모음처방] = await db.insert(prescriptions).values({ name: "CT 코드 모음", categoryId: T1CT코드모음.id, sortOrder: 0 }).returning();
+  const [T1MRI코드모음처방] = await db.insert(prescriptions).values({ name: "MRI 코드 모음", categoryId: T1MRI코드모음.id, sortOrder: 0 }).returning();
+  const [T1초음파코드모음처방] = await db.insert(prescriptions).values({ name: "초음파 코드 모음", categoryId: T1초음파코드모음.id, sortOrder: 0 }).returning();
+  const [T1외부CD판독처방] = await db.insert(prescriptions).values({ name: "외부 CD 판독", categoryId: T1외부CD판독.id, sortOrder: 0 }).returning();
+  const [T1조영제AKI처방] = await db.insert(prescriptions).values({ name: "조영제 AKI protocol", categoryId: T1조영제AKI.id, sortOrder: 0 }).returning();
 
   await db.insert(prescriptionItems).values([
     // 철분제제
@@ -3735,6 +3866,1096 @@ export async function insertKkuData() {
     { prescriptionId: T6Seizure처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 25, mixGroup: "M1" },
     { prescriptionId: T6Seizure처방.id, type: "추가설명", productName: "Status epilepticus 2차약", sortOrder: 26 },
     { prescriptionId: T6Seizure처방.id, type: "약", productName: "부광미다졸람주사5mg", ingredientName: "midazolam", dosage: "0.25", unit: "A", frequency: "1", route: "IVS", note: "0.1-0.2mg/kg slow IV push", sortOrder: 27 },
+
+    // 시트1-1: 기본 검사(Lab) - 다른 소분류에서 반복되는 기본검사 항목의 원본 세트
+    { prescriptionId: T1기본검사처방.id, type: "약", productName: "플라주오피주 500mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "80cc/hr", sortOrder: 0 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "CBC & Diff & ESR", sortOrder: 1 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "PT & APTT", sortOrder: 2 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "CRP(정량)", sortOrder: 3 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "CPK", sortOrder: 4 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "Amylase", sortOrder: 5 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "Lipase", sortOrder: 6 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "Glucose(정량)", sortOrder: 7 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "T.Protein", sortOrder: 8 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "Albumin", sortOrder: 9 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "T.bilirubin(S)", sortOrder: 10 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "AST(GOT)", sortOrder: 11 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "ALT(GPT)", sortOrder: 12 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "GGT(rGPT)", sortOrder: 13 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "ALP", sortOrder: 14 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "Electrolyte 5종", sortOrder: 15 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "BUN", sortOrder: 16 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "Creatinine(eGFR)", sortOrder: 17 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "Uric Acid", sortOrder: 18 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "LDH", sortOrder: 19 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "Mg", sortOrder: 20 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "Total CO2", sortOrder: 21 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "Lactate", sortOrder: 22 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "UA 10종 & micro", sortOrder: 23 },
+    { prescriptionId: T1기본검사처방.id, type: "혈액검사", productName: "EKG 기록및 판독", sortOrder: 24 },
+    { prescriptionId: T1기본검사처방.id, type: "영상검사", productName: "Chest PA", sortOrder: 25 },
+    { prescriptionId: T1기본검사처방.id, type: "영상검사", productName: "Abdomen Erect+Supine", sortOrder: 26 },
+    { prescriptionId: T1기본검사처방.id, type: "추가설명", productName: "Bed-ridden 일 경우 아래 영상으로 대체", sortOrder: 27 },
+    { prescriptionId: T1기본검사처방.id, type: "영상검사", productName: "Chest AP", sortOrder: 28 },
+    { prescriptionId: T1기본검사처방.id, type: "영상검사", productName: "Abdomen Supine", sortOrder: 29 },
+
+    // 시트1-2: Chest pain (기본검사 참조는 생략, 위 기본Lab 참고)
+    { prescriptionId: T1ChestPain처방.id, type: "혈액검사", productName: "CK-MB(정량)", sortOrder: 0 },
+    { prescriptionId: T1ChestPain처방.id, type: "혈액검사", productName: "Troponin-T(hs)(원내)", sortOrder: 1 },
+    { prescriptionId: T1ChestPain처방.id, type: "혈액검사", productName: "NT-Pro BNP", sortOrder: 2 },
+    { prescriptionId: T1ChestPain처방.id, type: "혈액검사", productName: "D-Dimer", sortOrder: 3 },
+    { prescriptionId: T1ChestPain처방.id, type: "혈액검사", productName: "T.Cholesterol", sortOrder: 4 },
+    { prescriptionId: T1ChestPain처방.id, type: "혈액검사", productName: "HDL-Chol", sortOrder: 5 },
+    { prescriptionId: T1ChestPain처방.id, type: "혈액검사", productName: "Triglyceride", sortOrder: 6 },
+    { prescriptionId: T1ChestPain처방.id, type: "혈액검사", productName: "LDL콜레스테롤[계산제외]", sortOrder: 7 },
+    { prescriptionId: T1ChestPain처방.id, type: "혈액검사", productName: "Cardiac 3종 POCT(TnI, CK-MB, proBNP)", sortOrder: 8 },
+    { prescriptionId: T1ChestPain처방.id, type: "약", productName: "니트로글리세린0.6mg설하정", ingredientName: "nitroglycerin", dosage: "1", unit: "T", frequency: "PRN", route: "SL", note: "흉통시 설하 투여", sortOrder: 9 },
+
+    // 시트1-3: Cardiac enzyme 추가
+    { prescriptionId: T1CardiacEnzyme처방.id, type: "혈액검사", productName: "CK-MB(정량)", sortOrder: 0 },
+    { prescriptionId: T1CardiacEnzyme처방.id, type: "혈액검사", productName: "Troponin-T(hs)(원내)", sortOrder: 1 },
+    { prescriptionId: T1CardiacEnzyme처방.id, type: "혈액검사", productName: "D-Dimer", sortOrder: 2 },
+    { prescriptionId: T1CardiacEnzyme처방.id, type: "혈액검사", productName: "NT-Pro BNP", sortOrder: 3 },
+    { prescriptionId: T1CardiacEnzyme처방.id, type: "혈액검사", productName: "Myoglobin(정량)", sortOrder: 4 },
+    { prescriptionId: T1CardiacEnzyme처방.id, type: "혈액검사", productName: "ER)Cardiac marker 3종", sortOrder: 5 },
+    { prescriptionId: T1CardiacEnzyme처방.id, type: "혈액검사", productName: "ER)Cardiac marker 2종", sortOrder: 6 },
+
+    // 시트1-4: Abdominal pain
+    { prescriptionId: T1AbdominalPain처방.id, type: "약", productName: "플라주오피주 500mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 0 },
+    { prescriptionId: T1AbdominalPain처방.id, type: "약", productName: "히스판주 20mg/ml", ingredientName: "scopolamine butylbromide", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: T1AbdominalPain처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: T1AbdominalPain처방.id, type: "약", productName: "펩타졸주1Vial", ingredientName: "pantoprazole sodium", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 3, mixGroup: "M2" },
+    { prescriptionId: T1AbdominalPain처방.id, type: "약", productName: "엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M2" },
+    { prescriptionId: T1AbdominalPain처방.id, type: "약", productName: "멕쿨주10mg/2mL", ingredientName: "metoclopramide HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M3" },
+    { prescriptionId: T1AbdominalPain처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M3" },
+    { prescriptionId: T1AbdominalPain처방.id, type: "약", productName: "휴메딕스트라마돌염산염주사", ingredientName: "tramadol HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M4" },
+    { prescriptionId: T1AbdominalPain처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 8, mixGroup: "M4" },
+    { prescriptionId: T1AbdominalPain처방.id, type: "약", productName: "데노간주1g/1병", ingredientName: "propacetamol", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M5" },
+    { prescriptionId: T1AbdominalPain처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M5" },
+    { prescriptionId: T1AbdominalPain처방.id, type: "약", productName: "안티모딕주", ingredientName: "tiropramide HCl", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 11 },
+    { prescriptionId: T1AbdominalPain처방.id, type: "약", productName: "모틴주", ingredientName: "famotidine", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 12 },
+    { prescriptionId: T1AbdominalPain처방.id, type: "혈액검사", productName: "Ammonia", sortOrder: 13 },
+    { prescriptionId: T1AbdominalPain처방.id, type: "혈액검사", productName: "CK-MB(정량)", sortOrder: 14 },
+    { prescriptionId: T1AbdominalPain처방.id, type: "혈액검사", productName: "Troponin-T(hs)(원내)", sortOrder: 15 },
+    { prescriptionId: T1AbdominalPain처방.id, type: "혈액검사", productName: "D-Dimer", sortOrder: 16 },
+
+    // 시트1-5: Dizziness
+    { prescriptionId: T1Dizziness처방.id, type: "약", productName: "플라주오피주 500mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 0 },
+    { prescriptionId: T1Dizziness처방.id, type: "추가설명", productName: "증상조절", sortOrder: 1 },
+    { prescriptionId: T1Dizziness처방.id, type: "약", productName: "페니라민주사", ingredientName: "chlorpheniramine maleate", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 2 },
+    { prescriptionId: T1Dizziness처방.id, type: "약", productName: "멕쿨주10mg/2mL", ingredientName: "metoclopramide HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 3, mixGroup: "M1" },
+    { prescriptionId: T1Dizziness처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: T1Dizziness처방.id, type: "약", productName: "디아제팜주10mg/2ml", ingredientName: "diazepam", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 5, mixGroup: "M2" },
+    { prescriptionId: T1Dizziness처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 6, mixGroup: "M2" },
+    { prescriptionId: T1Dizziness처방.id, type: "추가설명", productName: "brain w/u", sortOrder: 7 },
+    { prescriptionId: T1Dizziness처방.id, type: "혈액검사", productName: "신경학적검사-일반검사(General Neurologic Examination)", sortOrder: 8 },
+    { prescriptionId: T1Dizziness처방.id, type: "영상검사", productName: "Brain CT", sortOrder: 9 },
+    { prescriptionId: T1Dizziness처방.id, type: "영상검사", productName: "Brain Diffusion(3.0T)", sortOrder: 10 },
+    { prescriptionId: T1Dizziness처방.id, type: "혈액검사", productName: "CK-MB(정량)", sortOrder: 11 },
+    { prescriptionId: T1Dizziness처방.id, type: "혈액검사", productName: "Troponin-T(hs)(원내)", sortOrder: 12 },
+    { prescriptionId: T1Dizziness처방.id, type: "혈액검사", productName: "D-Dimer", sortOrder: 13 },
+    { prescriptionId: T1Dizziness처방.id, type: "혈액검사", productName: "T.Cholesterol", sortOrder: 14 },
+    { prescriptionId: T1Dizziness처방.id, type: "혈액검사", productName: "HDL-Chol", sortOrder: 15 },
+    { prescriptionId: T1Dizziness처방.id, type: "혈액검사", productName: "Triglyceride", sortOrder: 16 },
+    { prescriptionId: T1Dizziness처방.id, type: "혈액검사", productName: "LDL-Chol", sortOrder: 17 },
+    { prescriptionId: T1Dizziness처방.id, type: "혈액검사", productName: "HBA1C", sortOrder: 18 },
+    { prescriptionId: T1Dizziness처방.id, type: "혈액검사", productName: "TSH", sortOrder: 19 },
+    { prescriptionId: T1Dizziness처방.id, type: "혈액검사", productName: "Free T4", sortOrder: 20 },
+    { prescriptionId: T1Dizziness처방.id, type: "혈액검사", productName: "T3", sortOrder: 21 },
+    { prescriptionId: T1Dizziness처방.id, type: "혈액검사", productName: "Osmolarity(S)(R)", sortOrder: 22 },
+    { prescriptionId: T1Dizziness처방.id, type: "혈액검사", productName: "VBGA", sortOrder: 23 },
+
+    // 시트1-6: One-day Fever
+    { prescriptionId: T1OneDayFever처방.id, type: "혈액검사", productName: "프로칼시토닌 정량검사(PCT)", sortOrder: 0 },
+    { prescriptionId: T1OneDayFever처방.id, type: "추가설명", productName: "Nasal swab", sortOrder: 1 },
+    { prescriptionId: T1OneDayFever처방.id, type: "혈액검사", productName: "인플루엔자 A·B 바이러스항원검사", sortOrder: 2 },
+    { prescriptionId: T1OneDayFever처방.id, type: "혈액검사", productName: "SARS-CoV-2 항원검사", sortOrder: 3 },
+    { prescriptionId: T1OneDayFever처방.id, type: "추가설명", productName: "Fever control", sortOrder: 4 },
+    { prescriptionId: T1OneDayFever처방.id, type: "약", productName: "플라주오피주 500mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 5 },
+    { prescriptionId: T1OneDayFever처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 6 },
+    { prescriptionId: T1OneDayFever처방.id, type: "약", productName: "케토신주사", ingredientName: "ketorolac tromethamine", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: T1OneDayFever처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 8, mixGroup: "M1" },
+    { prescriptionId: T1OneDayFever처방.id, type: "약", productName: "데노간주1g/1병", ingredientName: "propacetamol", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M2" },
+    { prescriptionId: T1OneDayFever처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M2" },
+    { prescriptionId: T1OneDayFever처방.id, type: "약", productName: "아록솔주 15mg/2mL", ingredientName: "ambroxol HCl", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 11 },
+    { prescriptionId: T1OneDayFever처방.id, type: "약", productName: "삐콤헥사주2ml", ingredientName: "vitamin B complex(B1,B2,B3,B5,B6,B12)", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 12 },
+
+    // 시트1-7: Full lab - BNP 제외(중환)
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 0 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "약", productName: "플라주오피주 500mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 1 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "Ammonia", sortOrder: 2 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "CK-MB(정량)", sortOrder: 3 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "Troponin-T(hs)(원내)", sortOrder: 4 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "D-Dimer", sortOrder: 5 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "TSH", sortOrder: 6 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "Free T4", sortOrder: 7 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "T3", sortOrder: 8 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "Osmolarity(S)(R)", sortOrder: 9 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "T.Cholesterol", sortOrder: 10 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "HDL-Chol", sortOrder: 11 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "Triglyceride", sortOrder: 12 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "LDL콜레스테롤[계산제외]", sortOrder: 13 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "HBsAb(정밀)", sortOrder: 14 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "HBsAg(정밀)", sortOrder: 15 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "정밀면역검사-C형간염항체", sortOrder: 16 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "HIV Ag/Ab(combo)", sortOrder: 17 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "RPR(정량)", sortOrder: 18 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "ABO(혈청,혈구)/RH(D)", sortOrder: 19 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "Ab Screen", sortOrder: 20 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "HBA1C", sortOrder: 21 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "응급)프로칼시토닌 정량검사(PCT)", sortOrder: 22 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "추가설명", productName: "POCT", sortOrder: 23 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "VBGA", sortOrder: 24 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "ABGA", sortOrder: 25 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "ER)Cardiac marker 2종", sortOrder: 26 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "추가설명", productName: "Nasal swab", sortOrder: 27 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "SARS-CoV-2 항원검사", sortOrder: 28 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "인플루엔자 A·B 바이러스항원검사", sortOrder: 29 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "추가설명", productName: "PCR - 아래 중 1개 선택", sortOrder: 30 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "선별PCR->중증응급환자(KTAS1-3등급)", sortOrder: 31 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "국비->코로나19 먹는치료제 대상군", sortOrder: 32 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "ER))DRG 단독PCR-K3등급(응급수술환자)", sortOrder: 33 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "PCR 중증응급환자제외(전액본인부담)", sortOrder: 34 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "Blood Culture(2세트)", sortOrder: 35 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "Ordinary culture(Random urine)", sortOrder: 36 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "Ordinary culture(sputum)", sortOrder: 37 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "추가설명", productName: "요양원 환자", sortOrder: 38 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "VRE Culture screening", sortOrder: 39 },
+    { prescriptionId: T1FullLabBNP제외처방.id, type: "혈액검사", productName: "CRE Culture screening", sortOrder: 40 },
+
+    // 시트1-8: Full lab - Dyspnea(중환)
+    { prescriptionId: T1FullLabDyspnea처방.id, type: "추가설명", productName: "위 Full lab-BNP제외 항목 그대로 + 아래 추가", sortOrder: 0 },
+    { prescriptionId: T1FullLabDyspnea처방.id, type: "혈액검사", productName: "NT-Pro BNP", sortOrder: 1 },
+    { prescriptionId: T1FullLabDyspnea처방.id, type: "혈액검사", productName: "ER)Cardiac marker 3종", sortOrder: 2 },
+
+    // 시트1-9: 신경학적 검사 추가(중환)
+    { prescriptionId: T1신경학적검사추가처방.id, type: "혈액검사", productName: "신경학적검사-일반검사(General Neurologic Examination)", sortOrder: 0 },
+    { prescriptionId: T1신경학적검사추가처방.id, type: "영상검사", productName: "Brain Diffusion(3.0T)", sortOrder: 1 },
+    { prescriptionId: T1신경학적검사추가처방.id, type: "영상검사", productName: "Brain CT", sortOrder: 2 },
+    { prescriptionId: T1신경학적검사추가처방.id, type: "영상검사", productName: "CVA (CE) CT", sortOrder: 3 },
+    { prescriptionId: T1신경학적검사추가처방.id, type: "영상검사", productName: "Brain Stroke MRI(3.0T)", sortOrder: 4 },
+    { prescriptionId: T1신경학적검사추가처방.id, type: "추가설명", productName: "단순 N/E만 할 경우", sortOrder: 5 },
+    { prescriptionId: T1신경학적검사추가처방.id, type: "혈액검사", productName: "신경학적검사-단순검사(Simple Neurologic Examination)", sortOrder: 6 },
+
+    // 시트1-10: CPR(성인)
+    { prescriptionId: T1CPR성인처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 0 },
+    { prescriptionId: T1CPR성인처방.id, type: "혈액검사", productName: "CK-MB(정량)", sortOrder: 1 },
+    { prescriptionId: T1CPR성인처방.id, type: "혈액검사", productName: "Troponin-T(hs)(원내)", sortOrder: 2 },
+    { prescriptionId: T1CPR성인처방.id, type: "혈액검사", productName: "NT-Pro BNP", sortOrder: 3 },
+    { prescriptionId: T1CPR성인처방.id, type: "혈액검사", productName: "D-Dimer", sortOrder: 4 },
+    { prescriptionId: T1CPR성인처방.id, type: "혈액검사", productName: "T.Cholesterol", sortOrder: 5 },
+    { prescriptionId: T1CPR성인처방.id, type: "혈액검사", productName: "HDL-Chol", sortOrder: 6 },
+    { prescriptionId: T1CPR성인처방.id, type: "혈액검사", productName: "Triglyceride", sortOrder: 7 },
+    { prescriptionId: T1CPR성인처방.id, type: "혈액검사", productName: "LDL콜레스테롤[계산제외]", sortOrder: 8 },
+    { prescriptionId: T1CPR성인처방.id, type: "혈액검사", productName: "Ammonia", sortOrder: 9 },
+    { prescriptionId: T1CPR성인처방.id, type: "혈액검사", productName: "Osmolarity(S)(R)", sortOrder: 10 },
+    { prescriptionId: T1CPR성인처방.id, type: "혈액검사", productName: "ABO(혈청,혈구)/RH(D)", sortOrder: 11 },
+    { prescriptionId: T1CPR성인처방.id, type: "추가설명", productName: "POCT검사", sortOrder: 12 },
+    { prescriptionId: T1CPR성인처방.id, type: "혈액검사", productName: "ER)Cardiac marker 3종", sortOrder: 13 },
+    { prescriptionId: T1CPR성인처방.id, type: "혈액검사", productName: "ER)ABGA", sortOrder: 14 },
+    { prescriptionId: T1CPR성인처방.id, type: "추가설명", productName: "CPR 감시용", sortOrder: 15 },
+    { prescriptionId: T1CPR성인처방.id, type: "지시처방", productName: "환자 v/s monitoring", sortOrder: 16 },
+    { prescriptionId: T1CPR성인처방.id, type: "지시처방", productName: "End Expiratory CO2 Partial Pressure Monitoring(Capnography)(1일당)", sortOrder: 17 },
+    { prescriptionId: T1CPR성인처방.id, type: "지시처방", productName: "EM target echo", sortOrder: 18 },
+    { prescriptionId: T1CPR성인처방.id, type: "추가설명", productName: "CPR 처치 처방", sortOrder: 19 },
+    { prescriptionId: T1CPR성인처방.id, type: "지시처방", productName: "Tracheal Intubation(기관내삽입술)", sortOrder: 20 },
+    { prescriptionId: T1CPR성인처방.id, type: "지시처방", productName: "CPR(15분까지)", sortOrder: 21 },
+    { prescriptionId: T1CPR성인처방.id, type: "지시처방", productName: "CPR(15분 초과 30분까지)", sortOrder: 22 },
+    { prescriptionId: T1CPR성인처방.id, type: "지시처방", productName: "CPR(30분 초과 45분까지)", sortOrder: 23 },
+    { prescriptionId: T1CPR성인처방.id, type: "추가설명", productName: "제세동 처방", sortOrder: 24 },
+    { prescriptionId: T1CPR성인처방.id, type: "지시처방", productName: "Defibrillation, Cardioversion(1일당)", sortOrder: 25 },
+    { prescriptionId: T1CPR성인처방.id, type: "추가설명", productName: "IO 처치", sortOrder: 26 },
+    { prescriptionId: T1CPR성인처방.id, type: "지시처방", productName: "Intraosseous Injection", sortOrder: 27 },
+    { prescriptionId: T1CPR성인처방.id, type: "추가설명", productName: "약물 처치 - Pulseless V-tach", sortOrder: 28 },
+    { prescriptionId: T1CPR성인처방.id, type: "약", productName: "코다론주 150mg/3ml", ingredientName: "amiodarone HCl", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "1차 투여", sortOrder: 29 },
+    { prescriptionId: T1CPR성인처방.id, type: "약", productName: "코다론주 150mg/3ml", ingredientName: "amiodarone HCl", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "2차 투여", sortOrder: 30 },
+    { prescriptionId: T1CPR성인처방.id, type: "추가설명", productName: "Torsade de pointes", sortOrder: 31 },
+    { prescriptionId: T1CPR성인처방.id, type: "약", productName: "황산마그네슘주10%", ingredientName: "magnesium sulfate", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "Initial bolus, 2분간 투여", sortOrder: 32 },
+    { prescriptionId: T1CPR성인처방.id, type: "약", productName: "황산마그네슘주10%", ingredientName: "magnesium sulfate", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "Continuous 50cc/h. Target level 3.6-4.9mg/dL, Mg 5-7이면 50% 감량, Mg>7이면 중단", sortOrder: 33, mixGroup: "M1" },
+    { prescriptionId: T1CPR성인처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 34, mixGroup: "M1" },
+    { prescriptionId: T1CPR성인처방.id, type: "추가설명", productName: "Hyperkalemia", sortOrder: 35 },
+    { prescriptionId: T1CPR성인처방.id, type: "약", productName: "글루콘산칼슘주", ingredientName: "calcium gluconate", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "3분간 투여", sortOrder: 36 },
+    { prescriptionId: T1CPR성인처방.id, type: "약", productName: "휴물린알주100단위", ingredientName: "insulin regular (Humulin R)", dosage: "1", unit: "IU", frequency: "1", route: "IV infusion", sortOrder: 37, mixGroup: "M2" },
+    { prescriptionId: T1CPR성인처방.id, type: "약", productName: "중외50%포도당주 100mL", ingredientName: "dextrose 50%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 38, mixGroup: "M2" },
+    { prescriptionId: T1CPR성인처방.id, type: "추가설명", productName: "에피네프린 10개 준비", sortOrder: 39 },
+    { prescriptionId: T1CPR성인처방.id, type: "약", productName: "제일에피네프린주사액1mg/1mL", ingredientName: "epinephrine", dosage: "10", unit: "A", frequency: "1", route: "IV", note: "CPR용 10개 준비", sortOrder: 40 },
+
+    // 시트1-11: CPR (Post ROSC)
+    { prescriptionId: T1CPRPostROSC처방.id, type: "지시처방", productName: "중심체온 모니터링", note: "식도 또는 rectal BT check", sortOrder: 0 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "지시처방", productName: "직장내삽관술(Rectal Tube Insertion)", sortOrder: 1 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "지시처방", productName: "침습적 동맥압혈압측정(1일당)", sortOrder: 2 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "지시처방", productName: "CVP측정(1일당)-Catheter 별도산정", sortOrder: 3 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "지시처방", productName: "CVP Catheter insertion(Others)-(시술팩-G2491넣기)", sortOrder: 4 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "지시처방", productName: "Sono guide - C line insertion", sortOrder: 5 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "약", productName: "염산리도카인주400mg/20ml", ingredientName: "lidocaine HCl", dosage: "1", unit: "V", frequency: "1", route: "IV", sortOrder: 6 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "지시처방", productName: "헤파린 flushing 시에만 추가", sortOrder: 7 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "약", productName: "헤파린나트륨주사액1000iu(5KI.U/5mL)", ingredientName: "heparin sodium", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "line flushing용", sortOrder: 8 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "지시처방", productName: "Nasogastric Tube Insertion", note: "L-tube set 준비", sortOrder: 9 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "지시처방", productName: "유치 카테타 설치(Foley insertion)", sortOrder: 10 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "지시처방", productName: "Therapeutic Hypothermia(1일당)", note: "ice pack apply", sortOrder: 11 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "추가설명", productName: "vent 처방 - 확인 다시 필요", sortOrder: 12 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "지시처방", productName: "Artificial Ventilation-3시간까지", sortOrder: 13 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "지시처방", productName: "Artificial Ventilation(3시간초과 8시간까지)", sortOrder: 14 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "지시처방", productName: "Artificial Ventilation(8시간초과 12시간까지)", sortOrder: 15 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "지시처방", productName: "Artificial Ventilation(12시간초과 1일당)", sortOrder: 16 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "영상검사", productName: "Brain CT", sortOrder: 17 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "영상검사", productName: "Brain Diffusion(3.0T)", sortOrder: 18 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "혈액검사", productName: "신경학적 일반검사 B-MRI 필수", sortOrder: 19 },
+    { prescriptionId: T1CPRPostROSC처방.id, type: "추가설명", productName: "질환에 맞는 약 추가 처방, TTM/MV 위해 sedative agent 추가", sortOrder: 20 },
+
+    // 시트1-12: Septic shock
+    { prescriptionId: T1SepticShock처방.id, type: "추가설명", productName: "Septic shock 추가 치료·처치 처방. Target Goal: CVP 8-12, MAP>65(SBP>90)", sortOrder: 0 },
+    { prescriptionId: T1SepticShock처방.id, type: "추가설명", productName: "1. Hydration", sortOrder: 1 },
+    { prescriptionId: T1SepticShock처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "500cc/h", sortOrder: 2 },
+    { prescriptionId: T1SepticShock처방.id, type: "지시처방", productName: "CVP Catheter insertion", sortOrder: 3 },
+    { prescriptionId: T1SepticShock처방.id, type: "지시처방", productName: "Sono guide - C line insertion", sortOrder: 4 },
+    { prescriptionId: T1SepticShock처방.id, type: "약", productName: "염산리도카인주400mg/20ml", ingredientName: "lidocaine HCl", dosage: "1", unit: "V", frequency: "1", route: "IV", sortOrder: 5 },
+    { prescriptionId: T1SepticShock처방.id, type: "지시처방", productName: "헤파린 flushing 시에만 추가", sortOrder: 6 },
+    { prescriptionId: T1SepticShock처방.id, type: "약", productName: "헤파린나트륨주사액1000iu(5KI.U/5mL)", ingredientName: "heparin sodium", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "line flushing용", sortOrder: 7 },
+    { prescriptionId: T1SepticShock처방.id, type: "추가설명", productName: "2. 승압제 사용", sortOrder: 8 },
+    { prescriptionId: T1SepticShock처방.id, type: "약", productName: "큐프린주8mg/4mL", ingredientName: "norepinephrine bitartrate hydrate", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "5mcg/min(=5cc/hr)", sortOrder: 9, mixGroup: "M1" },
+    { prescriptionId: T1SepticShock처방.id, type: "약", productName: "5%포도당주200mL", ingredientName: "dextrose 5%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M1" },
+    { prescriptionId: T1SepticShock처방.id, type: "추가설명", productName: "3. Steroid 사용 - 수액 처치, NE에도 BP 상승 반응 없을시 스테로이드 고려", sortOrder: 11 },
+    { prescriptionId: T1SepticShock처방.id, type: "약", productName: "코티소루주 0.1337g/1병", ingredientName: "hydrocortisone", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "3-5분 안에 투여, 0.5A(50mg)씩 6hrs마다 총 4번 반복", sortOrder: 12, mixGroup: "M2" },
+    { prescriptionId: T1SepticShock처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 13, mixGroup: "M2" },
+    { prescriptionId: T1SepticShock처방.id, type: "추가설명", productName: "4. Vasopressin", sortOrder: 14 },
+    { prescriptionId: T1SepticShock처방.id, type: "약", productName: "바소프레신주 20iu/ml", ingredientName: "vasopressin", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "12cc/h", sortOrder: 15, mixGroup: "M3" },
+    { prescriptionId: T1SepticShock처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 16, mixGroup: "M3" },
+    { prescriptionId: T1SepticShock처방.id, type: "추가설명", productName: "5. Epinephrine", sortOrder: 17 },
+    { prescriptionId: T1SepticShock처방.id, type: "약", productName: "에피네프린주사액1mg/1mL", ingredientName: "epinephrine", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "4cc/hr(1mcg/min) 시작, titrate every 3min by 4cc/h, max 40cc/h(10mcg/min)", sortOrder: 18, mixGroup: "M4" },
+    { prescriptionId: T1SepticShock처방.id, type: "약", productName: "5%포도당주200mL", ingredientName: "dextrose 5%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 19, mixGroup: "M4" },
+
+    // 시트1-13: GI bleeding(중환)
+    { prescriptionId: T1GIBleeding처방.id, type: "지시처방", productName: "환자 v/s monitoring, 양라인 확보", sortOrder: 0 },
+    { prescriptionId: T1GIBleeding처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "2", unit: "BT", frequency: "1", route: "IV infusion", note: "500cc/h loading", sortOrder: 1 },
+    { prescriptionId: T1GIBleeding처방.id, type: "혈액검사", productName: "Direct Bilirubin", sortOrder: 2 },
+    { prescriptionId: T1GIBleeding처방.id, type: "혈액검사", productName: "Ammonia", sortOrder: 3 },
+    { prescriptionId: T1GIBleeding처방.id, type: "혈액검사", productName: "ABO(혈청,혈구)/RH(D)", sortOrder: 4 },
+    { prescriptionId: T1GIBleeding처방.id, type: "혈액검사", productName: "Ab Screen", sortOrder: 5 },
+    { prescriptionId: T1GIBleeding처방.id, type: "혈액검사", productName: "HBsAb(정밀)", sortOrder: 6 },
+    { prescriptionId: T1GIBleeding처방.id, type: "혈액검사", productName: "HBsAg(정밀)", sortOrder: 7 },
+    { prescriptionId: T1GIBleeding처방.id, type: "혈액검사", productName: "정밀면역검사-C형간염항체", sortOrder: 8 },
+    { prescriptionId: T1GIBleeding처방.id, type: "혈액검사", productName: "RPR(정량)", sortOrder: 9 },
+    { prescriptionId: T1GIBleeding처방.id, type: "혈액검사", productName: "HIV Ag/Ab(combo)", sortOrder: 10 },
+    { prescriptionId: T1GIBleeding처방.id, type: "혈액검사", productName: "ER)ABGA", sortOrder: 11 },
+    { prescriptionId: T1GIBleeding처방.id, type: "지시처방", productName: "유치 카테타 설치(Foley insertion)", sortOrder: 12 },
+    { prescriptionId: T1GIBleeding처방.id, type: "지시처방", productName: "Nasogastric Tube Insertion", note: "L-tube irrigation set 준비", sortOrder: 13 },
+    { prescriptionId: T1GIBleeding처방.id, type: "지시처방", productName: "Rectal Digital Examination", note: "color 및 H2O2 반응 확인", sortOrder: 14 },
+    { prescriptionId: T1GIBleeding처방.id, type: "추가설명", productName: "IV medication", sortOrder: 15 },
+    { prescriptionId: T1GIBleeding처방.id, type: "약", productName: "펩타졸주1Vial", ingredientName: "pantoprazole sodium", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "loading", sortOrder: 16, mixGroup: "M1" },
+    { prescriptionId: T1GIBleeding처방.id, type: "약", productName: "엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 17, mixGroup: "M1" },
+    { prescriptionId: T1GIBleeding처방.id, type: "약", productName: "펩타졸주1Vial", ingredientName: "pantoprazole sodium", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "20cc/h 유지", sortOrder: 18, mixGroup: "M2" },
+    { prescriptionId: T1GIBleeding처방.id, type: "약", productName: "엔에스주사액500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 19, mixGroup: "M2" },
+    { prescriptionId: T1GIBleeding처방.id, type: "약", productName: "온단트주(ER)", ingredientName: "ondansetron HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "구토 심할 경우 투여", sortOrder: 20, mixGroup: "M3" },
+    { prescriptionId: T1GIBleeding처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 21, mixGroup: "M3" },
+    { prescriptionId: T1GIBleeding처방.id, type: "약", productName: "멕쿨주10mg/2mL", ingredientName: "metoclopramide HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "구토 심할 경우 투여", sortOrder: 22, mixGroup: "M4" },
+    { prescriptionId: T1GIBleeding처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 23, mixGroup: "M4" },
+    { prescriptionId: T1GIBleeding처방.id, type: "추가설명", productName: "LC 환자 추가", sortOrder: 24 },
+    { prescriptionId: T1GIBleeding처방.id, type: "약", productName: "테리핀주1mg", ingredientName: "terlipressin acetate", dosage: "1", unit: "V", frequency: "1", route: "IV", note: "side push", sortOrder: 25 },
+    { prescriptionId: T1GIBleeding처방.id, type: "약", productName: "테리핀주1mg", ingredientName: "terlipressin acetate", dosage: "1", unit: "V", frequency: "1", route: "IV", note: "q6hr마다 1A씩 side push", sortOrder: 26 },
+
+    // 시트1-14: Stroke (6시간 이내)
+    { prescriptionId: T1Stroke6이내처방.id, type: "추가설명", productName: "line approach 즉시 후 CTA 진행, 항응고제 복용여부/종류 확인, BST·ECG 즉시 체크, 체중 재확인, foley/L-tube 준비(영상 확인 후 stroke 양성시 즉시 시행), KTAS 2등급 이내 재확인. tPA Ix.는 door to needle 60분 이내, 내원 45-60분 이내 투여. TFCA/IAT 필요시 door to puncture 90분 이내, 내원 60-90분 이내 인터벤션 실행. 경구약은 필요시 인터벤션 실에서 복용.", sortOrder: 0 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "추가설명", productName: "Stroke brain w/u 순서: 1)B-CT(1층) -> 2)CVA CT(3층) -> 3)B-DWI(2층)", sortOrder: 1 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "영상검사", productName: "Brain CT", note: "negative일 경우 CVA CT/diffusion 진행 hold", sortOrder: 2 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "영상검사", productName: "CVA (CE) CT", sortOrder: 3 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "신경학적 일반검사 B-MRI 필수", sortOrder: 4 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "영상검사", productName: "Brain Diffusion(3.0T)", sortOrder: 5 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "80cc/hr", sortOrder: 6 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "Direct Bilirubin", sortOrder: 7 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "Ammonia", sortOrder: 8 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "CK-MB(정량)", sortOrder: 9 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "Troponin-T(hs)(원내)", sortOrder: 10 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "D-Dimer", sortOrder: 11 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "TSH", sortOrder: 12 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "Free T4", sortOrder: 13 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "T3", sortOrder: 14 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "Osmolarity(S)(R)", sortOrder: 15 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "T.Cholesterol", sortOrder: 16 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "HDL-Chol", sortOrder: 17 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "Triglyceride", sortOrder: 18 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "LDL콜레스테롤[계산제외]", sortOrder: 19 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "HBsAb(정밀)", sortOrder: 20 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "HBsAg(정밀)", sortOrder: 21 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "정밀면역검사-C형간염항체", sortOrder: 22 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "HIV Ag/Ab(combo)", sortOrder: 23 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "RPR(정량)", sortOrder: 24 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "ABO(혈청,혈구)/RH(D)", sortOrder: 25 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "Ab Screen", sortOrder: 26 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "HBA1C", sortOrder: 27 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "추가설명", productName: "POCT", sortOrder: 28 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "ER)ABGA", sortOrder: 29 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "응급)프로칼시토닌 정량검사(PCT)", sortOrder: 30 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "ER)Cardiac marker 2종", sortOrder: 31 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "추가설명", productName: "Nasal swab", sortOrder: 32 },
+    { prescriptionId: T1Stroke6이내처방.id, type: "혈액검사", productName: "SARS-CoV-2 항원검사", sortOrder: 33 },
+
+    // 시트1-15: Stroke (6시간 이후)
+    { prescriptionId: T1Stroke6이후처방.id, type: "추가설명", productName: "line approach 즉시 후 CTA 진행, 항응고제 복용여부/종류 확인, BST·ECG 즉시 체크, 체중 재확인, foley/L-tube 준비(영상 확인 후 stroke 양성시 즉시 시행), KTAS 2등급 이내 재확인. TFCA/IAT 필요시 door to puncture 90분 이내, 내원 60-90분 이내 인터벤션 실행. 경구약은 필요시 인터벤션 실에서 복용.", sortOrder: 0 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "추가설명", productName: "Stroke brain w/u 순서: 1)B-CT(1층) -> 2)B-DWI(2층)", sortOrder: 1 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "영상검사", productName: "Brain CT", sortOrder: 2 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "신경학적 일반검사 B-MRI 필수", sortOrder: 3 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "영상검사", productName: "Brain Diffusion(3.0T)", note: "Brain CT positive일 경우 진행 hold", sortOrder: 4 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "80cc/hr", sortOrder: 5 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "Direct Bilirubin", sortOrder: 6 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "Ammonia", sortOrder: 7 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "CK-MB(정량)", sortOrder: 8 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "Troponin-T(hs)(원내)", sortOrder: 9 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "D-Dimer", sortOrder: 10 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "TSH", sortOrder: 11 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "Free T4", sortOrder: 12 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "T3", sortOrder: 13 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "Osmolarity(S)(R)", sortOrder: 14 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "T.Cholesterol", sortOrder: 15 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "HDL-Chol", sortOrder: 16 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "Triglyceride", sortOrder: 17 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "LDL콜레스테롤[계산제외]", sortOrder: 18 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "HBsAb(정밀)", sortOrder: 19 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "HBsAg(정밀)", sortOrder: 20 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "정밀면역검사-C형간염항체", sortOrder: 21 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "HIV Ag/Ab(combo)", sortOrder: 22 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "RPR(정량)", sortOrder: 23 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "ABO(혈청,혈구)/RH(D)", sortOrder: 24 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "Ab Screen", sortOrder: 25 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "HBA1C", sortOrder: 26 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "추가설명", productName: "POCT", sortOrder: 27 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "ER)ABGA", sortOrder: 28 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "응급)프로칼시토닌 정량검사(PCT)", sortOrder: 29 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "ER)Cardiac marker 2종", sortOrder: 30 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "추가설명", productName: "Nasal swab", sortOrder: 31 },
+    { prescriptionId: T1Stroke6이후처방.id, type: "혈액검사", productName: "SARS-CoV-2 항원검사", sortOrder: 32 },
+
+    // 시트1-16: 코로나 검사/독감 검사
+    { prescriptionId: T1코로나독감검사처방.id, type: "추가설명", productName: "코로나 검사", sortOrder: 0 },
+    { prescriptionId: T1코로나독감검사처방.id, type: "추가설명", productName: "Nasal swab", sortOrder: 1 },
+    { prescriptionId: T1코로나독감검사처방.id, type: "혈액검사", productName: "SARS-CoV-2 항원검사", sortOrder: 2 },
+    { prescriptionId: T1코로나독감검사처방.id, type: "추가설명", productName: "간병인 RAT(진검접수)", sortOrder: 3 },
+    { prescriptionId: T1코로나독감검사처방.id, type: "혈액검사", productName: "신속항원검사(비급여)-간병인", sortOrder: 4 },
+    { prescriptionId: T1코로나독감검사처방.id, type: "추가설명", productName: "보호자 RAT(진검접수)", sortOrder: 5 },
+    { prescriptionId: T1코로나독감검사처방.id, type: "혈액검사", productName: "신속항원검사(비급여)-외래,일반병동", sortOrder: 6 },
+    { prescriptionId: T1코로나독감검사처방.id, type: "추가설명", productName: "PCR - 아래 중 1개 선택", sortOrder: 7 },
+    { prescriptionId: T1코로나독감검사처방.id, type: "혈액검사", productName: "선별PCR->중증응급환자(KTAS1-3등급)", sortOrder: 8 },
+    { prescriptionId: T1코로나독감검사처방.id, type: "혈액검사", productName: "국비->코로나19 먹는치료제 대상군", sortOrder: 9 },
+    { prescriptionId: T1코로나독감검사처방.id, type: "혈액검사", productName: "PCR 중증응급환자제외(전액본인부담)", sortOrder: 10 },
+    { prescriptionId: T1코로나독감검사처방.id, type: "혈액검사", productName: "ER))DRG 단독PCR-K3등급(응급수술환자)", sortOrder: 11 },
+    { prescriptionId: T1코로나독감검사처방.id, type: "추가설명", productName: "독감 검사", sortOrder: 12 },
+    { prescriptionId: T1코로나독감검사처방.id, type: "혈액검사", productName: "인플루엔자 A·B 바이러스항원검사", sortOrder: 13 },
+
+    // 시트1-17: 가임기 여성 추가(hCG)
+    { prescriptionId: T1hCG처방.id, type: "추가설명", productName: "hCG 확인 후 주사투여, 영상검사 진행", sortOrder: 0 },
+    { prescriptionId: T1hCG처방.id, type: "혈액검사", productName: "요임신반응검사-[일반면역검사](정성)", sortOrder: 1 },
+
+    // 시트1-18: 수혈 검사 및 처방
+    { prescriptionId: T1수혈검사처방처방.id, type: "지시처방", productName: "수혈 동의서 받기", note: "BT check, 열 발생시 notify, keep monitoring during transfusion", sortOrder: 0 },
+    { prescriptionId: T1수혈검사처방처방.id, type: "추가설명", productName: "수혈전 검사", sortOrder: 1 },
+    { prescriptionId: T1수혈검사처방처방.id, type: "혈액검사", productName: "ABO(혈청,혈구)/RH(D)", sortOrder: 2 },
+    { prescriptionId: T1수혈검사처방처방.id, type: "혈액검사", productName: "Ab Screen", sortOrder: 3 },
+    { prescriptionId: T1수혈검사처방처방.id, type: "약", productName: "페니라민주사", ingredientName: "chlorpheniramine maleate", dosage: "1", unit: "A", frequency: "1", route: "IV", note: "혈액제제 투여전 IV 투여", sortOrder: 4 },
+    { prescriptionId: T1수혈검사처방처방.id, type: "추가설명", productName: "혈액제제 모음 - 진검과에 용량·개수 확인 후 처방", sortOrder: 5 },
+    { prescriptionId: T1수혈검사처방처방.id, type: "약", productName: "Packed RBC(PRC) 320ml", ingredientName: "packed red blood cells", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 6 },
+    { prescriptionId: T1수혈검사처방처방.id, type: "약", productName: "Packed RBC(PRC) 400ml", ingredientName: "packed red blood cells", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 7 },
+    { prescriptionId: T1수혈검사처방처방.id, type: "약", productName: "FFP 320ml", ingredientName: "fresh frozen plasma", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 8 },
+    { prescriptionId: T1수혈검사처방처방.id, type: "약", productName: "FFP 400ml", ingredientName: "fresh frozen plasma", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 9 },
+    { prescriptionId: T1수혈검사처방처방.id, type: "약", productName: "Platelet Concentrate 320ml", ingredientName: "platelet concentrate", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 10 },
+    { prescriptionId: T1수혈검사처방처방.id, type: "약", productName: "Platelet Concentrate 400ml", ingredientName: "platelet concentrate", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 11 },
+    { prescriptionId: T1수혈검사처방처방.id, type: "추가설명", productName: "Rh 음성일 경우 추가 처방", sortOrder: 12 },
+    { prescriptionId: T1수혈검사처방처방.id, type: "혈액검사", productName: "Du test(weak D)", sortOrder: 13 },
+
+    // 시트1-19: 추가 lab(감염 3종)
+    { prescriptionId: T1추가lab감염3종처방.id, type: "혈액검사", productName: "R. Tsutsugamushi Ab", sortOrder: 0 },
+    { prescriptionId: T1추가lab감염3종처방.id, type: "혈액검사", productName: "Korea virus 3종", sortOrder: 1 },
+
+    // 시트1-20: 추가 lab(배양검사 모음)
+    { prescriptionId: T1추가lab배양검사처방.id, type: "추가설명", productName: "추가 처방(Culture 검사 모음)", sortOrder: 0 },
+    { prescriptionId: T1추가lab배양검사처방.id, type: "혈액검사", productName: "Blood Culture(2세트)", sortOrder: 1 },
+    { prescriptionId: T1추가lab배양검사처방.id, type: "혈액검사", productName: "Ordinary culture(Random urine)(2세트)", sortOrder: 2 },
+    { prescriptionId: T1추가lab배양검사처방.id, type: "혈액검사", productName: "Ordinary culture(sputum)", sortOrder: 3 },
+    { prescriptionId: T1추가lab배양검사처방.id, type: "혈액검사", productName: "Ordinary culture(Throat swab)", sortOrder: 4 },
+    { prescriptionId: T1추가lab배양검사처방.id, type: "혈액검사", productName: "Ordinary culture(Body fluid)", sortOrder: 5 },
+    { prescriptionId: T1추가lab배양검사처방.id, type: "혈액검사", productName: "Ordinary culture(Pleural fluid)", sortOrder: 6 },
+    { prescriptionId: T1추가lab배양검사처방.id, type: "혈액검사", productName: "Ordinary culture(Stool)", sortOrder: 7 },
+    { prescriptionId: T1추가lab배양검사처방.id, type: "혈액검사", productName: "Ordinary culture(Hemovac tip)", sortOrder: 8 },
+    { prescriptionId: T1추가lab배양검사처방.id, type: "혈액검사", productName: "Ordinary culture(Joint Fluid)", sortOrder: 9 },
+    { prescriptionId: T1추가lab배양검사처방.id, type: "혈액검사", productName: "Ordinary culture(Tissue)", sortOrder: 10 },
+    { prescriptionId: T1추가lab배양검사처방.id, type: "혈액검사", productName: "Ordinary culture(wound)", sortOrder: 11 },
+    { prescriptionId: T1추가lab배양검사처방.id, type: "혈액검사", productName: "Ordinary culture[Pus(closed)]", sortOrder: 12 },
+    { prescriptionId: T1추가lab배양검사처방.id, type: "혈액검사", productName: "Ordinary culture(others)", sortOrder: 13 },
+
+    // 시트1-21: 추가 lab(소변검사)
+    { prescriptionId: T1추가lab소변검사처방.id, type: "추가설명", productName: "FENA, TTKG", sortOrder: 0 },
+    { prescriptionId: T1추가lab소변검사처방.id, type: "혈액검사", productName: "Osmolarity(S)(R)", sortOrder: 1 },
+    { prescriptionId: T1추가lab소변검사처방.id, type: "혈액검사", productName: "Osmolarity(U)(R)", sortOrder: 2 },
+    { prescriptionId: T1추가lab소변검사처방.id, type: "혈액검사", productName: "Na(U)", sortOrder: 3 },
+    { prescriptionId: T1추가lab소변검사처방.id, type: "혈액검사", productName: "K(U)", sortOrder: 4 },
+    { prescriptionId: T1추가lab소변검사처방.id, type: "혈액검사", productName: "Cl(U)", sortOrder: 5 },
+    { prescriptionId: T1추가lab소변검사처방.id, type: "혈액검사", productName: "요임신반응검사-[일반면역검사](정성)", sortOrder: 6 },
+    { prescriptionId: T1추가lab소변검사처방.id, type: "혈액검사", productName: "Upr/Ucr", sortOrder: 7 },
+    { prescriptionId: T1추가lab소변검사처방.id, type: "혈액검사", productName: "Dysmorphic RBC", sortOrder: 8 },
+    { prescriptionId: T1추가lab소변검사처방.id, type: "혈액검사", productName: "검진)요침사(Flow cytometry)", sortOrder: 9 },
+    { prescriptionId: T1추가lab소변검사처방.id, type: "혈액검사", productName: "Ordinary culture(Random urine)", sortOrder: 10 },
+    { prescriptionId: T1추가lab소변검사처방.id, type: "혈액검사", productName: "Ca(Urine, Fluid)", sortOrder: 11 },
+    { prescriptionId: T1추가lab소변검사처방.id, type: "혈액검사", productName: "Creatinine(RU)", sortOrder: 12 },
+    { prescriptionId: T1추가lab소변검사처방.id, type: "혈액검사", productName: "T.Protein/Cre(U)", sortOrder: 13 },
+    { prescriptionId: T1추가lab소변검사처방.id, type: "혈액검사", productName: "Microalbumin/Cre Ratio(RU)", sortOrder: 14 },
+
+    // 시트1-22: 추가 lab(요양원 환자)
+    { prescriptionId: T1추가lab요양원처방.id, type: "혈액검사", productName: "CRE Culture screening", sortOrder: 0 },
+    { prescriptionId: T1추가lab요양원처방.id, type: "혈액검사", productName: "VRE Culture screening", sortOrder: 1 },
+
+    // 시트1-23: 추가 lab(Anemia study)
+    { prescriptionId: T1추가labAnemia처방.id, type: "추가설명", productName: "추가 처방(Anemia study) - 상의 필요", sortOrder: 0 },
+    { prescriptionId: T1추가labAnemia처방.id, type: "혈액검사", productName: "Fe", sortOrder: 1 },
+    { prescriptionId: T1추가labAnemia처방.id, type: "혈액검사", productName: "TIBC", sortOrder: 2 },
+    { prescriptionId: T1추가labAnemia처방.id, type: "혈액검사", productName: "PB morphology", sortOrder: 3 },
+    { prescriptionId: T1추가labAnemia처방.id, type: "혈액검사", productName: "UIBC", sortOrder: 4 },
+    { prescriptionId: T1추가labAnemia처방.id, type: "혈액검사", productName: "Folate", sortOrder: 5 },
+    { prescriptionId: T1추가labAnemia처방.id, type: "혈액검사", productName: "Ferritin", sortOrder: 6 },
+    { prescriptionId: T1추가labAnemia처방.id, type: "혈액검사", productName: "Vit.B12", sortOrder: 7 },
+    { prescriptionId: T1추가labAnemia처방.id, type: "혈액검사", productName: "Reticulocyte", sortOrder: 8 },
+
+    // 시트1-24: 추가 lab(Autoimmune study)
+    { prescriptionId: T1추가labAutoimmune처방.id, type: "혈액검사", productName: "A-dsDNA IgG(R)", sortOrder: 0 },
+    { prescriptionId: T1추가labAutoimmune처방.id, type: "혈액검사", productName: "Anti CCP Ab", sortOrder: 1 },
+    { prescriptionId: T1추가labAutoimmune처방.id, type: "혈액검사", productName: "ANCA(정성)(R)", sortOrder: 2 },
+    { prescriptionId: T1추가labAutoimmune처방.id, type: "혈액검사", productName: "RAfactor(정량)", sortOrder: 3 },
+
+    // 시트1-25: 추가 lab(Drug Intoxication)
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "추가설명", productName: "약물선별검사(소변) 추가 확인, 혈액 내 약물검사 모음 - 상의 필요", sortOrder: 0 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Acetaminophen(R)", sortOrder: 1 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Alcohol(Ethanol)(R)", sortOrder: 2 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Digoxin(R)(투여후)", sortOrder: 3 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Amikacin(R)", sortOrder: 4 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Carbamazepin", sortOrder: 5 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Gentamicin(R)", sortOrder: 6 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Methotrexate(MTX)", sortOrder: 7 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Phenobarbital(R)", sortOrder: 8 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Phenytoin(Dilantin)", sortOrder: 9 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Aspirin(Salicylic acid)", sortOrder: 10 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Theophylline(Aminophylline)", sortOrder: 11 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Tobramycin(R)", sortOrder: 12 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Valproic acid(Orfil)", sortOrder: 13 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Vancomycin(투여전)", sortOrder: 14 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Methamphetamine", sortOrder: 15 },
+    { prescriptionId: T1추가labDrugIntox처방.id, type: "혈액검사", productName: "Phencyclidine", sortOrder: 16 },
+
+    // 시트1-26: 추가 lab(ER POCT)
+    { prescriptionId: T1추가labERPOCT처방.id, type: "혈액검사", productName: "ER)ABGA", sortOrder: 0 },
+    { prescriptionId: T1추가labERPOCT처방.id, type: "혈액검사", productName: "ER)Cardiac marker 2종", sortOrder: 1 },
+    { prescriptionId: T1추가labERPOCT처방.id, type: "혈액검사", productName: "ER)Cardiac marker 3종", sortOrder: 2 },
+    { prescriptionId: T1추가labERPOCT처방.id, type: "혈액검사", productName: "응급)프로칼시토닌 정량검사(PCT)", sortOrder: 3 },
+
+    // 시트1-27: 추가 lab(Hepatitis)
+    { prescriptionId: T1추가labHepatitis처방.id, type: "혈액검사", productName: "Total HAV Ab", sortOrder: 0 },
+    { prescriptionId: T1추가labHepatitis처방.id, type: "혈액검사", productName: "HAV Ab-IgM", sortOrder: 1 },
+    { prescriptionId: T1추가labHepatitis처방.id, type: "혈액검사", productName: "HBsAb(정밀)", sortOrder: 2 },
+    { prescriptionId: T1추가labHepatitis처방.id, type: "혈액검사", productName: "HBsAg(정밀)", sortOrder: 3 },
+    { prescriptionId: T1추가labHepatitis처방.id, type: "혈액검사", productName: "정밀면역검사-C형간염항체", sortOrder: 4 },
+
+    // 시트1-28: 추가 lab(Needle stick injury)
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "지시처방", productName: "irrigation & Dx", sortOrder: 0 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "지시처방", productName: "Simple Dressing(우상지)", sortOrder: 1 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "지시처방", productName: "Simple Dressing(좌상지)", sortOrder: 2 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "추가설명", productName: "Needle stick injury protocol", sortOrder: 3 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "혈액검사", productName: "CBC & Diff", sortOrder: 4 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "혈액검사", productName: "ER)Chemistry(19종)", sortOrder: 5 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "혈액검사", productName: "HBsAb(정밀)", sortOrder: 6 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "혈액검사", productName: "HBsAg(정밀)", sortOrder: 7 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "혈액검사", productName: "정밀면역검사-C형간염항체", sortOrder: 8 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "혈액검사", productName: "HCV RT-PCR", sortOrder: 9 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "혈액검사", productName: "RPR(정량)", sortOrder: 10 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "혈액검사", productName: "VDRL(정량)", sortOrder: 11 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "혈액검사", productName: "HIV Ag/Ab(combo)", sortOrder: 12 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "약", productName: "예접)녹십자티디백신프리필드시린지주", ingredientName: "Td vaccine(tetanus/diphtheria)", dosage: "1", unit: "EA", frequency: "1", route: "IM", sortOrder: 13 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "약", productName: "테타불린에스앤주프리필드시린지", ingredientName: "tetanus immunoglobulin(human)", dosage: "1", unit: "EA", frequency: "1", route: "IM", sortOrder: 14 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "추가설명", productName: "검사 결과에 따라 다음 약을 투여", sortOrder: 15 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "추가설명", productName: "1. 환자가 A형 간염", sortOrder: 16 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "약", productName: "예접)박타프리필드시린지(A형간염백신)", ingredientName: "hepatitis A vaccine", dosage: "1", unit: "EA", frequency: "1", route: "IM", sortOrder: 17 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "추가설명", productName: "2. 환자가 B형 간염 - 노출자가 Anti-HBS(-) or <10mIU/mL일 때", sortOrder: 18 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "약", productName: "헤파빅주(비형간염사람면역글로불린)1mL", ingredientName: "hepatitis B immunoglobulin(human)", dosage: "1", unit: "EA", frequency: "1", route: "IM", sortOrder: 19 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "약", productName: "예접)유박스비주1m(B형간염백신,유전자재조합)", ingredientName: "hepatitis B vaccine(recombinant)", dosage: "1", unit: "EA", frequency: "1", route: "IM", sortOrder: 20 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "추가설명", productName: "3. 환자가 C형 간염 - 처치 필요 없음", sortOrder: 21 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "추가설명", productName: "4. 환자가 HIV 감염 - 트루바다정 1T qd + 이센트레스정 400mg 1T bid, 내과 외래로", sortOrder: 22 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "추가설명", productName: "5. 환자가 매독 감염 - 피부나 중추신경계 감염의 증거가 있는 경우에만", sortOrder: 23 },
+    { prescriptionId: T1추가labNeedlestick처방.id, type: "약", productName: "벤제타실주", ingredientName: "benzathine penicillin G", dosage: "1", unit: "V", frequency: "1", route: "IM", sortOrder: 24 },
+
+    // 시트1-29: 추가 lab(Pneumonia)
+    { prescriptionId: T1추가labPneumonia처방.id, type: "혈액검사", productName: "Blood Culture(2세트)", sortOrder: 0 },
+    { prescriptionId: T1추가labPneumonia처방.id, type: "혈액검사", productName: "Ordinary culture(sputum)", sortOrder: 1 },
+    { prescriptionId: T1추가labPneumonia처방.id, type: "혈액검사", productName: "AFB Stain(항산성집균도말검사)", sortOrder: 2 },
+    { prescriptionId: T1추가labPneumonia처방.id, type: "혈액검사", productName: "AFB Culture(고체&액체배지)", sortOrder: 3 },
+    { prescriptionId: T1추가labPneumonia처방.id, type: "혈액검사", productName: "M.TB & NTM PCR", sortOrder: 4 },
+    { prescriptionId: T1추가labPneumonia처방.id, type: "혈액검사", productName: "Mycoplasma Ab", sortOrder: 5 },
+    { prescriptionId: T1추가labPneumonia처방.id, type: "혈액검사", productName: "폐렴 원인균 선별검사 6종", sortOrder: 6 },
+    { prescriptionId: T1추가labPneumonia처방.id, type: "혈액검사", productName: "Pneumonia urinary Ag", sortOrder: 7 },
+    { prescriptionId: T1추가labPneumonia처방.id, type: "혈액검사", productName: "Legionella urinary Ag", sortOrder: 8 },
+    { prescriptionId: T1추가labPneumonia처방.id, type: "혈액검사", productName: "Pneumocystis jirovecii(carinii) PCR", sortOrder: 9 },
+    { prescriptionId: T1추가labPneumonia처방.id, type: "혈액검사", productName: "(2회)호흡기 바이러스 PCR 19종(중환자실 처방만 급여인정)", sortOrder: 10 },
+    { prescriptionId: T1추가labPneumonia처방.id, type: "혈액검사", productName: "Fungus culture(구강,기도,호흡기)", sortOrder: 11 },
+
+    // 시트1-30: 추가 lab(Stool)
+    { prescriptionId: T1추가labStool처방.id, type: "혈액검사", productName: "C.difficile toxin A,B", sortOrder: 0 },
+    { prescriptionId: T1추가labStool처방.id, type: "혈액검사", productName: "바이러스성 급성설사 선별검사", sortOrder: 1 },
+    { prescriptionId: T1추가labStool처방.id, type: "혈액검사", productName: "세균성 급성설사 선별검사", sortOrder: 2 },
+
+    // 시트1-31: 추가 lab(Tumor marker)
+    { prescriptionId: T1추가labTumorMarker처방.id, type: "혈액검사", productName: "CEA", sortOrder: 0 },
+    { prescriptionId: T1추가labTumorMarker처방.id, type: "혈액검사", productName: "CA19-9", sortOrder: 1 },
+    { prescriptionId: T1추가labTumorMarker처방.id, type: "혈액검사", productName: "CA 125", sortOrder: 2 },
+    { prescriptionId: T1추가labTumorMarker처방.id, type: "혈액검사", productName: "AFP(CLIA)", sortOrder: 3 },
+    { prescriptionId: T1추가labTumorMarker처방.id, type: "혈액검사", productName: "Total PSA", sortOrder: 4 },
+    { prescriptionId: T1추가labTumorMarker처방.id, type: "혈액검사", productName: "CA15-3", sortOrder: 5 },
+
+    // 시트1-32: 추가 lab(수두 의심)
+    { prescriptionId: T1추가lab수두처방.id, type: "혈액검사", productName: "VZV IgM", sortOrder: 0 },
+    { prescriptionId: T1추가lab수두처방.id, type: "혈액검사", productName: "VZV IgG", sortOrder: 1 },
+    { prescriptionId: T1추가lab수두처방.id, type: "혈액검사", productName: "VZV DNA PCR", sortOrder: 2 },
+
+    // 시트1-33: 추가 lab(Mumps 의심)
+    { prescriptionId: T1추가labMumps처방.id, type: "혈액검사", productName: "Mumps IgG", sortOrder: 0 },
+    { prescriptionId: T1추가labMumps처방.id, type: "혈액검사", productName: "Mumps IgM(R)", sortOrder: 1 },
+    { prescriptionId: T1추가labMumps처방.id, type: "혈액검사", productName: "Mumps virus RNA PCR", sortOrder: 2 },
+
+    // 시트1-34: 추가 lab(말라리아 의심)
+    { prescriptionId: T1추가lab말라리아처방.id, type: "혈액검사", productName: "Malaria PCR 선별검사", sortOrder: 0 },
+    { prescriptionId: T1추가lab말라리아처방.id, type: "혈액검사", productName: "Malaria smear + Ag", sortOrder: 1 },
+
+    // 시트1-35: 음주채혈검사
+    { prescriptionId: T1음주채혈검사처방.id, type: "혈액검사", productName: "음주채혈검사", sortOrder: 0 },
+
+    // 시트1-36: Major trauma
+    { prescriptionId: T1MajorTrauma처방.id, type: "지시처방", productName: "양라인 확보", sortOrder: 0 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "2", unit: "BT", frequency: "1", route: "IV infusion", note: "Full loading", sortOrder: 1 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "추가설명", productName: "기본랩", sortOrder: 2 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "혈액검사", productName: "ER)ABGA", sortOrder: 3 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "혈액검사", productName: "CK-MB(정량)", sortOrder: 4 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "혈액검사", productName: "Troponin-T(hs)(원내)", sortOrder: 5 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "혈액검사", productName: "D-Dimer", sortOrder: 6 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "추가설명", productName: "Trauma Series", sortOrder: 7 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "영상검사", productName: "Pelvis AP", sortOrder: 8 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "영상검사", productName: "C-Spine LAT", sortOrder: 9 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "추가설명", productName: "수혈+입원 lab", sortOrder: 10 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "혈액검사", productName: "HBsAb(정밀)", sortOrder: 11 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "혈액검사", productName: "HBsAg(정밀)", sortOrder: 12 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "혈액검사", productName: "정밀면역검사-C형간염항체", sortOrder: 13 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "혈액검사", productName: "RPR(정량)", sortOrder: 14 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "혈액검사", productName: "HIV Ag/Ab(combo)", note: "증상이 없는 환자(전액본인부담)", sortOrder: 15 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "혈액검사", productName: "ABO(혈청,혈구)/RH(D)", sortOrder: 16 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "혈액검사", productName: "Ab Screen", sortOrder: 17 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "추가설명", productName: "Tranexamic acid", sortOrder: 18 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "약", productName: "트라넥삼산주500mg", ingredientName: "tranexamic acid", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "10분간 투여", sortOrder: 19, mixGroup: "M1" },
+    { prescriptionId: T1MajorTrauma처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 20, mixGroup: "M1" },
+    { prescriptionId: T1MajorTrauma처방.id, type: "약", productName: "트라넥삼산주500mg", ingredientName: "tranexamic acid", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "62.5cc for 8hrs", sortOrder: 21, mixGroup: "M2" },
+    { prescriptionId: T1MajorTrauma처방.id, type: "약", productName: "엔에스주사액500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 22, mixGroup: "M2" },
+    { prescriptionId: T1MajorTrauma처방.id, type: "추가설명", productName: "항생제", sortOrder: 23 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "약", productName: "크목실린주1.2g", ingredientName: "amoxicillin/clavulanate", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "200cc/h", sortOrder: 24, mixGroup: "M3" },
+    { prescriptionId: T1MajorTrauma처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 25, mixGroup: "M3" },
+    { prescriptionId: T1MajorTrauma처방.id, type: "약", productName: "세포졸주1g", ingredientName: "cefazolin sodium", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "or 크목실린 대체", sortOrder: 26, mixGroup: "M4" },
+    { prescriptionId: T1MajorTrauma처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "200cc/h", sortOrder: 27, mixGroup: "M4" },
+    { prescriptionId: T1MajorTrauma처방.id, type: "추가설명", productName: "중증 외상 시 광범위 항생제", sortOrder: 28 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "약", productName: "루카신주사1.5g", ingredientName: "ampicillin sodium/sulbactam sodium", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "200cc/h", sortOrder: 29, mixGroup: "M5" },
+    { prescriptionId: T1MajorTrauma처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 30, mixGroup: "M5" },
+    { prescriptionId: T1MajorTrauma처방.id, type: "추가설명", productName: "파상풍, 테타불린", sortOrder: 31 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "약", productName: "예접)녹십자티디백신프리필드시린지주", ingredientName: "Td vaccine(tetanus/diphtheria)", dosage: "1", unit: "EA", frequency: "1", route: "IM", sortOrder: 32 },
+    { prescriptionId: T1MajorTrauma처방.id, type: "약", productName: "테타불린에스앤주프리필드시린지", ingredientName: "tetanus immunoglobulin(human)", dosage: "1", unit: "EA", frequency: "1", route: "IM", sortOrder: 33 },
+
+    // 시트1-37: Minor trauma
+    { prescriptionId: T1MinorTrauma처방.id, type: "추가설명", productName: "증상 조절", sortOrder: 0 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "약", productName: "플라주오피주 500mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 1 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "약", productName: "마로비벤-에이주사 2.2ml", ingredientName: "aconitum tincture D2", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "120cc/hr", sortOrder: 2 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "약", productName: "휴메딕스트라마돌염산염주사", ingredientName: "tramadol HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 3, mixGroup: "M1" },
+    { prescriptionId: T1MinorTrauma처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 4, mixGroup: "M1" },
+    { prescriptionId: T1MinorTrauma처방.id, type: "약", productName: "케토신주사", ingredientName: "ketorolac tromethamine", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 5 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "추가설명", productName: "검사 필요시(Trauma w/u)", sortOrder: 6 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "신경학적검사-일반검사(General Neurologic Examination)(월1회)", sortOrder: 7 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "영상검사", productName: "Brain CT", sortOrder: 8 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "영상검사", productName: "C-Spine CT", sortOrder: 9 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "영상검사", productName: "Chest & Abdomen CT (CE)", sortOrder: 10 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "영상검사", productName: "C-Spine LAT", sortOrder: 11 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "영상검사", productName: "Pelvis AP", sortOrder: 12 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "Ammonia", sortOrder: 13 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "CK-MB(정량)", sortOrder: 14 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "Troponin-T(hs)(원내)", sortOrder: 15 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "D-Dimer", sortOrder: 16 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "TSH", sortOrder: 17 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "Free T4", sortOrder: 18 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "T3", sortOrder: 19 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "Osmolarity(S)(R)", sortOrder: 20 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "T.Cholesterol", sortOrder: 21 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "HDL-Chol", sortOrder: 22 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "Triglyceride", sortOrder: 23 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "LDL콜레스테롤[계산제외]", sortOrder: 24 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "HBsAb(정밀)", sortOrder: 25 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "HBsAg(정밀)", sortOrder: 26 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "정밀면역검사-C형간염항체", sortOrder: 27 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "HIV Ag/Ab(combo)", sortOrder: 28 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "RPR(정량)", sortOrder: 29 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "ABO(혈청,혈구)/RH(D)", sortOrder: 30 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "Ab Screen", sortOrder: 31 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "HBA1C", sortOrder: 32 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "추가설명", productName: "POCT", sortOrder: 33 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "ER)ABGA", sortOrder: 34 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "응급)프로칼시토닌 정량검사(PCT)", sortOrder: 35 },
+    { prescriptionId: T1MinorTrauma처방.id, type: "혈액검사", productName: "ER)Cardiac marker 2종", sortOrder: 36 },
+
+    // 시트1-38: Head trauma
+    { prescriptionId: T1HeadTrauma처방.id, type: "혈액검사", productName: "신경학적검사-일반검사(General Neurologic Examination)", sortOrder: 0 },
+    { prescriptionId: T1HeadTrauma처방.id, type: "영상검사", productName: "Brain CT", sortOrder: 1 },
+    { prescriptionId: T1HeadTrauma처방.id, type: "영상검사", productName: "Skull Series", sortOrder: 2 },
+    { prescriptionId: T1HeadTrauma처방.id, type: "영상검사", productName: "C-spine AP + LAT + Open mouth", sortOrder: 3 },
+
+    // 시트1-39: 자보 lab
+    { prescriptionId: T1자보lab처방.id, type: "약", productName: "플라주오피주 500mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 0 },
+    { prescriptionId: T1자보lab처방.id, type: "약", productName: "마로비벤-에이주사 2.2ml", ingredientName: "aconitum tincture D2", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 1 },
+    { prescriptionId: T1자보lab처방.id, type: "약", productName: "휴메딕스트라마돌염산염주사", ingredientName: "tramadol HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: T1자보lab처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 3, mixGroup: "M1" },
+    { prescriptionId: T1자보lab처방.id, type: "약", productName: "케토신주사", ingredientName: "ketorolac tromethamine", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 4 },
+    { prescriptionId: T1자보lab처방.id, type: "영상검사", productName: "Chest PA", sortOrder: 5 },
+    { prescriptionId: T1자보lab처방.id, type: "혈액검사", productName: "CK-MB(응급)", sortOrder: 6 },
+    { prescriptionId: T1자보lab처방.id, type: "혈액검사", productName: "Troponin-T(hs)(원내)", sortOrder: 7 },
+    { prescriptionId: T1자보lab처방.id, type: "혈액검사", productName: "Ammonia", sortOrder: 8 },
+    { prescriptionId: T1자보lab처방.id, type: "혈액검사", productName: "Osmolarity(S)(R)", sortOrder: 9 },
+    { prescriptionId: T1자보lab처방.id, type: "혈액검사", productName: "HBsAb(정밀)", sortOrder: 10 },
+    { prescriptionId: T1자보lab처방.id, type: "혈액검사", productName: "HBsAg(정밀)", sortOrder: 11 },
+    { prescriptionId: T1자보lab처방.id, type: "혈액검사", productName: "ABO(혈청,혈구)/RH(D)", sortOrder: 12 },
+    { prescriptionId: T1자보lab처방.id, type: "혈액검사", productName: "Ab Screen", sortOrder: 13 },
+    { prescriptionId: T1자보lab처방.id, type: "혈액검사", productName: "RPR(정량)", sortOrder: 14 },
+
+    // 시트1-40: 입원 전 Full lab
+    { prescriptionId: T1입원전FullLab처방.id, type: "약", productName: "플라주오피주 500mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 0 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "Ammonia", sortOrder: 1 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "CK-MB(정량)", sortOrder: 2 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "Troponin-T(hs)(원내)", sortOrder: 3 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "D-Dimer", sortOrder: 4 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "TSH", sortOrder: 5 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "Free T4", sortOrder: 6 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "T3", sortOrder: 7 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "Osmolarity(S)(R)", sortOrder: 8 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "T.Cholesterol", sortOrder: 9 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "HDL-Chol", sortOrder: 10 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "Triglyceride", sortOrder: 11 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "LDL콜레스테롤[계산제외]", sortOrder: 12 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "HBsAb(정밀)", sortOrder: 13 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "HBsAg(정밀)", sortOrder: 14 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "정밀면역검사-C형간염항체", sortOrder: 15 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "HIV Ag/Ab(combo)", sortOrder: 16 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "RPR(정량)", sortOrder: 17 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "ABO(혈청,혈구)/RH(D)", sortOrder: 18 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "Ab Screen", sortOrder: 19 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "HBA1C", sortOrder: 20 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "추가설명", productName: "Nasal swab", sortOrder: 21 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "SARS-CoV-2 항원검사", sortOrder: 22 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "인플루엔자 A·B 바이러스항원검사", sortOrder: 23 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "추가설명", productName: "PCR - 아래 중 1개 선택", sortOrder: 24 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "선별PCR->중증응급환자(KTAS1-3등급)", note: "KTAS 1-3 or 응급수술(6시간 이상 지연 불가)", sortOrder: 25 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "국비->코로나19 먹는치료제 대상군", note: "60세이상 or 기저질환/면역저하자", sortOrder: 26 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "PCR 중증응급환자제외(전액본인부담)", sortOrder: 27 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "추가설명", productName: "요양원 환자", sortOrder: 28 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "VRE Culture screening", sortOrder: 29 },
+    { prescriptionId: T1입원전FullLab처방.id, type: "혈액검사", productName: "CRE Culture screening", sortOrder: 30 },
+
+    // 시트1-41: 입원 전 추가 lab
+    { prescriptionId: T1입원전추가lab처방.id, type: "추가설명", productName: "입원시 추가 lab", sortOrder: 0 },
+    { prescriptionId: T1입원전추가lab처방.id, type: "혈액검사", productName: "HBsAb(정밀)", sortOrder: 1 },
+    { prescriptionId: T1입원전추가lab처방.id, type: "혈액검사", productName: "HBsAg(정밀)", sortOrder: 2 },
+    { prescriptionId: T1입원전추가lab처방.id, type: "혈액검사", productName: "정밀면역검사-C형간염항체", sortOrder: 3 },
+    { prescriptionId: T1입원전추가lab처방.id, type: "혈액검사", productName: "ABO(혈청,혈구)/RH(D)", sortOrder: 4 },
+    { prescriptionId: T1입원전추가lab처방.id, type: "혈액검사", productName: "Ab Screen", sortOrder: 5 },
+    { prescriptionId: T1입원전추가lab처방.id, type: "혈액검사", productName: "RPR(정량)", sortOrder: 6 },
+    { prescriptionId: T1입원전추가lab처방.id, type: "혈액검사", productName: "HIV Ag/Ab(combo)", sortOrder: 7 },
+    { prescriptionId: T1입원전추가lab처방.id, type: "혈액검사", productName: "SARS-CoV-2 항원검사", sortOrder: 8 },
+    { prescriptionId: T1입원전추가lab처방.id, type: "혈액검사", productName: "PCR 중증응급환자제외(전액본인부담)", sortOrder: 9 },
+
+    // 시트1-42: Appe. 입원전 처방(전원 등)
+    { prescriptionId: T1Appe입원전처방처방.id, type: "혈액검사", productName: "ER))DRG 단독PCR-K3등급(응급수술환자)", sortOrder: 0 },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "지시처방", productName: "NPO", sortOrder: 1 },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "혈액검사", productName: "HBsAb(정밀)", sortOrder: 2 },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "혈액검사", productName: "HBsAg(정밀)", sortOrder: 3 },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "혈액검사", productName: "정밀면역검사-C형간염항체", sortOrder: 4 },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "혈액검사", productName: "HIV Ag/Ab(combo)", sortOrder: 5 },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "혈액검사", productName: "RPR(정량)", sortOrder: 6 },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "혈액검사", productName: "ABO(혈청,혈구)/RH(D)", sortOrder: 7 },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "혈액검사", productName: "Ab Screen", sortOrder: 8 },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "약", productName: "플라주오피주 500mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 9 },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "약", productName: "일동후루마린주사0.5g", ingredientName: "flomoxef sodium", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M1" },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 11, mixGroup: "M1" },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "추가설명", productName: "severe한 경우 metronidazole 추가", sortOrder: 12 },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "약", productName: "메트리날주500mg/100ml", ingredientName: "metronidazole", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 13 },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "추가설명", productName: "analgesic", sortOrder: 14 },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "약", productName: "휴메딕스트라마돌염산염주사", ingredientName: "tramadol HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 15, mixGroup: "M2" },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 16, mixGroup: "M2" },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "추가설명", productName: "fever control", sortOrder: 17 },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "약", productName: "데노간주1g/1병", ingredientName: "propacetamol", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 18, mixGroup: "M3" },
+    { prescriptionId: T1Appe입원전처방처방.id, type: "약", productName: "N/S 100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 19, mixGroup: "M3" },
+
+    // 시트1-43: 입원 지시 오더
+    { prescriptionId: T1입원지시오더처방.id, type: "지시처방", productName: "V/S Check, TID", sortOrder: 0 },
+    { prescriptionId: T1입원지시오더처방.id, type: "지시처방", productName: "I/O Check, BID", sortOrder: 1 },
+    { prescriptionId: T1입원지시오더처방.id, type: "지시처방", productName: "Absolute Bed rest", sortOrder: 2 },
+    { prescriptionId: T1입원지시오더처방.id, type: "지시처방", productName: "Walker Ambulation", sortOrder: 3 },
+    { prescriptionId: T1입원지시오더처방.id, type: "지시처방", productName: "정상 식이 진행", sortOrder: 4 },
+    { prescriptionId: T1입원지시오더처방.id, type: "지시처방", productName: "NPO", sortOrder: 5 },
+    { prescriptionId: T1입원지시오더처방.id, type: "지시처방", productName: "자가약 확인", sortOrder: 6 },
+
+    // 시트1-44: 입원 오더 추가(IM)
+    { prescriptionId: T1입원오더IM처방.id, type: "추가설명", productName: "다음날 오더 없을 경우 꼭 주치의에게 받으세요", sortOrder: 0 },
+    { prescriptionId: T1입원오더IM처방.id, type: "지시처방", productName: "V/S Check, TID", sortOrder: 1 },
+    { prescriptionId: T1입원오더IM처방.id, type: "지시처방", productName: "I/O Check, BID", sortOrder: 2 },
+    { prescriptionId: T1입원오더IM처방.id, type: "지시처방", productName: "정상 식이 진행", sortOrder: 3 },
+    { prescriptionId: T1입원오더IM처방.id, type: "지시처방", productName: "자가약 확인", sortOrder: 4 },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "40cc/hr", sortOrder: 5 },
+    { prescriptionId: T1입원오더IM처방.id, type: "추가설명", productName: "PRN 오더", sortOrder: 6 },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "멕쿨주10mg/2mL", ingredientName: "metoclopramide HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 8, mixGroup: "M1" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "휴메딕스트라마돌염산염주사", ingredientName: "tramadol HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M2" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M2" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "데노간주1g/1병", ingredientName: "propacetamol", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 11, mixGroup: "M3" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 12, mixGroup: "M3" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "페니라민주사", ingredientName: "chlorpheniramine maleate", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 13 },
+    { prescriptionId: T1입원오더IM처방.id, type: "추가설명", productName: "Anti 사용(응급실 사용 연장)", sortOrder: 14 },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "크목실린주1.2g", ingredientName: "amoxicillin/clavulanate", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "200cc/h", sortOrder: 15, mixGroup: "M4" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 16, mixGroup: "M4" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "루카신주사1.5g", ingredientName: "ampicillin sodium/sulbactam sodium", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "200cc/h", sortOrder: 17, mixGroup: "M5" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 18, mixGroup: "M5" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "하원세프트리악손주2g", ingredientName: "ceftriaxone sodium hydrate", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "200cc/hr", sortOrder: 19, mixGroup: "M6" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 20, mixGroup: "M6" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "메트리날주500mg/100ml", ingredientName: "metronidazole", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "200cc/hr", sortOrder: 21 },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "중외시프로플록사신주", ingredientName: "ciprofloxacin", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "200cc/hr", sortOrder: 22 },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "레보펙신주150mL", ingredientName: "levofloxacin hydrate", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "300cc/h", sortOrder: 23 },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "퀴녹스주400mg/250mL", ingredientName: "moxifloxacin", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "250cc/h", sortOrder: 24 },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "아지탑스주사500mg", ingredientName: "azithromycin dihydrate", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "500cc/h", sortOrder: 25, mixGroup: "M7" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "엔에스주사액500ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 26, mixGroup: "M7" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "타조페란주4.5g", ingredientName: "piperacillin/tazobactam", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "200cc/hr", sortOrder: 27, mixGroup: "M8" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "중외5%포도당주 100mL", ingredientName: "dextrose 5%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 28, mixGroup: "M8" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "보령맥스핌주1g", ingredientName: "cefepime HCl", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "200cc/hr", sortOrder: 29, mixGroup: "M9" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 30, mixGroup: "M9" },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "동광메로페넴주1g", ingredientName: "meropenem", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "중외5%포도당주100mL와 mix, 200cc/h", sortOrder: 31 },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "중외5%포도당주 100mL", ingredientName: "dextrose 5%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "동광메로페넴과 mix", sortOrder: 32 },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "겐타프로주사", ingredientName: "gentamicin sulfate", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "중외5%포도당주100mL와 mix, 200cc/h", sortOrder: 33 },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "중외5%포도당주 100mL", ingredientName: "dextrose 5%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "겐타프로와 mix", sortOrder: 34 },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "반코마이신주1g", ingredientName: "vancomycin HCl", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", note: "중외5%포도당주200mL와 mix, 200cc/h", sortOrder: 35 },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "중외5%포도당주 200mL", ingredientName: "dextrose 5%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "반코마이신과 mix", sortOrder: 36 },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "훌그램600mg주", ingredientName: "piperacillin", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "중외엔에스주사액100ml와 mix, 300cc/hr", sortOrder: 37 },
+    { prescriptionId: T1입원오더IM처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", note: "훌그램과 mix", sortOrder: 38 },
+
+    // 시트1-45: 입원 오더 추가(NS)
+    { prescriptionId: T1입원오더NS처방.id, type: "지시처방", productName: "V/S Check, TID", sortOrder: 0 },
+    { prescriptionId: T1입원오더NS처방.id, type: "지시처방", productName: "Walker Ambulation", sortOrder: 1 },
+    { prescriptionId: T1입원오더NS처방.id, type: "지시처방", productName: "Absolute Bed rest", sortOrder: 2 },
+    { prescriptionId: T1입원오더NS처방.id, type: "지시처방", productName: "정상 식이 진행", sortOrder: 3 },
+    { prescriptionId: T1입원오더NS처방.id, type: "지시처방", productName: "NPO", sortOrder: 4 },
+    { prescriptionId: T1입원오더NS처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", sortOrder: 5 },
+    { prescriptionId: T1입원오더NS처방.id, type: "약", productName: "마로비벤-에이주사 2.2ml", ingredientName: "aconitum tincture D2", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "40cc/hr", sortOrder: 6 },
+    { prescriptionId: T1입원오더NS처방.id, type: "약", productName: "휴메딕스트라마돌염산염주사", ingredientName: "tramadol HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: T1입원오더NS처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 8, mixGroup: "M1" },
+    { prescriptionId: T1입원오더NS처방.id, type: "약", productName: "멕쿨주10mg/2mL", ingredientName: "metoclopramide HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M2" },
+    { prescriptionId: T1입원오더NS처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M2" },
+    { prescriptionId: T1입원오더NS처방.id, type: "약", productName: "데노간주1g/1병", ingredientName: "propacetamol", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 11, mixGroup: "M3" },
+    { prescriptionId: T1입원오더NS처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 12, mixGroup: "M3" },
+    { prescriptionId: T1입원오더NS처방.id, type: "약", productName: "가스터주사액20밀리그램", ingredientName: "famotidine", dosage: "1", unit: "V", frequency: "1", route: "IV", sortOrder: 13 },
+    { prescriptionId: T1입원오더NS처방.id, type: "약", productName: "페니라민주사", ingredientName: "chlorpheniramine maleate", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 14 },
+    { prescriptionId: T1입원오더NS처방.id, type: "추가설명", productName: "PO 약 아래 중 선택", sortOrder: 15 },
+    { prescriptionId: T1입원오더NS처방.id, type: "추가설명", productName: "타박상", sortOrder: 16 },
+    { prescriptionId: T1입원오더NS처방.id, type: "퇴원약", productName: "아세로탈정100mg", ingredientName: "aceclofenac", dosage: "1", unit: "T", frequency: "BID", route: "BID PC", sortOrder: 17 },
+    { prescriptionId: T1입원오더NS처방.id, type: "퇴원약", productName: "대웅바이오에페리손정50mg", ingredientName: "eperisone HCl", dosage: "1", unit: "T", frequency: "BID", route: "BID PC", sortOrder: 18 },
+    { prescriptionId: T1입원오더NS처방.id, type: "퇴원약", productName: "비드레바서방정150mg", ingredientName: "rebamipide", dosage: "1", unit: "T", frequency: "BID", route: "BID PC", sortOrder: 19 },
+    { prescriptionId: T1입원오더NS처방.id, type: "퇴원약", productName: "베아셋정", ingredientName: "tramadol/acetaminophen", dosage: "1", unit: "T", frequency: "BID", route: "BID PC", sortOrder: 20 },
+    { prescriptionId: T1입원오더NS처방.id, type: "추가설명", productName: "열상", sortOrder: 21 },
+    { prescriptionId: T1입원오더NS처방.id, type: "퇴원약", productName: "낙소졸정500/20mg", ingredientName: "naproxen/esomeprazole strontium", dosage: "1", unit: "T", frequency: "BID", route: "BID PC", sortOrder: 22 },
+    { prescriptionId: T1입원오더NS처방.id, type: "퇴원약", productName: "한미세프라딘500mg", ingredientName: "cephradine hydrate", dosage: "1", unit: "C", frequency: "BID", route: "BID PC", sortOrder: 23 },
+
+    // 시트1-46: 입원 오더 추가(OS)
+    { prescriptionId: T1입원오더OS처방.id, type: "지시처방", productName: "V/S Check, TID", sortOrder: 0 },
+    { prescriptionId: T1입원오더OS처방.id, type: "지시처방", productName: "Bed rest", sortOrder: 1 },
+    { prescriptionId: T1입원오더OS처방.id, type: "지시처방", productName: "Vital sign check(8시간 간격)", sortOrder: 2 },
+    { prescriptionId: T1입원오더OS처방.id, type: "지시처방", productName: "신기능·심폐기능 이상환자 I/O Check(8시간 간격)", sortOrder: 3 },
+    { prescriptionId: T1입원오더OS처방.id, type: "지시처방", productName: "식사 TID(익일 수술시 MN NPO)", sortOrder: 4 },
+    { prescriptionId: T1입원오더OS처방.id, type: "약", productName: "플라주오피주 1000mL", ingredientName: "balanced crystalloid solution", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "40cc/hr", sortOrder: 5 },
+    { prescriptionId: T1입원오더OS처방.id, type: "추가설명", productName: "PRN 오더", sortOrder: 6 },
+    { prescriptionId: T1입원오더OS처방.id, type: "약", productName: "케토신주사", ingredientName: "ketorolac tromethamine", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M1" },
+    { prescriptionId: T1입원오더OS처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 8, mixGroup: "M1" },
+    { prescriptionId: T1입원오더OS처방.id, type: "약", productName: "멕쿨주10mg/2mL", ingredientName: "metoclopramide HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M2" },
+    { prescriptionId: T1입원오더OS처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M2" },
+    { prescriptionId: T1입원오더OS처방.id, type: "약", productName: "휴메딕스트라마돌염산염주사", ingredientName: "tramadol HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 11, mixGroup: "M3" },
+    { prescriptionId: T1입원오더OS처방.id, type: "약", productName: "중외생리식염주사액20mL", ingredientName: "Normal Saline", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 12, mixGroup: "M3" },
+    { prescriptionId: T1입원오더OS처방.id, type: "약", productName: "데노간주1g/1병", ingredientName: "propacetamol", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 13, mixGroup: "M4" },
+    { prescriptionId: T1입원오더OS처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 14, mixGroup: "M4" },
+    { prescriptionId: T1입원오더OS처방.id, type: "약", productName: "가스터주사액20밀리그램", ingredientName: "famotidine", dosage: "1", unit: "V", frequency: "1", route: "IV", sortOrder: 15 },
+    { prescriptionId: T1입원오더OS처방.id, type: "약", productName: "페니라민주사", ingredientName: "chlorpheniramine maleate", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 16 },
+    { prescriptionId: T1입원오더OS처방.id, type: "약", productName: "디크놀주사90mg/2mL", ingredientName: "flurbiprofen axetil", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 17 },
+    { prescriptionId: T1입원오더OS처방.id, type: "약", productName: "타마돌주사50mg/1mL", ingredientName: "tramadol HCl", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 18 },
+    { prescriptionId: T1입원오더OS처방.id, type: "약", productName: "제일페티딘염산염주사액", ingredientName: "pethidine HCl", dosage: "1", unit: "A", frequency: "1", route: "IM", sortOrder: 19 },
+    { prescriptionId: T1입원오더OS처방.id, type: "추가설명", productName: "PO 약 아래 중 선택", sortOrder: 20 },
+    { prescriptionId: T1입원오더OS처방.id, type: "추가설명", productName: "타박상", sortOrder: 21 },
+    { prescriptionId: T1입원오더OS처방.id, type: "퇴원약", productName: "아세로탈정100mg", ingredientName: "aceclofenac", dosage: "1", unit: "T", frequency: "BID", route: "BID PC", sortOrder: 22 },
+    { prescriptionId: T1입원오더OS처방.id, type: "퇴원약", productName: "대웅바이오에페리손정50mg", ingredientName: "eperisone HCl", dosage: "1", unit: "T", frequency: "BID", route: "BID PC", sortOrder: 23 },
+    { prescriptionId: T1입원오더OS처방.id, type: "퇴원약", productName: "비드레바서방정150mg", ingredientName: "rebamipide", dosage: "1", unit: "T", frequency: "BID", route: "BID PC", sortOrder: 24 },
+    { prescriptionId: T1입원오더OS처방.id, type: "퇴원약", productName: "베아셋정", ingredientName: "tramadol/acetaminophen", dosage: "1", unit: "T", frequency: "BID", route: "BID PC", sortOrder: 25 },
+    { prescriptionId: T1입원오더OS처방.id, type: "추가설명", productName: "열상", sortOrder: 26 },
+    { prescriptionId: T1입원오더OS처방.id, type: "퇴원약", productName: "낙소졸정500/20mg", ingredientName: "naproxen/esomeprazole strontium", dosage: "1", unit: "T", frequency: "BID", route: "BID PC", sortOrder: 27 },
+    { prescriptionId: T1입원오더OS처방.id, type: "퇴원약", productName: "한미세프라딘500mg", ingredientName: "cephradine hydrate", dosage: "1", unit: "C", frequency: "BID", route: "BID PC", sortOrder: 28 },
+
+    // 시트1-47: 입원 오더 추가(GS)
+    { prescriptionId: T1입원오더GS처방.id, type: "추가설명", productName: "응급실에서 수술전 anti- 사용", sortOrder: 0 },
+    { prescriptionId: T1입원오더GS처방.id, type: "약", productName: "후루마린주사0.5g", ingredientName: "flomoxef sodium", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 1, mixGroup: "M1" },
+    { prescriptionId: T1입원오더GS처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 2, mixGroup: "M1" },
+    { prescriptionId: T1입원오더GS처방.id, type: "추가설명", productName: "입원 후", sortOrder: 3 },
+    { prescriptionId: T1입원오더GS처방.id, type: "지시처방", productName: "V/S Check, TID", sortOrder: 4 },
+    { prescriptionId: T1입원오더GS처방.id, type: "지시처방", productName: "I/O Check, BID", sortOrder: 5 },
+    { prescriptionId: T1입원오더GS처방.id, type: "지시처방", productName: "NPO", sortOrder: 6 },
+    { prescriptionId: T1입원오더GS처방.id, type: "약", productName: "멕쿨주10mg/2mL", ingredientName: "metoclopramide HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 7, mixGroup: "M2" },
+    { prescriptionId: T1입원오더GS처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 8, mixGroup: "M2" },
+    { prescriptionId: T1입원오더GS처방.id, type: "약", productName: "휴메딕스트라마돌염산염주사", ingredientName: "tramadol HCl", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", sortOrder: 9, mixGroup: "M3" },
+    { prescriptionId: T1입원오더GS처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 10, mixGroup: "M3" },
+    { prescriptionId: T1입원오더GS처방.id, type: "약", productName: "데노간주1g/1병", ingredientName: "propacetamol", dosage: "1", unit: "V", frequency: "1", route: "IV infusion", sortOrder: 11, mixGroup: "M4" },
+    { prescriptionId: T1입원오더GS처방.id, type: "약", productName: "중외엔에스주사액100ml", ingredientName: "Normal Saline", dosage: "1", unit: "Bag", frequency: "1", route: "IV infusion", sortOrder: 12, mixGroup: "M4" },
+    { prescriptionId: T1입원오더GS처방.id, type: "약", productName: "페니라민주사", ingredientName: "chlorpheniramine maleate", dosage: "1", unit: "A", frequency: "1", route: "IV", sortOrder: 13 },
+
+    // 시트1-48: 입원 전 CRE/VRE(요양원 환자)
+    { prescriptionId: T1입원전CREVRE처방.id, type: "혈액검사", productName: "VRE Culture screening", sortOrder: 0 },
+    { prescriptionId: T1입원전CREVRE처방.id, type: "혈액검사", productName: "CRE Culture screening", sortOrder: 1 },
+
+    // 시트1-49: 기본 X-ray (기본검사와 100% 동일 - 기본 Lab 참조)
+    { prescriptionId: T1기본xray처방.id, type: "추가설명", productName: "기본 검사(Lab) 카테고리의 Chest PA, Abdomen Erect+Supine과 동일", sortOrder: 0 },
+
+    // 시트1-50: X-ray(Bed-ridden 변경) (기본검사와 100% 동일 - 기본 Lab 참조)
+    { prescriptionId: T1XrayBedridden처방.id, type: "추가설명", productName: "기본 검사(Lab) 카테고리의 Bed-ridden 대체 영상(Chest AP, Abdomen Supine)과 동일", sortOrder: 0 },
+
+    // 시트1-51: Portable X-ray
+    { prescriptionId: T1PortableXray처방.id, type: "추가설명", productName: "Portable", sortOrder: 0 },
+    { prescriptionId: T1PortableXray처방.id, type: "영상검사", productName: "C-Spine LAT", sortOrder: 1 },
+    { prescriptionId: T1PortableXray처방.id, type: "영상검사", productName: "Pelvis AP", sortOrder: 2 },
+    { prescriptionId: T1PortableXray처방.id, type: "추가설명", productName: "격리실 portable 처방", sortOrder: 3 },
+
+    // 시트1-52: X-ray(Head)
+    { prescriptionId: T1XrayHead처방.id, type: "영상검사", productName: "Skull Series", sortOrder: 0 },
+    { prescriptionId: T1XrayHead처방.id, type: "영상검사", productName: "PNS Water's", sortOrder: 1 },
+    { prescriptionId: T1XrayHead처방.id, type: "영상검사", productName: "Mandible series", sortOrder: 2 },
+    { prescriptionId: T1XrayHead처방.id, type: "영상검사", productName: "Nasal Bone LAT (Both)", sortOrder: 3 },
+    { prescriptionId: T1XrayHead처방.id, type: "영상검사", productName: "Orbit PA", sortOrder: 4 },
+    { prescriptionId: T1XrayHead처방.id, type: "영상검사", productName: "Zygomatic Arch", sortOrder: 5 },
+    { prescriptionId: T1XrayHead처방.id, type: "영상검사", productName: "Skull Town's", sortOrder: 6 },
+
+    // 시트1-53: X-ray(Neck soft)
+    { prescriptionId: T1XrayNeck처방.id, type: "영상검사", productName: "Neck AP + LAT", sortOrder: 0 },
+    { prescriptionId: T1XrayNeck처방.id, type: "영상검사", productName: "Neck AP", sortOrder: 1 },
+    { prescriptionId: T1XrayNeck처방.id, type: "영상검사", productName: "Neck LAT", sortOrder: 2 },
+
+    // 시트1-54: X-ray(Spine)
+    { prescriptionId: T1XraySpine처방.id, type: "영상검사", productName: "C-spine AP + LAT", sortOrder: 0 },
+    { prescriptionId: T1XraySpine처방.id, type: "영상검사", productName: "C-spine AP + LAT + Open mouth", sortOrder: 1 },
+    { prescriptionId: T1XraySpine처방.id, type: "영상검사", productName: "T-spine AP + LAT", sortOrder: 2 },
+    { prescriptionId: T1XraySpine처방.id, type: "영상검사", productName: "T-L Spine AP + LAT", sortOrder: 3 },
+    { prescriptionId: T1XraySpine처방.id, type: "영상검사", productName: "L-S Spine AP + Lat", sortOrder: 4 },
+    { prescriptionId: T1XraySpine처방.id, type: "영상검사", productName: "Coccyx AP + LAT", sortOrder: 5 },
+    { prescriptionId: T1XraySpine처방.id, type: "영상검사", productName: "Sacrum AP + LAT", sortOrder: 6 },
+
+    // 시트1-55: X-ray(Chest & Abdomen)
+    { prescriptionId: T1XrayChestAbdomen처방.id, type: "영상검사", productName: "Chest PA + LAT (Lt)", sortOrder: 0 },
+    { prescriptionId: T1XrayChestAbdomen처방.id, type: "영상검사", productName: "Abdomen Erect", sortOrder: 1 },
+    { prescriptionId: T1XrayChestAbdomen처방.id, type: "영상검사", productName: "K.U.B", sortOrder: 2 },
+    { prescriptionId: T1XrayChestAbdomen처방.id, type: "영상검사", productName: "Rib Series", sortOrder: 3 },
+    { prescriptionId: T1XrayChestAbdomen처방.id, type: "영상검사", productName: "Sternum LAT", sortOrder: 4 },
+
+    // 시트1-56: X-ray(Hip/Pelvis)
+    { prescriptionId: T1XrayHipPelvis처방.id, type: "영상검사", productName: "Hip AP + LAT (Both)", sortOrder: 0 },
+    { prescriptionId: T1XrayHipPelvis처방.id, type: "영상검사", productName: "Hip AP + LAT (Rt)", sortOrder: 1 },
+    { prescriptionId: T1XrayHipPelvis처방.id, type: "영상검사", productName: "Hip AP + LAT (Lt)", sortOrder: 2 },
+    { prescriptionId: T1XrayHipPelvis처방.id, type: "영상검사", productName: "Pelvis AP", sortOrder: 3 },
+    { prescriptionId: T1XrayHipPelvis처방.id, type: "영상검사", productName: "Pelvis AP + Inlet + Outlet", sortOrder: 4 },
+    { prescriptionId: T1XrayHipPelvis처방.id, type: "영상검사", productName: "Pelvis Series", sortOrder: 5 },
+    { prescriptionId: T1XrayHipPelvis처방.id, type: "영상검사", productName: "Pelvis Series + Inlet + Outlet", sortOrder: 6 },
+
+    // 시트1-57: X-ray(Clavicle & Shoulder)
+    { prescriptionId: T1XrayClavicleShoulder처방.id, type: "영상검사", productName: "Shoulder AP (Both)", sortOrder: 0 },
+    { prescriptionId: T1XrayClavicleShoulder처방.id, type: "영상검사", productName: "Clavicle AP (both)", sortOrder: 1 },
+    { prescriptionId: T1XrayClavicleShoulder처방.id, type: "영상검사", productName: "Shoulder AP + LAT + Axial (Both)", sortOrder: 2 },
+    { prescriptionId: T1XrayClavicleShoulder처방.id, type: "영상검사", productName: "Shoulder AP + LAT + Axial (Rt)", sortOrder: 3 },
+    { prescriptionId: T1XrayClavicleShoulder처방.id, type: "영상검사", productName: "Shoulder AP + LAT + Axial (Lt)", sortOrder: 4 },
+    { prescriptionId: T1XrayClavicleShoulder처방.id, type: "영상검사", productName: "Shoulder AP + LAT (Both)", sortOrder: 5 },
+    { prescriptionId: T1XrayClavicleShoulder처방.id, type: "영상검사", productName: "Shoulder AP + LAT (Rt)", sortOrder: 6 },
+    { prescriptionId: T1XrayClavicleShoulder처방.id, type: "영상검사", productName: "Shoulder AP + LAT (Lt)", sortOrder: 7 },
+    { prescriptionId: T1XrayClavicleShoulder처방.id, type: "영상검사", productName: "Scapula AP + LAT (Both)", sortOrder: 8 },
+    { prescriptionId: T1XrayClavicleShoulder처방.id, type: "영상검사", productName: "Scapula AP + LAT (Rt)", sortOrder: 9 },
+    { prescriptionId: T1XrayClavicleShoulder처방.id, type: "영상검사", productName: "Scapula AP + LAT (Lt)", sortOrder: 10 },
+
+    // 시트1-58: X-ray(Upper ext.)
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Humerus AP + LAT (Both)", sortOrder: 0 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Humerus AP + LAT (Rt)", sortOrder: 1 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Humerus AP + LAT (Lt)", sortOrder: 2 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Elbow Series (Both)", sortOrder: 3 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Elbow Series (Rt)", sortOrder: 4 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Elbow Series (Lt)", sortOrder: 5 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Elbow AP + LAT (Both)", sortOrder: 6 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Elbow AP + LAT (Rt)", sortOrder: 7 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Elbow AP + LAT (Lt)", sortOrder: 8 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Forearm AP + LAT (Both)", sortOrder: 9 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Forearm AP + LAT (Rt)", sortOrder: 10 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Forearm AP + LAT (Lt)", sortOrder: 11 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Wrist Series (Both)", sortOrder: 12 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Wrist Series (Rt)", sortOrder: 13 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Wrist Series (Lt)", sortOrder: 14 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Wrist AP + LAT (Both)", sortOrder: 15 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Wrist AP + LAT (Rt)", sortOrder: 16 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Wrist AP + LAT (Lt)", sortOrder: 17 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Hand Series (Both)", sortOrder: 18 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Hand Series (Rt)", sortOrder: 19 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Hand Series (Lt)", sortOrder: 20 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Hand AP + LAT+ oblique (Both)", sortOrder: 21 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Hand AP + LAT+ oblique (Rt)", sortOrder: 22 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Hand AP + LAT+ oblique (Lt)", sortOrder: 23 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Finger AP + LAT (Both)", sortOrder: 24 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Finger AP + LAT (Rt)", sortOrder: 25 },
+    { prescriptionId: T1XrayUpperExt처방.id, type: "영상검사", productName: "Finger AP + LAT (Lt)", sortOrder: 26 },
+
+    // 시트1-59: X-ray(Lower ext.)
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Femur AP + LAT (Both)", sortOrder: 0 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Femur AP + LAT (Rt)", sortOrder: 1 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Femur AP + LAT (Lt)", sortOrder: 2 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Knee Series (Both)", sortOrder: 3 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Knee Series (Rt)", sortOrder: 4 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Knee Series (Lt)", sortOrder: 5 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Knee Series + Skyline (Both)", sortOrder: 6 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Knee Series + Skyline (Rt)", sortOrder: 7 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Knee Series + Skyline (Lt)", sortOrder: 8 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Knee AP + LAT + Skyline (Both)", sortOrder: 9 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Knee AP + LAT + Skyline (Rt)", sortOrder: 10 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Knee AP + LAT + Skyline (Lt)", sortOrder: 11 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Knee AP + LAT (Both)", sortOrder: 12 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Knee AP + LAT (Rt)", sortOrder: 13 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Knee AP + LAT (Lt)", sortOrder: 14 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Tibia AP + LAT (Both)", sortOrder: 15 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Tibia AP + LAT (Rt)", sortOrder: 16 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Tibia AP + LAT (Lt)", sortOrder: 17 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Ankle Series (Both)", sortOrder: 18 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Ankle Series (Rt)", sortOrder: 19 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Ankle Series (Lt)", sortOrder: 20 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Ankle AP + LAT + Mortis (Both)", sortOrder: 21 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Ankle AP + LAT + Mortis (Rt)", sortOrder: 22 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Ankle AP + LAT + Mortis (Lt)", sortOrder: 23 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Calcaneus Axial + LAT (Both)", sortOrder: 24 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Calcaneus Axial + LAT (Rt)", sortOrder: 25 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Calcaneus Axial + LAT (Lt)", sortOrder: 26 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Foot Series (Both)", sortOrder: 27 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Foot Series (Rt)", sortOrder: 28 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Foot Series (Lt)", sortOrder: 29 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Foot AP + LAT +Oblique (both)", sortOrder: 30 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Foot AP + LAT +Oblique (Rt)", sortOrder: 31 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Foot AP + LAT +Oblique (Lt)", sortOrder: 32 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Toe AP + LAT (Both)", sortOrder: 33 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Toe AP + LAT (Rt)", sortOrder: 34 },
+    { prescriptionId: T1XrayLowerExt처방.id, type: "영상검사", productName: "Toe AP + LAT (Lt)", sortOrder: 35 },
+
+    // 시트1-60: CT 코드 모음
+    { prescriptionId: T1CT코드모음처방.id, type: "추가설명", productName: "다빈도 처방", sortOrder: 0 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Brain CT", sortOrder: 1 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Facial Bone CT", sortOrder: 2 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Chest & Abdomen CT (CE)", sortOrder: 3 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Chest & Abdomen CT", sortOrder: 4 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Abdomen & Pelvis CT (CE)", sortOrder: 5 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Abdomen & Pelvis CT(stone)", sortOrder: 6 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "CVA (CE) CT", sortOrder: 7 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Head & Neck angio CT(CE)", sortOrder: 8 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Brain angio CT(CE)", sortOrder: 9 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Brain perfusion CT(CE)", sortOrder: 10 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Facial Bone 3D CT", sortOrder: 11 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Orbit CT", sortOrder: 12 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Neck CT (CE)", sortOrder: 13 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Neck CT (CE) & Chest CT(CE)", sortOrder: 14 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Temporal bone CT", sortOrder: 15 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Chest(CE) + Liver 3Phase (CE) CT", sortOrder: 16 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Chest CT", sortOrder: 17 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Chest CT(CE)", sortOrder: 18 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "RIB CT", sortOrder: 19 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Rib 3D CT", sortOrder: 20 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "HR Chest CT", sortOrder: 21 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Low Dose Chest CT", sortOrder: 22 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Aorta angio CT (CE)", sortOrder: 23 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Cardiac Angio + Chest CT", sortOrder: 24 },
+    { prescriptionId: T1CT코드모음처방.id, type: "약", productName: "니트로글리세린0.6mg설하정", ingredientName: "nitroglycerin", dosage: "1", unit: "T", frequency: "PRN", route: "SL", note: "Cardiac Angio CT 전처치", sortOrder: 25 },
+    { prescriptionId: T1CT코드모음처방.id, type: "약", productName: "베타록정", ingredientName: "metoprolol tartrate", dosage: "1", unit: "T", frequency: "PRN", route: "PO", note: "Cardiac Angio CT 전처치", sortOrder: 26 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "TRO Angio CT(CE)", sortOrder: 27 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Chest CT(CE, hemoptysis)", sortOrder: 28 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "pulmonary angio CT (CE) + Lower Extremity Angio CT (CE)", sortOrder: 29 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Pulmonary + DVT CT (CE)", sortOrder: 30 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Abdomen & Pelvis CT", sortOrder: 31 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Abdomen Bleeding CT (CE)", sortOrder: 32 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Abdomen aorta angio CT (CE)", sortOrder: 33 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Abdomen Liver 3Phase CT(CE)", sortOrder: 34 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Abdomen Kidney 3Phase CT(CE)", sortOrder: 35 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Upper Extremity Angio CT (CE)", sortOrder: 36 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "Lower Extremity Angio CT (CE)", sortOrder: 37 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "C-Spine CT", sortOrder: 38 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "T-Spine CT", sortOrder: 39 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "L-Spine CT", sortOrder: 40 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "C + L Spine CT", sortOrder: 41 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "C + T spine CT", sortOrder: 42 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "C + T + L spine CT", sortOrder: 43 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "T-L spine CT", sortOrder: 44 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "C-Spine 3D CT", sortOrder: 45 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "T-Spine 3D CT", sortOrder: 46 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "L-Spine 3D CT", sortOrder: 47 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "T-L Spine 3D CT", sortOrder: 48 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "HIP 3D CT [Lt]", sortOrder: 49 },
+    { prescriptionId: T1CT코드모음처방.id, type: "영상검사", productName: "HIP 3D CT [Rt]", sortOrder: 50 },
+    { prescriptionId: T1CT코드모음처방.id, type: "추가설명", productName: "팔다리 CT는 따로 추가", sortOrder: 51 },
+
+    // 시트1-61: MRI 코드 모음
+    { prescriptionId: T1MRI코드모음처방.id, type: "추가설명", productName: "Brain-MRI 처방 - 무조건 신경학적 일반검사 추가 필요", sortOrder: 0 },
+    { prescriptionId: T1MRI코드모음처방.id, type: "혈액검사", productName: "신경학적 일반검사 B-MRI 필수", note: "50% 급여(기준 해당시): Mental change, N/E abnl, B-CT abnl 등", sortOrder: 1 },
+    { prescriptionId: T1MRI코드모음처방.id, type: "영상검사", productName: "Brain Diffusion(3.0T)", sortOrder: 2 },
+    { prescriptionId: T1MRI코드모음처방.id, type: "추가설명", productName: "MRI 1.5T 변경시", sortOrder: 3 },
+    { prescriptionId: T1MRI코드모음처방.id, type: "영상검사", productName: "Brain Diffusion(1.5T)", note: "신경학적 일반검사 B-MRI 필수 동반", sortOrder: 4 },
+    { prescriptionId: T1MRI코드모음처방.id, type: "영상검사", productName: "Brain MRI+Diffusion(3.0T)", sortOrder: 5 },
+    { prescriptionId: T1MRI코드모음처방.id, type: "영상검사", productName: "Brain MRI+MRA+Diffusion(3.0T)", sortOrder: 6 },
+    { prescriptionId: T1MRI코드모음처방.id, type: "추가설명", productName: "아래는 심사과에서 추후 확인 후 필요시 반영 - 20% 급여(급여기준 아니나 두통(r/o CVA), dizziness로 신경학적 검사 실시 후 결과 기록한 경우)", sortOrder: 7 },
+    { prescriptionId: T1MRI코드모음처방.id, type: "혈액검사", productName: "신경학적 일반검사 B-MRI 필수", sortOrder: 8 },
+    { prescriptionId: T1MRI코드모음처방.id, type: "영상검사", productName: "Brain Diffusion(3.0T)", sortOrder: 9 },
+    { prescriptionId: T1MRI코드모음처방.id, type: "추가설명", productName: "spine-MRI 처방 - 무조건 신경학적 일반검사 추가 필요", sortOrder: 10 },
+    { prescriptionId: T1MRI코드모음처방.id, type: "혈액검사", productName: "신경학적 일반검사 척추MRI 필수", sortOrder: 11 },
+    { prescriptionId: T1MRI코드모음처방.id, type: "영상검사", productName: "C-Spine MRI (3.0T)", sortOrder: 12 },
+    { prescriptionId: T1MRI코드모음처방.id, type: "추가설명", productName: "MRI 1.5T 변경시", sortOrder: 13 },
+    { prescriptionId: T1MRI코드모음처방.id, type: "혈액검사", productName: "신경학적 일반검사 척추MRI 필수", sortOrder: 14 },
+    { prescriptionId: T1MRI코드모음처방.id, type: "영상검사", productName: "C-Spine MRI( 1.5 T )", sortOrder: 15 },
+
+    // 시트1-62: 초음파 코드 모음
+    { prescriptionId: T1초음파코드모음처방.id, type: "추가설명", productName: "초음파 처방", sortOrder: 0 },
+    { prescriptionId: T1초음파코드모음처방.id, type: "영상검사", productName: "(EM-sono)FAST(Focused Assessment Sonography for trauma)", sortOrder: 1 },
+    { prescriptionId: T1초음파코드모음처방.id, type: "영상검사", productName: "(EM) Target echo", sortOrder: 2 },
+    { prescriptionId: T1초음파코드모음처방.id, type: "영상검사", productName: "(EM-sono)single target - 1 point", sortOrder: 3 },
+    { prescriptionId: T1초음파코드모음처방.id, type: "영상검사", productName: "(EM-sono)single target - 2 points and more", sortOrder: 4 },
+    { prescriptionId: T1초음파코드모음처방.id, type: "영상검사", productName: "(EM-sono)complex target", sortOrder: 5 },
+    { prescriptionId: T1초음파코드모음처방.id, type: "지시처방", productName: "Sono guide - C line insertion", sortOrder: 6 },
+    { prescriptionId: T1초음파코드모음처방.id, type: "지시처방", productName: "Sono guide - Paracentesis", sortOrder: 7 },
+    { prescriptionId: T1초음파코드모음처방.id, type: "영상검사", productName: "Penis + Scrotum Sono", sortOrder: 8 },
+    { prescriptionId: T1초음파코드모음처방.id, type: "지시처방", productName: "(EM) U/S Guided Paracentesis", sortOrder: 9 },
+    { prescriptionId: T1초음파코드모음처방.id, type: "지시처방", productName: "(EM) U/S Guided Thoracentesis", sortOrder: 10 },
+    { prescriptionId: T1초음파코드모음처방.id, type: "추가설명", productName: "ECHO 처방 - 입원(CV 협진)시 처방 넣지 않기", sortOrder: 11 },
+    { prescriptionId: T1초음파코드모음처방.id, type: "영상검사", productName: "(EM) Transthoracic Echocardiography-Simple", note: "2D, M-mode, doppler 이용한 검사 + 좌심실구현률 측정", sortOrder: 12 },
+    { prescriptionId: T1초음파코드모음처방.id, type: "영상검사", productName: "(EM) Transthoracic Echocardiography-General", note: "2D, M-mode, doppler, spectral doppler 이용 + 좌심실용적측정 등 정량분석", sortOrder: 13 },
+    { prescriptionId: T1초음파코드모음처방.id, type: "영상검사", productName: "(EM) Transthoracic Echo-Strain", note: "단순/일반 검사 후 관상동맥·판막·심실기능 정밀검사까지 실시한 경우", sortOrder: 14 },
+
+    // 시트1-63: 외부 CD 판독
+    { prescriptionId: T1외부CD판독처방.id, type: "추가설명", productName: "CT", sortOrder: 0 },
+    { prescriptionId: T1외부CD판독처방.id, type: "영상검사", productName: "(외부)Brain CT-외부병원필름판독료", sortOrder: 1 },
+    { prescriptionId: T1외부CD판독처방.id, type: "영상검사", productName: "(외부)Chest CT-외부병원필름판독료", sortOrder: 2 },
+    { prescriptionId: T1외부CD판독처방.id, type: "영상검사", productName: "(외부)Abdomen CT-외부병원필름판독료", sortOrder: 3 },
+    { prescriptionId: T1외부CD판독처방.id, type: "영상검사", productName: "(외부)Spine CT-외부병원필름판독료", sortOrder: 4 },
+    { prescriptionId: T1외부CD판독처방.id, type: "영상검사", productName: "(외부)Upper Extremity CT-외부병원필름판독료", sortOrder: 5 },
+    { prescriptionId: T1외부CD판독처방.id, type: "영상검사", productName: "(외부)Lower Extremity CT-외부병원필름판독료", sortOrder: 6 },
+    { prescriptionId: T1외부CD판독처방.id, type: "영상검사", productName: "(외부)Neck CT-외부병원필름판독료", sortOrder: 7 },
+    { prescriptionId: T1외부CD판독처방.id, type: "영상검사", productName: "(외부)Facial CT-외부병원필름판독료", sortOrder: 8 },
+    { prescriptionId: T1외부CD판독처방.id, type: "추가설명", productName: "MRI", sortOrder: 9 },
+    { prescriptionId: T1외부CD판독처방.id, type: "영상검사", productName: "(외부)Diffusion MRI-외부병원필름판독료", sortOrder: 10 },
+    { prescriptionId: T1외부CD판독처방.id, type: "영상검사", productName: "외부)MRI판독-Cervical Spine", sortOrder: 11 },
+    { prescriptionId: T1외부CD판독처방.id, type: "영상검사", productName: "외부)MRI판독-Thoracic Spine", sortOrder: 12 },
+    { prescriptionId: T1외부CD판독처방.id, type: "영상검사", productName: "외부)MRI판독료-Lumbosacral Spine", sortOrder: 13 },
+
+    // 시트1-64: 조영제 AKI protocol
+    { prescriptionId: T1조영제AKI처방.id, type: "추가설명", productName: "1. [최근 기준] GFR 30 미만일 경우", sortOrder: 0 },
+    { prescriptionId: T1조영제AKI처방.id, type: "약", productName: "중외엔에스주사액1L", ingredientName: "Normal Saline", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "CIN 예방 수액 속도: 조영제 노출전 1cc/kg/hr로 3-4시간, 노출후 1cc/kg/hr로 4-6시간, 또는 전후로 1cc/kg/hr로 10시간 투여", sortOrder: 1 },
+    { prescriptionId: T1조영제AKI처방.id, type: "추가설명", productName: "2. [옛날 기준] GFR 60 미만일 경우", sortOrder: 2 },
+    { prescriptionId: T1조영제AKI처방.id, type: "약", productName: "중외5%포도당주1000mL", ingredientName: "dextrose 5%", dosage: "1", unit: "BT", frequency: "1", route: "IV infusion", note: "CIN 예방 method 1: 조영제 검사전 3cc/kg/hr로 1시간, 검사후 1cc/kg/hr로 6시간 투여", sortOrder: 3 },
+    { prescriptionId: T1조영제AKI처방.id, type: "약", productName: "탄산수소나트륨8.4%주", ingredientName: "sodium bicarbonate", dosage: "1", unit: "A", frequency: "1", route: "IV infusion", note: "CIN 예방 method 2: 조영제 검사 전후 1cc/kg/hr로 12시간 투여", sortOrder: 4 },
   ]);
 
 }
