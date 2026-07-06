@@ -18,7 +18,7 @@ export interface IStorage {
   createPrescription(data: InsertPrescription): Promise<Prescription>;
   updatePrescription(id: number, data: Partial<InsertPrescription>): Promise<Prescription>;
   updatePrescriptionOrders(items: { id: number; sortOrder: number; categoryId?: number }[]): Promise<void>;
-  copyPrescription(id: number): Promise<Prescription>;
+  copyPrescription(id: number, targetCategoryId?: number): Promise<Prescription>;
 
   deleteCategory(id: number): Promise<void>;
   deletePrescription(id: number): Promise<void>;
@@ -83,16 +83,19 @@ export class DatabaseStorage implements IStorage {
     }
   }
 
-  async copyPrescription(id: number): Promise<Prescription> {
+  async copyPrescription(id: number, targetCategoryId?: number): Promise<Prescription> {
     const [original] = await db.select().from(prescriptions).where(eq(prescriptions.id, id));
     if (!original) throw new Error("Prescription not found");
 
-    const siblings = await db.select().from(prescriptions).where(eq(prescriptions.categoryId, original.categoryId));
+    const destCategoryId = targetCategoryId ?? original.categoryId;
+    const isSameCategory = destCategoryId === original.categoryId;
+
+    const siblings = await db.select().from(prescriptions).where(eq(prescriptions.categoryId, destCategoryId));
     const maxOrder = siblings.length > 0 ? Math.max(...siblings.map(s => s.sortOrder)) + 1 : 0;
 
     const [copy] = await db.insert(prescriptions).values({
-      name: `${original.name} (복사본)`,
-      categoryId: original.categoryId,
+      name: isSameCategory ? `${original.name} (복사본)` : original.name,
+      categoryId: destCategoryId,
       sortOrder: maxOrder,
     }).returning();
 

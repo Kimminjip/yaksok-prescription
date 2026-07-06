@@ -77,8 +77,10 @@ export async function registerRoutes(
   app.post("/api/prescriptions/:id/copy", async (req, res) => {
     const id = parseInt(req.params.id, 10);
     if (isNaN(id)) return res.status(400).json({ message: "Invalid id" });
+    const targetCategoryId = req.body?.categoryId !== undefined ? parseInt(req.body.categoryId, 10) : undefined;
+    if (targetCategoryId !== undefined && isNaN(targetCategoryId)) return res.status(400).json({ message: "Invalid categoryId" });
     try {
-      const copy = await storage.copyPrescription(id);
+      const copy = await storage.copyPrescription(id, targetCategoryId);
       res.json(copy);
     } catch (e: any) {
       res.status(404).json({ message: e.message });

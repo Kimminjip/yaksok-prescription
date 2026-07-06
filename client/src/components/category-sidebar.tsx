@@ -8,7 +8,8 @@ import {
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Pill, FolderOpen, Layers, GripVertical, Plus, X, Search } from "lucide-react";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { ChevronRight, Pill, FolderOpen, Layers, GripVertical, Plus, X, Search, Copy, ClipboardPaste } from "lucide-react";
 import { DragDropContext, Droppable, Draggable, type DropResult } from "@hello-pangea/dnd";
 import { apiRequest, queryClient, optimisticUpdateItems } from "@/lib/queryClient";
 import type { Category, Prescription } from "@shared/schema";
@@ -120,6 +121,7 @@ export function CategorySidebar({
   const [addingCategory, setAddingCategory] = useState(false);
   const [addingSubFor, setAddingSubFor] = useState<number | null>(null);
   const [addingPrescriptionFor, setAddingPrescriptionFor] = useState<number | null>(null);
+  const [clipboard, setClipboard] = useState<{ id: number; name: string } | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchMode, setSearchMode] = useState<SearchMode>("name");
   const [drugSearchResults, setDrugSearchResults] = useState<number[] | null>(null);
@@ -173,6 +175,7 @@ export function CategorySidebar({
 
   const hasVisiblePrescriptions = (majorId: number) => {
     if (!isSearching) return true;
+    if (getFilteredPrescriptions(majorId).length > 0) return true;
     const subs = getSubCategories(majorId);
     return subs.some(sub => getFilteredPrescriptions(sub.id).length > 0);
   };
@@ -271,6 +274,30 @@ export function CategorySidebar({
       await apiRequest("DELETE", `/api/prescriptions/${id}`);
     } catch {
       if (previous) queryClient.setQueryData(rxKey, previous);
+    }
+  };
+
+  const handleCopyPrescription = (id: number, name: string) => {
+    setClipboard({ id, name });
+  };
+
+  const handlePastePrescription = async (targetCategoryId: number) => {
+    if (!clipboard) return;
+    const rxKey = ["/api/prescriptions"] as const;
+    try {
+      await apiRequest("POST", `/api/prescriptions/${clipboard.id}/copy`, { categoryId: targetCategoryId });
+      queryClient.invalidateQueries({ queryKey: rxKey });
+      const target = categories.find(c => c.id === targetCategoryId);
+      if (target) {
+        if (target.parentId) {
+          setOpenMajor(prev => new Set(prev).add(target.parentId as number));
+          setOpenSub(prev => new Set(prev).add(target.id));
+        } else {
+          setOpenMajor(prev => new Set(prev).add(target.id));
+        }
+      }
+    } catch {
+      // no optimistic state to roll back; server is source of truth for the new copy
     }
   };
 
@@ -450,7 +477,8 @@ export function CategorySidebar({
 
                     const subCategories = getSubCategories(major.id);
                     const isMajorOpen = isSearching || openMajor.has(major.id);
-                    const totalRxCount = subCategories.reduce((sum, sub) => sum + getPrescriptions(sub.id).length, 0);
+                    const majorRxs = isSearching ? getFilteredPrescriptions(major.id) : getPrescriptions(major.id);
+                    const totalRxCount = getPrescriptions(major.id).length + subCategories.reduce((sum, sub) => sum + getPrescriptions(sub.id).length, 0);
 
                     return (
                       <Draggable key={major.id} draggableId={`major-${major.id}`} index={majorIdx} isDragDisabled={isSearching}>
@@ -497,12 +525,78 @@ export function CategorySidebar({
                                 )}
                               </div>
                               <CollapsibleContent>
+                                <div className="ml-5 border-l border-border pl-1">
+                                <Droppable droppableId={`rx-${major.id}`} type="PRESCRIPTION">
+                                  {(rxProvided) => (
+                                    <div ref={rxProvided.innerRef} {...rxProvided.droppableProps}>
+                                      {majorRxs.map((rx, rxIdx) => (
+                                        <Draggable key={rx.id} draggableId={`rx-${rx.id}`} index={rxIdx} isDragDisabled={isSearching}>
+                                          {(rxDragProvided, rxDragSnapshot) => (
+                                            <div
+                                              ref={rxDragProvided.innerRef}
+                                              {...rxDragProvided.draggableProps}
+                                              className={`flex items-center mb-0.5 rounded-md group/rx ${rxDragSnapshot.isDragging ? "bg-accent shadow-md" : ""}`}
+                                            >
+                                              {!isSearching && (
+                                                <div
+                                                  {...rxDragProvided.dragHandleProps}
+                                                  className="p-0.5 cursor-grab active:cursor-grabbing text-muted-foreground hover-elevate rounded-md invisible group-hover/rx:visible"
+                                                  data-testid={`drag-rx-${rx.id}`}
+                                                >
+                                                  <GripVertical className="h-3 w-3" />
+                                                </div>
+                                              )}
+                                              <button
+                                                data-testid={`button-prescription-${rx.id}`}
+                                                onClick={() => onSelectPrescription(rx.id)}
+                                                className={`flex-1 text-left text-xs px-1.5 py-1 rounded-md hover-elevate active-elevate-2 ${
+                                                  selectedPrescriptionId === rx.id
+                                                    ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
+                                                    : ""
+                                                }`}
+                                              >
+                                                <EditableLabel value={rx.name} onSave={(name) => handleRenamePrescription(rx.id, name)} />
+                                              </button>
+                                              {!isSearching && (
+                                                <button
+                                                  onClick={(e) => { e.stopPropagation(); handleCopyPrescription(rx.id, rx.name); }}
+                                                  className="invisible group-hover/rx:visible p-0.5 text-muted-foreground/50 hover:text-foreground rounded-md"
+                                                  data-testid={`button-copy-prescription-${rx.id}`}
+                                                >
+                                                  <Copy className="h-3 w-3" />
+                                                </button>
+                                              )}
+                                              {!isSearching && (
+                                                <button
+                                                  onClick={(e) => { e.stopPropagation(); handleDeletePrescription(rx.id); }}
+                                                  className="invisible group-hover/rx:visible p-0.5 text-muted-foreground/50 hover:text-destructive rounded-md"
+                                                  data-testid={`button-delete-prescription-${rx.id}`}
+                                                >
+                                                  <X className="h-3 w-3" />
+                                                </button>
+                                              )}
+                                            </div>
+                                          )}
+                                        </Draggable>
+                                      ))}
+                                      {!isSearching && addingPrescriptionFor === major.id && (
+                                        <div className="mb-1">
+                                          <InlineInput
+                                            onSubmit={(name) => handleAddPrescription(major.id, name)}
+                                            onCancel={() => setAddingPrescriptionFor(null)}
+                                            placeholder="세트처방명 입력"
+                                          />
+                                        </div>
+                                      )}
+                                      {rxProvided.placeholder}
+                                    </div>
+                                  )}
+                                </Droppable>
                                 <Droppable droppableId={`sub-${major.id}`} type="SUB">
                                   {(subProvided) => (
                                     <div
                                       ref={subProvided.innerRef}
                                       {...subProvided.droppableProps}
-                                      className="ml-5 border-l border-border pl-1"
                                     >
                                       {subCategories.map((sub, subIdx) => {
                                         if (isSearching && !hasVisibleInSub(sub.id)) return null;
@@ -592,6 +686,15 @@ export function CategorySidebar({
                                                                   </button>
                                                                   {!isSearching && (
                                                                     <button
+                                                                      onClick={(e) => { e.stopPropagation(); handleCopyPrescription(rx.id, rx.name); }}
+                                                                      className="invisible group-hover/rx:visible p-0.5 text-muted-foreground/50 hover:text-foreground rounded-md"
+                                                                      data-testid={`button-copy-prescription-${rx.id}`}
+                                                                    >
+                                                                      <Copy className="h-3 w-3" />
+                                                                    </button>
+                                                                  )}
+                                                                  {!isSearching && (
+                                                                    <button
                                                                       onClick={(e) => { e.stopPropagation(); handleDeletePrescription(rx.id); }}
                                                                       className="invisible group-hover/rx:visible p-0.5 text-muted-foreground/50 hover:text-destructive rounded-md"
                                                                       data-testid={`button-delete-prescription-${rx.id}`}
@@ -611,6 +714,16 @@ export function CategorySidebar({
                                                                 placeholder="세트처방명 입력"
                                                               />
                                                             </div>
+                                                          )}
+                                                          {!isSearching && clipboard && (
+                                                            <button
+                                                              onClick={() => handlePastePrescription(sub.id)}
+                                                              className="flex items-center gap-1 text-xs text-muted-foreground px-2 py-1 rounded-md hover-elevate active-elevate-2 w-full"
+                                                              data-testid={`button-paste-prescription-${sub.id}`}
+                                                            >
+                                                              <ClipboardPaste className="h-3 w-3" />
+                                                              <span className="truncate">"{clipboard.name}" 붙여넣기</span>
+                                                            </button>
                                                           )}
                                                           {!isSearching && (
                                                             <button
@@ -642,20 +755,47 @@ export function CategorySidebar({
                                           />
                                         </div>
                                       )}
-                                      {!isSearching && (
-                                        <button
-                                          onClick={() => setAddingSubFor(major.id)}
-                                          className="flex items-center gap-1 text-xs text-muted-foreground px-2 py-1 rounded-md hover-elevate active-elevate-2 w-full"
-                                          data-testid={`button-add-sub-${major.id}`}
-                                        >
-                                          <Plus className="h-3 w-3" />
-                                          <span>중분류 추가</span>
-                                        </button>
-                                      )}
                                       {subProvided.placeholder}
                                     </div>
                                   )}
                                 </Droppable>
+                                {!isSearching && (
+                                  <DropdownMenu>
+                                    <DropdownMenuTrigger asChild>
+                                      <button
+                                        className="flex items-center gap-1 text-xs text-muted-foreground px-2 py-1 rounded-md hover-elevate active-elevate-2 w-full"
+                                        data-testid={`button-add-major-${major.id}`}
+                                      >
+                                        <Plus className="h-3 w-3" />
+                                        <span>추가</span>
+                                      </button>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent align="start">
+                                      <DropdownMenuItem
+                                        onClick={() => setAddingPrescriptionFor(major.id)}
+                                        data-testid={`menuitem-add-prescription-${major.id}`}
+                                      >
+                                        세트처방 추가
+                                      </DropdownMenuItem>
+                                      <DropdownMenuItem
+                                        onClick={() => setAddingSubFor(major.id)}
+                                        data-testid={`menuitem-add-sub-${major.id}`}
+                                      >
+                                        중분류 추가
+                                      </DropdownMenuItem>
+                                      {clipboard && (
+                                        <DropdownMenuItem
+                                          onClick={() => handlePastePrescription(major.id)}
+                                          data-testid={`menuitem-paste-prescription-${major.id}`}
+                                        >
+                                          <ClipboardPaste className="h-3.5 w-3.5 mr-1.5" />
+                                          "{clipboard.name}" 붙여넣기
+                                        </DropdownMenuItem>
+                                      )}
+                                    </DropdownMenuContent>
+                                  </DropdownMenu>
+                                )}
+                                </div>
                               </CollapsibleContent>
                             </Collapsible>
                           </div>
@@ -687,6 +827,21 @@ export function CategorySidebar({
         </div>
       </SidebarContent>
       <SidebarFooter className="p-3 border-t border-sidebar-border space-y-2">
+        {clipboard && (
+          <div className="flex items-center justify-between gap-1 text-xs bg-muted/50 rounded-md px-2 py-1.5" data-testid="clipboard-indicator">
+            <span className="flex items-center gap-1 truncate text-muted-foreground">
+              <ClipboardPaste className="h-3.5 w-3.5 shrink-0" />
+              <span className="truncate">"{clipboard.name}" 복사됨</span>
+            </span>
+            <button
+              onClick={() => setClipboard(null)}
+              className="shrink-0 text-muted-foreground/50 hover:text-foreground rounded-md"
+              data-testid="button-clear-clipboard"
+            >
+              <X className="h-3 w-3" />
+            </button>
+          </div>
+        )}
         <div className="relative">
           <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
           <input
