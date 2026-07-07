@@ -212,6 +212,7 @@ function EditableCell({
   className?: string;
   multiline?: boolean;
 }) {
+  const readOnly = isReadOnly();
   const [editing, setEditing] = useState(false);
   const [localVal, setLocalVal] = useState(value || "");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -305,12 +306,12 @@ function EditableCell({
   return (
     <span
       tabIndex={0}
-      onClick={() => setEditing(true)}
+      onClick={() => !readOnly && setEditing(true)}
       onKeyDown={(e) => {
         if (e.key === "Tab") { e.preventDefault(); navigateTabToNextCell(e.currentTarget); return; }
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setEditing(true); }
+        if (!readOnly && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); setEditing(true); }
       }}
-      className={`cursor-pointer hover:bg-accent/50 rounded px-1 py-0.5 -mx-1 inline-block min-w-[2rem] min-h-[1.25rem] whitespace-pre-wrap ${className}`}
+      className={`${readOnly ? "" : "cursor-pointer hover:bg-accent/50"} rounded px-1 py-0.5 -mx-1 inline-block min-w-[2rem] min-h-[1.25rem] whitespace-pre-wrap ${className}`}
       data-testid={`text-${field}-${itemId}`}
     >
       {value || "\u00A0"}
@@ -333,6 +334,7 @@ function SelectableCell({
   options: readonly string[];
   className?: string;
 }) {
+  const readOnly = isReadOnly();
   const [editing, setEditing] = useState(false);
   const [customInput, setCustomInput] = useState(false);
   const [localVal, setLocalVal] = useState(value || "");
@@ -383,16 +385,16 @@ function SelectableCell({
       <span
         ref={anchorRef}
         tabIndex={0}
-        onClick={() => setEditing(true)}
+        onClick={() => !readOnly && setEditing(true)}
         onKeyDown={(e) => {
           if (e.key === "Tab") { e.preventDefault(); setEditing(false); navigateTabToNextCell(e.currentTarget); return; }
         }}
-        className={`cursor-pointer hover:bg-accent/50 rounded px-1 py-0.5 -mx-1 inline-block min-w-[2rem] min-h-[1.25rem] ${className}`}
+        className={`${readOnly ? "" : "cursor-pointer hover:bg-accent/50"} rounded px-1 py-0.5 -mx-1 inline-block min-w-[2rem] min-h-[1.25rem] ${className}`}
         data-testid={`text-${field}-${itemId}`}
       >
         {value || "\u00A0"}
       </span>
-      <FixedDropdown anchorRef={anchorRef} open={editing} onClose={() => setEditing(false)} minWidth={80} navigateOnSelect>
+      <FixedDropdown anchorRef={anchorRef} open={!readOnly && editing} onClose={() => setEditing(false)} minWidth={80} navigateOnSelect>
         {options.map((opt) => (
           <button
             key={opt}
@@ -416,6 +418,7 @@ function SelectableCell({
 }
 
 function TypeSelect({ value, itemId, prescriptionId, hideLabel = false }: { value: string; itemId: number; prescriptionId: number; hideLabel?: boolean }) {
+  const readOnly = isReadOnly();
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<HTMLButtonElement>(null);
 
@@ -438,12 +441,12 @@ function TypeSelect({ value, itemId, prescriptionId, hideLabel = false }: { valu
     <>
       <button
         ref={anchorRef}
-        onClick={() => setOpen(!open)}
+        onClick={() => !readOnly && setOpen(!open)}
         onKeyDown={(e) => {
           if (e.key === "Tab") { e.preventDefault(); setOpen(false); navigateTabToNextCell(e.currentTarget); }
         }}
         data-testid={`select-type-${itemId}`}
-        className="cursor-pointer"
+        className={readOnly ? "" : "cursor-pointer"}
       >
         {hideLabel ? (
           <span className="inline-block min-w-[2rem] min-h-[1.25rem]">{"\u00A0"}</span>
@@ -456,7 +459,7 @@ function TypeSelect({ value, itemId, prescriptionId, hideLabel = false }: { valu
           </Badge>
         )}
       </button>
-      <FixedDropdown anchorRef={anchorRef} open={open} onClose={() => setOpen(false)} minWidth={90} navigateOnSelect>
+      <FixedDropdown anchorRef={anchorRef} open={!readOnly && open} onClose={() => setOpen(false)} minWidth={90} navigateOnSelect>
         {[...prescriptionTypeOptions].sort((a, b) => {
           const bottom = ["지시처방", "추가설명"];
           const ai = bottom.indexOf(a), bi = bottom.indexOf(b);
@@ -485,6 +488,7 @@ function TypeSelect({ value, itemId, prescriptionId, hideLabel = false }: { valu
 }
 
 function UnitSelect({ value, itemId, prescriptionId }: { value: string | null; itemId: number; prescriptionId: number }) {
+  const readOnly = isReadOnly();
   const [open, setOpen] = useState(false);
   const [customInput, setCustomInput] = useState(false);
   const [localVal, setLocalVal] = useState(value || "");
@@ -542,16 +546,16 @@ function UnitSelect({ value, itemId, prescriptionId }: { value: string | null; i
       <span
         ref={anchorRef}
         tabIndex={0}
-        onClick={() => setOpen(!open)}
+        onClick={() => !readOnly && setOpen(!open)}
         onKeyDown={(e) => {
           if (e.key === "Tab") { e.preventDefault(); setOpen(false); navigateTabToNextCell(e.currentTarget); }
         }}
-        className="cursor-pointer hover:bg-accent/50 rounded px-1 py-0.5 -mx-1 inline-block min-w-[2rem] min-h-[1.25rem] text-sm"
+        className={`${readOnly ? "" : "cursor-pointer hover:bg-accent/50"} rounded px-1 py-0.5 -mx-1 inline-block min-w-[2rem] min-h-[1.25rem] text-sm`}
         data-testid={`select-unit-${itemId}`}
       >
         {value || "\u00A0"}
       </span>
-      <FixedDropdown anchorRef={anchorRef} open={open} onClose={() => setOpen(false)} minWidth={50} navigateOnSelect>
+      <FixedDropdown anchorRef={anchorRef} open={!readOnly && open} onClose={() => setOpen(false)} minWidth={50} navigateOnSelect>
         {unitOptions.map((opt) => (
           <button
             key={opt}
@@ -575,6 +579,7 @@ function UnitSelect({ value, itemId, prescriptionId }: { value: string | null; i
 }
 
 function MixSelect({ value, itemId, prescriptionId }: { value: string | null; itemId: number; prescriptionId: number }) {
+  const readOnly = isReadOnly();
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<HTMLSpanElement>(null);
 
@@ -598,16 +603,16 @@ function MixSelect({ value, itemId, prescriptionId }: { value: string | null; it
       <span
         ref={anchorRef}
         tabIndex={0}
-        onClick={() => setOpen(!open)}
+        onClick={() => !readOnly && setOpen(!open)}
         onKeyDown={(e) => {
           if (e.key === "Tab") { e.preventDefault(); setOpen(false); navigateTabToNextCell(e.currentTarget); }
         }}
-        className="cursor-pointer hover:bg-accent/50 rounded px-1 py-0.5 -mx-1 inline-block min-w-[2rem] min-h-[1.25rem] text-sm"
+        className={`${readOnly ? "" : "cursor-pointer hover:bg-accent/50"} rounded px-1 py-0.5 -mx-1 inline-block min-w-[2rem] min-h-[1.25rem] text-sm`}
         data-testid={`select-mix-${itemId}`}
       >
         {value || "\u00A0"}
       </span>
-      <FixedDropdown anchorRef={anchorRef} open={open} onClose={() => setOpen(false)} minWidth={50} navigateOnSelect>
+      <FixedDropdown anchorRef={anchorRef} open={!readOnly && open} onClose={() => setOpen(false)} minWidth={50} navigateOnSelect>
         <button
           onClick={() => handleChange(null)}
           className={`w-full text-left text-xs px-3 py-1.5 hover-elevate ${!value ? "bg-accent" : ""}`}

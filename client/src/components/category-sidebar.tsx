@@ -394,6 +394,20 @@ export function CategorySidebar({
 
   const handleDragEnd = useCallback(async (result: DropResult) => {
     if (readOnly) return;
+
+    if (result.combine) {
+      // Dropped directly onto another node's row (e.g. a collapsed sub-category's header) —
+      // file the dragged node into it, regardless of whether that target is expanded.
+      const draggedIsRx = result.draggableId.startsWith("rx-");
+      const draggedKind: "rx" | "sub" = draggedIsRx ? "rx" : "sub";
+      const draggedId = parseInt(result.draggableId.replace(draggedIsRx ? "rx-" : "sub-", ""), 10);
+      const combineIsSub = result.combine.draggableId.startsWith("sub-");
+      if (!combineIsSub) return; // filing something "into" a prescription row doesn't mean anything
+      const targetSubId = parseInt(result.combine.draggableId.replace("sub-", ""), 10);
+      await handleNodeDrop(draggedKind, draggedId, targetSubId, false, null);
+      return;
+    }
+
     if (!result.destination) return;
     const { source, destination, type } = result;
     if (source.droppableId === destination.droppableId && source.index === destination.index) return;
@@ -431,10 +445,6 @@ export function CategorySidebar({
       if (destId.startsWith("header-major-")) {
         destContainerId = parseInt(destId.replace("header-major-", ""), 10);
         destIsMajor = true;
-        destIndex = null;
-      } else if (destId.startsWith("header-sub-")) {
-        destContainerId = parseInt(destId.replace("header-sub-", ""), 10);
-        destIsMajor = false;
         destIndex = null;
       } else if (destId.startsWith("children-")) {
         destContainerId = parseInt(destId.replace("children-", ""), 10);
@@ -567,7 +577,7 @@ export function CategorySidebar({
                               </Droppable>
                               <CollapsibleContent>
                                 <div className="ml-5 border-l border-border pl-1">
-                                  <Droppable droppableId={`children-${major.id}`} type="NODE">
+                                  <Droppable droppableId={`children-${major.id}`} type="NODE" isCombineEnabled>
                                     {(childProvided) => (
                                       <div ref={childProvided.innerRef} {...childProvided.droppableProps}>
                                         {majorChildren.map((child, childIdx) => {
@@ -638,48 +648,41 @@ export function CategorySidebar({
                                                   className={`mb-0.5 rounded-md ${subDragSnapshot.isDragging ? "bg-accent shadow-md" : ""}`}
                                                 >
                                                   <Collapsible open={isSubOpen} onOpenChange={() => !isSearching && toggleSub(sub.id)}>
-                                                    <Droppable droppableId={`header-sub-${sub.id}`} type="NODE">
-                                                      {(subHeaderProvided) => (
-                                                        <div ref={subHeaderProvided.innerRef} {...subHeaderProvided.droppableProps}>
-                                                          <div className="flex items-center group/sub">
-                                                            {!isSearching && !readOnly && (
-                                                              <div
-                                                                {...subDragProvided.dragHandleProps}
-                                                                className="p-0.5 cursor-grab active:cursor-grabbing text-muted-foreground hover-elevate rounded-md invisible group-hover/sub:visible"
-                                                                data-testid={`drag-sub-${sub.id}`}
-                                                              >
-                                                                <GripVertical className="h-3 w-3" />
-                                                              </div>
-                                                            )}
-                                                            <CollapsibleTrigger asChild>
-                                                              <button
-                                                                data-testid={`button-sub-category-${sub.id}`}
-                                                                className="flex items-center gap-1 flex-1 px-1 py-1 text-xs font-medium rounded-md hover-elevate active-elevate-2"
-                                                              >
-                                                                <ChevronRight
-                                                                  className={`h-3 w-3 shrink-0 transition-transform duration-200 ${isSubOpen ? "rotate-90" : ""}`}
-                                                                />
-                                                                <Layers className="h-3 w-3 shrink-0" />
-                                                                <EditableLabel value={sub.name} onSave={(name) => handleRenameCategory(sub.id, name)} disabled={readOnly} />
-                                                                <span className="ml-auto text-xs text-muted-foreground">
-                                                                  {getPrescriptions(sub.id).length}
-                                                                </span>
-                                                              </button>
-                                                            </CollapsibleTrigger>
-                                                            {!isSearching && !readOnly && (
-                                                              <button
-                                                                onClick={(e) => { e.stopPropagation(); handleDeleteCategory(sub.id); }}
-                                                                className="invisible group-hover/sub:visible p-0.5 text-muted-foreground/50 hover:text-destructive rounded-md"
-                                                                data-testid={`button-delete-sub-${sub.id}`}
-                                                              >
-                                                                <X className="h-3 w-3" />
-                                                              </button>
-                                                            )}
-                                                          </div>
-                                                          {subHeaderProvided.placeholder}
+                                                    <div className="flex items-center group/sub">
+                                                      {!isSearching && !readOnly && (
+                                                        <div
+                                                          {...subDragProvided.dragHandleProps}
+                                                          className="p-0.5 cursor-grab active:cursor-grabbing text-muted-foreground hover-elevate rounded-md invisible group-hover/sub:visible"
+                                                          data-testid={`drag-sub-${sub.id}`}
+                                                        >
+                                                          <GripVertical className="h-3 w-3" />
                                                         </div>
                                                       )}
-                                                    </Droppable>
+                                                      <CollapsibleTrigger asChild>
+                                                        <button
+                                                          data-testid={`button-sub-category-${sub.id}`}
+                                                          className="flex items-center gap-1 flex-1 px-1 py-1 text-xs font-medium rounded-md hover-elevate active-elevate-2"
+                                                        >
+                                                          <ChevronRight
+                                                            className={`h-3 w-3 shrink-0 transition-transform duration-200 ${isSubOpen ? "rotate-90" : ""}`}
+                                                          />
+                                                          <Layers className="h-3 w-3 shrink-0" />
+                                                          <EditableLabel value={sub.name} onSave={(name) => handleRenameCategory(sub.id, name)} disabled={readOnly} />
+                                                          <span className="ml-auto text-xs text-muted-foreground">
+                                                            {getPrescriptions(sub.id).length}
+                                                          </span>
+                                                        </button>
+                                                      </CollapsibleTrigger>
+                                                      {!isSearching && !readOnly && (
+                                                        <button
+                                                          onClick={(e) => { e.stopPropagation(); handleDeleteCategory(sub.id); }}
+                                                          className="invisible group-hover/sub:visible p-0.5 text-muted-foreground/50 hover:text-destructive rounded-md"
+                                                          data-testid={`button-delete-sub-${sub.id}`}
+                                                        >
+                                                          <X className="h-3 w-3" />
+                                                        </button>
+                                                      )}
+                                                    </div>
                                                     <CollapsibleContent>
                                                       <Droppable droppableId={`subrx-${sub.id}`} type="NODE">
                                                         {(rxProvided) => (
@@ -813,16 +816,16 @@ export function CategorySidebar({
                                       </DropdownMenuTrigger>
                                       <DropdownMenuContent align="start">
                                         <DropdownMenuItem
-                                          onClick={() => setAddingPrescriptionFor(major.id)}
-                                          data-testid={`menuitem-add-prescription-${major.id}`}
-                                        >
-                                          세트처방 추가
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem
                                           onClick={() => setAddingSubFor(major.id)}
                                           data-testid={`menuitem-add-sub-${major.id}`}
                                         >
                                           중분류 추가
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem
+                                          onClick={() => setAddingPrescriptionFor(major.id)}
+                                          data-testid={`menuitem-add-prescription-${major.id}`}
+                                        >
+                                          세트처방 추가
                                         </DropdownMenuItem>
                                         {clipboard && (
                                           <DropdownMenuItem
