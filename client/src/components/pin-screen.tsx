@@ -5,7 +5,7 @@ import { Lock } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 
 interface PinScreenProps {
-  onSuccess: () => void;
+  onSuccess: (role: "admin" | "viewer") => void;
 }
 
 export function PinScreen({ onSuccess }: PinScreenProps) {
@@ -62,8 +62,9 @@ export function PinScreen({ onSuccess }: PinScreenProps) {
   const submitPin = async (pin: string) => {
     setLoading(true);
     try {
-      await apiRequest("POST", "/api/verify-pin", { pin });
-      onSuccess();
+      const res = await apiRequest("POST", "/api/verify-pin", { pin });
+      const { role } = await res.json();
+      onSuccess(role === "viewer" ? "viewer" : "admin");
     } catch {
       setError("PIN 번호가 올바르지 않습니다");
       setDigits(["", "", "", ""]);

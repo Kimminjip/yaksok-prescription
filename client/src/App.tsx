@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import { PinScreen } from "@/components/pin-screen";
+import { setAppRole, type AppRole } from "@/lib/auth";
 
 function useThemeInit() {
   useEffect(() => {
@@ -35,8 +36,9 @@ function App() {
     return sessionStorage.getItem("pin_authenticated") === "true";
   });
 
-  const handlePinSuccess = () => {
+  const handlePinSuccess = (role: AppRole) => {
     sessionStorage.setItem("pin_authenticated", "true");
+    setAppRole(role);
     setAuthenticated(true);
   };
 

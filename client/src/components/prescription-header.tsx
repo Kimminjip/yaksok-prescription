@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ClipboardList, Copy, Star } from "lucide-react";
 import { apiRequest, queryClient } from "@/lib/queryClient";
+import { isReadOnly } from "@/lib/auth";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import type { Prescription } from "@shared/schema";
@@ -38,18 +39,20 @@ export function PrescriptionHeader({ prescription, onCopied }: PrescriptionHeade
         <h2 className="text-lg font-semibold" data-testid="text-prescription-name">
           {prescription.name}
         </h2>
-        <div className="ml-auto flex items-center gap-1">
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={handleCopy}
-            disabled={copying}
-            data-testid="button-copy-prescription"
-          >
-            <Copy className="h-4 w-4 mr-1" />
-            {copying ? "복사 중..." : "복사"}
-          </Button>
-        </div>
+        {!isReadOnly() && (
+          <div className="ml-auto flex items-center gap-1">
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={handleCopy}
+              disabled={copying}
+              data-testid="button-copy-prescription"
+            >
+              <Copy className="h-4 w-4 mr-1" />
+              {copying ? "복사 중..." : "복사"}
+            </Button>
+          </div>
+        )}
       </div>
     </Card>
   );

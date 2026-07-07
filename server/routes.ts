@@ -6,11 +6,26 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+  const MUTATING_METHODS = ["POST", "PATCH", "PUT", "DELETE"];
+  app.use((req, res, next) => {
+    if (
+      MUTATING_METHODS.includes(req.method) &&
+      req.path !== "/api/verify-pin" &&
+      req.headers["x-app-role"] === "viewer"
+    ) {
+      return res.status(403).json({ message: "읽기 전용 계정입니다" });
+    }
+    next();
+  });
+
   app.post("/api/verify-pin", (req, res) => {
     const { pin } = req.body;
-    const correctPin = process.env.APP_PIN || "0000";
-    if (pin === correctPin) {
-      res.json({ ok: true });
+    const adminPin = process.env.APP_PIN || "0000";
+    const viewerPin = process.env.APP_PIN_READONLY || "0129";
+    if (pin === adminPin) {
+      res.json({ ok: true, role: "admin" });
+    } else if (pin === viewerPin) {
+      res.json({ ok: true, role: "viewer" });
     } else {
       res.status(401).json({ message: "잘못된 PIN 번호입니다" });
     }

@@ -22,6 +22,7 @@ import {
 import { ClipboardList, Plus, GripVertical, Trash2, Star, StarOff, Copy, ClipboardPaste, Check } from "lucide-react";
 import { DragDropContext, Droppable, Draggable, type DropResult } from "@hello-pangea/dnd";
 import { apiRequest, queryClient, optimisticUpdateItems, getErrorMessage } from "@/lib/queryClient";
+import { isReadOnly } from "@/lib/auth";
 import { validateInput, prescriptionItemValidation } from "@/lib/validation";
 import { useToast } from "@/hooks/use-toast";
 import type { PrescriptionItem, FavoriteItem } from "@shared/schema";
@@ -629,6 +630,7 @@ function MixSelect({ value, itemId, prescriptionId }: { value: string | null; it
 }
 
 function FavoritesPanel({ prescriptionId }: { prescriptionId: number }) {
+  const readOnly = isReadOnly();
   const { toast } = useToast();
   const { data: favorites = [] } = useQuery<FavoriteItem[]>({
     queryKey: ["/api/favorites"],
@@ -676,19 +678,21 @@ function FavoritesPanel({ prescriptionId }: { prescriptionId: number }) {
           <button
             onClick={() => addMutation.mutate(fav.id)}
             className="flex-1 text-left truncate"
-            disabled={addMutation.isPending}
+            disabled={addMutation.isPending || readOnly}
             data-testid={`button-add-favorite-${fav.id}`}
           >
             {fav.productName}
             {fav.ingredientName ? ` (${fav.ingredientName})` : ""}
           </button>
-          <button
-            onClick={() => deleteMutation.mutate(fav.id)}
-            className="invisible group-hover:visible p-0.5 text-muted-foreground/50 hover:text-destructive rounded-md shrink-0"
-            data-testid={`button-delete-favorite-${fav.id}`}
-          >
-            <StarOff className="h-3 w-3" />
-          </button>
+          {!readOnly && (
+            <button
+              onClick={() => deleteMutation.mutate(fav.id)}
+              className="invisible group-hover:visible p-0.5 text-muted-foreground/50 hover:text-destructive rounded-md shrink-0"
+              data-testid={`button-delete-favorite-${fav.id}`}
+            >
+              <StarOff className="h-3 w-3" />
+            </button>
+          )}
         </div>
       ))}
     </div>
@@ -698,6 +702,7 @@ function FavoritesPanel({ prescriptionId }: { prescriptionId: number }) {
 const clipboardStore = { items: null as PrescriptionItem[] | null };
 
 export function PrescriptionTable({ items, isLoading, prescriptionId }: PrescriptionTableProps) {
+  const readOnly = isReadOnly();
   const [showFavorites, setShowFavorites] = useState(false);
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
   const [clipboardCount, setClipboardCount] = useState(clipboardStore.items?.length || 0);
@@ -992,10 +997,12 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
           <ClipboardList className="h-12 w-12 text-muted-foreground/30 mx-auto mb-3" />
           <p className="text-sm text-muted-foreground">처방 항목이 없습니다</p>
           <p className="text-xs text-muted-foreground mt-1">항목을 추가하여 처방을 작성하세요</p>
-          <Button size="sm" className="mt-4" onClick={handleAddItem}>
-            <Plus className="h-4 w-4 mr-1" />
-            첫 항목 추가
-          </Button>
+          {!readOnly && (
+            <Button size="sm" className="mt-4" onClick={handleAddItem}>
+              <Plus className="h-4 w-4 mr-1" />
+              첫 항목 추가
+            </Button>
+          )}
         </div>
       </Card>
     );
@@ -1016,20 +1023,22 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
                 <Copy className="h-4 w-4 mr-1" />
                 복사
               </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                className="text-destructive"
-                onClick={handleBulkDelete}
-                disabled={bulkDeleting}
-                data-testid="button-bulk-delete"
-              >
-                <Trash2 className="h-4 w-4 mr-1" />
-                {bulkDeleting ? "삭제 중..." : "삭제"}
-              </Button>
+              {!readOnly && (
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="text-destructive"
+                  onClick={handleBulkDelete}
+                  disabled={bulkDeleting}
+                  data-testid="button-bulk-delete"
+                >
+                  <Trash2 className="h-4 w-4 mr-1" />
+                  {bulkDeleting ? "삭제 중..." : "삭제"}
+                </Button>
+              )}
             </>
           )}
-          {clipboardCount > 0 && (
+          {!readOnly && clipboardCount > 0 && (
             <Button size="sm" variant="outline" onClick={handlePaste} data-testid="button-paste-items">
               <ClipboardPaste className="h-4 w-4 mr-1" />
               붙여넣기 ({clipboardCount})
@@ -1044,10 +1053,12 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
             <Star className="h-4 w-4 mr-1" />
             즐겨찾기
           </Button>
-          <Button size="sm" onClick={handleAddItem} data-testid="button-add-item">
-            <Plus className="h-4 w-4 mr-1" />
-            항목 추가
-          </Button>
+          {!readOnly && (
+            <Button size="sm" onClick={handleAddItem} data-testid="button-add-item">
+              <Plus className="h-4 w-4 mr-1" />
+              항목 추가
+            </Button>
+          )}
         </div>
       </div>
       {showFavorites && (
@@ -1084,7 +1095,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
                 {(provided) => (
                   <TableBody ref={provided.innerRef} {...provided.droppableProps}>
                     {items.map((item, index) => (
-                      <Draggable key={item.id} draggableId={`item-${item.id}`} index={index}>
+                      <Draggable key={item.id} draggableId={`item-${item.id}`} index={index} isDragDisabled={readOnly}>
                         {(dragProvided, dragSnapshot) => (
                           <ContextMenu>
                             <ContextMenuTrigger asChild>
@@ -1096,13 +1107,15 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
                                 className={`group/row ${index % 2 === 0 ? "" : "bg-muted/20"} ${dragSnapshot.isDragging ? "bg-accent shadow-md" : ""} ${selectedIds.has(item.id) ? "bg-blue-100 dark:bg-blue-900/30" : ""}`}
                               >
                                 <TableCell className="px-1">
-                                  <div
-                                    {...dragProvided.dragHandleProps}
-                                    className="cursor-grab active:cursor-grabbing text-muted-foreground p-1 hover-elevate rounded-md invisible group-hover/row:visible"
-                                    data-testid={`drag-item-${item.id}`}
-                                  >
-                                    <GripVertical className="h-3.5 w-3.5" />
-                                  </div>
+                                  {!readOnly && (
+                                    <div
+                                      {...dragProvided.dragHandleProps}
+                                      className="cursor-grab active:cursor-grabbing text-muted-foreground p-1 hover-elevate rounded-md invisible group-hover/row:visible"
+                                      data-testid={`drag-item-${item.id}`}
+                                    >
+                                      <GripVertical className="h-3.5 w-3.5" />
+                                    </div>
+                                  )}
                                 </TableCell>
                                 <TableCell className="px-1" data-tab-row={index} data-tab-col={0}>
                                   <TypeSelect value={item.type} itemId={item.id} prescriptionId={prescriptionId} hideLabel={item.type === "추가설명"} />
@@ -1199,7 +1212,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
                                   ? `${selectedIds.size}개 항목 복사`
                                   : "항목 복사"}
                               </ContextMenuItem>
-                              {clipboardCount > 0 && (
+                              {!readOnly && clipboardCount > 0 && (
                                 <ContextMenuItem
                                   onClick={handlePaste}
                                   data-testid={`context-paste-item-${item.id}`}
@@ -1208,28 +1221,34 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
                                   붙여넣기 ({clipboardCount}개)
                                 </ContextMenuItem>
                               )}
-                              <ContextMenuItem
-                                onClick={() => handleInsertBelow(index)}
-                                data-testid={`context-insert-below-${item.id}`}
-                              >
-                                <Plus className="h-4 w-4 mr-2" />
-                                아래 행 추가
-                              </ContextMenuItem>
-                              <ContextMenuItem
-                                onClick={() => handleAddToFavorites(item)}
-                                data-testid={`context-favorite-item-${item.id}`}
-                              >
-                                <Star className="h-4 w-4 mr-2" />
-                                즐겨찾기에 추가
-                              </ContextMenuItem>
-                              <ContextMenuItem
-                                onClick={() => handleDeleteItem(item.id)}
-                                className="text-destructive focus:text-destructive"
-                                data-testid={`context-delete-item-${item.id}`}
-                              >
-                                <Trash2 className="h-4 w-4 mr-2" />
-                                항목 삭제
-                              </ContextMenuItem>
+                              {!readOnly && (
+                                <ContextMenuItem
+                                  onClick={() => handleInsertBelow(index)}
+                                  data-testid={`context-insert-below-${item.id}`}
+                                >
+                                  <Plus className="h-4 w-4 mr-2" />
+                                  아래 행 추가
+                                </ContextMenuItem>
+                              )}
+                              {!readOnly && (
+                                <ContextMenuItem
+                                  onClick={() => handleAddToFavorites(item)}
+                                  data-testid={`context-favorite-item-${item.id}`}
+                                >
+                                  <Star className="h-4 w-4 mr-2" />
+                                  즐겨찾기에 추가
+                                </ContextMenuItem>
+                              )}
+                              {!readOnly && (
+                                <ContextMenuItem
+                                  onClick={() => handleDeleteItem(item.id)}
+                                  className="text-destructive focus:text-destructive"
+                                  data-testid={`context-delete-item-${item.id}`}
+                                >
+                                  <Trash2 className="h-4 w-4 mr-2" />
+                                  항목 삭제
+                                </ContextMenuItem>
+                              )}
                             </ContextMenuContent>
                           </ContextMenu>
                         )}
@@ -1244,7 +1263,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
         </div>
       )}
     </Card>
-    {items.length > 0 && (
+    {!readOnly && items.length > 0 && (
       <div
         className="group/addrow relative h-7 cursor-pointer"
         onClick={handleAddItem}

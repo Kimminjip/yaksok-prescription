@@ -59,7 +59,7 @@ export default function Home() {
   const selectedPrescription = prescriptions.find(p => p.id === selectedPrescriptionId);
 
   const style = {
-    "--sidebar-width": "18rem",
+    "--sidebar-width": "22rem",
     "--sidebar-width-icon": "3rem",
   };
 

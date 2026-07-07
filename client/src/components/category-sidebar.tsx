@@ -12,6 +12,7 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuIte
 import { ChevronRight, Pill, FolderOpen, Layers, GripVertical, Plus, X, Search, Copy, ClipboardPaste } from "lucide-react";
 import { DragDropContext, Droppable, Draggable, type DropResult } from "@hello-pangea/dnd";
 import { apiRequest, queryClient, optimisticUpdateItems } from "@/lib/queryClient";
+import { isReadOnly } from "@/lib/auth";
 import type { Category, Prescription } from "@shared/schema";
 
 interface CategorySidebarProps {
@@ -54,7 +55,7 @@ function InlineInput({ onSubmit, onCancel, placeholder }: { onSubmit: (val: stri
   );
 }
 
-function EditableLabel({ value, onSave, className }: { value: string; onSave: (newVal: string) => void; className?: string }) {
+function EditableLabel({ value, onSave, className, disabled }: { value: string; onSave: (newVal: string) => void; className?: string; disabled?: boolean }) {
   const [editing, setEditing] = useState(false);
   const [editVal, setEditVal] = useState(value);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -97,10 +98,11 @@ function EditableLabel({ value, onSave, className }: { value: string; onSave: (n
     <span
       className={`truncate ${className || ""}`}
       onDoubleClick={(e) => {
+        if (disabled) return;
         e.stopPropagation();
         setEditing(true);
       }}
-      title="더블클릭하여 수정"
+      title={disabled ? undefined : "더블클릭하여 수정"}
     >
       {value}
     </span>
@@ -108,6 +110,9 @@ function EditableLabel({ value, onSave, className }: { value: string; onSave: (n
 }
 
 type SearchMode = "name" | "drug";
+type ChildNode =
+  | { kind: "rx"; sortOrder: number; rx: Prescription }
+  | { kind: "sub"; sortOrder: number; sub: Category };
 
 export function CategorySidebar({
   categories,
@@ -116,6 +121,7 @@ export function CategorySidebar({
   onSelectPrescription,
   isLoading,
 }: CategorySidebarProps) {
+  const readOnly = isReadOnly();
   const [openMajor, setOpenMajor] = useState<Set<number>>(new Set());
   const [openSub, setOpenSub] = useState<Set<number>>(new Set());
   const [addingCategory, setAddingCategory] = useState(false);
@@ -131,8 +137,8 @@ export function CategorySidebar({
   const majorCategories = categories.filter(c => !c.parentId).sort((a, b) => a.sortOrder - b.sortOrder);
   const getSubCategories = (majorId: number) =>
     categories.filter(c => c.parentId === majorId).sort((a, b) => a.sortOrder - b.sortOrder);
-  const getPrescriptions = (subCategoryId: number) =>
-    prescriptions.filter(p => p.categoryId === subCategoryId).sort((a, b) => a.sortOrder - b.sortOrder);
+  const getPrescriptions = (categoryId: number) =>
+    prescriptions.filter(p => p.categoryId === categoryId).sort((a, b) => a.sortOrder - b.sortOrder);
 
   const isSearching = searchQuery.trim().length > 0;
 
@@ -160,8 +166,8 @@ export function CategorySidebar({
     };
   }, [searchQuery, searchMode]);
 
-  const getFilteredPrescriptions = (subCategoryId: number) => {
-    const all = getPrescriptions(subCategoryId);
+  const getFilteredPrescriptions = (categoryId: number) => {
+    const all = getPrescriptions(categoryId);
     if (!isSearching) return all;
     if (searchMode === "name") {
       const q = searchQuery.trim().toLowerCase();
@@ -185,11 +191,28 @@ export function CategorySidebar({
     return getFilteredPrescriptions(subId).length > 0;
   };
 
+  const getMajorChildren = (majorId: number): ChildNode[] => {
+    const rxs = getPrescriptions(majorId).map(rx => ({ kind: "rx" as const, sortOrder: rx.sortOrder, rx }));
+    const subs = getSubCategories(majorId).map(sub => ({ kind: "sub" as const, sortOrder: sub.sortOrder, sub }));
+    return [...rxs, ...subs].sort((a, b) => a.sortOrder - b.sortOrder);
+  };
+
   const toggleMajor = (id: number) => {
     setOpenMajor(prev => {
       const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
+      if (next.has(id)) {
+        next.delete(id);
+        const subIds = getSubCategories(id).map(s => s.id);
+        if (subIds.length > 0) {
+          setOpenSub(prevSub => {
+            const nextSub = new Set(prevSub);
+            subIds.forEach(sid => nextSub.delete(sid));
+            return nextSub;
+          });
+        }
+      } else {
+        next.add(id);
+      }
       return next;
     });
   };
@@ -250,15 +273,15 @@ export function CategorySidebar({
     }
   };
 
-  const handleAddPrescription = async (subCategoryId: number, name: string) => {
+  const handleAddPrescription = async (categoryId: number, name: string) => {
     setAddingPrescriptionFor(null);
-    const catRxs = getPrescriptions(subCategoryId);
+    const catRxs = getPrescriptions(categoryId);
     const maxOrder = catRxs.length > 0 ? Math.max(...catRxs.map(p => p.sortOrder)) + 1 : 0;
-    const newRx: Prescription = { id: Math.max(...prescriptions.map(p => p.id), 0) + 1, name, categoryId: subCategoryId, sortOrder: maxOrder };
+    const newRx: Prescription = { id: Math.max(...prescriptions.map(p => p.id), 0) + 1, name, categoryId, sortOrder: maxOrder };
     const rxKey = ["/api/prescriptions"] as const;
     const previous = optimisticUpdateItems(rxKey, rxs => [...rxs, newRx]);
     try {
-      await apiRequest("POST", "/api/prescriptions", { name, categoryId: subCategoryId, sortOrder: maxOrder });
+      await apiRequest("POST", "/api/prescriptions", { name, categoryId, sortOrder: maxOrder });
     } catch {
       if (previous) queryClient.setQueryData(rxKey, previous);
     }
@@ -325,13 +348,57 @@ export function CategorySidebar({
     }
   };
 
+  // Moves/reorders a prescription or sub-category so it becomes child #`index` (or last, if
+  // index is null — used for header drops) of the given container. Handles same-container
+  // reordering and cross-container moves uniformly by recomputing the destination's full order.
+  const handleNodeDrop = async (
+    draggedKind: "rx" | "sub",
+    draggedId: number,
+    destContainerId: number,
+    destIsMajor: boolean,
+    destIndex: number | null,
+  ) => {
+    if (draggedKind === "sub" && !destIsMajor) return; // a sub-category can't nest under another sub-category
+
+    const catsKey = ["/api/categories"] as const;
+    const rxKey = ["/api/prescriptions"] as const;
+
+    const rxChildren = getPrescriptions(destContainerId).map(r => ({ kind: "rx" as const, id: r.id, sortOrder: r.sortOrder }));
+    const subChildren = destIsMajor ? getSubCategories(destContainerId).map(s => ({ kind: "sub" as const, id: s.id, sortOrder: s.sortOrder })) : [];
+    let children = [...rxChildren, ...subChildren].sort((a, b) => a.sortOrder - b.sortOrder);
+    children = children.filter(c => !(c.kind === draggedKind && c.id === draggedId));
+    const insertAt = destIndex === null ? children.length : Math.max(0, Math.min(destIndex, children.length));
+    children.splice(insertAt, 0, { kind: draggedKind, id: draggedId, sortOrder: 0 });
+    const withSort = children.map((c, i) => ({ ...c, sortOrder: i }));
+
+    const subUpdates = withSort.filter(c => c.kind === "sub").map(c => ({ id: c.id, sortOrder: c.sortOrder, parentId: destContainerId }));
+    const rxUpdates = withSort.filter(c => c.kind === "rx").map(c => ({ id: c.id, sortOrder: c.sortOrder, categoryId: destContainerId }));
+
+    const prevCats = subUpdates.length > 0 ? optimisticUpdateItems(catsKey, cats => cats.map(cat => {
+      const u = subUpdates.find(s => s.id === cat.id);
+      return u ? { ...cat, sortOrder: u.sortOrder, parentId: u.parentId } : cat;
+    })) : undefined;
+    const prevRx = rxUpdates.length > 0 ? optimisticUpdateItems(rxKey, rxs => rxs.map(rx => {
+      const u = rxUpdates.find(r => r.id === rx.id);
+      return u ? { ...rx, sortOrder: u.sortOrder, categoryId: u.categoryId } : rx;
+    })) : undefined;
+
+    try {
+      if (subUpdates.length > 0) await apiRequest("POST", "/api/categories/reorder", { items: subUpdates });
+      if (rxUpdates.length > 0) await apiRequest("POST", "/api/prescriptions/reorder", { items: rxUpdates });
+    } catch {
+      if (prevCats) queryClient.setQueryData(catsKey, prevCats);
+      if (prevRx) queryClient.setQueryData(rxKey, prevRx);
+    }
+  };
+
   const handleDragEnd = useCallback(async (result: DropResult) => {
+    if (readOnly) return;
     if (!result.destination) return;
     const { source, destination, type } = result;
     if (source.droppableId === destination.droppableId && source.index === destination.index) return;
 
     const catsKey = ["/api/categories"] as const;
-    const rxKey = ["/api/prescriptions"] as const;
 
     if (type === "MAJOR") {
       const reordered = Array.from(majorCategories);
@@ -351,77 +418,36 @@ export function CategorySidebar({
       } catch {
         if (prevCats) queryClient.setQueryData(catsKey, prevCats);
       }
-    } else if (type === "SUB") {
-      const majorId = parseInt(source.droppableId.replace("sub-", ""), 10);
-      const subs = getSubCategories(majorId);
-      const reordered = Array.from(subs);
-      const [moved] = reordered.splice(source.index, 1);
-      reordered.splice(destination.index, 0, moved);
-      const reorderedWithSort = reordered.map((c, i) => ({ ...c, sortOrder: i }));
-      const items = reorderedWithSort.map((c, i) => ({ id: c.id, sortOrder: i, parentId: majorId }));
+    } else if (type === "NODE") {
+      const draggedIsRx = result.draggableId.startsWith("rx-");
+      const draggedKind: "rx" | "sub" = draggedIsRx ? "rx" : "sub";
+      const draggedId = parseInt(result.draggableId.replace(draggedIsRx ? "rx-" : "sub-", ""), 10);
 
-      const prevCats = optimisticUpdateItems(catsKey, cats =>
-        cats.map(cat => {
-          const reord = reorderedWithSort.find(r => r.id === cat.id);
-          return reord ? { ...cat, sortOrder: reord.sortOrder } : cat;
-        })
-      );
-      try {
-        await apiRequest("POST", "/api/categories/reorder", { items });
-      } catch {
-        if (prevCats) queryClient.setQueryData(catsKey, prevCats);
+      const destId = destination.droppableId;
+      let destContainerId: number | null = null;
+      let destIsMajor = false;
+      let destIndex: number | null = destination.index;
+
+      if (destId.startsWith("header-major-")) {
+        destContainerId = parseInt(destId.replace("header-major-", ""), 10);
+        destIsMajor = true;
+        destIndex = null;
+      } else if (destId.startsWith("header-sub-")) {
+        destContainerId = parseInt(destId.replace("header-sub-", ""), 10);
+        destIsMajor = false;
+        destIndex = null;
+      } else if (destId.startsWith("children-")) {
+        destContainerId = parseInt(destId.replace("children-", ""), 10);
+        destIsMajor = true;
+      } else if (destId.startsWith("subrx-")) {
+        destContainerId = parseInt(destId.replace("subrx-", ""), 10);
+        destIsMajor = false;
       }
-    } else if (type === "PRESCRIPTION") {
-      const subId = parseInt(source.droppableId.replace("rx-", ""), 10);
-      const destSubId = parseInt(destination.droppableId.replace("rx-", ""), 10);
 
-      if (subId === destSubId) {
-        const rxs = getPrescriptions(subId);
-        const reordered = Array.from(rxs);
-        const [moved] = reordered.splice(source.index, 1);
-        reordered.splice(destination.index, 0, moved);
-        const reorderedWithSort = reordered.map((p, i) => ({ ...p, sortOrder: i }));
-        const items = reorderedWithSort.map((p, i) => ({ id: p.id, sortOrder: i, categoryId: subId }));
-
-        const prevRx = optimisticUpdateItems(rxKey, rxs =>
-          rxs.map(rx => {
-            const reord = reorderedWithSort.find(r => r.id === rx.id);
-            return reord ? { ...rx, sortOrder: reord.sortOrder } : rx;
-          })
-        );
-        try {
-          await apiRequest("POST", "/api/prescriptions/reorder", { items });
-        } catch {
-          if (prevRx) queryClient.setQueryData(rxKey, prevRx);
-        }
-      } else {
-        const sourceRxs = getPrescriptions(subId);
-        const destRxs = getPrescriptions(destSubId);
-        const sourceReordered = Array.from(sourceRxs);
-        const [moved] = sourceReordered.splice(source.index, 1);
-        const destReordered = Array.from(destRxs);
-        destReordered.splice(destination.index, 0, moved);
-        const sourceWithSort = sourceReordered.map((p, i) => ({ ...p, sortOrder: i }));
-        const destWithSort = destReordered.map((p, i) => ({ ...p, sortOrder: i, categoryId: destSubId }));
-        const items = [
-          ...sourceWithSort.map((p, i) => ({ id: p.id, sortOrder: i, categoryId: subId })),
-          ...destWithSort.map((p, i) => ({ id: p.id, sortOrder: i, categoryId: destSubId })),
-        ];
-
-        const prevRx = optimisticUpdateItems(rxKey, rxs =>
-          rxs.map(rx => {
-            const reord = [...sourceWithSort, ...destWithSort].find(r => r.id === rx.id);
-            return reord ? { ...rx, sortOrder: reord.sortOrder, categoryId: reord.categoryId } : rx;
-          })
-        );
-        try {
-          await apiRequest("POST", "/api/prescriptions/reorder", { items });
-        } catch {
-          if (prevRx) queryClient.setQueryData(rxKey, prevRx);
-        }
-      }
+      if (destContainerId === null) return;
+      await handleNodeDrop(draggedKind, draggedId, destContainerId, destIsMajor, destIndex);
     }
-  }, [majorCategories, categories, prescriptions]);
+  }, [readOnly, majorCategories, categories, prescriptions]);
 
   if (isLoading) {
     return (
@@ -449,15 +475,17 @@ export function CategorySidebar({
         <div className="flex items-center gap-2 flex-wrap">
           <Pill className="h-5 w-5" />
           <span className="font-semibold text-sm">처방 분류</span>
-          <Button
-            size="icon"
-            variant="ghost"
-            onClick={() => setAddingCategory(true)}
-            className="ml-auto text-muted-foreground"
-            data-testid="button-add-category"
-          >
-            <Plus className="h-4 w-4" />
-          </Button>
+          {!readOnly && (
+            <Button
+              size="icon"
+              variant="ghost"
+              onClick={() => setAddingCategory(true)}
+              className="ml-auto text-muted-foreground"
+              data-testid="button-add-category"
+            >
+              <Plus className="h-4 w-4" />
+            </Button>
+          )}
         </div>
       </SidebarHeader>
       <SidebarContent>
@@ -477,11 +505,17 @@ export function CategorySidebar({
 
                     const subCategories = getSubCategories(major.id);
                     const isMajorOpen = isSearching || openMajor.has(major.id);
-                    const majorRxs = isSearching ? getFilteredPrescriptions(major.id) : getPrescriptions(major.id);
                     const totalRxCount = getPrescriptions(major.id).length + subCategories.reduce((sum, sub) => sum + getPrescriptions(sub.id).length, 0);
 
+                    const visibleMajorRxs = isSearching ? getFilteredPrescriptions(major.id) : getPrescriptions(major.id);
+                    const visibleSubCategories = subCategories.filter(sub => !isSearching || hasVisibleInSub(sub.id));
+                    const majorChildren: ChildNode[] = [
+                      ...visibleMajorRxs.map(rx => ({ kind: "rx" as const, sortOrder: rx.sortOrder, rx })),
+                      ...visibleSubCategories.map(sub => ({ kind: "sub" as const, sortOrder: sub.sortOrder, sub })),
+                    ].sort((a, b) => a.sortOrder - b.sortOrder);
+
                     return (
-                      <Draggable key={major.id} draggableId={`major-${major.id}`} index={majorIdx} isDragDisabled={isSearching}>
+                      <Draggable key={major.id} draggableId={`major-${major.id}`} index={majorIdx} isDragDisabled={isSearching || readOnly}>
                         {(dragProvided, dragSnapshot) => (
                           <div
                             ref={dragProvided.innerRef}
@@ -489,312 +523,319 @@ export function CategorySidebar({
                             className={`mb-1 rounded-md ${dragSnapshot.isDragging ? "bg-accent shadow-md" : ""}`}
                           >
                             <Collapsible open={isMajorOpen} onOpenChange={() => !isSearching && toggleMajor(major.id)}>
-                              <div className="flex items-center group">
-                                {!isSearching && (
-                                  <div
-                                    {...dragProvided.dragHandleProps}
-                                    className="p-1 cursor-grab active:cursor-grabbing text-muted-foreground hover-elevate rounded-md invisible group-hover:visible"
-                                    data-testid={`drag-major-${major.id}`}
-                                  >
-                                    <GripVertical className="h-3.5 w-3.5" />
-                                  </div>
-                                )}
-                                <CollapsibleTrigger asChild>
-                                  <button
-                                    data-testid={`button-major-category-${major.id}`}
-                                    className="flex items-center gap-1.5 flex-1 px-1.5 py-1.5 text-sm font-medium rounded-md hover-elevate active-elevate-2"
-                                  >
-                                    <ChevronRight
-                                      className={`h-3.5 w-3.5 shrink-0 transition-transform duration-200 ${isMajorOpen ? "rotate-90" : ""}`}
-                                    />
-                                    <FolderOpen className="h-3.5 w-3.5 shrink-0" />
-                                    <EditableLabel value={major.name} onSave={(name) => handleRenameCategory(major.id, name)} />
-                                    <span className="ml-auto text-xs text-muted-foreground">
-                                      {totalRxCount}
-                                    </span>
-                                  </button>
-                                </CollapsibleTrigger>
-                                {!isSearching && (
-                                  <button
-                                    onClick={(e) => { e.stopPropagation(); handleDeleteCategory(major.id); }}
-                                    className="invisible group-hover:visible p-0.5 text-muted-foreground/50 hover:text-destructive rounded-md"
-                                    data-testid={`button-delete-category-${major.id}`}
-                                  >
-                                    <X className="h-3 w-3" />
-                                  </button>
-                                )}
-                              </div>
-                              <CollapsibleContent>
-                                <div className="ml-5 border-l border-border pl-1">
-                                <Droppable droppableId={`rx-${major.id}`} type="PRESCRIPTION">
-                                  {(rxProvided) => (
-                                    <div ref={rxProvided.innerRef} {...rxProvided.droppableProps}>
-                                      {majorRxs.map((rx, rxIdx) => (
-                                        <Draggable key={rx.id} draggableId={`rx-${rx.id}`} index={rxIdx} isDragDisabled={isSearching}>
-                                          {(rxDragProvided, rxDragSnapshot) => (
-                                            <div
-                                              ref={rxDragProvided.innerRef}
-                                              {...rxDragProvided.draggableProps}
-                                              className={`flex items-center mb-0.5 rounded-md group/rx ${rxDragSnapshot.isDragging ? "bg-accent shadow-md" : ""}`}
-                                            >
-                                              {!isSearching && (
-                                                <div
-                                                  {...rxDragProvided.dragHandleProps}
-                                                  className="p-0.5 cursor-grab active:cursor-grabbing text-muted-foreground hover-elevate rounded-md invisible group-hover/rx:visible"
-                                                  data-testid={`drag-rx-${rx.id}`}
-                                                >
-                                                  <GripVertical className="h-3 w-3" />
-                                                </div>
-                                              )}
-                                              <button
-                                                data-testid={`button-prescription-${rx.id}`}
-                                                onClick={() => onSelectPrescription(rx.id)}
-                                                className={`flex-1 text-left text-xs px-1.5 py-1 rounded-md hover-elevate active-elevate-2 ${
-                                                  selectedPrescriptionId === rx.id
-                                                    ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
-                                                    : ""
-                                                }`}
-                                              >
-                                                <EditableLabel value={rx.name} onSave={(name) => handleRenamePrescription(rx.id, name)} />
-                                              </button>
-                                              {!isSearching && (
-                                                <button
-                                                  onClick={(e) => { e.stopPropagation(); handleCopyPrescription(rx.id, rx.name); }}
-                                                  className="invisible group-hover/rx:visible p-0.5 text-muted-foreground/50 hover:text-foreground rounded-md"
-                                                  data-testid={`button-copy-prescription-${rx.id}`}
-                                                >
-                                                  <Copy className="h-3 w-3" />
-                                                </button>
-                                              )}
-                                              {!isSearching && (
-                                                <button
-                                                  onClick={(e) => { e.stopPropagation(); handleDeletePrescription(rx.id); }}
-                                                  className="invisible group-hover/rx:visible p-0.5 text-muted-foreground/50 hover:text-destructive rounded-md"
-                                                  data-testid={`button-delete-prescription-${rx.id}`}
-                                                >
-                                                  <X className="h-3 w-3" />
-                                                </button>
-                                              )}
-                                            </div>
-                                          )}
-                                        </Draggable>
-                                      ))}
-                                      {!isSearching && addingPrescriptionFor === major.id && (
-                                        <div className="mb-1">
-                                          <InlineInput
-                                            onSubmit={(name) => handleAddPrescription(major.id, name)}
-                                            onCancel={() => setAddingPrescriptionFor(null)}
-                                            placeholder="세트처방명 입력"
-                                          />
+                              <Droppable droppableId={`header-major-${major.id}`} type="NODE">
+                                {(headerProvided) => (
+                                  <div ref={headerProvided.innerRef} {...headerProvided.droppableProps}>
+                                    <div className="flex items-center group">
+                                      {!isSearching && !readOnly && (
+                                        <div
+                                          {...dragProvided.dragHandleProps}
+                                          className="p-1 cursor-grab active:cursor-grabbing text-muted-foreground hover-elevate rounded-md invisible group-hover:visible"
+                                          data-testid={`drag-major-${major.id}`}
+                                        >
+                                          <GripVertical className="h-3.5 w-3.5" />
                                         </div>
                                       )}
-                                      {rxProvided.placeholder}
+                                      <CollapsibleTrigger asChild>
+                                        <button
+                                          data-testid={`button-major-category-${major.id}`}
+                                          className="flex items-center gap-1.5 flex-1 px-1.5 py-1.5 text-sm font-medium rounded-md hover-elevate active-elevate-2"
+                                        >
+                                          <ChevronRight
+                                            className={`h-3.5 w-3.5 shrink-0 transition-transform duration-200 ${isMajorOpen ? "rotate-90" : ""}`}
+                                          />
+                                          <FolderOpen className="h-3.5 w-3.5 shrink-0" />
+                                          <EditableLabel value={major.name} onSave={(name) => handleRenameCategory(major.id, name)} disabled={readOnly} />
+                                          <span className="ml-auto text-xs text-muted-foreground">
+                                            {totalRxCount}
+                                          </span>
+                                        </button>
+                                      </CollapsibleTrigger>
+                                      {!isSearching && !readOnly && (
+                                        <button
+                                          onClick={(e) => { e.stopPropagation(); handleDeleteCategory(major.id); }}
+                                          className="invisible group-hover:visible p-0.5 text-muted-foreground/50 hover:text-destructive rounded-md"
+                                          data-testid={`button-delete-category-${major.id}`}
+                                        >
+                                          <X className="h-3 w-3" />
+                                        </button>
+                                      )}
                                     </div>
-                                  )}
-                                </Droppable>
-                                <Droppable droppableId={`sub-${major.id}`} type="SUB">
-                                  {(subProvided) => (
-                                    <div
-                                      ref={subProvided.innerRef}
-                                      {...subProvided.droppableProps}
-                                    >
-                                      {subCategories.map((sub, subIdx) => {
-                                        if (isSearching && !hasVisibleInSub(sub.id)) return null;
-
-                                        const subRxs = isSearching ? getFilteredPrescriptions(sub.id) : getPrescriptions(sub.id);
-                                        const isSubOpen = isSearching || openSub.has(sub.id);
-
-                                        return (
-                                          <Draggable key={sub.id} draggableId={`sub-${sub.id}`} index={subIdx} isDragDisabled={isSearching}>
-                                            {(subDragProvided, subDragSnapshot) => (
-                                              <div
-                                                ref={subDragProvided.innerRef}
-                                                {...subDragProvided.draggableProps}
-                                                className={`mb-0.5 rounded-md ${subDragSnapshot.isDragging ? "bg-accent shadow-md" : ""}`}
-                                              >
-                                                <Collapsible open={isSubOpen} onOpenChange={() => !isSearching && toggleSub(sub.id)}>
-                                                  <div className="flex items-center group/sub">
-                                                    {!isSearching && (
+                                    {headerProvided.placeholder}
+                                  </div>
+                                )}
+                              </Droppable>
+                              <CollapsibleContent>
+                                <div className="ml-5 border-l border-border pl-1">
+                                  <Droppable droppableId={`children-${major.id}`} type="NODE">
+                                    {(childProvided) => (
+                                      <div ref={childProvided.innerRef} {...childProvided.droppableProps}>
+                                        {majorChildren.map((child, childIdx) => {
+                                          if (child.kind === "rx") {
+                                            const rx = child.rx;
+                                            return (
+                                              <Draggable key={`rx-${rx.id}`} draggableId={`rx-${rx.id}`} index={childIdx} isDragDisabled={isSearching || readOnly}>
+                                                {(rxDragProvided, rxDragSnapshot) => (
+                                                  <div
+                                                    ref={rxDragProvided.innerRef}
+                                                    {...rxDragProvided.draggableProps}
+                                                    className={`flex items-center mb-0.5 rounded-md group/rx ${rxDragSnapshot.isDragging ? "bg-accent shadow-md" : ""}`}
+                                                  >
+                                                    {!isSearching && !readOnly && (
                                                       <div
-                                                        {...subDragProvided.dragHandleProps}
-                                                        className="p-0.5 cursor-grab active:cursor-grabbing text-muted-foreground hover-elevate rounded-md invisible group-hover/sub:visible"
-                                                        data-testid={`drag-sub-${sub.id}`}
+                                                        {...rxDragProvided.dragHandleProps}
+                                                        className="p-0.5 cursor-grab active:cursor-grabbing text-muted-foreground hover-elevate rounded-md invisible group-hover/rx:visible"
+                                                        data-testid={`drag-rx-${rx.id}`}
                                                       >
                                                         <GripVertical className="h-3 w-3" />
                                                       </div>
                                                     )}
-                                                    <CollapsibleTrigger asChild>
+                                                    <button
+                                                      data-testid={`button-prescription-${rx.id}`}
+                                                      onClick={() => onSelectPrescription(rx.id)}
+                                                      className={`flex-1 text-left text-xs px-1.5 py-1 rounded-md hover-elevate active-elevate-2 ${
+                                                        selectedPrescriptionId === rx.id
+                                                          ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
+                                                          : ""
+                                                      }`}
+                                                    >
+                                                      <EditableLabel value={rx.name} onSave={(name) => handleRenamePrescription(rx.id, name)} disabled={readOnly} />
+                                                    </button>
+                                                    {!isSearching && !readOnly && (
                                                       <button
-                                                        data-testid={`button-sub-category-${sub.id}`}
-                                                        className="flex items-center gap-1 flex-1 px-1 py-1 text-xs font-medium rounded-md hover-elevate active-elevate-2"
+                                                        onClick={(e) => { e.stopPropagation(); handleCopyPrescription(rx.id, rx.name); }}
+                                                        className="invisible group-hover/rx:visible p-0.5 text-muted-foreground/50 hover:text-foreground rounded-md"
+                                                        data-testid={`button-copy-prescription-${rx.id}`}
                                                       >
-                                                        <ChevronRight
-                                                          className={`h-3 w-3 shrink-0 transition-transform duration-200 ${isSubOpen ? "rotate-90" : ""}`}
-                                                        />
-                                                        <Layers className="h-3 w-3 shrink-0" />
-                                                        <EditableLabel value={sub.name} onSave={(name) => handleRenameCategory(sub.id, name)} />
-                                                        <span className="ml-auto text-xs text-muted-foreground">
-                                                          {getPrescriptions(sub.id).length}
-                                                        </span>
+                                                        <Copy className="h-3 w-3" />
                                                       </button>
-                                                    </CollapsibleTrigger>
-                                                    {!isSearching && (
+                                                    )}
+                                                    {!isSearching && !readOnly && (
                                                       <button
-                                                        onClick={(e) => { e.stopPropagation(); handleDeleteCategory(sub.id); }}
-                                                        className="invisible group-hover/sub:visible p-0.5 text-muted-foreground/50 hover:text-destructive rounded-md"
-                                                        data-testid={`button-delete-sub-${sub.id}`}
+                                                        onClick={(e) => { e.stopPropagation(); handleDeletePrescription(rx.id); }}
+                                                        className="invisible group-hover/rx:visible p-0.5 text-muted-foreground/50 hover:text-destructive rounded-md"
+                                                        data-testid={`button-delete-prescription-${rx.id}`}
                                                       >
                                                         <X className="h-3 w-3" />
                                                       </button>
                                                     )}
                                                   </div>
-                                                  <CollapsibleContent>
-                                                    <Droppable droppableId={`rx-${sub.id}`} type="PRESCRIPTION">
-                                                      {(rxProvided) => (
-                                                        <div
-                                                          ref={rxProvided.innerRef}
-                                                          {...rxProvided.droppableProps}
-                                                          className="ml-4 border-l border-border/50 pl-1"
-                                                        >
-                                                          {subRxs.map((rx, rxIdx) => (
-                                                            <Draggable key={rx.id} draggableId={`rx-${rx.id}`} index={rxIdx} isDragDisabled={isSearching}>
-                                                              {(rxDragProvided, rxDragSnapshot) => (
-                                                                <div
-                                                                  ref={rxDragProvided.innerRef}
-                                                                  {...rxDragProvided.draggableProps}
-                                                                  className={`flex items-center mb-0.5 rounded-md group/rx ${rxDragSnapshot.isDragging ? "bg-accent shadow-md" : ""}`}
-                                                                >
-                                                                  {!isSearching && (
-                                                                    <div
-                                                                      {...rxDragProvided.dragHandleProps}
-                                                                      className="p-0.5 cursor-grab active:cursor-grabbing text-muted-foreground hover-elevate rounded-md invisible group-hover/rx:visible"
-                                                                      data-testid={`drag-rx-${rx.id}`}
-                                                                    >
-                                                                      <GripVertical className="h-3 w-3" />
-                                                                    </div>
-                                                                  )}
-                                                                  <button
-                                                                    data-testid={`button-prescription-${rx.id}`}
-                                                                    onClick={() => onSelectPrescription(rx.id)}
-                                                                    className={`flex-1 text-left text-xs px-1.5 py-1 rounded-md hover-elevate active-elevate-2 ${
-                                                                      selectedPrescriptionId === rx.id
-                                                                        ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
-                                                                        : ""
-                                                                    }`}
-                                                                  >
-                                                                    <EditableLabel value={rx.name} onSave={(name) => handleRenamePrescription(rx.id, name)} />
-                                                                  </button>
-                                                                  {!isSearching && (
-                                                                    <button
-                                                                      onClick={(e) => { e.stopPropagation(); handleCopyPrescription(rx.id, rx.name); }}
-                                                                      className="invisible group-hover/rx:visible p-0.5 text-muted-foreground/50 hover:text-foreground rounded-md"
-                                                                      data-testid={`button-copy-prescription-${rx.id}`}
-                                                                    >
-                                                                      <Copy className="h-3 w-3" />
-                                                                    </button>
-                                                                  )}
-                                                                  {!isSearching && (
-                                                                    <button
-                                                                      onClick={(e) => { e.stopPropagation(); handleDeletePrescription(rx.id); }}
-                                                                      className="invisible group-hover/rx:visible p-0.5 text-muted-foreground/50 hover:text-destructive rounded-md"
-                                                                      data-testid={`button-delete-prescription-${rx.id}`}
-                                                                    >
-                                                                      <X className="h-3 w-3" />
-                                                                    </button>
-                                                                  )}
-                                                                </div>
-                                                              )}
-                                                            </Draggable>
-                                                          ))}
-                                                          {!isSearching && addingPrescriptionFor === sub.id && (
-                                                            <div className="ml-4 mb-1">
-                                                              <InlineInput
-                                                                onSubmit={(name) => handleAddPrescription(sub.id, name)}
-                                                                onCancel={() => setAddingPrescriptionFor(null)}
-                                                                placeholder="세트처방명 입력"
-                                                              />
-                                                            </div>
-                                                          )}
-                                                          {!isSearching && clipboard && (
-                                                            <button
-                                                              onClick={() => handlePastePrescription(sub.id)}
-                                                              className="flex items-center gap-1 text-xs text-muted-foreground px-2 py-1 rounded-md hover-elevate active-elevate-2 w-full"
-                                                              data-testid={`button-paste-prescription-${sub.id}`}
-                                                            >
-                                                              <ClipboardPaste className="h-3 w-3" />
-                                                              <span className="truncate">"{clipboard.name}" 붙여넣기</span>
-                                                            </button>
-                                                          )}
-                                                          {!isSearching && (
-                                                            <button
-                                                              onClick={() => setAddingPrescriptionFor(sub.id)}
-                                                              className="flex items-center gap-1 text-xs text-muted-foreground px-2 py-1 rounded-md hover-elevate active-elevate-2 w-full"
-                                                              data-testid={`button-add-prescription-${sub.id}`}
-                                                            >
-                                                              <Plus className="h-3 w-3" />
-                                                              <span>세트처방 추가</span>
-                                                            </button>
-                                                          )}
-                                                          {rxProvided.placeholder}
+                                                )}
+                                              </Draggable>
+                                            );
+                                          }
+
+                                          const sub = child.sub;
+                                          const subRxs = isSearching ? getFilteredPrescriptions(sub.id) : getPrescriptions(sub.id);
+                                          const isSubOpen = isSearching || openSub.has(sub.id);
+
+                                          return (
+                                            <Draggable key={`sub-${sub.id}`} draggableId={`sub-${sub.id}`} index={childIdx} isDragDisabled={isSearching || readOnly}>
+                                              {(subDragProvided, subDragSnapshot) => (
+                                                <div
+                                                  ref={subDragProvided.innerRef}
+                                                  {...subDragProvided.draggableProps}
+                                                  className={`mb-0.5 rounded-md ${subDragSnapshot.isDragging ? "bg-accent shadow-md" : ""}`}
+                                                >
+                                                  <Collapsible open={isSubOpen} onOpenChange={() => !isSearching && toggleSub(sub.id)}>
+                                                    <Droppable droppableId={`header-sub-${sub.id}`} type="NODE">
+                                                      {(subHeaderProvided) => (
+                                                        <div ref={subHeaderProvided.innerRef} {...subHeaderProvided.droppableProps}>
+                                                          <div className="flex items-center group/sub">
+                                                            {!isSearching && !readOnly && (
+                                                              <div
+                                                                {...subDragProvided.dragHandleProps}
+                                                                className="p-0.5 cursor-grab active:cursor-grabbing text-muted-foreground hover-elevate rounded-md invisible group-hover/sub:visible"
+                                                                data-testid={`drag-sub-${sub.id}`}
+                                                              >
+                                                                <GripVertical className="h-3 w-3" />
+                                                              </div>
+                                                            )}
+                                                            <CollapsibleTrigger asChild>
+                                                              <button
+                                                                data-testid={`button-sub-category-${sub.id}`}
+                                                                className="flex items-center gap-1 flex-1 px-1 py-1 text-xs font-medium rounded-md hover-elevate active-elevate-2"
+                                                              >
+                                                                <ChevronRight
+                                                                  className={`h-3 w-3 shrink-0 transition-transform duration-200 ${isSubOpen ? "rotate-90" : ""}`}
+                                                                />
+                                                                <Layers className="h-3 w-3 shrink-0" />
+                                                                <EditableLabel value={sub.name} onSave={(name) => handleRenameCategory(sub.id, name)} disabled={readOnly} />
+                                                                <span className="ml-auto text-xs text-muted-foreground">
+                                                                  {getPrescriptions(sub.id).length}
+                                                                </span>
+                                                              </button>
+                                                            </CollapsibleTrigger>
+                                                            {!isSearching && !readOnly && (
+                                                              <button
+                                                                onClick={(e) => { e.stopPropagation(); handleDeleteCategory(sub.id); }}
+                                                                className="invisible group-hover/sub:visible p-0.5 text-muted-foreground/50 hover:text-destructive rounded-md"
+                                                                data-testid={`button-delete-sub-${sub.id}`}
+                                                              >
+                                                                <X className="h-3 w-3" />
+                                                              </button>
+                                                            )}
+                                                          </div>
+                                                          {subHeaderProvided.placeholder}
                                                         </div>
                                                       )}
                                                     </Droppable>
-                                                  </CollapsibleContent>
-                                                </Collapsible>
-                                              </div>
-                                            )}
-                                          </Draggable>
-                                        );
-                                      })}
-                                      {!isSearching && addingSubFor === major.id && (
-                                        <div className="ml-3 mb-1">
-                                          <InlineInput
-                                            onSubmit={(name) => handleAddSubCategory(major.id, name)}
-                                            onCancel={() => setAddingSubFor(null)}
-                                            placeholder="중분류명 입력"
-                                          />
-                                        </div>
-                                      )}
-                                      {subProvided.placeholder}
-                                    </div>
-                                  )}
-                                </Droppable>
-                                {!isSearching && (
-                                  <DropdownMenu>
-                                    <DropdownMenuTrigger asChild>
-                                      <button
-                                        className="flex items-center gap-1 text-xs text-muted-foreground px-2 py-1 rounded-md hover-elevate active-elevate-2 w-full"
-                                        data-testid={`button-add-major-${major.id}`}
-                                      >
-                                        <Plus className="h-3 w-3" />
-                                        <span>추가</span>
-                                      </button>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent align="start">
-                                      <DropdownMenuItem
-                                        onClick={() => setAddingPrescriptionFor(major.id)}
-                                        data-testid={`menuitem-add-prescription-${major.id}`}
-                                      >
-                                        세트처방 추가
-                                      </DropdownMenuItem>
-                                      <DropdownMenuItem
-                                        onClick={() => setAddingSubFor(major.id)}
-                                        data-testid={`menuitem-add-sub-${major.id}`}
-                                      >
-                                        중분류 추가
-                                      </DropdownMenuItem>
-                                      {clipboard && (
-                                        <DropdownMenuItem
-                                          onClick={() => handlePastePrescription(major.id)}
-                                          data-testid={`menuitem-paste-prescription-${major.id}`}
+                                                    <CollapsibleContent>
+                                                      <Droppable droppableId={`subrx-${sub.id}`} type="NODE">
+                                                        {(rxProvided) => (
+                                                          <div
+                                                            ref={rxProvided.innerRef}
+                                                            {...rxProvided.droppableProps}
+                                                            className="ml-4 border-l border-border/50 pl-1"
+                                                          >
+                                                            {subRxs.map((rx, rxIdx) => (
+                                                              <Draggable key={`rx-${rx.id}`} draggableId={`rx-${rx.id}`} index={rxIdx} isDragDisabled={isSearching || readOnly}>
+                                                                {(rxDragProvided, rxDragSnapshot) => (
+                                                                  <div
+                                                                    ref={rxDragProvided.innerRef}
+                                                                    {...rxDragProvided.draggableProps}
+                                                                    className={`flex items-center mb-0.5 rounded-md group/rx ${rxDragSnapshot.isDragging ? "bg-accent shadow-md" : ""}`}
+                                                                  >
+                                                                    {!isSearching && !readOnly && (
+                                                                      <div
+                                                                        {...rxDragProvided.dragHandleProps}
+                                                                        className="p-0.5 cursor-grab active:cursor-grabbing text-muted-foreground hover-elevate rounded-md invisible group-hover/rx:visible"
+                                                                        data-testid={`drag-rx-${rx.id}`}
+                                                                      >
+                                                                        <GripVertical className="h-3 w-3" />
+                                                                      </div>
+                                                                    )}
+                                                                    <button
+                                                                      data-testid={`button-prescription-${rx.id}`}
+                                                                      onClick={() => onSelectPrescription(rx.id)}
+                                                                      className={`flex-1 text-left text-xs px-1.5 py-1 rounded-md hover-elevate active-elevate-2 ${
+                                                                        selectedPrescriptionId === rx.id
+                                                                          ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
+                                                                          : ""
+                                                                      }`}
+                                                                    >
+                                                                      <EditableLabel value={rx.name} onSave={(name) => handleRenamePrescription(rx.id, name)} disabled={readOnly} />
+                                                                    </button>
+                                                                    {!isSearching && !readOnly && (
+                                                                      <button
+                                                                        onClick={(e) => { e.stopPropagation(); handleCopyPrescription(rx.id, rx.name); }}
+                                                                        className="invisible group-hover/rx:visible p-0.5 text-muted-foreground/50 hover:text-foreground rounded-md"
+                                                                        data-testid={`button-copy-prescription-${rx.id}`}
+                                                                      >
+                                                                        <Copy className="h-3 w-3" />
+                                                                      </button>
+                                                                    )}
+                                                                    {!isSearching && !readOnly && (
+                                                                      <button
+                                                                        onClick={(e) => { e.stopPropagation(); handleDeletePrescription(rx.id); }}
+                                                                        className="invisible group-hover/rx:visible p-0.5 text-muted-foreground/50 hover:text-destructive rounded-md"
+                                                                        data-testid={`button-delete-prescription-${rx.id}`}
+                                                                      >
+                                                                        <X className="h-3 w-3" />
+                                                                      </button>
+                                                                    )}
+                                                                  </div>
+                                                                )}
+                                                              </Draggable>
+                                                            ))}
+                                                            {!isSearching && addingPrescriptionFor === sub.id && (
+                                                              <div className="ml-4 mb-1">
+                                                                <InlineInput
+                                                                  onSubmit={(name) => handleAddPrescription(sub.id, name)}
+                                                                  onCancel={() => setAddingPrescriptionFor(null)}
+                                                                  placeholder="세트처방명 입력"
+                                                                />
+                                                              </div>
+                                                            )}
+                                                            {!isSearching && !readOnly && clipboard && (
+                                                              <button
+                                                                onClick={() => handlePastePrescription(sub.id)}
+                                                                className="flex items-center gap-1 text-xs text-muted-foreground px-2 py-1 rounded-md hover-elevate active-elevate-2 w-full"
+                                                                data-testid={`button-paste-prescription-${sub.id}`}
+                                                              >
+                                                                <ClipboardPaste className="h-3 w-3" />
+                                                                <span className="truncate">"{clipboard.name}" 붙여넣기</span>
+                                                              </button>
+                                                            )}
+                                                            {!isSearching && !readOnly && (
+                                                              <button
+                                                                onClick={() => setAddingPrescriptionFor(sub.id)}
+                                                                className="flex items-center gap-1 text-xs text-muted-foreground px-2 py-1 rounded-md hover-elevate active-elevate-2 w-full"
+                                                                data-testid={`button-add-prescription-${sub.id}`}
+                                                              >
+                                                                <Plus className="h-3 w-3" />
+                                                                <span>세트처방 추가</span>
+                                                              </button>
+                                                            )}
+                                                            {rxProvided.placeholder}
+                                                          </div>
+                                                        )}
+                                                      </Droppable>
+                                                    </CollapsibleContent>
+                                                  </Collapsible>
+                                                </div>
+                                              )}
+                                            </Draggable>
+                                          );
+                                        })}
+                                        {!isSearching && addingPrescriptionFor === major.id && (
+                                          <div className="mb-1">
+                                            <InlineInput
+                                              onSubmit={(name) => handleAddPrescription(major.id, name)}
+                                              onCancel={() => setAddingPrescriptionFor(null)}
+                                              placeholder="세트처방명 입력"
+                                            />
+                                          </div>
+                                        )}
+                                        {!isSearching && addingSubFor === major.id && (
+                                          <div className="ml-3 mb-1">
+                                            <InlineInput
+                                              onSubmit={(name) => handleAddSubCategory(major.id, name)}
+                                              onCancel={() => setAddingSubFor(null)}
+                                              placeholder="중분류명 입력"
+                                            />
+                                          </div>
+                                        )}
+                                        {childProvided.placeholder}
+                                      </div>
+                                    )}
+                                  </Droppable>
+                                  {!isSearching && !readOnly && (
+                                    <DropdownMenu>
+                                      <DropdownMenuTrigger asChild>
+                                        <button
+                                          className="flex items-center gap-1 text-xs text-muted-foreground px-2 py-1 rounded-md hover-elevate active-elevate-2 w-full"
+                                          data-testid={`button-add-major-${major.id}`}
                                         >
-                                          <ClipboardPaste className="h-3.5 w-3.5 mr-1.5" />
-                                          "{clipboard.name}" 붙여넣기
+                                          <Plus className="h-3 w-3" />
+                                          <span>추가</span>
+                                        </button>
+                                      </DropdownMenuTrigger>
+                                      <DropdownMenuContent align="start">
+                                        <DropdownMenuItem
+                                          onClick={() => setAddingPrescriptionFor(major.id)}
+                                          data-testid={`menuitem-add-prescription-${major.id}`}
+                                        >
+                                          세트처방 추가
                                         </DropdownMenuItem>
-                                      )}
-                                    </DropdownMenuContent>
-                                  </DropdownMenu>
-                                )}
+                                        <DropdownMenuItem
+                                          onClick={() => setAddingSubFor(major.id)}
+                                          data-testid={`menuitem-add-sub-${major.id}`}
+                                        >
+                                          중분류 추가
+                                        </DropdownMenuItem>
+                                        {clipboard && (
+                                          <DropdownMenuItem
+                                            onClick={() => handlePastePrescription(major.id)}
+                                            data-testid={`menuitem-paste-prescription-${major.id}`}
+                                          >
+                                            <ClipboardPaste className="h-3.5 w-3.5 mr-1.5" />
+                                            "{clipboard.name}" 붙여넣기
+                                          </DropdownMenuItem>
+                                        )}
+                                      </DropdownMenuContent>
+                                    </DropdownMenu>
+                                  )}
                                 </div>
                               </CollapsibleContent>
                             </Collapsible>
