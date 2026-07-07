@@ -93,17 +93,34 @@ function RateCalculator() {
 
   return (
     <div className="space-y-4">
-      <div className="space-y-2">
-        <p className="text-xs font-medium text-muted-foreground">약물 농도 (원액)</p>
-        <div className="grid grid-cols-[1fr_90px] gap-2">
+      <div className="space-y-1">
+        <Label htmlFor="calc-weight" className="text-xs font-medium text-muted-foreground">
+          환자 체중 (kg){needsWeight ? "" : " (선택)"}
+        </Label>
+        <Input
+          id="calc-weight"
+          type="number"
+          inputMode="decimal"
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
+          data-testid="input-calc-weight"
+        />
+      </div>
+
+      <div className="grid grid-cols-[1fr_80px_1fr] gap-2">
+        <div className="space-y-1">
+          <Label htmlFor="calc-raw-conc" className="text-xs font-medium text-muted-foreground">약물 농도 (원액)</Label>
           <Input
+            id="calc-raw-conc"
             type="number"
             inputMode="decimal"
-            placeholder="농도 (예: 2)"
             value={rawConcValue}
             onChange={(e) => setRawConcValue(e.target.value)}
             data-testid="input-calc-raw-conc"
           />
+        </div>
+        <div className="space-y-1">
+          <Label className="text-xs font-medium text-transparent select-none">단위</Label>
           <Select value={rawConcUnit} onValueChange={(v) => setRawConcUnit(v as RawConcUnit)}>
             <SelectTrigger data-testid="select-calc-raw-conc-unit"><SelectValue /></SelectTrigger>
             <SelectContent>
@@ -112,33 +129,29 @@ function RateCalculator() {
             </SelectContent>
           </Select>
         </div>
-      </div>
-
-      <div className="grid grid-cols-2 gap-2">
         <div className="space-y-1">
           <Label htmlFor="calc-drawn-volume" className="text-xs font-medium text-muted-foreground">사용 용량 (mL)</Label>
           <Input
             id="calc-drawn-volume"
             type="number"
             inputMode="decimal"
-            placeholder="예: 4"
             value={drawnVolume}
             onChange={(e) => setDrawnVolume(e.target.value)}
             data-testid="input-calc-drawn-volume"
           />
         </div>
-        <div className="space-y-1">
-          <Label htmlFor="calc-mix-volume" className="text-xs font-medium text-muted-foreground">믹스 수액량 (mL)</Label>
-          <Input
-            id="calc-mix-volume"
-            type="number"
-            inputMode="decimal"
-            placeholder="예: 250"
-            value={mixVolume}
-            onChange={(e) => setMixVolume(e.target.value)}
-            data-testid="input-calc-mix-volume"
-          />
-        </div>
+      </div>
+
+      <div className="space-y-1">
+        <Label htmlFor="calc-mix-volume" className="text-xs font-medium text-muted-foreground">믹스 수액량 (mL)</Label>
+        <Input
+          id="calc-mix-volume"
+          type="number"
+          inputMode="decimal"
+          value={mixVolume}
+          onChange={(e) => setMixVolume(e.target.value)}
+          data-testid="input-calc-mix-volume"
+        />
       </div>
 
       {concentrationMcgPerMl !== null && (
@@ -149,47 +162,31 @@ function RateCalculator() {
 
       <div className="grid grid-cols-2 gap-2">
         <div className="space-y-1">
-          <Label htmlFor="calc-weight" className="text-xs font-medium text-muted-foreground">
-            환자 체중 (kg){needsWeight ? "" : " (선택)"}
-          </Label>
-          <Input
-            id="calc-weight"
-            type="number"
-            inputMode="decimal"
-            placeholder="예: 60"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-            data-testid="input-calc-weight"
-          />
-        </div>
-        <div className="space-y-1">
           <Label htmlFor="calc-target-rate" className="text-xs font-medium text-muted-foreground">목표 속도</Label>
           <Input
             id="calc-target-rate"
             type="number"
             inputMode="decimal"
-            placeholder="예: 5"
             value={targetRate}
             onChange={(e) => setTargetRate(e.target.value)}
             data-testid="input-calc-target-rate"
           />
         </div>
+        <div className="space-y-1">
+          <Label className="text-xs font-medium text-muted-foreground">목표 속도 단위</Label>
+          <Select value={targetUnit} onValueChange={(v) => setTargetUnit(v as TargetUnit)}>
+            <SelectTrigger data-testid="select-calc-target-unit"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              {targetUnitOptions.map(o => (
+                <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </div>
-
-      <div className="space-y-1">
-        <Label className="text-xs font-medium text-muted-foreground">목표 속도 단위</Label>
-        <Select value={targetUnit} onValueChange={(v) => setTargetUnit(v as TargetUnit)}>
-          <SelectTrigger data-testid="select-calc-target-unit"><SelectValue /></SelectTrigger>
-          <SelectContent>
-            {targetUnitOptions.map(o => (
-              <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        {needsWeight && !wt && (
-          <p className="text-xs text-destructive">이 단위는 체중 입력이 필요합니다</p>
-        )}
-      </div>
+      {needsWeight && !wt && (
+        <p className="text-xs text-destructive -mt-2">이 단위는 체중 입력이 필요합니다</p>
+      )}
 
       <div className="rounded-md border bg-muted/30 p-3 space-y-2">
         <div className="flex items-baseline justify-between">
@@ -233,7 +230,6 @@ function DoseCalculator() {
             id="dose-weight"
             type="number"
             inputMode="decimal"
-            placeholder="예: 60"
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
             data-testid="input-calc-dose-weight"
@@ -245,7 +241,6 @@ function DoseCalculator() {
             id="dose-per-kg"
             type="number"
             inputMode="decimal"
-            placeholder="예: 1"
             value={dosePerKg}
             onChange={(e) => setDosePerKg(e.target.value)}
             data-testid="input-calc-dose-per-kg"
@@ -259,7 +254,6 @@ function DoseCalculator() {
           id="dose-conc"
           type="number"
           inputMode="decimal"
-          placeholder="필요시 입력하면 투여량(mL)도 계산"
           value={concentration}
           onChange={(e) => setConcentration(e.target.value)}
           data-testid="input-calc-dose-conc"
@@ -291,7 +285,13 @@ export function DosageCalculator() {
   const [mode, setMode] = useState<"dose" | "rate">("rate");
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog
+      open={open}
+      onOpenChange={(next) => {
+        setOpen(next);
+        if (next) setMode("rate");
+      }}
+    >
       <DialogTrigger asChild>
         <Button size="icon" variant="ghost" data-testid="button-calculator">
           <Calculator className="h-4 w-4" />
