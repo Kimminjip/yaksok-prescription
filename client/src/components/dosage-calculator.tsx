@@ -19,16 +19,22 @@ import {
 } from "@/components/ui/select";
 import { Calculator } from "lucide-react";
 
-type RawConcUnit = "mg/mL" | "mcg/mL";
-type TargetUnit = "mcg/kg/min" | "mcg/min" | "mg/kg/hr" | "mg/hr" | "mg/kg/min" | "mg/min";
+type ConcKind = "mass" | "unit";
+type RawConcUnit = "mg/mL" | "mcg/mL" | "unit/mL";
+type TargetUnit = "mcg/kg/min" | "mcg/min" | "mg/kg/hr" | "mg/hr" | "mg/kg/min" | "mg/min" | "unit/min";
 
-const targetUnitOptions: { value: TargetUnit; label: string; perKg: boolean }[] = [
-  { value: "mcg/kg/min", label: "mcg/kg/min", perKg: true },
-  { value: "mcg/min", label: "mcg/min", perKg: false },
-  { value: "mg/kg/hr", label: "mg/kg/hr", perKg: true },
-  { value: "mg/hr", label: "mg/hr", perKg: false },
-  { value: "mg/kg/min", label: "mg/kg/min", perKg: true },
-  { value: "mg/min", label: "mg/min", perKg: false },
+function concKindOf(u: RawConcUnit): ConcKind {
+  return u === "unit/mL" ? "unit" : "mass";
+}
+
+const targetUnitOptions: { value: TargetUnit; label: string; perKg: boolean; kind: ConcKind }[] = [
+  { value: "mcg/kg/min", label: "mcg/kg/min", perKg: true, kind: "mass" },
+  { value: "mcg/min", label: "mcg/min", perKg: false, kind: "mass" },
+  { value: "mg/kg/hr", label: "mg/kg/hr", perKg: true, kind: "mass" },
+  { value: "mg/hr", label: "mg/hr", perKg: false, kind: "mass" },
+  { value: "mg/kg/min", label: "mg/kg/min", perKg: true, kind: "mass" },
+  { value: "mg/min", label: "mg/min", perKg: false, kind: "mass" },
+  { value: "unit/min", label: "unit/min", perKg: false, kind: "unit" },
 ];
 
 function toNumber(val: string): number | null {
@@ -57,39 +63,49 @@ function RateCalculator() {
   const wt = toNumber(weight);
   const rate = toNumber(targetRate);
 
+  const concKind = concKindOf(rawConcUnit);
+  const visibleTargetUnitOptions = targetUnitOptions.filter(o => o.kind === concKind);
   const unitMeta = targetUnitOptions.find(o => o.value === targetUnit)!;
   const needsWeight = unitMeta.perKg;
 
-  let concentrationMcgPerMl: number | null = null;
+  let concentrationPerMl: number | null = null;
   let totalVolume: number | null = null;
   if (rawConc !== null && drawn !== null && mix !== null && drawn + mix > 0) {
-    const totalDrugMcg = rawConcUnit === "mg/mL" ? rawConc * drawn * 1000 : rawConc * drawn;
     totalVolume = drawn + mix;
-    concentrationMcgPerMl = totalDrugMcg / totalVolume;
-  }
-
-  let doseRateMcgPerMin: number | null = null;
-  const canCompute = rate !== null && concentrationMcgPerMl !== null && (!needsWeight || (wt !== null && wt > 0));
-  if (canCompute) {
-    const w = wt ?? 0;
-    switch (targetUnit) {
-      case "mcg/kg/min": doseRateMcgPerMin = rate! * w; break;
-      case "mcg/min": doseRateMcgPerMin = rate!; break;
-      case "mg/kg/hr": doseRateMcgPerMin = (rate! * w * 1000) / 60; break;
-      case "mg/hr": doseRateMcgPerMin = (rate! * 1000) / 60; break;
-      case "mg/kg/min": doseRateMcgPerMin = rate! * w * 1000; break;
-      case "mg/min": doseRateMcgPerMin = rate! * 1000; break;
+    if (concKind === "unit") {
+      const totalDrugUnits = rawConc * drawn;
+      concentrationPerMl = totalDrugUnits / totalVolume;
+    } else {
+      const totalDrugMcg = rawConcUnit === "mg/mL" ? rawConc * drawn * 1000 : rawConc * drawn;
+      concentrationPerMl = totalDrugMcg / totalVolume;
     }
   }
 
-  const rateMlPerHr = doseRateMcgPerMin !== null && concentrationMcgPerMl ? (doseRateMcgPerMin * 60) / concentrationMcgPerMl : null;
+  let doseRatePerMin: number | null = null;
+  const canCompute = rate !== null && concentrationPerMl !== null && (!needsWeight || (wt !== null && wt > 0));
+  if (canCompute) {
+    const w = wt ?? 0;
+    switch (targetUnit) {
+      case "mcg/kg/min": doseRatePerMin = rate! * w; break;
+      case "mcg/min": doseRatePerMin = rate!; break;
+      case "mg/kg/hr": doseRatePerMin = (rate! * w * 1000) / 60; break;
+      case "mg/hr": doseRatePerMin = (rate! * 1000) / 60; break;
+      case "mg/kg/min": doseRatePerMin = rate! * w * 1000; break;
+      case "mg/min": doseRatePerMin = rate! * 1000; break;
+      case "unit/min": doseRatePerMin = rate!; break;
+    }
+  }
+
+  const rateMlPerHr = doseRatePerMin !== null && concentrationPerMl ? (doseRatePerMin * 60) / concentrationPerMl : null;
   const rateMlPerMin = rateMlPerHr !== null ? rateMlPerHr / 60 : null;
-  const mcgPerMin = doseRateMcgPerMin;
-  const mcgPerHr = doseRateMcgPerMin !== null ? doseRateMcgPerMin * 60 : null;
-  const mgPerMin = doseRateMcgPerMin !== null ? doseRateMcgPerMin / 1000 : null;
-  const mgPerHr = doseRateMcgPerMin !== null ? (doseRateMcgPerMin * 60) / 1000 : null;
-  const mcgPerKgPerMin = doseRateMcgPerMin !== null && wt ? doseRateMcgPerMin / wt : null;
-  const mgPerKgPerHr = doseRateMcgPerMin !== null && wt ? (doseRateMcgPerMin * 60) / 1000 / wt : null;
+  const mcgPerMin = concKind === "mass" ? doseRatePerMin : null;
+  const mcgPerHr = concKind === "mass" && doseRatePerMin !== null ? doseRatePerMin * 60 : null;
+  const mgPerMin = concKind === "mass" && doseRatePerMin !== null ? doseRatePerMin / 1000 : null;
+  const mgPerHr = concKind === "mass" && doseRatePerMin !== null ? (doseRatePerMin * 60) / 1000 : null;
+  const mcgPerKgPerMin = concKind === "mass" && doseRatePerMin !== null && wt ? doseRatePerMin / wt : null;
+  const mgPerKgPerHr = concKind === "mass" && doseRatePerMin !== null && wt ? (doseRatePerMin * 60) / 1000 / wt : null;
+  const unitPerMin = concKind === "unit" ? doseRatePerMin : null;
+  const unitPerHr = concKind === "unit" && doseRatePerMin !== null ? doseRatePerMin * 60 : null;
 
   return (
     <div className="space-y-4">
@@ -121,11 +137,22 @@ function RateCalculator() {
         </div>
         <div className="space-y-1">
           <Label className="text-xs font-medium text-transparent select-none">단위</Label>
-          <Select value={rawConcUnit} onValueChange={(v) => setRawConcUnit(v as RawConcUnit)}>
+          <Select
+            value={rawConcUnit}
+            onValueChange={(v) => {
+              const newUnit = v as RawConcUnit;
+              setRawConcUnit(newUnit);
+              const newKind = concKindOf(newUnit);
+              if (concKindOf(rawConcUnit) !== newKind) {
+                setTargetUnit(targetUnitOptions.find(o => o.kind === newKind)!.value);
+              }
+            }}
+          >
             <SelectTrigger data-testid="select-calc-raw-conc-unit"><SelectValue /></SelectTrigger>
             <SelectContent>
               <SelectItem value="mg/mL">mg/mL</SelectItem>
               <SelectItem value="mcg/mL">mcg/mL</SelectItem>
+              <SelectItem value="unit/mL">unit/mL</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -154,9 +181,11 @@ function RateCalculator() {
         />
       </div>
 
-      {concentrationMcgPerMl !== null && (
+      {concentrationPerMl !== null && (
         <p className="text-xs text-muted-foreground" data-testid="text-calc-derived-conc">
-          총 {fmt(totalVolume, 1)}mL 중 농도: {fmt(concentrationMcgPerMl, 2)} mcg/mL ({fmt((concentrationMcgPerMl ?? 0) / 1000, 4)} mg/mL)
+          {concKind === "unit"
+            ? <>총 {fmt(totalVolume, 1)}mL 중 농도: {fmt(concentrationPerMl, 2)} unit/mL</>
+            : <>총 {fmt(totalVolume, 1)}mL 중 농도: {fmt(concentrationPerMl, 2)} mcg/mL ({fmt(concentrationPerMl / 1000, 4)} mg/mL)</>}
         </p>
       )}
 
@@ -177,7 +206,7 @@ function RateCalculator() {
           <Select value={targetUnit} onValueChange={(v) => setTargetUnit(v as TargetUnit)}>
             <SelectTrigger data-testid="select-calc-target-unit"><SelectValue /></SelectTrigger>
             <SelectContent>
-              {targetUnitOptions.map(o => (
+              {visibleTargetUnitOptions.map(o => (
                 <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>
               ))}
             </SelectContent>
@@ -197,12 +226,21 @@ function RateCalculator() {
         </div>
         <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs pt-2 border-t">
           <div className="flex justify-between"><span className="text-muted-foreground">mL/min</span><span className="tabular-nums">{fmt(rateMlPerMin, 3)}</span></div>
-          <div className="flex justify-between"><span className="text-muted-foreground">mcg/min</span><span className="tabular-nums">{fmt(mcgPerMin, 2)}</span></div>
-          <div className="flex justify-between"><span className="text-muted-foreground">mcg/hr</span><span className="tabular-nums">{fmt(mcgPerHr, 1)}</span></div>
-          <div className="flex justify-between"><span className="text-muted-foreground">mg/hr</span><span className="tabular-nums">{fmt(mgPerHr, 3)}</span></div>
-          <div className="flex justify-between"><span className="text-muted-foreground">mg/min</span><span className="tabular-nums">{fmt(mgPerMin, 4)}</span></div>
-          <div className="flex justify-between"><span className="text-muted-foreground">mcg/kg/min</span><span className="tabular-nums">{fmt(mcgPerKgPerMin, 2)}</span></div>
-          <div className="flex justify-between"><span className="text-muted-foreground">mg/kg/hr</span><span className="tabular-nums">{fmt(mgPerKgPerHr, 3)}</span></div>
+          {concKind === "mass" ? (
+            <>
+              <div className="flex justify-between"><span className="text-muted-foreground">mcg/min</span><span className="tabular-nums">{fmt(mcgPerMin, 2)}</span></div>
+              <div className="flex justify-between"><span className="text-muted-foreground">mcg/hr</span><span className="tabular-nums">{fmt(mcgPerHr, 1)}</span></div>
+              <div className="flex justify-between"><span className="text-muted-foreground">mg/hr</span><span className="tabular-nums">{fmt(mgPerHr, 3)}</span></div>
+              <div className="flex justify-between"><span className="text-muted-foreground">mg/min</span><span className="tabular-nums">{fmt(mgPerMin, 4)}</span></div>
+              <div className="flex justify-between"><span className="text-muted-foreground">mcg/kg/min</span><span className="tabular-nums">{fmt(mcgPerKgPerMin, 2)}</span></div>
+              <div className="flex justify-between"><span className="text-muted-foreground">mg/kg/hr</span><span className="tabular-nums">{fmt(mgPerKgPerHr, 3)}</span></div>
+            </>
+          ) : (
+            <>
+              <div className="flex justify-between"><span className="text-muted-foreground">unit/min</span><span className="tabular-nums">{fmt(unitPerMin, 3)}</span></div>
+              <div className="flex justify-between"><span className="text-muted-foreground">unit/hr</span><span className="tabular-nums">{fmt(unitPerHr, 2)}</span></div>
+            </>
+          )}
         </div>
       </div>
     </div>
