@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { CategorySidebar } from "@/components/category-sidebar";
 import { PrescriptionTable } from "@/components/prescription-table";
 import { PrescriptionHeader } from "@/components/prescription-header";
+import { DosageCalculator } from "@/components/dosage-calculator";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -80,7 +81,8 @@ export default function Home() {
               <FileText className="h-5 w-5 text-muted-foreground" />
               <h1 className="text-lg font-semibold">약속처방 관리</h1>
             </div>
-            <div className="ml-auto">
+            <div className="ml-auto flex items-center gap-1">
+              <DosageCalculator />
               <ThemeToggle />
             </div>
           </header>
