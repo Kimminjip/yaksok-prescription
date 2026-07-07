@@ -1092,7 +1092,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
                   <TableHead className="w-[50px] font-semibold text-xs text-center">단위</TableHead>
                   <TableHead className="w-[60px] font-semibold text-xs">횟수</TableHead>
                   {hasDuration && <TableHead className="w-[56px] font-semibold text-xs">일수</TableHead>}
-                  <TableHead className="w-[64px] font-semibold text-xs">투약경로</TableHead>
+                  <TableHead className="w-[96px] font-semibold text-xs">투약경로</TableHead>
                   <TableHead className="font-semibold text-xs min-w-[180px]">비고</TableHead>
                 </TableRow>
               </TableHeader>
@@ -1186,7 +1186,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
                                       </TableCell>
                                     )}
                                     <TableCell className="px-2" data-tab-row={index} data-tab-col={hasDuration ? 8 : 7}>
-                                      <SelectableCell value={item.route} itemId={item.id} field="route" prescriptionId={prescriptionId} options={routeOptions} />
+                                      <SelectableCell value={item.route} itemId={item.id} field="route" prescriptionId={prescriptionId} options={routeOptions} className="whitespace-nowrap" />
                                     </TableCell>
                                     <TableCell className="px-2" data-tab-row={index} data-tab-col={hasDuration ? 9 : 8}>
                                       <EditableCell value={item.note} itemId={item.id} field="note" prescriptionId={prescriptionId} className="text-muted-foreground" multiline />
