@@ -189,6 +189,25 @@ export async function registerRoutes(
     }
   });
 
+  app.get("/api/dosage-presets", async (_req, res) => {
+    const presets = await storage.getDosagePresets();
+    res.json(presets);
+  });
+
+  app.post("/api/dosage-presets/:slotIndex", async (req, res) => {
+    const slotIndex = parseInt(req.params.slotIndex, 10);
+    if (isNaN(slotIndex)) return res.status(400).json({ message: "Invalid slotIndex" });
+    const preset = await storage.upsertDosagePreset(slotIndex, req.body);
+    res.json(preset);
+  });
+
+  app.delete("/api/dosage-presets/:slotIndex", async (req, res) => {
+    const slotIndex = parseInt(req.params.slotIndex, 10);
+    if (isNaN(slotIndex)) return res.status(400).json({ message: "Invalid slotIndex" });
+    await storage.deleteDosagePreset(slotIndex);
+    res.json({ ok: true });
+  });
+
   app.get("/api/search/items", async (req, res) => {
     const q = (req.query.q as string) || "";
     if (!q.trim()) return res.json([]);

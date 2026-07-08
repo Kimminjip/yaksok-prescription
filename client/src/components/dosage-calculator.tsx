@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import {
   Dialog,
   DialogContent,
@@ -17,7 +18,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Calculator } from "lucide-react";
+import { Calculator, Pencil } from "lucide-react";
+import { apiRequest, queryClient } from "@/lib/queryClient";
+import { isReadOnly } from "@/lib/auth";
+import type { DosagePreset } from "@shared/schema";
 
 type ConcKind = "mass" | "unit";
 type RawConcUnit = "mg/mL" | "mcg/mL" | "unit/mL";
@@ -49,14 +53,24 @@ function fmt(n: number | null, digits = 2): string {
   return n.toLocaleString("ko-KR", { maximumFractionDigits: digits, minimumFractionDigits: 0 });
 }
 
-function RateCalculator() {
-  const [rawConcValue, setRawConcValue] = useState("");
-  const [rawConcUnit, setRawConcUnit] = useState<RawConcUnit>("mg/mL");
-  const [drawnVolume, setDrawnVolume] = useState("");
-  const [mixVolume, setMixVolume] = useState("");
+interface RateCalculatorProps {
+  rawConcValue: string; setRawConcValue: (v: string) => void;
+  rawConcUnit: RawConcUnit; setRawConcUnit: (v: RawConcUnit) => void;
+  drawnVolume: string; setDrawnVolume: (v: string) => void;
+  mixVolume: string; setMixVolume: (v: string) => void;
+  targetRate: string; setTargetRate: (v: string) => void;
+  targetUnit: TargetUnit; setTargetUnit: (v: TargetUnit) => void;
+}
+
+function RateCalculator({
+  rawConcValue, setRawConcValue,
+  rawConcUnit, setRawConcUnit,
+  drawnVolume, setDrawnVolume,
+  mixVolume, setMixVolume,
+  targetRate, setTargetRate,
+  targetUnit, setTargetUnit,
+}: RateCalculatorProps) {
   const [weight, setWeight] = useState("60");
-  const [targetRate, setTargetRate] = useState("");
-  const [targetUnit, setTargetUnit] = useState<TargetUnit>("mcg/kg/min");
 
   const rawConc = toNumber(rawConcValue);
   const drawn = toNumber(drawnVolume);
@@ -367,9 +381,226 @@ function DoseCalculator() {
   );
 }
 
+interface RatePresetFields {
+  rawConcValue: string;
+  rawConcUnit: RawConcUnit;
+  drawnVolume: string;
+  mixVolume: string;
+  targetRate: string;
+  targetUnit: TargetUnit;
+}
+
+const PRESET_SLOT_COUNT = 12;
+
+function PresetEditDialog({
+  slotIndex,
+  existing,
+  initialValues,
+  onClose,
+}: {
+  slotIndex: number;
+  existing: DosagePreset | null;
+  initialValues: RatePresetFields;
+  onClose: () => void;
+}) {
+  const [name, setName] = useState(existing?.name ?? "");
+  const [rawConcValue, setRawConcValue] = useState(existing?.rawConcValue ?? initialValues.rawConcValue);
+  const [rawConcUnit, setRawConcUnit] = useState<RawConcUnit>((existing?.rawConcUnit as RawConcUnit) ?? initialValues.rawConcUnit);
+  const [drawnVolume, setDrawnVolume] = useState(existing?.drawnVolume ?? initialValues.drawnVolume);
+  const [mixVolume, setMixVolume] = useState(existing?.mixVolume ?? initialValues.mixVolume);
+  const [targetRate, setTargetRate] = useState(existing?.targetRate ?? initialValues.targetRate);
+  const [targetUnit, setTargetUnit] = useState<TargetUnit>((existing?.targetUnit as TargetUnit) ?? initialValues.targetUnit);
+
+  const concKind = concKindOf(rawConcUnit);
+  const visibleTargetUnitOptions = targetUnitOptions.filter(o => o.kind === concKind);
+
+  const saveMutation = useMutation({
+    mutationFn: async () => {
+      await apiRequest("POST", `/api/dosage-presets/${slotIndex}`, {
+        name: name.trim(),
+        rawConcValue, rawConcUnit, drawnVolume, mixVolume, targetRate, targetUnit,
+      });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/dosage-presets"] });
+      onClose();
+    },
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: async () => {
+      await apiRequest("DELETE", `/api/dosage-presets/${slotIndex}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/dosage-presets"] });
+      onClose();
+    },
+  });
+
+  return (
+    <Dialog open onOpenChange={(next) => { if (!next) onClose(); }}>
+      <DialogContent className="max-w-sm">
+        <DialogHeader>
+          <DialogTitle>{existing ? "프리셋 수정" : "프리셋 저장"}</DialogTitle>
+        </DialogHeader>
+        <div className="space-y-3">
+          <div className="space-y-1">
+            <Label htmlFor="preset-name" className="text-xs font-medium text-muted-foreground">약물 이름</Label>
+            <Input id="preset-name" value={name} onChange={(e) => setName(e.target.value)} data-testid="input-preset-name" />
+          </div>
+          <div className="grid grid-cols-[1fr_80px_1fr] gap-2">
+            <div className="space-y-1">
+              <Label className="text-xs font-medium text-muted-foreground">약물 농도 (원액)</Label>
+              <Input type="number" inputMode="decimal" value={rawConcValue} onChange={(e) => setRawConcValue(e.target.value)} data-testid="input-preset-raw-conc" />
+            </div>
+            <div className="space-y-1">
+              <Label className="text-xs font-medium text-transparent select-none">단위</Label>
+              <Select
+                value={rawConcUnit}
+                onValueChange={(v) => {
+                  const newUnit = v as RawConcUnit;
+                  setRawConcUnit(newUnit);
+                  const newKind = concKindOf(newUnit);
+                  if (concKindOf(rawConcUnit) !== newKind) {
+                    setTargetUnit(targetUnitOptions.find(o => o.kind === newKind)!.value);
+                  }
+                }}
+              >
+                <SelectTrigger data-testid="select-preset-raw-conc-unit"><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="mg/mL">mg/mL</SelectItem>
+                  <SelectItem value="mcg/mL">mcg/mL</SelectItem>
+                  <SelectItem value="unit/mL">unit/mL</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-1">
+              <Label className="text-xs font-medium text-muted-foreground">사용 용량 (mL)</Label>
+              <Input type="number" inputMode="decimal" value={drawnVolume} onChange={(e) => setDrawnVolume(e.target.value)} data-testid="input-preset-drawn-volume" />
+            </div>
+          </div>
+          <div className="space-y-1">
+            <Label className="text-xs font-medium text-muted-foreground">믹스 수액량 (mL)</Label>
+            <Input type="number" inputMode="decimal" value={mixVolume} onChange={(e) => setMixVolume(e.target.value)} data-testid="input-preset-mix-volume" />
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-1">
+              <Label className="text-xs font-medium text-muted-foreground">목표 속도</Label>
+              <Input type="number" inputMode="decimal" value={targetRate} onChange={(e) => setTargetRate(e.target.value)} data-testid="input-preset-target-rate" />
+            </div>
+            <div className="space-y-1">
+              <Label className="text-xs font-medium text-muted-foreground">목표 속도 단위</Label>
+              <Select value={targetUnit} onValueChange={(v) => setTargetUnit(v as TargetUnit)}>
+                <SelectTrigger data-testid="select-preset-target-unit"><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  {visibleTargetUnitOptions.map(o => (
+                    <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+          <div className="flex items-center justify-between pt-2">
+            {existing ? (
+              <Button
+                type="button"
+                variant="destructive"
+                size="sm"
+                onClick={() => deleteMutation.mutate()}
+                disabled={deleteMutation.isPending}
+                data-testid="button-preset-delete"
+              >
+                삭제
+              </Button>
+            ) : <span />}
+            <div className="flex gap-2">
+              <Button type="button" variant="outline" size="sm" onClick={onClose}>취소</Button>
+              <Button
+                type="button"
+                size="sm"
+                onClick={() => saveMutation.mutate()}
+                disabled={saveMutation.isPending || !name.trim()}
+                data-testid="button-preset-save"
+              >
+                저장
+              </Button>
+            </div>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+function PresetPanel({ current, onApply }: { current: RatePresetFields; onApply: (preset: DosagePreset) => void }) {
+  const readOnly = isReadOnly();
+  const { data: presets = [] } = useQuery<DosagePreset[]>({ queryKey: ["/api/dosage-presets"] });
+  const [editSlot, setEditSlot] = useState<number | null>(null);
+
+  const slots = Array.from({ length: PRESET_SLOT_COUNT }, (_, i) => presets.find(p => p.slotIndex === i) ?? null);
+  const editingPreset = editSlot !== null ? presets.find(p => p.slotIndex === editSlot) ?? null : null;
+
+  return (
+    <div className="w-28 shrink-0 flex flex-col gap-1.5 border-l pl-3">
+      {slots.map((preset, i) => (
+        <div key={i} className="relative group">
+          <Button
+            type="button"
+            variant={preset ? "secondary" : "outline"}
+            size="sm"
+            className="w-full h-8 text-xs truncate px-1"
+            disabled={!preset && readOnly}
+            onClick={() => {
+              if (preset) onApply(preset);
+              else if (!readOnly) setEditSlot(i);
+            }}
+            data-testid={`button-preset-slot-${i}`}
+          >
+            {preset ? preset.name : "+"}
+          </Button>
+          {preset && !readOnly && (
+            <button
+              type="button"
+              className="absolute -top-1.5 -right-1.5 hidden group-hover:flex items-center justify-center w-4 h-4 rounded-full bg-muted border hover:bg-accent"
+              onClick={(e) => { e.stopPropagation(); setEditSlot(i); }}
+              data-testid={`button-preset-edit-${i}`}
+            >
+              <Pencil className="w-2.5 h-2.5" />
+            </button>
+          )}
+        </div>
+      ))}
+      {editSlot !== null && (
+        <PresetEditDialog
+          slotIndex={editSlot}
+          existing={editingPreset}
+          initialValues={current}
+          onClose={() => setEditSlot(null)}
+        />
+      )}
+    </div>
+  );
+}
+
 export function DosageCalculator() {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState<"dose" | "rate">("rate");
+
+  const [rawConcValue, setRawConcValue] = useState("");
+  const [rawConcUnit, setRawConcUnit] = useState<RawConcUnit>("mg/mL");
+  const [drawnVolume, setDrawnVolume] = useState("");
+  const [mixVolume, setMixVolume] = useState("");
+  const [targetRate, setTargetRate] = useState("");
+  const [targetUnit, setTargetUnit] = useState<TargetUnit>("mcg/kg/min");
+
+  const applyPreset = (preset: DosagePreset) => {
+    setRawConcValue(preset.rawConcValue);
+    setRawConcUnit(preset.rawConcUnit as RawConcUnit);
+    setDrawnVolume(preset.drawnVolume);
+    setMixVolume(preset.mixVolume);
+    setTargetRate(preset.targetRate);
+    setTargetUnit(preset.targetUnit as TargetUnit);
+  };
 
   return (
     <Dialog
@@ -384,22 +615,39 @@ export function DosageCalculator() {
           <Calculator className="h-4 w-4" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-md">
+      <DialogContent className={mode === "rate" ? "max-w-2xl" : "max-w-md"}>
         <DialogHeader>
           <DialogTitle>약물 계산기</DialogTitle>
         </DialogHeader>
-        <Tabs value={mode} onValueChange={(v) => setMode(v as "dose" | "rate")}>
-          <TabsList className="grid grid-cols-2 w-full">
-            <TabsTrigger value="dose" data-testid="tab-calc-dose">용량</TabsTrigger>
-            <TabsTrigger value="rate" data-testid="tab-calc-rate">속도</TabsTrigger>
-          </TabsList>
-          <TabsContent value="dose" className="mt-4">
-            <DoseCalculator />
-          </TabsContent>
-          <TabsContent value="rate" className="mt-4">
-            <RateCalculator />
-          </TabsContent>
-        </Tabs>
+        <div className="flex gap-4 items-start">
+          <div className="flex-1 min-w-0">
+            <Tabs value={mode} onValueChange={(v) => setMode(v as "dose" | "rate")}>
+              <TabsList className="grid grid-cols-2 w-full">
+                <TabsTrigger value="dose" data-testid="tab-calc-dose">용량</TabsTrigger>
+                <TabsTrigger value="rate" data-testid="tab-calc-rate">속도</TabsTrigger>
+              </TabsList>
+              <TabsContent value="dose" className="mt-4">
+                <DoseCalculator />
+              </TabsContent>
+              <TabsContent value="rate" className="mt-4">
+                <RateCalculator
+                  rawConcValue={rawConcValue} setRawConcValue={setRawConcValue}
+                  rawConcUnit={rawConcUnit} setRawConcUnit={setRawConcUnit}
+                  drawnVolume={drawnVolume} setDrawnVolume={setDrawnVolume}
+                  mixVolume={mixVolume} setMixVolume={setMixVolume}
+                  targetRate={targetRate} setTargetRate={setTargetRate}
+                  targetUnit={targetUnit} setTargetUnit={setTargetUnit}
+                />
+              </TabsContent>
+            </Tabs>
+          </div>
+          {mode === "rate" && (
+            <PresetPanel
+              current={{ rawConcValue, rawConcUnit, drawnVolume, mixVolume, targetRate, targetUnit }}
+              onApply={applyPreset}
+            />
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   );

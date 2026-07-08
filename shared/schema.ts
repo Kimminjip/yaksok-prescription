@@ -62,6 +62,22 @@ export const insertFavoriteItemSchema = createInsertSchema(favoriteItems).omit({
 export type InsertFavoriteItem = z.infer<typeof insertFavoriteItemSchema>;
 export type FavoriteItem = typeof favoriteItems.$inferSelect;
 
+export const dosagePresets = pgTable("dosage_presets", {
+  id: serial("id").primaryKey(),
+  slotIndex: integer("slot_index").notNull(),
+  name: text("name").notNull(),
+  rawConcValue: text("raw_conc_value").notNull(),
+  rawConcUnit: text("raw_conc_unit").notNull(),
+  drawnVolume: text("drawn_volume").notNull(),
+  mixVolume: text("mix_volume").notNull(),
+  targetRate: text("target_rate").notNull(),
+  targetUnit: text("target_unit").notNull(),
+});
+
+export const insertDosagePresetSchema = createInsertSchema(dosagePresets).omit({ id: true });
+export type InsertDosagePreset = z.infer<typeof insertDosagePresetSchema>;
+export type DosagePreset = typeof dosagePresets.$inferSelect;
+
 export const prescriptionTypeOptions = ["약", "혈액검사", "영상검사", "지시처방", "추가설명", "퇴원약"] as const;
 export const unitOptions = ["A", "mg", "ml", "T", "Bag"] as const;
 export const mixGroupOptions = ["", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9"] as const;

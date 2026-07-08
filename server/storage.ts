@@ -3,7 +3,8 @@ import {
   type Prescription, type InsertPrescription,
   type PrescriptionItem, type InsertPrescriptionItem,
   type FavoriteItem, type InsertFavoriteItem,
-  categories, prescriptions, prescriptionItems, favoriteItems,
+  type DosagePreset, type InsertDosagePreset,
+  categories, prescriptions, prescriptionItems, favoriteItems, dosagePresets,
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, asc, ilike, or, inArray } from "drizzle-orm";
@@ -36,6 +37,10 @@ export interface IStorage {
   addFavoriteToPresciption(favoriteId: number, prescriptionId: number): Promise<PrescriptionItem>;
 
   searchPrescriptionsByItem(query: string): Promise<number[]>;
+
+  getDosagePresets(): Promise<DosagePreset[]>;
+  upsertDosagePreset(slotIndex: number, data: Omit<InsertDosagePreset, "slotIndex">): Promise<DosagePreset>;
+  deleteDosagePreset(slotIndex: number): Promise<void>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -219,6 +224,24 @@ export class DatabaseStorage implements IStorage {
         ilike(prescriptionItems.ingredientName, pattern),
       ));
     return Array.from(new Set(results.map(r => r.prescriptionId)));
+  }
+
+  async getDosagePresets(): Promise<DosagePreset[]> {
+    return db.select().from(dosagePresets).orderBy(asc(dosagePresets.slotIndex));
+  }
+
+  async upsertDosagePreset(slotIndex: number, data: Omit<InsertDosagePreset, "slotIndex">): Promise<DosagePreset> {
+    const [existing] = await db.select().from(dosagePresets).where(eq(dosagePresets.slotIndex, slotIndex));
+    if (existing) {
+      const [updated] = await db.update(dosagePresets).set(data).where(eq(dosagePresets.id, existing.id)).returning();
+      return updated;
+    }
+    const [created] = await db.insert(dosagePresets).values({ ...data, slotIndex }).returning();
+    return created;
+  }
+
+  async deleteDosagePreset(slotIndex: number): Promise<void> {
+    await db.delete(dosagePresets).where(eq(dosagePresets.slotIndex, slotIndex));
   }
 }
 
