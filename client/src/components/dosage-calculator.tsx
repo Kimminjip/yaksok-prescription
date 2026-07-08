@@ -21,7 +21,7 @@ import { Calculator } from "lucide-react";
 
 type ConcKind = "mass" | "unit";
 type RawConcUnit = "mg/mL" | "mcg/mL" | "unit/mL";
-type TargetUnit = "mcg/kg/min" | "mcg/min" | "mg/kg/hr" | "mg/hr" | "mg/kg/min" | "mg/min" | "unit/min";
+type TargetUnit = "mcg/kg/min" | "mcg/min" | "mg/kg/hr" | "mg/hr" | "mg/kg/min" | "mg/min" | "unit/min" | "unit/kg/hr";
 
 function concKindOf(u: RawConcUnit): ConcKind {
   return u === "unit/mL" ? "unit" : "mass";
@@ -35,6 +35,7 @@ const targetUnitOptions: { value: TargetUnit; label: string; perKg: boolean; kin
   { value: "mg/kg/min", label: "mg/kg/min", perKg: true, kind: "mass" },
   { value: "mg/min", label: "mg/min", perKg: false, kind: "mass" },
   { value: "unit/min", label: "unit/min", perKg: false, kind: "unit" },
+  { value: "unit/kg/hr", label: "unit/kg/hr", perKg: true, kind: "unit" },
 ];
 
 function toNumber(val: string): number | null {
@@ -53,7 +54,7 @@ function RateCalculator() {
   const [rawConcUnit, setRawConcUnit] = useState<RawConcUnit>("mg/mL");
   const [drawnVolume, setDrawnVolume] = useState("");
   const [mixVolume, setMixVolume] = useState("");
-  const [weight, setWeight] = useState("");
+  const [weight, setWeight] = useState("60");
   const [targetRate, setTargetRate] = useState("");
   const [targetUnit, setTargetUnit] = useState<TargetUnit>("mcg/kg/min");
 
@@ -93,6 +94,7 @@ function RateCalculator() {
       case "mg/kg/min": doseRatePerMin = rate! * w * 1000; break;
       case "mg/min": doseRatePerMin = rate! * 1000; break;
       case "unit/min": doseRatePerMin = rate!; break;
+      case "unit/kg/hr": doseRatePerMin = (rate! * w) / 60; break;
     }
   }
 
@@ -117,6 +119,8 @@ function RateCalculator() {
           id="calc-weight"
           type="number"
           inputMode="decimal"
+          step={5}
+          className="w-24"
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
           data-testid="input-calc-weight"
@@ -247,34 +251,48 @@ function RateCalculator() {
   );
 }
 
+type DoseUnit = "mg/kg" | "mg/kg/day" | "mcg/kg" | "mcg/kg/day";
+type Frequency = "QD" | "BID" | "TID" | "QID";
+
+const frequencyCounts: Record<Frequency, number> = { QD: 1, BID: 2, TID: 3, QID: 4 };
+
 function DoseCalculator() {
-  const [weight, setWeight] = useState("");
+  const [weight, setWeight] = useState("10");
   const [dosePerKg, setDosePerKg] = useState("");
+  const [doseUnit, setDoseUnit] = useState<DoseUnit>("mg/kg");
+  const [frequency, setFrequency] = useState<Frequency>("QD");
   const [concentration, setConcentration] = useState("");
 
   const wt = toNumber(weight);
   const dpk = toNumber(dosePerKg);
   const conc = toNumber(concentration);
 
-  const totalDoseMg = wt !== null && dpk !== null ? wt * dpk : null;
-  const volumeMl = totalDoseMg !== null && conc !== null && conc > 0 ? totalDoseMg / conc : null;
+  const isPerDay = doseUnit === "mg/kg/day" || doseUnit === "mcg/kg/day";
+  const isMcg = doseUnit === "mcg/kg" || doseUnit === "mcg/kg/day";
+
+  const mgPerKg = dpk !== null ? (isMcg ? dpk / 1000 : dpk) : null;
+  const totalDoseMg = wt !== null && mgPerKg !== null ? wt * mgPerKg : null;
+  const perDoseMg = totalDoseMg !== null ? (isPerDay ? totalDoseMg / frequencyCounts[frequency] : totalDoseMg) : null;
+  const volumeMl = perDoseMg !== null && conc !== null && conc > 0 ? perDoseMg / conc : null;
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-2">
+      <div className="space-y-1">
+        <Label htmlFor="dose-weight" className="text-xs font-medium text-muted-foreground">환자 체중 (kg)</Label>
+        <Input
+          id="dose-weight"
+          type="number"
+          inputMode="decimal"
+          className="w-24"
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
+          data-testid="input-calc-dose-weight"
+        />
+      </div>
+
+      <div className="grid grid-cols-[1fr_110px] gap-2">
         <div className="space-y-1">
-          <Label htmlFor="dose-weight" className="text-xs font-medium text-muted-foreground">환자 체중 (kg)</Label>
-          <Input
-            id="dose-weight"
-            type="number"
-            inputMode="decimal"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-            data-testid="input-calc-dose-weight"
-          />
-        </div>
-        <div className="space-y-1">
-          <Label htmlFor="dose-per-kg" className="text-xs font-medium text-muted-foreground">용량 기준 (mg/kg)</Label>
+          <Label htmlFor="dose-per-kg" className="text-xs font-medium text-muted-foreground">투여량</Label>
           <Input
             id="dose-per-kg"
             type="number"
@@ -284,6 +302,31 @@ function DoseCalculator() {
             data-testid="input-calc-dose-per-kg"
           />
         </div>
+        <div className="space-y-1">
+          <Label className="text-xs font-medium text-muted-foreground">투여량 단위</Label>
+          <Select value={doseUnit} onValueChange={(v) => setDoseUnit(v as DoseUnit)}>
+            <SelectTrigger data-testid="select-calc-dose-unit"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="mg/kg">mg/kg</SelectItem>
+              <SelectItem value="mg/kg/day">mg/kg/day</SelectItem>
+              <SelectItem value="mcg/kg">mcg/kg</SelectItem>
+              <SelectItem value="mcg/kg/day">mcg/kg/day</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+
+      <div className="space-y-1">
+        <Label className={`text-xs font-medium ${isPerDay ? "text-muted-foreground" : "text-muted-foreground/50"}`}>1일 투여횟수</Label>
+        <Select value={frequency} onValueChange={(v) => setFrequency(v as Frequency)} disabled={!isPerDay}>
+          <SelectTrigger data-testid="select-calc-dose-frequency"><SelectValue /></SelectTrigger>
+          <SelectContent>
+            <SelectItem value="QD">QD (1일 1회)</SelectItem>
+            <SelectItem value="BID">BID (1일 2회)</SelectItem>
+            <SelectItem value="TID">TID (1일 3회)</SelectItem>
+            <SelectItem value="QID">QID (1일 4회)</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       <div className="space-y-1">
@@ -299,15 +342,21 @@ function DoseCalculator() {
       </div>
 
       <div className="rounded-md border bg-muted/30 p-3 space-y-2">
+        {isPerDay && (
+          <div className="flex items-baseline justify-between text-xs">
+            <span className="text-muted-foreground">총 1일 용량</span>
+            <span className="tabular-nums">{fmt(totalDoseMg, 2)} mg</span>
+          </div>
+        )}
         <div className="flex items-baseline justify-between">
-          <span className="text-xs text-muted-foreground">총 용량</span>
+          <span className="text-xs text-muted-foreground">1회 투여량</span>
           <span className="text-2xl font-bold tabular-nums" data-testid="text-calc-result-dose">
-            {fmt(totalDoseMg, 2)} <span className="text-sm font-normal text-muted-foreground">mg</span>
+            {fmt(perDoseMg, 2)} <span className="text-sm font-normal text-muted-foreground">mg</span>
           </span>
         </div>
         {concentration.trim() !== "" && (
           <div className="flex items-baseline justify-between pt-2 border-t">
-            <span className="text-xs text-muted-foreground">필요 용액량</span>
+            <span className="text-xs text-muted-foreground">필요 용액량 (1회분)</span>
             <span className="text-lg font-semibold tabular-nums" data-testid="text-calc-result-volume">
               {fmt(volumeMl, 2)} <span className="text-sm font-normal text-muted-foreground">mL</span>
             </span>
