@@ -6,6 +6,10 @@ import { insertKkuData } from "./kku-data";
 export async function seedDatabase() {
   const existing = await db.select().from(categories).limit(1);
 
+  // Seed only an empty database. Users can rename or reorganize the original
+  // categories; their absence by name must not recreate presets on restart.
+  if (existing.length > 0) return;
+
   // 초기 데이터가 없으면 기본 카테고리 생성
   if (existing.length === 0) {
     const [내과] = await db.insert(categories).values({ name: "내과", sortOrder: 0 }).returning();
