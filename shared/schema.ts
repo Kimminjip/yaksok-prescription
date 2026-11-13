@@ -78,8 +78,8 @@ export const insertDosagePresetSchema = createInsertSchema(dosagePresets).omit({
 export type InsertDosagePreset = z.infer<typeof insertDosagePresetSchema>;
 export type DosagePreset = typeof dosagePresets.$inferSelect;
 
-export const prescriptionTypeOptions = ["약", "혈액검사", "영상검사", "지시처방", "추가설명", "퇴원약"] as const;
-export const unitOptions = ["A", "mg", "ml", "T", "Bag"] as const;
-export const mixGroupOptions = ["", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9"] as const;
-export const routeOptions = ["iv", "im", "po", "nebul", "ivs", "IV infusion"] as const;
-export const frequencyOptions = ["1", "Qd", "Bid", "Tid"] as const;
+export const prescriptionTypeOptions = ["약", "혈액검사", "검체검사", "영상검사", "지시처방", "추가설명", "퇴원약"] as const;
+export const unitOptions = ["A", "mg", "ml", "T", "Bag", "g", "IU", "mcg", "amp", "via", "srg", "btl", "tab", "cap", "pk", "bag", "kit", "tub", "ea"] as const;
+export const mixGroupOptions = ["", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "M18", "M19", "M20"] as const;
+export const routeOptions = ["iv", "im", "po", "nebul", "ivs", "IV infusion", "IV", "Mix IV", "IVS", "IV continuous", "IM", "P.O", "SubCut", "Apply", "Drop", "Gargling"] as const;
+export const frequencyOptions = ["1", "Qd", "Bid", "Tid", "qd pc", "bid pc", "tid pc", "tid ac", "q6h", "q8h", "q12h", "q24h", "ut dict"] as const;

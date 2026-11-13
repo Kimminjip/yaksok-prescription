@@ -20,13 +20,13 @@ export const prescriptionItemValidation = z.object({
     .min(1, "상품명은 필수입니다")
     .max(500, "상품명은 500자 이하여야 합니다")
     .trim(),
-  ingredientName: z.string().max(100, "성분명은 100자 이하여야 합니다").nullable(),
+  ingredientName: z.string().max(2000, "성분명은 2000자 이하여야 합니다").nullable(),
   dosage: z.string().max(50, "용량은 50자 이하여야 합니다").nullable(),
-  unit: z.enum(unitOptions).nullable(),
+  unit: z.string().max(30).nullable(),
   frequency: z.string().max(30).nullable(),
   route: z.string().max(30).nullable(),
   duration: z.string().max(30).nullable(),
-  note: z.string().max(500, "비고는 500자 이하여야 합니다").nullable(),
+  note: z.string().max(4000, "비고는 4000자 이하여야 합니다").nullable(),
   type: z.enum(prescriptionTypeOptions),
   mixGroup: z.string().max(10).nullable(),
 });

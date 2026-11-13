@@ -189,6 +189,7 @@ interface PrescriptionTableProps {
 }
 
 const typeColorMap: Record<string, string> = {
+  "검체검사": "bg-rose-100 text-rose-800 dark:bg-rose-900/40 dark:text-rose-300",
   "약": "bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300",
   "혈액검사": "bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300",
   "영상검사": "bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300",
@@ -242,10 +243,10 @@ function EditableCell({
       // 간단한 검증: 길이 체크
       const maxLengths: Record<string, number> = {
         productName: 500,
-        ingredientName: 100,
+        ingredientName: 2000,
         dosage: 50,
         duration: 30,
-        note: 500,
+        note: 4000,
       };
       const maxLen = maxLengths[field];
       if (maxLen && newVal && newVal.length > maxLen) {
@@ -311,7 +312,7 @@ function EditableCell({
         if (e.key === "Tab") { e.preventDefault(); navigateTabToNextCell(e.currentTarget); return; }
         if (!readOnly && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); setEditing(true); }
       }}
-      className={`${readOnly ? "" : "cursor-pointer hover:bg-accent/50"} rounded px-1 py-0.5 -mx-1 inline-block min-w-[2rem] min-h-[1.25rem] whitespace-pre-wrap ${className}`}
+      className={`${readOnly ? "" : "cursor-pointer hover:bg-accent/50"} rounded px-1 py-0.5 -mx-1 inline-block min-w-[2rem] min-h-[1.25rem] whitespace-pre-wrap [overflow-wrap:anywhere] ${className}`}
       data-testid={`text-${field}-${itemId}`}
     >
       {value || "\u00A0"}
@@ -992,7 +993,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
     );
   }
 
-  const hasDuration = items.some(i => i.type === "퇴원약");
+  const hasDuration = items.some(i => i.type === "퇴원약" || Boolean(i.duration));
   const colCount = hasDuration ? 11 : 10;
 
   if (items.length === 0) {
@@ -1140,7 +1141,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
                                       <EditableCell value={item.productName} itemId={item.id} field="productName" prescriptionId={prescriptionId} className="font-medium text-blue-900 dark:text-blue-300" multiline />
                                     </TableCell>
                                   </>
-                                ) : item.type === "혈액검사" || item.type === "영상검사" ? (
+                                ) : item.type === "혈액검사" || item.type === "검체검사" || item.type === "영상검사" ? (
                                   <>
                                     <TableCell className="px-1 text-center">
                                       <span className="text-xs text-muted-foreground">{"\u00A0"}</span>
@@ -1165,7 +1166,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
                                       <EditableCell value={item.productName} itemId={item.id} field="productName" prescriptionId={prescriptionId} className="font-medium" />
                                     </TableCell>
                                     <TableCell className="px-2" data-tab-row={index} data-tab-col={3}>
-                                      <EditableCell value={item.ingredientName} itemId={item.id} field="ingredientName" prescriptionId={prescriptionId} className="text-muted-foreground" />
+                                      <EditableCell value={item.ingredientName} itemId={item.id} field="ingredientName" prescriptionId={prescriptionId} className="text-muted-foreground" multiline />
                                     </TableCell>
                                     <TableCell className="px-2 text-right" data-tab-row={index} data-tab-col={4}>
                                       <EditableCell value={item.dosage} itemId={item.id} field="dosage" prescriptionId={prescriptionId} className="text-right tabular-nums" />
@@ -1178,7 +1179,7 @@ export function PrescriptionTable({ items, isLoading, prescriptionId }: Prescrip
                                     </TableCell>
                                     {hasDuration && (
                                       <TableCell className="px-2" data-tab-row={index} data-tab-col={7}>
-                                        {item.type === "퇴원약" ? (
+                                        {item.type === "퇴원약" || item.type === "약" ? (
                                           <EditableCell value={item.duration} itemId={item.id} field="duration" prescriptionId={prescriptionId} />
                                         ) : (
                                           <span className="text-xs text-muted-foreground">{" "}</span>
